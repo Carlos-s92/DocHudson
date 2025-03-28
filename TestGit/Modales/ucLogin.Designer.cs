@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.BtnLogin = new CustomControls.RJControls.RJButton();
             this.CampoUsuario = new CustomControls.RJControls.RJTextBox();
             this.CampoContraseña = new CustomControls.RJControls.RJTextBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,6 +49,18 @@
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Roboto Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(154, 142);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 25);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Login";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // BtnLogin
             // 
             this.BtnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(70)))), ((int)(((byte)(116)))));
@@ -62,7 +74,7 @@
             this.BtnLogin.Location = new System.Drawing.Point(78, 316);
             this.BtnLogin.Name = "BtnLogin";
             this.BtnLogin.Size = new System.Drawing.Size(209, 54);
-            this.BtnLogin.TabIndex = 8;
+            this.BtnLogin.TabIndex = 11;
             this.BtnLogin.Text = "Iniciar Sesion";
             this.BtnLogin.TextColor = System.Drawing.Color.White;
             this.BtnLogin.UseVisualStyleBackColor = false;
@@ -76,7 +88,7 @@
             this.CampoUsuario.BorderRadius = 10;
             this.CampoUsuario.BorderSize = 2;
             this.CampoUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CampoUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CampoUsuario.ForeColor = System.Drawing.Color.White;
             this.CampoUsuario.IsReadOnly = false;
             this.CampoUsuario.Location = new System.Drawing.Point(61, 189);
             this.CampoUsuario.Margin = new System.Windows.Forms.Padding(4);
@@ -100,7 +112,7 @@
             this.CampoContraseña.BorderRadius = 10;
             this.CampoContraseña.BorderSize = 2;
             this.CampoContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CampoContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CampoContraseña.ForeColor = System.Drawing.Color.White;
             this.CampoContraseña.IsReadOnly = false;
             this.CampoContraseña.Location = new System.Drawing.Point(61, 247);
             this.CampoContraseña.Margin = new System.Windows.Forms.Padding(4);
@@ -115,18 +127,6 @@
             this.CampoContraseña.TabIndex = 10;
             this.CampoContraseña.Texts = "";
             this.CampoContraseña.UnderlinedStyle = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Roboto Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(154, 142);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 25);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Login";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // ucLogin
             // 

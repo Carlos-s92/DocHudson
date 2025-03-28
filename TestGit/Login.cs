@@ -13,10 +13,18 @@ namespace TestGit
 {
     public partial class Login : Form
     {
+        private ucLogin loginControl = new ucLogin();
         public Login()
         {
 
             InitializeComponent();
+          
+            loginControl.Dock = DockStyle.Fill;
+
+            // Agregarlo al PanelLogin
+            this.PanelLogin.Controls.Add(loginControl);
+
+
             this.btnSalir.Parent = pFondo;
             this.btnSalir.BackColor = Color.Transparent;
             btnSalir.FlatStyle = FlatStyle.Flat; // Hace que el botón sea plano
@@ -25,14 +33,23 @@ namespace TestGit
             btnSalir.FlatAppearance.MouseOverBackColor = Color.FromArgb(150, 255, 50, 50); // Rojo semi-transparente al pasar el mouse
             btnSalir.BackColor = Color.Transparent; // Fondo transparente
             btnSalir.ForeColor = Color.White; // Asegura que el texto se vea bien
-            // Crear una instancia del control de usuario
-            ucLogin loginControl = new ucLogin();
-            loginControl.Dock = DockStyle.Fill; // Ocupa todo el panel
-            this.btnSalir.Parent = pFondo;
-            // Agregarlo al PanelLogin
-            this.PanelLogin.Controls.Add(loginControl);
+
 
         }
+        public void HandleLoginSuccess()
+        {
+            // Aquí realizamos la transición a otro formulario (por ejemplo, Inicio)
+            Inicio inicio = new Inicio();
+            inicio.FormClosing += frm_closing; // Asocia el evento para cuando el formulario Inicio se cierre.
+            inicio.Show();  // Muestra el nuevo formulario
+            this.Hide();  // Esconde el formulario principal
+        }
+        private void frm_closing(object sender, FormClosingEventArgs e)
+        {
+            this.loginControl.LimpiarCampos();
+            this.Show(); // Muestra de nuevo el formulario Login.
+        }
+
 
 
         private void rjTextBox2__TextChanged(object sender, EventArgs e)
