@@ -15,6 +15,8 @@ namespace CapaEntidad
 
         public string Contraseña { get; set; }
 
+        public bool Estado { get; set; }
+
         public DateTime Fecha_Registro { get; set; }
 
     }

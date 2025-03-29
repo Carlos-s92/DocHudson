@@ -13,5 +13,6 @@ namespace CapaEntidad
 
         public TipoPago oTipoPago { get; set; }
         public DateTime Fecha_Pago { get; set; }
+        public bool Estado { get; set; }
     }
 }

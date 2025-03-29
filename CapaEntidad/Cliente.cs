@@ -17,5 +17,6 @@ namespace CapaEntidad
         public string Licencia { get; set; }
         public string Telefono { get; set; }
         public DateTime Fecha_Registro { get; set; }
+        public bool Estado { get; set; }
     }
 }
