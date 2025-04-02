@@ -398,11 +398,11 @@
     <Content Include="Resources\Musica.wav" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
+    <ProjectReference Include="CapaEntidad\CapaEntidad.csproj">
       <Project>{f9cc1f3c-6680-4b04-b077-3b00f26353ff}</Project>
       <Name>CapaEntidad</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj">
+    <ProjectReference Include="CapaNegocio\CapaNegocio.csproj">
       <Project>{a51b8ca1-a5c5-4e45-881a-661ab971df03}</Project>
       <Name>CapaNegocio</Name>
     </ProjectReference>
