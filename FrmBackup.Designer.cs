@@ -30,7 +30,6 @@
         {
             this.BtnLimpiar2 = new CustomControls.RJControls.RJButton();
             this.BtnGuardar2 = new CustomControls.RJControls.RJButton();
-            this.txtDireccion = new CustomControls.RJControls.RJTextBox();
             this.txtDireccion2 = new CustomControls.RJControls.RJTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,6 +57,7 @@
             this.BtnLimpiar2.Text = "+";
             this.BtnLimpiar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnLimpiar2.UseVisualStyleBackColor = false;
+            this.BtnLimpiar2.Click += new System.EventHandler(this.BtnLimpiar2_Click);
             // 
             // BtnGuardar2
             // 
@@ -71,7 +71,7 @@
             this.BtnGuardar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardar2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGuardar2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.BtnGuardar2.Location = new System.Drawing.Point(575, 136);
+            this.BtnGuardar2.Location = new System.Drawing.Point(38, 161);
             this.BtnGuardar2.Margin = new System.Windows.Forms.Padding(2);
             this.BtnGuardar2.Name = "BtnGuardar2";
             this.BtnGuardar2.Size = new System.Drawing.Size(365, 41);
@@ -79,30 +79,7 @@
             this.BtnGuardar2.Text = "+";
             this.BtnGuardar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnGuardar2.UseVisualStyleBackColor = false;
-            // 
-            // txtDireccion
-            // 
-            this.txtDireccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.txtDireccion.BorderColor = System.Drawing.Color.DimGray;
-            this.txtDireccion.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
-            this.txtDireccion.BorderRadius = 10;
-            this.txtDireccion.BorderSize = 2;
-            this.txtDireccion.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDireccion.ForeColor = System.Drawing.Color.White;
-            this.txtDireccion.IsReadOnly = false;
-            this.txtDireccion.Location = new System.Drawing.Point(24, 136);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDireccion.Multiline = false;
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtDireccion.PasswordChar = false;
-            this.txtDireccion.PlaceholderColor = System.Drawing.Color.White;
-            this.txtDireccion.PlaceholderText = "Direccion";
-            this.txtDireccion.ShortcutsEnabled = false;
-            this.txtDireccion.Size = new System.Drawing.Size(446, 45);
-            this.txtDireccion.TabIndex = 137;
-            this.txtDireccion.Texts = "";
-            this.txtDireccion.UnderlinedStyle = true;
+            this.BtnGuardar2.Click += new System.EventHandler(this.BtnGuardar2_Click);
             // 
             // txtDireccion2
             // 
@@ -134,7 +111,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(19)))));
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(33, 67);
+            this.label3.Location = new System.Drawing.Point(33, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(206, 25);
             this.label3.TabIndex = 139;
@@ -171,7 +148,6 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.txtDireccion2);
             this.Controls.Add(this.BtnLimpiar2);
             this.Controls.Add(this.BtnGuardar2);
@@ -188,7 +164,6 @@
 
         private CustomControls.RJControls.RJButton BtnLimpiar2;
         private CustomControls.RJControls.RJButton BtnGuardar2;
-        private CustomControls.RJControls.RJTextBox txtDireccion;
         private CustomControls.RJControls.RJTextBox txtDireccion2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;

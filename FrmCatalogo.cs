@@ -1,10 +1,13 @@
-﻿using System;
+﻿using CapaEntidad;
+using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestGit.Modales;
@@ -22,15 +25,7 @@ namespace TestGit
 
         private void mostrarAutito()
         {
-            TarjetaAuto autito = new TarjetaAuto();
-            TarjetaAuto autito1 = new TarjetaAuto();
-            TarjetaAuto autito2 = new TarjetaAuto();
-            TarjetaAuto autito3 = new TarjetaAuto();
 
-            flowLayoutPanel1.Controls.Add(autito);
-            flowLayoutPanel1.Controls.Add(autito1);
-            flowLayoutPanel1.Controls.Add(autito2);
-            flowLayoutPanel1.Controls.Add(autito3);
         }
         private void comboBusqueda_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -45,6 +40,32 @@ namespace TestGit
         private void rjButton1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void FrmCatalogo_Load(object sender, EventArgs e)
+        {
+            List<Autos> autos = new CN_Auto().Listar();
+
+            foreach(Autos item in autos)
+            {
+
+                TarjetaAuto auto = new TarjetaAuto(item.Id_Auto,item.Modelo, item.Marca, item.Consumo, item.Puertas, item.Asientos, item.Kilometros, item.Reservado, item.Estado, item.Matricula, item.Año, item.Imagen);
+                flowLayoutPanel1 .Controls.Add(auto);
+
+            }
+
+        }
+        public void HandleLoginSuccess()
+        {
+            this.flowLayoutPanel1.Controls.Clear();
+            List<Autos> autos = new CN_Auto().Listar();
+
+            foreach (Autos item in autos)
+            {
+                TarjetaAuto auto = new TarjetaAuto(item.Id_Auto, item.Modelo, item.Marca, item.Consumo, item.Puertas, item.Asientos, item.Kilometros, item.Reservado, item.Estado, item.Matricula,item.Año, item.Imagen);
+                flowLayoutPanel1.Controls.Add(auto);
+
+            }
         }
     }
 }

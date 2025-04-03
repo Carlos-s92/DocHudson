@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.rjTextBox3 = new CustomControls.RJControls.RJTextBox();
-            this.rjTextBox2 = new CustomControls.RJControls.RJTextBox();
-            this.rjTextBox1 = new CustomControls.RJControls.RJTextBox();
+            this.txtAsientos = new CustomControls.RJControls.RJTextBox();
+            this.txtPuertas = new CustomControls.RJControls.RJTextBox();
+            this.txtMarca = new CustomControls.RJControls.RJTextBox();
             this.rjButton1 = new CustomControls.RJControls.RJButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboEstado = new System.Windows.Forms.ComboBox();
@@ -41,80 +41,82 @@
             this.txtKilometros = new CustomControls.RJControls.RJTextBox();
             this.txtMatricula = new CustomControls.RJControls.RJTextBox();
             this.txtAño = new CustomControls.RJControls.RJTextBox();
+            this.txtImagen = new CustomControls.RJControls.RJTextBox();
+            this.txtId = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // rjTextBox3
+            // txtAsientos
             // 
-            this.rjTextBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.rjTextBox3.BorderColor = System.Drawing.Color.DimGray;
-            this.rjTextBox3.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
-            this.rjTextBox3.BorderRadius = 10;
-            this.rjTextBox3.BorderSize = 2;
-            this.rjTextBox3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox3.ForeColor = System.Drawing.Color.White;
-            this.rjTextBox3.IsReadOnly = false;
-            this.rjTextBox3.Location = new System.Drawing.Point(521, 171);
-            this.rjTextBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox3.Multiline = false;
-            this.rjTextBox3.Name = "rjTextBox3";
-            this.rjTextBox3.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.rjTextBox3.PasswordChar = false;
-            this.rjTextBox3.PlaceholderColor = System.Drawing.Color.White;
-            this.rjTextBox3.PlaceholderText = "Asientos";
-            this.rjTextBox3.ShortcutsEnabled = false;
-            this.rjTextBox3.Size = new System.Drawing.Size(159, 45);
-            this.rjTextBox3.TabIndex = 163;
-            this.rjTextBox3.Texts = "";
-            this.rjTextBox3.UnderlinedStyle = true;
+            this.txtAsientos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.txtAsientos.BorderColor = System.Drawing.Color.DimGray;
+            this.txtAsientos.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
+            this.txtAsientos.BorderRadius = 10;
+            this.txtAsientos.BorderSize = 2;
+            this.txtAsientos.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAsientos.ForeColor = System.Drawing.Color.White;
+            this.txtAsientos.IsReadOnly = false;
+            this.txtAsientos.Location = new System.Drawing.Point(521, 171);
+            this.txtAsientos.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAsientos.Multiline = false;
+            this.txtAsientos.Name = "txtAsientos";
+            this.txtAsientos.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtAsientos.PasswordChar = false;
+            this.txtAsientos.PlaceholderColor = System.Drawing.Color.White;
+            this.txtAsientos.PlaceholderText = "Asientos";
+            this.txtAsientos.ShortcutsEnabled = false;
+            this.txtAsientos.Size = new System.Drawing.Size(159, 45);
+            this.txtAsientos.TabIndex = 163;
+            this.txtAsientos.Texts = "";
+            this.txtAsientos.UnderlinedStyle = true;
             // 
-            // rjTextBox2
+            // txtPuertas
             // 
-            this.rjTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.rjTextBox2.BorderColor = System.Drawing.Color.DimGray;
-            this.rjTextBox2.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
-            this.rjTextBox2.BorderRadius = 10;
-            this.rjTextBox2.BorderSize = 2;
-            this.rjTextBox2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox2.ForeColor = System.Drawing.Color.White;
-            this.rjTextBox2.IsReadOnly = false;
-            this.rjTextBox2.Location = new System.Drawing.Point(383, 171);
-            this.rjTextBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox2.Multiline = false;
-            this.rjTextBox2.Name = "rjTextBox2";
-            this.rjTextBox2.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.rjTextBox2.PasswordChar = false;
-            this.rjTextBox2.PlaceholderColor = System.Drawing.Color.White;
-            this.rjTextBox2.PlaceholderText = "Puertas";
-            this.rjTextBox2.ShortcutsEnabled = false;
-            this.rjTextBox2.Size = new System.Drawing.Size(108, 45);
-            this.rjTextBox2.TabIndex = 162;
-            this.rjTextBox2.Texts = "";
-            this.rjTextBox2.UnderlinedStyle = true;
+            this.txtPuertas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.txtPuertas.BorderColor = System.Drawing.Color.DimGray;
+            this.txtPuertas.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
+            this.txtPuertas.BorderRadius = 10;
+            this.txtPuertas.BorderSize = 2;
+            this.txtPuertas.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPuertas.ForeColor = System.Drawing.Color.White;
+            this.txtPuertas.IsReadOnly = false;
+            this.txtPuertas.Location = new System.Drawing.Point(383, 171);
+            this.txtPuertas.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPuertas.Multiline = false;
+            this.txtPuertas.Name = "txtPuertas";
+            this.txtPuertas.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtPuertas.PasswordChar = false;
+            this.txtPuertas.PlaceholderColor = System.Drawing.Color.White;
+            this.txtPuertas.PlaceholderText = "Puertas";
+            this.txtPuertas.ShortcutsEnabled = false;
+            this.txtPuertas.Size = new System.Drawing.Size(108, 45);
+            this.txtPuertas.TabIndex = 162;
+            this.txtPuertas.Texts = "";
+            this.txtPuertas.UnderlinedStyle = true;
             // 
-            // rjTextBox1
+            // txtMarca
             // 
-            this.rjTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.rjTextBox1.BorderColor = System.Drawing.Color.DimGray;
-            this.rjTextBox1.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
-            this.rjTextBox1.BorderRadius = 10;
-            this.rjTextBox1.BorderSize = 2;
-            this.rjTextBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox1.ForeColor = System.Drawing.Color.White;
-            this.rjTextBox1.IsReadOnly = false;
-            this.rjTextBox1.Location = new System.Drawing.Point(57, 237);
-            this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox1.Multiline = false;
-            this.rjTextBox1.Name = "rjTextBox1";
-            this.rjTextBox1.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.rjTextBox1.PasswordChar = false;
-            this.rjTextBox1.PlaceholderColor = System.Drawing.Color.White;
-            this.rjTextBox1.PlaceholderText = "Marca";
-            this.rjTextBox1.ShortcutsEnabled = false;
-            this.rjTextBox1.Size = new System.Drawing.Size(285, 45);
-            this.rjTextBox1.TabIndex = 161;
-            this.rjTextBox1.Texts = "";
-            this.rjTextBox1.UnderlinedStyle = true;
+            this.txtMarca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.txtMarca.BorderColor = System.Drawing.Color.DimGray;
+            this.txtMarca.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
+            this.txtMarca.BorderRadius = 10;
+            this.txtMarca.BorderSize = 2;
+            this.txtMarca.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMarca.ForeColor = System.Drawing.Color.White;
+            this.txtMarca.IsReadOnly = false;
+            this.txtMarca.Location = new System.Drawing.Point(57, 237);
+            this.txtMarca.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMarca.Multiline = false;
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtMarca.PasswordChar = false;
+            this.txtMarca.PlaceholderColor = System.Drawing.Color.White;
+            this.txtMarca.PlaceholderText = "Marca";
+            this.txtMarca.ShortcutsEnabled = false;
+            this.txtMarca.Size = new System.Drawing.Size(285, 45);
+            this.txtMarca.TabIndex = 161;
+            this.txtMarca.Texts = "";
+            this.txtMarca.UnderlinedStyle = true;
             // 
             // rjButton1
             // 
@@ -178,6 +180,7 @@
             this.BtnLimpiar2.TabIndex = 157;
             this.BtnLimpiar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnLimpiar2.UseVisualStyleBackColor = false;
+            this.BtnLimpiar2.Click += new System.EventHandler(this.BtnLimpiar2_Click);
             // 
             // BtnGuardar2
             // 
@@ -199,6 +202,7 @@
             this.BtnGuardar2.Text = "+";
             this.BtnGuardar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnGuardar2.UseVisualStyleBackColor = false;
+            this.BtnGuardar2.Click += new System.EventHandler(this.BtnGuardar2_Click);
             // 
             // txtConsumo
             // 
@@ -320,15 +324,51 @@
             this.txtAño.Texts = "";
             this.txtAño.UnderlinedStyle = true;
             // 
+            // txtImagen
+            // 
+            this.txtImagen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.txtImagen.BorderColor = System.Drawing.Color.DimGray;
+            this.txtImagen.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
+            this.txtImagen.BorderRadius = 10;
+            this.txtImagen.BorderSize = 2;
+            this.txtImagen.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImagen.ForeColor = System.Drawing.Color.White;
+            this.txtImagen.IsReadOnly = false;
+            this.txtImagen.Location = new System.Drawing.Point(465, 417);
+            this.txtImagen.Margin = new System.Windows.Forms.Padding(4);
+            this.txtImagen.Multiline = false;
+            this.txtImagen.Name = "txtImagen";
+            this.txtImagen.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtImagen.PasswordChar = false;
+            this.txtImagen.PlaceholderColor = System.Drawing.Color.White;
+            this.txtImagen.PlaceholderText = "";
+            this.txtImagen.ShortcutsEnabled = false;
+            this.txtImagen.Size = new System.Drawing.Size(107, 45);
+            this.txtImagen.TabIndex = 164;
+            this.txtImagen.Texts = "";
+            this.txtImagen.UnderlinedStyle = true;
+            this.txtImagen.Visible = false;
+            // 
+            // txtId
+            // 
+            this.txtId.AutoSize = true;
+            this.txtId.Location = new System.Drawing.Point(702, 127);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(0, 13);
+            this.txtId.TabIndex = 165;
+            this.txtId.Visible = false;
+            // 
             // mdAutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(19)))));
             this.ClientSize = new System.Drawing.Size(757, 569);
-            this.Controls.Add(this.rjTextBox3);
-            this.Controls.Add(this.rjTextBox2);
-            this.Controls.Add(this.rjTextBox1);
+            this.Controls.Add(this.txtId);
+            this.Controls.Add(this.txtImagen);
+            this.Controls.Add(this.txtAsientos);
+            this.Controls.Add(this.txtPuertas);
+            this.Controls.Add(this.txtMarca);
             this.Controls.Add(this.rjButton1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.comboEstado);
@@ -342,16 +382,18 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "mdAutos";
             this.Text = "mdAutos";
+            this.Load += new System.EventHandler(this.mdAutos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private CustomControls.RJControls.RJTextBox rjTextBox3;
-        private CustomControls.RJControls.RJTextBox rjTextBox2;
-        private CustomControls.RJControls.RJTextBox rjTextBox1;
+        private CustomControls.RJControls.RJTextBox txtAsientos;
+        private CustomControls.RJControls.RJTextBox txtPuertas;
+        private CustomControls.RJControls.RJTextBox txtMarca;
         private CustomControls.RJControls.RJButton rjButton1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox comboEstado;
@@ -362,5 +404,7 @@
         private CustomControls.RJControls.RJTextBox txtKilometros;
         private CustomControls.RJControls.RJTextBox txtMatricula;
         private CustomControls.RJControls.RJTextBox txtAño;
+        private CustomControls.RJControls.RJTextBox txtImagen;
+        private System.Windows.Forms.Label txtId;
     }
 }

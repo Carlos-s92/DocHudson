@@ -1,8 +1,14 @@
-﻿using System;
+﻿using CapaEntidad;
+using CapaNegocio;
+using CapaPresentacion.Utilidades;
+using CustomControls.RJControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +18,181 @@ namespace TestGit
 {
     public partial class FrmAutos : Form
     {
+        private string nombreImagen = "";
         public FrmAutos()
         {
             InitializeComponent();
+        }
+
+        private bool Validaciones()
+        {
+            bool confirmacion = true;
+    
+
+            // Verifica que el campo de Documento no esté vacío.
+            if (txtModelo.Texts == "")
+            {
+                confirmacion = false;
+            }
+            // Verifica que el campo de Dirección no esté vacío.
+            if (txtMatricula.Texts == "")
+            {
+                confirmacion = false;
+            }
+            // Verifica que el correo tenga formato válido.
+            if (txtMarca.Texts == "")
+            {
+                confirmacion = false;
+            }
+            // Verifica que el campo de Nombre no esté vacío.
+            if (txtAño.Texts == "")
+            {
+                confirmacion = false;
+            }
+            // Verifica que el campo de Teléfono no esté vacío.
+            if (txtAsientos.Texts == "")
+            {
+                confirmacion = false;
+            }
+            // Verifica que el campo de Nombre no esté vacío.
+            if (txtConsumo.Texts == "")
+            {
+                confirmacion = false;
+            }
+            // Verifica que el campo de Teléfono no esté vacío.
+            if (txtPuertas.Texts == "")
+            {
+                confirmacion = false;
+            }
+            // Verifica que el campo de Teléfono no esté vacío.
+            if (txtKilometros.Texts == "")
+            {
+                confirmacion = false;
+            }
+
+
+            // Retorna el resultado de las validaciones.
+            return confirmacion;
+        }
+
+        private void LimpiarCampos()
+        {
+            this.txtModelo.Texts = "";
+            this.txtMarca.Texts = "";
+            this.txtMatricula.Texts = "";
+            this.txtAño.Texts = "";
+            this.txtAsientos.Texts = "";
+            this.txtPuertas.Texts = "";
+            this.txtConsumo.Texts = "";
+            this.txtKilometros.Texts = "";
+            this.txtid.Text = "0";
+      
+            comboEstado.SelectedIndex = 0;
+       
+        }
+
+
+
+
+        private void BtnGuardar2_Click(object sender, EventArgs e)
+        {
+            // Valida los campos antes de proceder.
+            if (Validaciones())
+            {
+                DialogResult confirmacion;
+
+                string mensaje = string.Empty;
+
+         
+                confirmacion = MessageBox.Show("¿Seguro desea agregar el Auto?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                
+             
+
+                // Si la respuesta es afirmativa, se crea o edita el Auto.
+                if (confirmacion == DialogResult.Yes)
+                {
+                    Autos objAuto = new Autos()
+                    {
+                        Id_Auto = Convert.ToInt32(txtid.Text),
+                        Modelo = txtModelo.Texts,
+                        Marca = txtMarca.Texts,
+                        Matricula = txtMatricula.Texts,
+                        Kilometros = Convert.ToDecimal(txtKilometros.Texts),
+                        Consumo = Convert.ToDecimal(txtConsumo.Texts),
+                        Puertas = Convert.ToInt32(txtPuertas.Texts),
+                        Asientos = Convert.ToInt32(txtAsientos.Texts),
+                        Año = Convert.ToInt32(txtAño.Texts),
+                        Imagen = nombreImagen,
+                        Estado = Convert.ToInt32(((OpcionesCombo)comboEstado.SelectedItem).Valor) == 1 ? true : false
+                    };
+
+                        int idAutoGenerado = new CN_Auto().Registrar(objAuto, out mensaje);
+                        if (idAutoGenerado != 0)
+                        {
+                            LimpiarCampos(); // Limpia los campos del formulario.
+                        }
+                        else
+                        {
+                            MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    
+                   
+                }
+            }
+            else
+            {
+                // Muestra un mensaje si no se completan todos los campos obligatorios.
+                MessageBox.Show("Debe Completar todos los campos", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void rjButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BFotoProducto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = @"C:";
+            openFileDialog.Filter = "Archivos de imagen (.jpg;.jpeg;.png)|.jpg;.jpeg;.png";
+            openFileDialog.Title = "Seleccione una imagen";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string sourceFilePath = openFileDialog.FileName;
+                txtImagen.Texts = sourceFilePath;
+                // Genera un nombre único para la imagen
+                nombreImagen = Guid.NewGuid().ToString() + Path.GetExtension(sourceFilePath);
+
+                // Ruta de destino en tu proyecto (por ejemplo, en una carpeta 'uploads' en la misma ruta de ejecución)
+                //string destinationPath = Path.Combine(Application.StartupPath, "uploads", nombreImagen);
+                string destinationPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"....\uploads" + nombreImagen);
+                Debug.WriteLine(destinationPath);
+                // Asegúrate de que la carpeta de destino existe
+
+                Directory.CreateDirectory(Path.GetDirectoryName(destinationPath));
+
+                // Copia la imagen a la carpeta de destino
+                File.Copy(sourceFilePath, destinationPath, true);
+            }
+            //string imagePath = Path.Combine(Application.StartupPath, "uploads", photoFilePath);
+            string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"....\uploads" + nombreImagen);
+            pictureBox1.Image = Image.FromFile(imagePath);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+
+        private void FrmAutos_Load(object sender, EventArgs e)
+        {
+            // Inicializa el comboEstado con opciones para el estado del cliente (Activo, No Activo).
+            comboEstado.Items.Add(new OpcionesCombo() { Valor = 1, Texto = "Activo" });
+            comboEstado.Items.Add(new OpcionesCombo() { Valor = 0, Texto = "No Activo" });
+
+            // Configura las propiedades de visualización del comboEstado.
+            comboEstado.DisplayMember = "Texto";
+            comboEstado.ValueMember = "Valor";
+            comboEstado.SelectedIndex = 0;
         }
     }
 }

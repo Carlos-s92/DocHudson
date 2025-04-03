@@ -28,155 +28,146 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.rjButton1 = new CustomControls.RJControls.RJButton();
+            this.lblModelo = new System.Windows.Forms.Label();
+            this.lblConsumo = new System.Windows.Forms.Label();
+            this.lblAsientos = new System.Windows.Forms.Label();
+            this.lblPuertas = new System.Windows.Forms.Label();
+            this.lblKm = new System.Windows.Forms.Label();
+            this.lblMarca = new System.Windows.Forms.Label();
+            this.lblFechaF = new System.Windows.Forms.Label();
+            this.lblFechaI = new System.Windows.Forms.Label();
+            this.btnReserva = new CustomControls.RJControls.RJButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.lbl3 = new System.Windows.Forms.Label();
+            this.lbl5 = new System.Windows.Forms.Label();
+            this.lbl7 = new System.Windows.Forms.Label();
+            this.lbl2 = new System.Windows.Forms.Label();
+            this.lbl4 = new System.Windows.Forms.Label();
+            this.lbl6 = new System.Windows.Forms.Label();
+            this.lbl8 = new System.Windows.Forms.Label();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.txtId = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblModelo
             // 
-            this.label1.AllowDrop = true;
-            this.label1.AutoEllipsis = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(29, 398);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(330, 37);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Modelo:";
+            this.lblModelo.AllowDrop = true;
+            this.lblModelo.AutoEllipsis = true;
+            this.lblModelo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModelo.ForeColor = System.Drawing.Color.White;
+            this.lblModelo.Location = new System.Drawing.Point(19, 259);
+            this.lblModelo.Name = "lblModelo";
+            this.lblModelo.Size = new System.Drawing.Size(220, 24);
+            this.lblModelo.TabIndex = 1;
+            this.lblModelo.Text = "Modelo:";
             // 
-            // label2
+            // lblConsumo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(29, 476);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(129, 32);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Consumo:";
+            this.lblConsumo.AutoSize = true;
+            this.lblConsumo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConsumo.ForeColor = System.Drawing.Color.White;
+            this.lblConsumo.Location = new System.Drawing.Point(19, 309);
+            this.lblConsumo.Name = "lblConsumo";
+            this.lblConsumo.Size = new System.Drawing.Size(86, 21);
+            this.lblConsumo.TabIndex = 2;
+            this.lblConsumo.Text = "Consumo:";
             // 
-            // label3
+            // lblAsientos
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(29, 547);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 32);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Asientos:";
+            this.lblAsientos.AutoSize = true;
+            this.lblAsientos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAsientos.ForeColor = System.Drawing.Color.White;
+            this.lblAsientos.Location = new System.Drawing.Point(19, 356);
+            this.lblAsientos.Name = "lblAsientos";
+            this.lblAsientos.Size = new System.Drawing.Size(79, 21);
+            this.lblAsientos.TabIndex = 3;
+            this.lblAsientos.Text = "Asientos:";
             // 
-            // label4
+            // lblPuertas
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(379, 547);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(108, 32);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Puertas:";
+            this.lblPuertas.AutoSize = true;
+            this.lblPuertas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPuertas.ForeColor = System.Drawing.Color.White;
+            this.lblPuertas.Location = new System.Drawing.Point(253, 356);
+            this.lblPuertas.Name = "lblPuertas";
+            this.lblPuertas.Size = new System.Drawing.Size(71, 21);
+            this.lblPuertas.TabIndex = 6;
+            this.lblPuertas.Text = "Puertas:";
             // 
-            // label5
+            // lblKm
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(379, 476);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 32);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Km:";
+            this.lblKm.AutoSize = true;
+            this.lblKm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKm.ForeColor = System.Drawing.Color.White;
+            this.lblKm.Location = new System.Drawing.Point(253, 309);
+            this.lblKm.Name = "lblKm";
+            this.lblKm.Size = new System.Drawing.Size(39, 21);
+            this.lblKm.TabIndex = 5;
+            this.lblKm.Text = "Km:";
             // 
-            // label6
+            // lblMarca
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(379, 403);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 32);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Marca:";
+            this.lblMarca.AutoSize = true;
+            this.lblMarca.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMarca.ForeColor = System.Drawing.Color.White;
+            this.lblMarca.Location = new System.Drawing.Point(253, 262);
+            this.lblMarca.Name = "lblMarca";
+            this.lblMarca.Size = new System.Drawing.Size(61, 21);
+            this.lblMarca.TabIndex = 4;
+            this.lblMarca.Text = "Marca:";
             // 
-            // label8
+            // lblFechaF
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(379, 632);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(126, 32);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Fecha Fin:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
+            this.lblFechaF.AutoSize = true;
+            this.lblFechaF.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaF.ForeColor = System.Drawing.Color.White;
+            this.lblFechaF.Location = new System.Drawing.Point(253, 411);
+            this.lblFechaF.Name = "lblFechaF";
+            this.lblFechaF.Size = new System.Drawing.Size(85, 21);
+            this.lblFechaF.TabIndex = 8;
+            this.lblFechaF.Text = "Fecha Fin:";
+            this.lblFechaF.Click += new System.EventHandler(this.label8_Click);
             // 
-            // label9
+            // lblFechaI
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(29, 632);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(181, 32);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "Fecha Reserva:";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
+            this.lblFechaI.AutoSize = true;
+            this.lblFechaI.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaI.ForeColor = System.Drawing.Color.White;
+            this.lblFechaI.Location = new System.Drawing.Point(19, 411);
+            this.lblFechaI.Name = "lblFechaI";
+            this.lblFechaI.Size = new System.Drawing.Size(122, 21);
+            this.lblFechaI.TabIndex = 7;
+            this.lblFechaI.Text = "Fecha Reserva:";
+            this.lblFechaI.Click += new System.EventHandler(this.label9_Click);
             // 
-            // rjButton1
+            // btnReserva
             // 
-            this.rjButton1.BackColor = System.Drawing.Color.Green;
-            this.rjButton1.BackgroundColor = System.Drawing.Color.Green;
-            this.rjButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton1.BorderRadius = 20;
-            this.rjButton1.BorderSize = 0;
-            this.rjButton1.FlatAppearance.BorderSize = 0;
-            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton1.ForeColor = System.Drawing.Color.White;
-            this.rjButton1.Location = new System.Drawing.Point(128, 739);
-            this.rjButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(412, 98);
-            this.rjButton1.TabIndex = 10;
-            this.rjButton1.Text = "Reservar";
-            this.rjButton1.TextColor = System.Drawing.Color.White;
-            this.rjButton1.UseVisualStyleBackColor = false;
+            this.btnReserva.BackColor = System.Drawing.Color.Green;
+            this.btnReserva.BackgroundColor = System.Drawing.Color.Green;
+            this.btnReserva.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnReserva.BorderRadius = 20;
+            this.btnReserva.BorderSize = 0;
+            this.btnReserva.FlatAppearance.BorderSize = 0;
+            this.btnReserva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReserva.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReserva.ForeColor = System.Drawing.Color.White;
+            this.btnReserva.Location = new System.Drawing.Point(85, 480);
+            this.btnReserva.Name = "btnReserva";
+            this.btnReserva.Size = new System.Drawing.Size(275, 64);
+            this.btnReserva.TabIndex = 10;
+            this.btnReserva.Text = "Reservar";
+            this.btnReserva.TextColor = System.Drawing.Color.White;
+            this.btnReserva.UseVisualStyleBackColor = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.pictureBox1.Location = new System.Drawing.Point(35, 26);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(23, 17);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(604, 328);
+            this.pictureBox1.Size = new System.Drawing.Size(403, 213);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -185,150 +176,154 @@
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Wrench;
             this.iconButton1.IconColor = System.Drawing.Color.White;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.Location = new System.Drawing.Point(589, 767);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.iconButton1.Location = new System.Drawing.Point(393, 499);
             this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(50, 50);
+            this.iconButton1.Size = new System.Drawing.Size(33, 32);
             this.iconButton1.TabIndex = 11;
             this.iconButton1.UseVisualStyleBackColor = true;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
-            // label7
+            // lbl1
             // 
-            this.label7.AutoEllipsis = true;
-            this.label7.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Silver;
-            this.label7.Location = new System.Drawing.Point(144, 402);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(227, 32);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Fiat 500 (2007)";
+            this.lbl1.AutoEllipsis = true;
+            this.lbl1.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl1.ForeColor = System.Drawing.Color.Silver;
+            this.lbl1.Location = new System.Drawing.Point(96, 261);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(151, 21);
+            this.lbl1.TabIndex = 12;
+            this.lbl1.Text = "Fiat 500 (2007)";
             // 
-            // label10
+            // lbl3
             // 
-            this.label10.AutoEllipsis = true;
-            this.label10.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Silver;
-            this.label10.Location = new System.Drawing.Point(166, 480);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(205, 32);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "6,6/100Km";
+            this.lbl3.AutoEllipsis = true;
+            this.lbl3.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl3.ForeColor = System.Drawing.Color.Silver;
+            this.lbl3.Location = new System.Drawing.Point(111, 312);
+            this.lbl3.Name = "lbl3";
+            this.lbl3.Size = new System.Drawing.Size(137, 21);
+            this.lbl3.TabIndex = 13;
+            this.lbl3.Text = "6,6/100Km";
             // 
-            // label11
+            // lbl5
             // 
-            this.label11.AutoEllipsis = true;
-            this.label11.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Silver;
-            this.label11.Location = new System.Drawing.Point(154, 551);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(205, 32);
-            this.label11.TabIndex = 14;
-            this.label11.Text = "2";
+            this.lbl5.AutoEllipsis = true;
+            this.lbl5.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl5.ForeColor = System.Drawing.Color.Silver;
+            this.lbl5.Location = new System.Drawing.Point(103, 358);
+            this.lbl5.Name = "lbl5";
+            this.lbl5.Size = new System.Drawing.Size(137, 21);
+            this.lbl5.TabIndex = 14;
+            this.lbl5.Text = "2";
             // 
-            // label12
+            // lbl7
             // 
-            this.label12.AutoEllipsis = true;
-            this.label12.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Silver;
-            this.label12.Location = new System.Drawing.Point(218, 636);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(153, 32);
-            this.label12.TabIndex = 15;
-            this.label12.Text = "Info";
+            this.lbl7.AutoEllipsis = true;
+            this.lbl7.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl7.ForeColor = System.Drawing.Color.Silver;
+            this.lbl7.Location = new System.Drawing.Point(145, 413);
+            this.lbl7.Name = "lbl7";
+            this.lbl7.Size = new System.Drawing.Size(102, 21);
+            this.lbl7.TabIndex = 15;
+            this.lbl7.Text = "Info";
             // 
-            // label13
+            // lbl2
             // 
-            this.label13.AutoEllipsis = true;
-            this.label13.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Silver;
-            this.label13.Location = new System.Drawing.Point(479, 407);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(160, 32);
-            this.label13.TabIndex = 16;
-            this.label13.Text = "Fiat";
+            this.lbl2.AutoEllipsis = true;
+            this.lbl2.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl2.ForeColor = System.Drawing.Color.Silver;
+            this.lbl2.Location = new System.Drawing.Point(319, 265);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(107, 21);
+            this.lbl2.TabIndex = 16;
+            this.lbl2.Text = "Fiat";
             // 
-            // label14
+            // lbl4
             // 
-            this.label14.AutoEllipsis = true;
-            this.label14.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Silver;
-            this.label14.Location = new System.Drawing.Point(446, 480);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(193, 32);
-            this.label14.TabIndex = 17;
-            this.label14.Text = "Info";
+            this.lbl4.AutoEllipsis = true;
+            this.lbl4.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl4.ForeColor = System.Drawing.Color.Silver;
+            this.lbl4.Location = new System.Drawing.Point(297, 312);
+            this.lbl4.Name = "lbl4";
+            this.lbl4.Size = new System.Drawing.Size(129, 21);
+            this.lbl4.TabIndex = 17;
+            this.lbl4.Text = "Info";
             // 
-            // label15
+            // lbl6
             // 
-            this.label15.AutoEllipsis = true;
-            this.label15.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.Silver;
-            this.label15.Location = new System.Drawing.Point(495, 551);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(144, 32);
-            this.label15.TabIndex = 18;
-            this.label15.Text = "3";
+            this.lbl6.AutoEllipsis = true;
+            this.lbl6.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl6.ForeColor = System.Drawing.Color.Silver;
+            this.lbl6.Location = new System.Drawing.Point(330, 358);
+            this.lbl6.Name = "lbl6";
+            this.lbl6.Size = new System.Drawing.Size(96, 21);
+            this.lbl6.TabIndex = 18;
+            this.lbl6.Text = "3";
             // 
-            // label16
+            // lbl8
             // 
-            this.label16.AutoEllipsis = true;
-            this.label16.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Silver;
-            this.label16.Location = new System.Drawing.Point(513, 635);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(126, 32);
-            this.label16.TabIndex = 19;
-            this.label16.Text = "Info";
+            this.lbl8.AutoEllipsis = true;
+            this.lbl8.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl8.ForeColor = System.Drawing.Color.Silver;
+            this.lbl8.Location = new System.Drawing.Point(342, 413);
+            this.lbl8.Name = "lbl8";
+            this.lbl8.Size = new System.Drawing.Size(84, 21);
+            this.lbl8.TabIndex = 19;
+            this.lbl8.Text = "Info";
             // 
             // iconButton2
             // 
             this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Trash;
             this.iconButton2.IconColor = System.Drawing.Color.IndianRed;
             this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.Location = new System.Drawing.Point(35, 767);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.iconButton2.Location = new System.Drawing.Point(23, 499);
             this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(50, 50);
+            this.iconButton2.Size = new System.Drawing.Size(33, 32);
             this.iconButton2.TabIndex = 20;
             this.iconButton2.UseVisualStyleBackColor = true;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
+            // 
+            // txtId
+            // 
+            this.txtId.AutoSize = true;
+            this.txtId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtId.ForeColor = System.Drawing.Color.White;
+            this.txtId.Location = new System.Drawing.Point(389, 259);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(0, 21);
+            this.txtId.TabIndex = 21;
+            this.txtId.Visible = false;
             // 
             // TarjetaAuto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(19)))));
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.iconButton2);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lbl8);
+            this.Controls.Add(this.lbl6);
+            this.Controls.Add(this.lbl4);
+            this.Controls.Add(this.lbl2);
+            this.Controls.Add(this.lbl7);
+            this.Controls.Add(this.lbl5);
+            this.Controls.Add(this.lbl3);
+            this.Controls.Add(this.lbl1);
             this.Controls.Add(this.iconButton1);
-            this.Controls.Add(this.rjButton1);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnReserva);
+            this.Controls.Add(this.lblFechaF);
+            this.Controls.Add(this.lblFechaI);
+            this.Controls.Add(this.lblPuertas);
+            this.Controls.Add(this.lblKm);
+            this.Controls.Add(this.lblMarca);
+            this.Controls.Add(this.lblAsientos);
+            this.Controls.Add(this.lblConsumo);
+            this.Controls.Add(this.lblModelo);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(8, 5, 8, 20);
+            this.Margin = new System.Windows.Forms.Padding(5, 3, 5, 13);
             this.Name = "TarjetaAuto";
-            this.Size = new System.Drawing.Size(668, 896);
+            this.Size = new System.Drawing.Size(445, 582);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -338,24 +333,25 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private CustomControls.RJControls.RJButton rjButton1;
+        private System.Windows.Forms.Label lblModelo;
+        private System.Windows.Forms.Label lblConsumo;
+        private System.Windows.Forms.Label lblAsientos;
+        private System.Windows.Forms.Label lblPuertas;
+        private System.Windows.Forms.Label lblKm;
+        private System.Windows.Forms.Label lblMarca;
+        private System.Windows.Forms.Label lblFechaF;
+        private System.Windows.Forms.Label lblFechaI;
+        private CustomControls.RJControls.RJButton btnReserva;
         private FontAwesome.Sharp.IconButton iconButton1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lbl1;
+        private System.Windows.Forms.Label lbl3;
+        private System.Windows.Forms.Label lbl5;
+        private System.Windows.Forms.Label lbl7;
+        private System.Windows.Forms.Label lbl2;
+        private System.Windows.Forms.Label lbl4;
+        private System.Windows.Forms.Label lbl6;
+        private System.Windows.Forms.Label lbl8;
         private FontAwesome.Sharp.IconButton iconButton2;
+        private System.Windows.Forms.Label txtId;
     }
 }

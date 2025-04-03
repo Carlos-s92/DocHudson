@@ -23,8 +23,8 @@ namespace CapaDatos
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT a.Id_Auto, a.Modelo, a.Marca, a.Matricula, a.Kilometros, a.Año, a.Consumo, a.Puertas, a.Asientos, a.Imagen, a.Estado");
-                    query.AppendLine("FROM Autos a");
+                    query.AppendLine("SELECT a.Id_Auto, a.Modelo, a.Marca, a.Matricula, a.Kilometros, a.Año, a.Consumo, a.Puertas, a.Asientos, a.Imagen, a.Estado, a.Reservado FROM Autos a");
+
                 
 
                     using (SqlCommand cmd = new SqlCommand(query.ToString(), oconexion))
@@ -50,7 +50,8 @@ namespace CapaDatos
                                     Asientos = Convert.ToInt32(dr["Asientos"]),
                                     Imagen = dr["Imagen"].ToString(),
                                     Estado = Convert.ToBoolean(dr["Estado"]),
-                        
+                                    Reservado = Convert.ToBoolean(dr["Reservado"])
+
                                 });
                             }
                         }
@@ -134,6 +135,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("Puerta", obj.Puertas);
                     cmd.Parameters.AddWithValue("Marca", obj.Marca);
                     cmd.Parameters.AddWithValue("Asientos", obj.Asientos);
+                    cmd.Parameters.AddWithValue("Reservado", obj.Reservado);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
