@@ -67,14 +67,19 @@ namespace TestGit.Modales
             this.lbl6.Text = puertas.ToString();
             this.txtId.Text = id.ToString();
 
-            if(oAuto.Imagen != null)
+            string uploadsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "uploads");
+            string imagePath = Path.Combine(uploadsPath, oAuto.Imagen);
+
+            if (File.Exists(imagePath))
             {
-                ////string imagePath = Path.Combine(Application.StartupPath, "uploads", photoFilePath);
-                //string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"....\uploads" + oAuto.Imagen);
-                //pictureBox1.Image = Image.FromFile(imagePath);
-                //pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox1.Image = Image.FromFile(imagePath);
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             }
-   
+            else
+            {
+                MessageBox.Show("La imagen no se encontró.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
 
         }

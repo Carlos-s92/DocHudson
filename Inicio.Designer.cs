@@ -142,9 +142,9 @@
             this.lblRol.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
             this.lblRol.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.lblRol.Location = new System.Drawing.Point(933, 41);
+            this.lblRol.Location = new System.Drawing.Point(947, 42);
             this.lblRol.Name = "lblRol";
-            this.lblRol.Size = new System.Drawing.Size(250, 31);
+            this.lblRol.Size = new System.Drawing.Size(149, 31);
             this.lblRol.TabIndex = 6;
             this.lblRol.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -403,7 +403,7 @@
             this.Negocio.IconColor = System.Drawing.Color.Black;
             this.Negocio.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.Negocio.Name = "Negocio";
-            this.Negocio.Size = new System.Drawing.Size(180, 28);
+            this.Negocio.Size = new System.Drawing.Size(152, 28);
             this.Negocio.Text = "Negocio";
             this.Negocio.Click += new System.EventHandler(this.Negocio_Click);
             // 
@@ -415,7 +415,7 @@
             this.Backup.IconColor = System.Drawing.Color.Black;
             this.Backup.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.Backup.Name = "Backup";
-            this.Backup.Size = new System.Drawing.Size(180, 28);
+            this.Backup.Size = new System.Drawing.Size(152, 28);
             this.Backup.Text = "Backup";
             this.Backup.Click += new System.EventHandler(this.Backup_Click);
             // 

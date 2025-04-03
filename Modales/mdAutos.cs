@@ -1,11 +1,14 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
 using CapaPresentacion.Utilidades;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,8 +37,22 @@ namespace TestGit.Modales
             this.txtAsientos.Texts = pAuto.Asientos.ToString();
             this.txtAño.Texts = pAuto.Año.ToString();
             this.estado = pAuto.Estado;
+            this.nombreImagen = pAuto.Imagen;
 
-        
+            string uploadsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "uploads");
+            string imagePath = Path.Combine(uploadsPath, nombreImagen);
+
+            if (File.Exists(imagePath))
+            {
+                pictureBox1.Image = Image.FromFile(imagePath);
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            else
+            {
+                MessageBox.Show("La imagen no se encontró.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
         private bool Validaciones()
         {
@@ -178,6 +195,44 @@ namespace TestGit.Modales
             {
                 this.comboEstado.SelectedIndex = 1;
             }
+        }
+
+        private void rjButton1_Click(object sender, EventArgs e)
+        {
+            using (System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = @"C:";
+                openFileDialog.Filter = "Archivos de imagen | *.jpg;*.jpeg;*.png";
+                openFileDialog.Title = "Seleccione una imagen";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string sourceFilePath = openFileDialog.FileName;
+                    txtImagen.Texts = sourceFilePath;
+
+                    // Genera un nombre único para la imagen
+                    nombreImagen = Guid.NewGuid().ToString() + Path.GetExtension(sourceFilePath);
+
+                    // Definir la carpeta 'uploads' dentro del directorio base del proyecto
+                    string uploadsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "uploads");
+
+                    // Asegurarse de que la carpeta existe
+                    Directory.CreateDirectory(uploadsPath);
+
+                    // Construir la ruta final de la imagen
+                    string destinationPath = Path.Combine(uploadsPath, nombreImagen);
+
+                    Debug.WriteLine(destinationPath);
+
+                    // Copiar la imagen al directorio de destino
+                    File.Copy(sourceFilePath, destinationPath, true);
+
+                    // Mostrar la imagen en el PictureBox
+                    pictureBox1.Image = Image.FromFile(sourceFilePath);
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+            }
+
         }
     }
 }
