@@ -16,6 +16,7 @@ namespace TestGit.Modales
     public partial class mdAutos : Form
     {
         private string nombreImagen = "";
+        private bool estado;
         public mdAutos()
         {
             InitializeComponent();
@@ -32,7 +33,9 @@ namespace TestGit.Modales
             this.txtPuertas.Texts = pAuto.Puertas.ToString();
             this.txtAsientos.Texts = pAuto.Asientos.ToString();
             this.txtAño.Texts = pAuto.Año.ToString();
-            this.comboEstado.SelectedValue = Convert.ToInt32(pAuto.Estado);
+            this.estado = pAuto.Estado;
+
+        
         }
         private bool Validaciones()
         {
@@ -167,7 +170,14 @@ namespace TestGit.Modales
             // Configura las propiedades de visualización del comboEstado.
             comboEstado.DisplayMember = "Texto";
             comboEstado.ValueMember = "Valor";
-            comboEstado.SelectedIndex = 0;
+            if (this.estado == true)
+            {
+                this.comboEstado.SelectedIndex = 0;
+            }
+            else
+            {
+                this.comboEstado.SelectedIndex = 1;
+            }
         }
     }
 }

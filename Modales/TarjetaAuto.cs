@@ -69,10 +69,10 @@ namespace TestGit.Modales
 
             if(oAuto.Imagen != null)
             {
-                //string imagePath = Path.Combine(Application.StartupPath, "uploads", photoFilePath);
-                string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"....\uploads" + oAuto.Imagen);
-                pictureBox1.Image = Image.FromFile(imagePath);
-                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                ////string imagePath = Path.Combine(Application.StartupPath, "uploads", photoFilePath);
+                //string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"....\uploads" + oAuto.Imagen);
+                //pictureBox1.Image = Image.FromFile(imagePath);
+                //pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             }
    
 
