@@ -1,74 +1,80 @@
 ﻿using CapaEntidad;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
+using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class CD_Usuario
+    public class CD_Cliente
     {
-        public List<Usuarios> Listar()
+        public List<Cliente> Listar()
         {
-            List<Usuarios> lista = new List<Usuarios>();
+            List<Cliente> lista = new List<Cliente>();
 
             using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
             {
                 try
                 {
+
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT u.Id_Usuario, u.Usuario, u.Contraseña, u.Estado, p.Id_Perfil, p.Descripcion");
-                    query.AppendLine("FROM Usuarios u");
-                    query.AppendLine("INNER JOIN Perfiles p ON p.Id_Perfil = u.Id_Perfil");
+                    query.AppendLine("Select Id_Cliente, DNI, Nombre,Apellido, Domicilio, Fecha_Nacimiento, Licencia, Telefono, Estado from Cliente");
 
-                    using (SqlCommand cmd = new SqlCommand(query.ToString(), oconexion))
+                    SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
+
+                    cmd.CommandType = CommandType.Text;
+
+                    oconexion.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
                     {
-                        cmd.CommandType = CommandType.Text;
-
-                        oconexion.Open();
-
-                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        while (dr.Read())
                         {
-                            while (dr.Read())
+                            lista.Add(new Cliente()
                             {
-                                lista.Add(new Usuarios()
-                                {
-                                    Id_Usuario = Convert.ToInt32(dr["Id_Usuario"]),
-                                    Usuario = dr["Usuario"].ToString(),
-                                    Contraseña = dr["Contraseña"].ToString(),
-                                    Estado = Convert.ToBoolean(dr["Estado"]),
-                                    oPerfil = new Perfiles()
-                                    {
-                                        Id_Perfil = Convert.ToInt32(dr["Id_Perfil"]),
-                                        Descripcion = dr["Descripcion"].ToString()
-                                    }
-                                });
-                            }
+                                Id_Cliente = Convert.ToInt32(dr["Id_Cliente"]),
+                                Dni = dr["DNI"].ToString(),
+                                Nombre = dr["Nombre"].ToString(),
+                                Apellido = dr["Apellido"].ToString(),
+                                Domicilio = dr["Domicilio"].ToString(),
+                                Fecha_Nacimiento = Convert.ToDateTime(dr["Fecha_Nacimiento"]),
+                                Licencia = dr["Licencia"].ToString(),
+                                Telefono = dr["Telefono"].ToString(),
+                                Estado = Convert.ToBoolean(dr["Estado"]),
+                            });
                         }
                     }
+
                 }
                 catch (Exception ex)
                 {
-                    lista = new List<Usuarios>(); // Asegura que no se retorne null
+                    lista = new List<Cliente>();
                 }
             }
             return lista;
         }
-        public int Registrar(Usuarios obj, out string Mensaje)
+
+        public int Registrar(Cliente obj, out string Mensaje)
         {
-            int IdUsuarioGenerado = 0;
+            int IdClienteGenerado = 0;
             Mensaje = string.Empty;
 
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-                    SqlCommand cmd = new SqlCommand("InsertarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Usuario);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Contraseña);
-                    cmd.Parameters.AddWithValue("IdRol", obj.oPerfil.Id_Perfil);
+
+                    SqlCommand cmd = new SqlCommand("InsertarCliente", oconexion);
+                   
+                    cmd.Parameters.AddWithValue("Nombre", obj.Nombre);
+                    cmd.Parameters.AddWithValue("Apellido", obj.Apellido);
+                    cmd.Parameters.AddWithValue("DNI", obj.Dni);
+                    cmd.Parameters.AddWithValue("Fecha_Nacimiento", obj.Fecha_Nacimiento);
+                    cmd.Parameters.AddWithValue("Domicilio", obj.Domicilio);
+                    cmd.Parameters.AddWithValue("Licencia", obj.Licencia);
+                    cmd.Parameters.AddWithValue("Telefono", obj.Telefono);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
                     cmd.Parameters.Add("IdUsuarioResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
@@ -78,7 +84,7 @@ namespace CapaDatos
 
                     cmd.ExecuteNonQuery();
 
-                    IdUsuarioGenerado = Convert.ToInt32(cmd.Parameters["IdUsuarioResultado"].Value);
+                    IdClienteGenerado = Convert.ToInt32(cmd.Parameters["IdUsuarioResultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
 
                 }
@@ -86,15 +92,15 @@ namespace CapaDatos
             }
             catch (Exception ex)
             {
-                IdUsuarioGenerado = 0;
+                IdClienteGenerado = 0;
                 Mensaje = ex.Message;
             }
 
-            return IdUsuarioGenerado;
+            return IdClienteGenerado;
 
         }
 
-        public bool Editar(Usuarios obj, out string Mensaje)
+        public bool Editar(Cliente obj, out string Mensaje)
         {
             bool Respuesta = false;
             Mensaje = string.Empty;
@@ -103,11 +109,17 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-                    SqlCommand cmd = new SqlCommand("ActualizarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("IdUsuario", obj.Id_Usuario);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Usuario);
-                    cmd.Parameters.AddWithValue("Contraseña", obj.Contraseña);
-                    cmd.Parameters.AddWithValue("Id_Perfil", obj.oPerfil.Id_Perfil);
+
+
+                    SqlCommand cmd = new SqlCommand("ActualizarCliente", oconexion);
+                    cmd.Parameters.AddWithValue("Id_Cliente", obj.Id_Cliente);
+                    cmd.Parameters.AddWithValue("Nombre", obj.Nombre);
+                    cmd.Parameters.AddWithValue("Apellido", obj.Nombre);
+                    cmd.Parameters.AddWithValue("DNI", obj.Dni);
+                    cmd.Parameters.AddWithValue("Fecha_Nacimiento", obj.Fecha_Nacimiento);
+                    cmd.Parameters.AddWithValue("Domicilio", obj.Domicilio);
+                    cmd.Parameters.AddWithValue("Licencia", obj.Licencia);
+                    cmd.Parameters.AddWithValue("Telefono", obj.Telefono);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
@@ -133,7 +145,7 @@ namespace CapaDatos
 
         }
 
-        public bool Eliminar(Usuarios obj, out string Mensaje)
+        public bool Eliminar(Cliente obj, out string Mensaje)
         {
             bool Respuesta = false;
             Mensaje = string.Empty;
@@ -144,8 +156,8 @@ namespace CapaDatos
                 {
 
 
-                    SqlCommand cmd = new SqlCommand("EliminarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("Id_Usuario", obj.Id_Usuario);
+                    SqlCommand cmd = new SqlCommand("EliminarCliente", oconexion);
+                    cmd.Parameters.AddWithValue("Id_Cliente", obj.Id_Cliente);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -169,5 +181,8 @@ namespace CapaDatos
             return Respuesta;
 
         }
+
+
+
     }
 }

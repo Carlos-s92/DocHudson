@@ -1,27 +1,31 @@
 ﻿using CapaEntidad;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
+using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+using System.Reflection;
 
 namespace CapaDatos
 {
-    public class CD_Usuario
+    public class CD_Autos
     {
-        public List<Usuarios> Listar()
+
+        public List<Autos> Listar()
         {
-            List<Usuarios> lista = new List<Usuarios>();
+            List<Autos> lista = new List<Autos>();
 
             using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
             {
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT u.Id_Usuario, u.Usuario, u.Contraseña, u.Estado, p.Id_Perfil, p.Descripcion");
-                    query.AppendLine("FROM Usuarios u");
-                    query.AppendLine("INNER JOIN Perfiles p ON p.Id_Perfil = u.Id_Perfil");
+                    query.AppendLine("SELECT a.Id_Auto, a.Modelo, a.Marca, a.Matricula, a.Kilometros, a.Año, a.Consumo, a.Puertas, a.Asientos, a.Imagen, a.Estado");
+                    query.AppendLine("FROM Autos a");
+                
 
                     using (SqlCommand cmd = new SqlCommand(query.ToString(), oconexion))
                     {
@@ -33,17 +37,20 @@ namespace CapaDatos
                         {
                             while (dr.Read())
                             {
-                                lista.Add(new Usuarios()
+                                lista.Add(new Autos()
                                 {
-                                    Id_Usuario = Convert.ToInt32(dr["Id_Usuario"]),
-                                    Usuario = dr["Usuario"].ToString(),
-                                    Contraseña = dr["Contraseña"].ToString(),
+                                    Id_Auto = Convert.ToInt32(dr["Id_Auto"]),
+                                    Modelo = dr["Modelo"].ToString(),
+                                    Marca = dr["Marca"].ToString(),
+                                    Matricula = dr["Matricula"].ToString(),
+                                    Kilometros = Convert.ToDecimal(dr["Kilometros"]),
+                                    Año = Convert.ToInt32(dr["Año"]),
+                                    Consumo = Convert.ToDecimal(dr["Consumo"]),
+                                    Puertas = Convert.ToInt32(dr["Puertas"]),
+                                    Asientos = Convert.ToInt32(dr["Asientos"]),
+                                    Imagen = dr["Imagen"].ToString(),
                                     Estado = Convert.ToBoolean(dr["Estado"]),
-                                    oPerfil = new Perfiles()
-                                    {
-                                        Id_Perfil = Convert.ToInt32(dr["Id_Perfil"]),
-                                        Descripcion = dr["Descripcion"].ToString()
-                                    }
+                        
                                 });
                             }
                         }
@@ -51,26 +58,37 @@ namespace CapaDatos
                 }
                 catch (Exception ex)
                 {
-                    lista = new List<Usuarios>(); // Asegura que no se retorne null
+                    lista = new List<Autos>(); // Asegura que no se retorne null
                 }
             }
             return lista;
         }
-        public int Registrar(Usuarios obj, out string Mensaje)
+
+
+        public int Registrar(Autos obj, out string Mensaje)
         {
-            int IdUsuarioGenerado = 0;
+            int IdAutoGenerado = 0;
             Mensaje = string.Empty;
 
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-                    SqlCommand cmd = new SqlCommand("InsertarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Usuario);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Contraseña);
-                    cmd.Parameters.AddWithValue("IdRol", obj.oPerfil.Id_Perfil);
+
+
+
+                    SqlCommand cmd = new SqlCommand("InsertarAuto", oconexion);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
-                    cmd.Parameters.Add("IdUsuarioResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.AddWithValue("Modelo", obj.Modelo);
+                    cmd.Parameters.AddWithValue("Matricula", obj.Matricula);
+                    cmd.Parameters.AddWithValue("Kilometros", obj.Kilometros);
+                    cmd.Parameters.AddWithValue("Año", obj.Año);
+                    cmd.Parameters.AddWithValue("Consumo", obj.Consumo);
+                    cmd.Parameters.AddWithValue("Imagen", obj.Imagen);
+                    cmd.Parameters.AddWithValue("Puerta", obj.Puertas);
+                    cmd.Parameters.AddWithValue("Marca", obj.Marca);
+                    cmd.Parameters.AddWithValue("Asientos", obj.Asientos);
+                    cmd.Parameters.Add("IdAutoResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -78,7 +96,7 @@ namespace CapaDatos
 
                     cmd.ExecuteNonQuery();
 
-                    IdUsuarioGenerado = Convert.ToInt32(cmd.Parameters["IdUsuarioResultado"].Value);
+                    IdAutoGenerado = Convert.ToInt32(cmd.Parameters["IdAutoResultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
 
                 }
@@ -86,15 +104,15 @@ namespace CapaDatos
             }
             catch (Exception ex)
             {
-                IdUsuarioGenerado = 0;
+                IdAutoGenerado = 0;
                 Mensaje = ex.Message;
             }
 
-            return IdUsuarioGenerado;
+            return IdAutoGenerado;
 
         }
 
-        public bool Editar(Usuarios obj, out string Mensaje)
+        public bool Editar(Autos obj, out string Mensaje)
         {
             bool Respuesta = false;
             Mensaje = string.Empty;
@@ -103,12 +121,19 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-                    SqlCommand cmd = new SqlCommand("ActualizarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("IdUsuario", obj.Id_Usuario);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Usuario);
-                    cmd.Parameters.AddWithValue("Contraseña", obj.Contraseña);
-                    cmd.Parameters.AddWithValue("Id_Perfil", obj.oPerfil.Id_Perfil);
+
+                    SqlCommand cmd = new SqlCommand("ActualizarAuto", oconexion);
+                    cmd.Parameters.AddWithValue("Id_Auto", obj.Id_Auto);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
+                    cmd.Parameters.AddWithValue("Modelo", obj.Modelo);
+                    cmd.Parameters.AddWithValue("Matricula", obj.Matricula);
+                    cmd.Parameters.AddWithValue("Kilometros", obj.Kilometros);
+                    cmd.Parameters.AddWithValue("Año", obj.Año);
+                    cmd.Parameters.AddWithValue("Consumo", obj.Consumo);
+                    cmd.Parameters.AddWithValue("Imagen", obj.Imagen);
+                    cmd.Parameters.AddWithValue("Puerta", obj.Puertas);
+                    cmd.Parameters.AddWithValue("Marca", obj.Marca);
+                    cmd.Parameters.AddWithValue("Asientos", obj.Asientos);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -133,7 +158,7 @@ namespace CapaDatos
 
         }
 
-        public bool Eliminar(Usuarios obj, out string Mensaje)
+        public bool Eliminar(Autos obj, out string Mensaje)
         {
             bool Respuesta = false;
             Mensaje = string.Empty;
@@ -144,8 +169,8 @@ namespace CapaDatos
                 {
 
 
-                    SqlCommand cmd = new SqlCommand("EliminarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("Id_Usuario", obj.Id_Usuario);
+                    SqlCommand cmd = new SqlCommand("EliminarAuto", oconexion);
+                    cmd.Parameters.AddWithValue("Id_Auto", obj.Id_Auto);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -169,5 +194,8 @@ namespace CapaDatos
             return Respuesta;
 
         }
+
+
+
     }
 }

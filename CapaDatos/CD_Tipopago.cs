@@ -1,27 +1,29 @@
 ﻿using CapaEntidad;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
+using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class CD_Usuario
+    public class CD_Tipopago
     {
-        public List<Usuarios> Listar()
+        public List<TipoPago> Listar()
         {
-            List<Usuarios> lista = new List<Usuarios>();
+            List<TipoPago> lista = new List<TipoPago>();
 
             using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
             {
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT u.Id_Usuario, u.Usuario, u.Contraseña, u.Estado, p.Id_Perfil, p.Descripcion");
-                    query.AppendLine("FROM Usuarios u");
-                    query.AppendLine("INNER JOIN Perfiles p ON p.Id_Perfil = u.Id_Perfil");
+                    query.AppendLine("SELECT tp.Id_Tipopago, tp.Descripcion, tp.Estado");
+                    query.AppendLine("FROM TipoPago tp");
+     
+
 
                     using (SqlCommand cmd = new SqlCommand(query.ToString(), oconexion))
                     {
@@ -33,17 +35,14 @@ namespace CapaDatos
                         {
                             while (dr.Read())
                             {
-                                lista.Add(new Usuarios()
+                                lista.Add(new TipoPago()
                                 {
-                                    Id_Usuario = Convert.ToInt32(dr["Id_Usuario"]),
-                                    Usuario = dr["Usuario"].ToString(),
-                                    Contraseña = dr["Contraseña"].ToString(),
-                                    Estado = Convert.ToBoolean(dr["Estado"]),
-                                    oPerfil = new Perfiles()
-                                    {
-                                        Id_Perfil = Convert.ToInt32(dr["Id_Perfil"]),
-                                        Descripcion = dr["Descripcion"].ToString()
-                                    }
+                                    Id_TipoPago = Convert.ToInt32(dr["Id_Tipopago"]),
+                                    Descripcion = dr["Descripcion"].ToString(),
+                                    Estado = Convert.ToBoolean(dr["Estado"])
+                                  
+                                       
+                                    
                                 });
                             }
                         }
@@ -51,26 +50,25 @@ namespace CapaDatos
                 }
                 catch (Exception ex)
                 {
-                    lista = new List<Usuarios>(); // Asegura que no se retorne null
+                    lista = new List<TipoPago>(); // Asegura que no se retorne null
                 }
             }
             return lista;
         }
-        public int Registrar(Usuarios obj, out string Mensaje)
+        public int Registrar(TipoPago obj, out string Mensaje)
         {
-            int IdUsuarioGenerado = 0;
+            int IdPagoGenerado = 0;
             Mensaje = string.Empty;
 
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-                    SqlCommand cmd = new SqlCommand("InsertarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Usuario);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Contraseña);
-                    cmd.Parameters.AddWithValue("IdRol", obj.oPerfil.Id_Perfil);
+                    SqlCommand cmd = new SqlCommand("InsertarTipoPago", oconexion);
+                
+                    cmd.Parameters.AddWithValue("Descripcion", obj.Descripcion);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
-                    cmd.Parameters.Add("IdUsuarioResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("IdResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -78,7 +76,7 @@ namespace CapaDatos
 
                     cmd.ExecuteNonQuery();
 
-                    IdUsuarioGenerado = Convert.ToInt32(cmd.Parameters["IdUsuarioResultado"].Value);
+                    IdPagoGenerado = Convert.ToInt32(cmd.Parameters["IdResultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
 
                 }
@@ -86,15 +84,15 @@ namespace CapaDatos
             }
             catch (Exception ex)
             {
-                IdUsuarioGenerado = 0;
+                IdPagoGenerado = 0;
                 Mensaje = ex.Message;
             }
 
-            return IdUsuarioGenerado;
+            return IdPagoGenerado;
 
         }
 
-        public bool Editar(Usuarios obj, out string Mensaje)
+        public bool Editar(TipoPago obj, out string Mensaje)
         {
             bool Respuesta = false;
             Mensaje = string.Empty;
@@ -103,11 +101,9 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-                    SqlCommand cmd = new SqlCommand("ActualizarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("IdUsuario", obj.Id_Usuario);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Usuario);
-                    cmd.Parameters.AddWithValue("Contraseña", obj.Contraseña);
-                    cmd.Parameters.AddWithValue("Id_Perfil", obj.oPerfil.Id_Perfil);
+                    SqlCommand cmd = new SqlCommand("ActualizarTipoPago", oconexion);
+                    cmd.Parameters.AddWithValue("Id_Tipopago", obj.Id_TipoPago);
+                    cmd.Parameters.AddWithValue("Descripcion", obj.Descripcion);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
@@ -133,7 +129,7 @@ namespace CapaDatos
 
         }
 
-        public bool Eliminar(Usuarios obj, out string Mensaje)
+        public bool Eliminar(TipoPago obj, out string Mensaje)
         {
             bool Respuesta = false;
             Mensaje = string.Empty;
@@ -144,8 +140,8 @@ namespace CapaDatos
                 {
 
 
-                    SqlCommand cmd = new SqlCommand("EliminarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("Id_Usuario", obj.Id_Usuario);
+                    SqlCommand cmd = new SqlCommand("EliminarTipoPago", oconexion);
+                    cmd.Parameters.AddWithValue("Id_Tipopago", obj.Id_TipoPago);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;

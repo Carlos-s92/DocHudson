@@ -1,27 +1,29 @@
 ﻿using CapaEntidad;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
+using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class CD_Usuario
+    public class CD_Pago
     {
-        public List<Usuarios> Listar()
+        public List<Pago> Listar()
         {
-            List<Usuarios> lista = new List<Usuarios>();
+            List<Pago> lista = new List<Pago>();
 
             using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
             {
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT u.Id_Usuario, u.Usuario, u.Contraseña, u.Estado, p.Id_Perfil, p.Descripcion");
-                    query.AppendLine("FROM Usuarios u");
-                    query.AppendLine("INNER JOIN Perfiles p ON p.Id_Perfil = u.Id_Perfil");
+                    query.AppendLine("SELECT p.Id_Pago, p.Id_Tipopago, tp.Descripcion, p.Total, p.Fecha_Pago, p.Estado");
+                    query.AppendLine("FROM Pago p");
+                    query.AppendLine("Inner join Tipo_Pago tp on tp.Id_Tipopago = p.Id_Tipopago");
+
 
                     using (SqlCommand cmd = new SqlCommand(query.ToString(), oconexion))
                     {
@@ -33,15 +35,15 @@ namespace CapaDatos
                         {
                             while (dr.Read())
                             {
-                                lista.Add(new Usuarios()
+                                lista.Add(new Pago()
                                 {
-                                    Id_Usuario = Convert.ToInt32(dr["Id_Usuario"]),
-                                    Usuario = dr["Usuario"].ToString(),
-                                    Contraseña = dr["Contraseña"].ToString(),
+                                    Id_Pago = Convert.ToInt32(dr["Id_Pago"]),
+                                    Total = Convert.ToDecimal(dr["Total"]),
+                                    Fecha_Pago = Convert.ToDateTime(dr["Fecha_Pago"]),
                                     Estado = Convert.ToBoolean(dr["Estado"]),
-                                    oPerfil = new Perfiles()
+                                    oTipoPago = new TipoPago()
                                     {
-                                        Id_Perfil = Convert.ToInt32(dr["Id_Perfil"]),
+                                        Id_TipoPago = Convert.ToInt32(dr["Id_Tipopago"]),
                                         Descripcion = dr["Descripcion"].ToString()
                                     }
                                 });
@@ -51,26 +53,26 @@ namespace CapaDatos
                 }
                 catch (Exception ex)
                 {
-                    lista = new List<Usuarios>(); // Asegura que no se retorne null
+                    lista = new List<Pago>(); // Asegura que no se retorne null
                 }
             }
             return lista;
         }
-        public int Registrar(Usuarios obj, out string Mensaje)
+        public int Registrar(Pago obj, out string Mensaje)
         {
-            int IdUsuarioGenerado = 0;
+            int IdPagoGenerado = 0;
             Mensaje = string.Empty;
 
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-                    SqlCommand cmd = new SqlCommand("InsertarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Usuario);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Contraseña);
-                    cmd.Parameters.AddWithValue("IdRol", obj.oPerfil.Id_Perfil);
+                    SqlCommand cmd = new SqlCommand("InsertarPago", oconexion);
+                    cmd.Parameters.AddWithValue("Id_Tipopago", obj.oTipoPago.Id_TipoPago);
+                    cmd.Parameters.AddWithValue("Total", obj.Total);
+                    cmd.Parameters.AddWithValue("Fecha_Pago", obj.Fecha_Pago);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
-                    cmd.Parameters.Add("IdUsuarioResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -78,7 +80,7 @@ namespace CapaDatos
 
                     cmd.ExecuteNonQuery();
 
-                    IdUsuarioGenerado = Convert.ToInt32(cmd.Parameters["IdUsuarioResultado"].Value);
+                    IdPagoGenerado = Convert.ToInt32(cmd.Parameters["Resultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
 
                 }
@@ -86,15 +88,15 @@ namespace CapaDatos
             }
             catch (Exception ex)
             {
-                IdUsuarioGenerado = 0;
+                IdPagoGenerado = 0;
                 Mensaje = ex.Message;
             }
 
-            return IdUsuarioGenerado;
+            return IdPagoGenerado;
 
         }
 
-        public bool Editar(Usuarios obj, out string Mensaje)
+        public bool Editar(Pago obj, out string Mensaje)
         {
             bool Respuesta = false;
             Mensaje = string.Empty;
@@ -103,11 +105,11 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-                    SqlCommand cmd = new SqlCommand("ActualizarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("IdUsuario", obj.Id_Usuario);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Usuario);
-                    cmd.Parameters.AddWithValue("Contraseña", obj.Contraseña);
-                    cmd.Parameters.AddWithValue("Id_Perfil", obj.oPerfil.Id_Perfil);
+                    SqlCommand cmd = new SqlCommand("ActualizarPago", oconexion);
+                    cmd.Parameters.AddWithValue("Id_Pago", obj.Id_Pago);
+                    cmd.Parameters.AddWithValue("Id_Tipopago", obj.oTipoPago.Id_TipoPago);
+                    cmd.Parameters.AddWithValue("Total", obj.Total);
+                    cmd.Parameters.AddWithValue("Fecha_Pago", obj.Fecha_Pago);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
@@ -133,7 +135,7 @@ namespace CapaDatos
 
         }
 
-        public bool Eliminar(Usuarios obj, out string Mensaje)
+        public bool Eliminar(Pago obj, out string Mensaje)
         {
             bool Respuesta = false;
             Mensaje = string.Empty;
@@ -144,8 +146,8 @@ namespace CapaDatos
                 {
 
 
-                    SqlCommand cmd = new SqlCommand("EliminarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("Id_Usuario", obj.Id_Usuario);
+                    SqlCommand cmd = new SqlCommand("EliminarPago", oconexion);
+                    cmd.Parameters.AddWithValue("Id_Pago", obj.Id_Pago);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -169,5 +171,6 @@ namespace CapaDatos
             return Respuesta;
 
         }
+
     }
 }

@@ -1,27 +1,29 @@
 ﻿using CapaEntidad;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
+using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class CD_Usuario
+    public class CD_Reserva
     {
-        public List<Usuarios> Listar()
+
+        public List<Reserva> Listar()
         {
-            List<Usuarios> lista = new List<Usuarios>();
+            List<Reserva> lista = new List<Reserva>();
 
             using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
             {
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT u.Id_Usuario, u.Usuario, u.Contraseña, u.Estado, p.Id_Perfil, p.Descripcion");
-                    query.AppendLine("FROM Usuarios u");
-                    query.AppendLine("INNER JOIN Perfiles p ON p.Id_Perfil = u.Id_Perfil");
+                    query.AppendLine("SELECT r.Id_Reserva, r.Id_Auto, r.Id_Pago, r.Id_Cliente, r.Fecha_Inicio, r.Fecha_Fin, r.Estado");
+                    query.AppendLine("FROM Reservas r");
+                    
 
                     using (SqlCommand cmd = new SqlCommand(query.ToString(), oconexion))
                     {
@@ -33,17 +35,25 @@ namespace CapaDatos
                         {
                             while (dr.Read())
                             {
-                                lista.Add(new Usuarios()
+                                lista.Add(new Reserva()
                                 {
-                                    Id_Usuario = Convert.ToInt32(dr["Id_Usuario"]),
-                                    Usuario = dr["Usuario"].ToString(),
-                                    Contraseña = dr["Contraseña"].ToString(),
-                                    Estado = Convert.ToBoolean(dr["Estado"]),
-                                    oPerfil = new Perfiles()
+                                    Id_Reserva = Convert.ToInt32(dr["Id_Reserva"]),
+                                    oAuto = new Autos()
                                     {
-                                        Id_Perfil = Convert.ToInt32(dr["Id_Perfil"]),
-                                        Descripcion = dr["Descripcion"].ToString()
-                                    }
+                                        Id_Auto = Convert.ToInt32(dr["Id_Auto"]),
+                                    },
+                                    oPago = new Pago()
+                                    {
+                                        Id_Pago =Convert.ToInt32(dr["Id_Pago"]) 
+                                    },
+                                    oCliente = new Cliente()
+                                    {
+                                        Id_Cliente = Convert.ToInt32(dr["Id_Cliente"])
+                                    },
+                                    Fecha_Inicio = Convert.ToDateTime(dr["Fecha_Inicio"]),
+                                    Fecha_Fin = Convert.ToDateTime(dr["Fecha_Fin"]),
+                                    Estado = Convert.ToBoolean(dr["Estado"])
+                           
                                 });
                             }
                         }
@@ -51,26 +61,31 @@ namespace CapaDatos
                 }
                 catch (Exception ex)
                 {
-                    lista = new List<Usuarios>(); // Asegura que no se retorne null
+                    lista = new List<Reserva>(); // Asegura que no se retorne null
                 }
             }
             return lista;
         }
-        public int Registrar(Usuarios obj, out string Mensaje)
+
+        public int Registrar(Reserva obj, out string Mensaje)
         {
-            int IdUsuarioGenerado = 0;
+            int IdReservaGenerado = 0;
             Mensaje = string.Empty;
 
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-                    SqlCommand cmd = new SqlCommand("InsertarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Usuario);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Contraseña);
-                    cmd.Parameters.AddWithValue("IdRol", obj.oPerfil.Id_Perfil);
+
+
+                    SqlCommand cmd = new SqlCommand("InsertarReserva", oconexion);
+                    cmd.Parameters.AddWithValue("Id_Auto", obj.oAuto.Id_Auto);
+                    cmd.Parameters.AddWithValue("Id_Pago", obj.oPago.Id_Pago);
+                    cmd.Parameters.AddWithValue("Id_Cliente", obj.oCliente.Id_Cliente);
+                    cmd.Parameters.AddWithValue("Fecha_Inicio", obj.Fecha_Inicio);
+                    cmd.Parameters.AddWithValue("Fecha_Fin", obj.Fecha_Fin);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
-                    cmd.Parameters.Add("IdUsuarioResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -78,7 +93,7 @@ namespace CapaDatos
 
                     cmd.ExecuteNonQuery();
 
-                    IdUsuarioGenerado = Convert.ToInt32(cmd.Parameters["IdUsuarioResultado"].Value);
+                    IdReservaGenerado = Convert.ToInt32(cmd.Parameters["Resultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
 
                 }
@@ -86,15 +101,15 @@ namespace CapaDatos
             }
             catch (Exception ex)
             {
-                IdUsuarioGenerado = 0;
+                IdReservaGenerado = 0;
                 Mensaje = ex.Message;
             }
 
-            return IdUsuarioGenerado;
+            return IdReservaGenerado;
 
         }
 
-        public bool Editar(Usuarios obj, out string Mensaje)
+        public bool Editar(Reserva obj, out string Mensaje)
         {
             bool Respuesta = false;
             Mensaje = string.Empty;
@@ -103,11 +118,15 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-                    SqlCommand cmd = new SqlCommand("ActualizarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("IdUsuario", obj.Id_Usuario);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Usuario);
-                    cmd.Parameters.AddWithValue("Contraseña", obj.Contraseña);
-                    cmd.Parameters.AddWithValue("Id_Perfil", obj.oPerfil.Id_Perfil);
+       
+
+                    SqlCommand cmd = new SqlCommand("ActualizarReserva", oconexion);
+                    cmd.Parameters.AddWithValue("Id_Reserva", obj.Id_Reserva);
+                    cmd.Parameters.AddWithValue("Id_Auto", obj.oAuto.Id_Auto);
+                    cmd.Parameters.AddWithValue("Id_Pago", obj.oPago.Id_Pago);
+                    cmd.Parameters.AddWithValue("Id_Cliente", obj.oCliente.Id_Cliente);
+                    cmd.Parameters.AddWithValue("Fecha_Inicio", obj.Fecha_Inicio);
+                    cmd.Parameters.AddWithValue("Fecha_Fin", obj.Fecha_Fin);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
@@ -133,7 +152,7 @@ namespace CapaDatos
 
         }
 
-        public bool Eliminar(Usuarios obj, out string Mensaje)
+        public bool Eliminar(Reserva obj, out string Mensaje)
         {
             bool Respuesta = false;
             Mensaje = string.Empty;
@@ -144,8 +163,8 @@ namespace CapaDatos
                 {
 
 
-                    SqlCommand cmd = new SqlCommand("EliminarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("Id_Usuario", obj.Id_Usuario);
+                    SqlCommand cmd = new SqlCommand("EliminarReserva", oconexion);
+                    cmd.Parameters.AddWithValue("Id_Reserva", obj.Id_Reserva);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -169,5 +188,7 @@ namespace CapaDatos
             return Respuesta;
 
         }
+
+
     }
 }
