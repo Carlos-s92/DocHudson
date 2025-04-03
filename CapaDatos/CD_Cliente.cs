@@ -58,6 +58,49 @@ namespace CapaDatos
             return lista;
         }
 
+        public Cliente ObtenerClientePorPago(int idPago)
+        {
+            Cliente cliente = null;
+
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("SELECT c.Id_Cliente,c.Nombre,c.DNI");
+                    query.AppendLine("FROM Cliente c");
+                    query.AppendLine("INNER JOIN Reserva r ON r.Id_Cliente = c.Id_Cliente");
+                    query.AppendLine("INNER JOIN Pago p ON p.Id_Pago = r.Id_Pago");
+                    query.AppendLine("WHERE p.Id_Pago = @IdPago");
+
+                    using (SqlCommand cmd = new SqlCommand(query.ToString(), oconexion))
+                    {
+                        cmd.Parameters.AddWithValue("@IdPago", idPago);
+                        cmd.CommandType = CommandType.Text;
+                        oconexion.Open();
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                cliente = new Cliente()
+                                {
+                                    Id_Cliente = Convert.ToInt32(dr["Id_Cliente"]),
+                                    Nombre = dr["Nombre"].ToString(),
+                                    Dni = dr["DNI"].ToString()
+                                };
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al obtener cliente: " + ex.Message);
+                }
+            }
+            return cliente;
+        }
+
         public int Registrar(Cliente obj, out string Mensaje)
         {
             int IdClienteGenerado = 0;

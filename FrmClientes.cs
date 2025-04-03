@@ -47,7 +47,7 @@ namespace TestGit
 
             foreach (Cliente item in listaClientes)
             {
-                DateTime fechaNacimiento = dtpFecha.Value;
+                DateTime fechaNacimiento = item.Fecha_Nacimiento;
                 int edad = DateTime.Now.Year - fechaNacimiento.Year;
                 if (fechaNacimiento > DateTime.Now.AddYears(-edad))
                 {

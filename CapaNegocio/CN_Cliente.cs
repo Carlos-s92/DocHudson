@@ -16,6 +16,10 @@ namespace CapaNegocio
         {
             return objcd_cliente.Listar();
         }
+        public Cliente ClientePorPago(int idPago)
+        {
+            return objcd_cliente.ObtenerClientePorPago(idPago);
+        }
 
         public int Registrar(Cliente obj, out string Mensaje)
         {

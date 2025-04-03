@@ -17,12 +17,14 @@ namespace CapaEntidad
         public int Año { get; set; }
         public decimal Consumo { get; set; }
 
-        public String Imagen { get; set; }
+        public string Imagen { get; set; }
 
         public int Puertas { get; set; }
 
         public String Marca { get; set; }
         public int Asientos { get; set; }
+
+        public bool Reservado { get; set; }
 
         public DateTime Fecha_Registro { get; set; }
     }

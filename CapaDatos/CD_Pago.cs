@@ -25,6 +25,8 @@ namespace CapaDatos
                     query.AppendLine("Inner join Tipo_Pago tp on tp.Id_Tipopago = p.Id_Tipopago");
 
 
+
+
                     using (SqlCommand cmd = new SqlCommand(query.ToString(), oconexion))
                     {
                         cmd.CommandType = CommandType.Text;
@@ -171,6 +173,8 @@ namespace CapaDatos
             return Respuesta;
 
         }
+
+        
 
     }
 }
