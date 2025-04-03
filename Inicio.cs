@@ -1,4 +1,5 @@
-﻿using FontAwesome.Sharp;
+﻿using CapaEntidad;
+using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,9 +18,17 @@ namespace TestGit
         //private static Usuario user; // Variable para almacenar el usuario actual.
         public static IconMenuItem menuActivo = null; // Almacena el menú que está activo.
         private static Form formActivo = null; // Almacena el formulario activo.
+        private Usuarios user;
         public Inicio()
         {
             InitializeComponent();
+        }
+        public Inicio(Usuarios pUsuario)
+        {
+            InitializeComponent();
+            this.user = pUsuario;
+            this.nombreUser.Text = this.user.Usuario;
+            this.lblRol.Text = this.user.oPerfil.Descripcion;
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)
@@ -133,7 +142,7 @@ namespace TestGit
 
         private void menuUsuarios_Click(object sender, EventArgs e)
         {
-            abrirFormulario((IconMenuItem)sender, new FrmUsuario()); // Abre el formulario de inicio.
+            abrirFormulario((IconMenuItem)sender, new FrmUsuario(this.user)); // Abre el formulario de inicio.
             this.lblIndicador.Text = "Usuarios";
         }
 
@@ -169,8 +178,7 @@ namespace TestGit
 
         private void menuAutos_Click(object sender, EventArgs e)
         {
-            abrirFormulario((IconMenuItem)sender, new FrmAutos()); // Abre el formulario de inicio.
-            this.lblIndicador.Text = "Gestion de Autos";
+           
         }
 
         private void menuRegistrarReserva_Click(object sender, EventArgs e)
@@ -183,6 +191,24 @@ namespace TestGit
         {
             abrirFormulario((IconMenuItem)sender, new FrmDetalleReserva()); // Abre el formulario de inicio.
             this.lblIndicador.Text = "Detalle Reservas";
+        }
+
+        private void menuGraficos_Click(object sender, EventArgs e)
+        {
+            abrirFormulario((IconMenuItem)sender, new FrmGraficos()); // Abre el formulario de inicio.
+            this.lblIndicador.Text = "Graficos";
+        }
+
+        private void menuGestionAuto_Click(object sender, EventArgs e)
+        {
+            abrirFormulario((IconMenuItem)sender, new FrmAutos()); // Abre el formulario de inicio.
+            this.lblIndicador.Text = "Gestion de Autos";
+        }
+
+        private void menuCatalogo_Click(object sender, EventArgs e)
+        {
+            abrirFormulario((IconMenuItem)sender, new FrmCatalogo()); // Abre el formulario de inicio.
+            this.lblIndicador.Text = "Catalogo";
         }
     }
 }

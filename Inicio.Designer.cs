@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.BarraTop = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.BtnSalir = new FontAwesome.Sharp.IconButton();
             this.lblIndicador = new System.Windows.Forms.Label();
             this.lblRol = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.nombreUser = new System.Windows.Forms.Label();
             this.menuTitulo = new System.Windows.Forms.MenuStrip();
             this.Contenedor = new System.Windows.Forms.Panel();
             this.panelLateral = new System.Windows.Forms.Panel();
             this.menuLateral = new System.Windows.Forms.MenuStrip();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.BtnSalir = new FontAwesome.Sharp.IconButton();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuInicio = new FontAwesome.Sharp.IconMenuItem();
             this.menuAutos = new FontAwesome.Sharp.IconMenuItem();
-            this.menuRegistrarVenta = new FontAwesome.Sharp.IconMenuItem();
-            this.menuVerDetalle = new FontAwesome.Sharp.IconMenuItem();
+            this.menuGestionAuto = new FontAwesome.Sharp.IconMenuItem();
+            this.menuCatalogo = new FontAwesome.Sharp.IconMenuItem();
             this.menuReserva = new FontAwesome.Sharp.IconMenuItem();
             this.menuRegistrarReserva = new FontAwesome.Sharp.IconMenuItem();
             this.menuVerReserva = new FontAwesome.Sharp.IconMenuItem();
@@ -57,11 +57,11 @@
             this.menuUsuarios = new FontAwesome.Sharp.IconMenuItem();
             this.menuGraficos = new FontAwesome.Sharp.IconMenuItem();
             this.BarraTop.SuspendLayout();
-            this.panelLateral.SuspendLayout();
-            this.menuLateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelLateral.SuspendLayout();
+            this.menuLateral.SuspendLayout();
             this.SuspendLayout();
             // 
             // BarraTop
@@ -82,6 +82,16 @@
             this.BarraTop.Size = new System.Drawing.Size(1230, 82);
             this.BarraTop.TabIndex = 8;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::TestGit.Properties.Resources.Comp_1_11;
+            this.pictureBox3.Location = new System.Drawing.Point(252, 76);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(994, 4);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 142;
+            this.pictureBox3.TabStop = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -94,9 +104,25 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Doc Hudson";
             // 
+            // BtnSalir
+            // 
+            this.BtnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(28)))));
+            this.BtnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BtnSalir.FlatAppearance.BorderSize = 0;
+            this.BtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSalir.IconChar = FontAwesome.Sharp.IconChar.RightFromBracket;
+            this.BtnSalir.IconColor = System.Drawing.Color.White;
+            this.BtnSalir.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BtnSalir.Location = new System.Drawing.Point(1132, 16);
+            this.BtnSalir.Name = "BtnSalir";
+            this.BtnSalir.Size = new System.Drawing.Size(86, 45);
+            this.BtnSalir.TabIndex = 8;
+            this.BtnSalir.UseVisualStyleBackColor = false;
+            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
+            // 
             // lblIndicador
             // 
-            this.lblIndicador.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.lblIndicador.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblIndicador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(28)))));
             this.lblIndicador.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -110,7 +136,7 @@
             // 
             // lblRol
             // 
-            this.lblRol.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.lblRol.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(28)))));
             this.lblRol.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -122,9 +148,28 @@
             this.lblRol.TabIndex = 6;
             this.lblRol.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(878, 8);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(63, 64);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(28)))));
+            this.pictureBox1.Location = new System.Drawing.Point(-43, -32);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(296, 196);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // nombreUser
             // 
-            this.nombreUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.nombreUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.nombreUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(28)))));
             this.nombreUser.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -193,51 +238,6 @@
             this.menuLateral.TabIndex = 10;
             this.menuLateral.Text = "menuLateral";
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::TestGit.Properties.Resources.Comp_1_11;
-            this.pictureBox3.Location = new System.Drawing.Point(252, 76);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(994, 4);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 142;
-            this.pictureBox3.TabStop = false;
-            // 
-            // BtnSalir
-            // 
-            this.BtnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(28)))));
-            this.BtnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.BtnSalir.FlatAppearance.BorderSize = 0;
-            this.BtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSalir.IconChar = FontAwesome.Sharp.IconChar.RightFromBracket;
-            this.BtnSalir.IconColor = System.Drawing.Color.White;
-            this.BtnSalir.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.BtnSalir.Location = new System.Drawing.Point(1132, 16);
-            this.BtnSalir.Name = "BtnSalir";
-            this.BtnSalir.Size = new System.Drawing.Size(86, 45);
-            this.BtnSalir.TabIndex = 8;
-            this.BtnSalir.UseVisualStyleBackColor = false;
-            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(878, 8);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(63, 64);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(28)))));
-            this.pictureBox1.Location = new System.Drawing.Point(-43, -32);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(296, 196);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
             // menuInicio
             // 
             this.menuInicio.AutoSize = false;
@@ -263,8 +263,8 @@
             this.menuAutos.AutoSize = false;
             this.menuAutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(28)))));
             this.menuAutos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuRegistrarVenta,
-            this.menuVerDetalle});
+            this.menuGestionAuto,
+            this.menuCatalogo});
             this.menuAutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuAutos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.menuAutos.IconChar = FontAwesome.Sharp.IconChar.CarAlt;
@@ -281,29 +281,31 @@
             this.menuAutos.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.menuAutos.Click += new System.EventHandler(this.menuAutos_Click);
             // 
-            // menuRegistrarVenta
+            // menuGestionAuto
             // 
-            this.menuRegistrarVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
-            this.menuRegistrarVenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
-            this.menuRegistrarVenta.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.menuRegistrarVenta.IconColor = System.Drawing.Color.Black;
-            this.menuRegistrarVenta.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.menuRegistrarVenta.ImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
-            this.menuRegistrarVenta.Name = "menuRegistrarVenta";
-            this.menuRegistrarVenta.Size = new System.Drawing.Size(197, 28);
-            this.menuRegistrarVenta.Text = "Gestion Autos";
+            this.menuGestionAuto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(28)))));
+            this.menuGestionAuto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
+            this.menuGestionAuto.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.menuGestionAuto.IconColor = System.Drawing.Color.Black;
+            this.menuGestionAuto.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.menuGestionAuto.ImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
+            this.menuGestionAuto.Name = "menuGestionAuto";
+            this.menuGestionAuto.Size = new System.Drawing.Size(197, 28);
+            this.menuGestionAuto.Text = "Gestion Autos";
+            this.menuGestionAuto.Click += new System.EventHandler(this.menuGestionAuto_Click);
             // 
-            // menuVerDetalle
+            // menuCatalogo
             // 
-            this.menuVerDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
-            this.menuVerDetalle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
-            this.menuVerDetalle.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.menuVerDetalle.IconColor = System.Drawing.Color.Black;
-            this.menuVerDetalle.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.menuVerDetalle.ImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
-            this.menuVerDetalle.Name = "menuVerDetalle";
-            this.menuVerDetalle.Size = new System.Drawing.Size(197, 28);
-            this.menuVerDetalle.Text = "Ver Detalle";
+            this.menuCatalogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(28)))));
+            this.menuCatalogo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
+            this.menuCatalogo.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.menuCatalogo.IconColor = System.Drawing.Color.Black;
+            this.menuCatalogo.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.menuCatalogo.ImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
+            this.menuCatalogo.Name = "menuCatalogo";
+            this.menuCatalogo.Size = new System.Drawing.Size(197, 28);
+            this.menuCatalogo.Text = "Catalogo";
+            this.menuCatalogo.Click += new System.EventHandler(this.menuCatalogo_Click);
             // 
             // menuReserva
             // 
@@ -329,7 +331,7 @@
             // 
             // menuRegistrarReserva
             // 
-            this.menuRegistrarReserva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
+            this.menuRegistrarReserva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(28)))));
             this.menuRegistrarReserva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.menuRegistrarReserva.IconChar = FontAwesome.Sharp.IconChar.None;
             this.menuRegistrarReserva.IconColor = System.Drawing.Color.Black;
@@ -341,7 +343,7 @@
             // 
             // menuVerReserva
             // 
-            this.menuVerReserva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
+            this.menuVerReserva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(28)))));
             this.menuVerReserva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.menuVerReserva.IconChar = FontAwesome.Sharp.IconChar.None;
             this.menuVerReserva.IconColor = System.Drawing.Color.Black;
@@ -401,7 +403,7 @@
             this.Negocio.IconColor = System.Drawing.Color.Black;
             this.Negocio.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.Negocio.Name = "Negocio";
-            this.Negocio.Size = new System.Drawing.Size(152, 28);
+            this.Negocio.Size = new System.Drawing.Size(180, 28);
             this.Negocio.Text = "Negocio";
             this.Negocio.Click += new System.EventHandler(this.Negocio_Click);
             // 
@@ -413,7 +415,7 @@
             this.Backup.IconColor = System.Drawing.Color.Black;
             this.Backup.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.Backup.Name = "Backup";
-            this.Backup.Size = new System.Drawing.Size(152, 28);
+            this.Backup.Size = new System.Drawing.Size(180, 28);
             this.Backup.Text = "Backup";
             this.Backup.Click += new System.EventHandler(this.Backup_Click);
             // 
@@ -494,10 +496,11 @@
             this.menuGraficos.Size = new System.Drawing.Size(250, 60);
             this.menuGraficos.Text = "Graficos";
             this.menuGraficos.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.menuGraficos.Click += new System.EventHandler(this.menuGraficos_Click);
             // 
             // Inicio
             // 
-            //this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 804);
             this.Controls.Add(this.BarraTop);
@@ -509,12 +512,12 @@
             this.Text = "Inicio";
             this.BarraTop.ResumeLayout(false);
             this.BarraTop.PerformLayout();
-            this.panelLateral.ResumeLayout(false);
-            this.menuLateral.ResumeLayout(false);
-            this.menuLateral.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelLateral.ResumeLayout(false);
+            this.menuLateral.ResumeLayout(false);
+            this.menuLateral.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -534,8 +537,8 @@
         private System.Windows.Forms.MenuStrip menuLateral;
         private FontAwesome.Sharp.IconMenuItem menuInicio;
         private FontAwesome.Sharp.IconMenuItem menuAutos;
-        private FontAwesome.Sharp.IconMenuItem menuRegistrarVenta;
-        private FontAwesome.Sharp.IconMenuItem menuVerDetalle;
+        private FontAwesome.Sharp.IconMenuItem menuGestionAuto;
+        private FontAwesome.Sharp.IconMenuItem menuCatalogo;
         private FontAwesome.Sharp.IconMenuItem menuReserva;
         private FontAwesome.Sharp.IconMenuItem menuRegistrarReserva;
         private FontAwesome.Sharp.IconMenuItem menuVerReserva;

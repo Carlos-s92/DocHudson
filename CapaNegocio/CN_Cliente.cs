@@ -25,10 +25,6 @@ namespace CapaNegocio
             {
                 Mensaje += "Es Necesario el Nombre del Cliente\n";
             }
-            if (obj.Apellido == "")
-            {
-                Mensaje += "Es Necesario el Apellido del Cliente\n";
-            }
             if (obj.Telefono == "")
             {
                 Mensaje += "Es Necesario el Telefono del Cliente\n";
@@ -37,9 +33,21 @@ namespace CapaNegocio
             {
                 Mensaje += "Es Necesario el DNI del Cliente\n";
             }
-            if (obj.Domicilio == "")
+            if (obj.Provincia == "")
             {
-                Mensaje += "Es Necesario el Domicilio del Cliente\n";
+                Mensaje += "Es Necesario la Provincia del Cliente\n";
+            }
+            if (obj.Localidad == "")
+            {
+                Mensaje += "Es Necesario la Localidad del Cliente\n";
+            }
+            if (obj.Calle == "")
+            {
+                Mensaje += "Es Necesario la Calle del Cliente\n";
+            }
+            if (obj.Numero == 0)
+            {
+                Mensaje += "Es Necesario el Numero de Calle del Cliente\n";
             }
             if (obj.Licencia == "")
             {
@@ -68,10 +76,7 @@ namespace CapaNegocio
             {
                 Mensaje += "Es Necesario el Nombre del Cliente\n";
             }
-            if (obj.Apellido == "")
-            {
-                Mensaje += "Es Necesario el Apellido del Cliente\n";
-            }
+
             if (obj.Telefono == "")
             {
                 Mensaje += "Es Necesario el Telefono del Cliente\n";
@@ -80,9 +85,21 @@ namespace CapaNegocio
             {
                 Mensaje += "Es Necesario el DNI del Cliente\n";
             }
-            if (obj.Domicilio == "")
+            if (obj.Provincia == "")
             {
-                Mensaje += "Es Necesario el Domicilio del Cliente\n";
+                Mensaje += "Es Necesario la Provincia del Cliente\n";
+            }
+            if (obj.Localidad == "")
+            {
+                Mensaje += "Es Necesario la Localidad del Cliente\n";
+            }
+            if (obj.Calle == "")
+            {
+                Mensaje += "Es Necesario la Calle del Cliente\n";
+            }
+            if (obj.Numero == 0)
+            {
+                Mensaje += "Es Necesario el Numero de Calle del Cliente\n";
             }
             if (obj.Licencia == "")
             {

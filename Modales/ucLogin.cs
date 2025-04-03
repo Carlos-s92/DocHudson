@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CapaEntidad;
+using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,23 +32,25 @@ namespace TestGit.Modales
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (CampoUsuario.Texts == "admin" && CampoContraseña.Texts == "1234")
+            Usuarios oUsuarios = new CN_Usuario().Listar().Where(u => u.Usuario == CampoUsuario.Texts && u.Contraseña == CampoContraseña.Texts && u.Estado == true).FirstOrDefault(); 
+           
+            if (oUsuarios != null)
             {
-     
-                OnLoginSuccess();  // Este método lo manejaremos en el formulario principal
+                OnLoginSuccess(oUsuarios);
             }
             else
             {
-                MessageBox.Show("Credenciales incorrectas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Credenciales incorrectas.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         // Método para enviar el evento de login exitoso
-        private void OnLoginSuccess()
+        private void OnLoginSuccess(Usuarios pUsuario)
         {
             // Aquí se puede notificar al formulario principal o cambiar el estado de visibilidad
             if (this.ParentForm is Login mainForm)  // Verificamos que el formulario principal sea el adecuado
             {
-                mainForm.HandleLoginSuccess(); // Llamamos a un método en el formulario principal
+             
+                mainForm.HandleLoginSuccess(pUsuario); // Llamamos a un método en el formulario principal
             }
         }
         private void label1_Click(object sender, EventArgs e)

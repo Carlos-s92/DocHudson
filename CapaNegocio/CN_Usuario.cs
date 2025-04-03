@@ -27,6 +27,10 @@ namespace CapaNegocio
             {
                 Mensaje += "Es Necesario la Contraseña del Usuario\n";
             }
+            if (obj.Dni == "")
+            {
+                Mensaje += "Es Necesario el DNI del Usuario\n";
+            }
             if (Mensaje != string.Empty)
             {
                 return 0;
@@ -51,6 +55,10 @@ namespace CapaNegocio
             if (obj.Contraseña == "")
             {
                 Mensaje += "Es Necesario la Clave del Usuario\n";
+            }
+            if (obj.Dni == "")
+            {
+                Mensaje += "Es Necesario el DNI del Usuario\n";
             }
             if (Mensaje != string.Empty)
             {

@@ -21,7 +21,7 @@ namespace CapaDatos
                 {
 
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("Select Id_Cliente, DNI, Nombre,Apellido, Domicilio, Fecha_Nacimiento, Licencia, Telefono, Estado from Cliente");
+                    query.AppendLine("Select Id_Cliente, DNI, Nombre, Provincia, Localidad, Calle, Numero, Fecha_Nacimiento, Licencia, Telefono, Estado from Cliente");
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
 
@@ -36,9 +36,11 @@ namespace CapaDatos
                             {
                                 Id_Cliente = Convert.ToInt32(dr["Id_Cliente"]),
                                 Dni = dr["DNI"].ToString(),
-                                Nombre = dr["Nombre"].ToString(),
-                                Apellido = dr["Apellido"].ToString(),
-                                Domicilio = dr["Domicilio"].ToString(),
+                                Nombre = dr["Nombre"].ToString(),                   
+                                Provincia = dr["Provincia"].ToString(),
+                                Localidad = dr["Localidad"].ToString(),
+                                Calle = dr["Calle"].ToString(),
+                                Numero = Convert.ToInt32(dr["Numero"]),
                                 Fecha_Nacimiento = Convert.ToDateTime(dr["Fecha_Nacimiento"]),
                                 Licencia = dr["Licencia"].ToString(),
                                 Telefono = dr["Telefono"].ToString(),
@@ -69,10 +71,13 @@ namespace CapaDatos
                     SqlCommand cmd = new SqlCommand("InsertarCliente", oconexion);
                    
                     cmd.Parameters.AddWithValue("Nombre", obj.Nombre);
-                    cmd.Parameters.AddWithValue("Apellido", obj.Apellido);
+                 
                     cmd.Parameters.AddWithValue("DNI", obj.Dni);
                     cmd.Parameters.AddWithValue("Fecha_Nacimiento", obj.Fecha_Nacimiento);
-                    cmd.Parameters.AddWithValue("Domicilio", obj.Domicilio);
+                    cmd.Parameters.AddWithValue("Provincia", obj.Provincia);
+                    cmd.Parameters.AddWithValue("Localidad", obj.Localidad);
+                    cmd.Parameters.AddWithValue("Calle", obj.Calle);
+                    cmd.Parameters.AddWithValue("Numero", obj.Numero);
                     cmd.Parameters.AddWithValue("Licencia", obj.Licencia);
                     cmd.Parameters.AddWithValue("Telefono", obj.Telefono);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
@@ -114,10 +119,12 @@ namespace CapaDatos
                     SqlCommand cmd = new SqlCommand("ActualizarCliente", oconexion);
                     cmd.Parameters.AddWithValue("Id_Cliente", obj.Id_Cliente);
                     cmd.Parameters.AddWithValue("Nombre", obj.Nombre);
-                    cmd.Parameters.AddWithValue("Apellido", obj.Nombre);
                     cmd.Parameters.AddWithValue("DNI", obj.Dni);
                     cmd.Parameters.AddWithValue("Fecha_Nacimiento", obj.Fecha_Nacimiento);
-                    cmd.Parameters.AddWithValue("Domicilio", obj.Domicilio);
+                    cmd.Parameters.AddWithValue("Provincia", obj.Provincia);
+                    cmd.Parameters.AddWithValue("Localidad", obj.Localidad);
+                    cmd.Parameters.AddWithValue("Calle", obj.Calle);
+                    cmd.Parameters.AddWithValue("Numero", obj.Numero);
                     cmd.Parameters.AddWithValue("Licencia", obj.Licencia);
                     cmd.Parameters.AddWithValue("Telefono", obj.Telefono);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);

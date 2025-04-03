@@ -17,6 +17,7 @@ namespace TestGit
     public partial class Login : Form
     {
         private ucLogin loginControl = new ucLogin();
+        private Usuarios usuario = new Usuarios();
         public Login()
         {
 
@@ -44,10 +45,11 @@ namespace TestGit
 
 
         }
-        public void HandleLoginSuccess()
+        public void HandleLoginSuccess(Usuarios pUsuario)
         {
             // Aquí realizamos la transición a otro formulario (por ejemplo, Inicio)
-            Inicio inicio = new Inicio();
+            this.usuario = pUsuario;
+            Inicio inicio = new Inicio(this.usuario);
             inicio.FormClosing += frm_closing; // Asocia el evento para cuando el formulario Inicio se cierre.
             inicio.Show();  // Muestra el nuevo formulario
             this.Hide();  // Esconde el formulario principal

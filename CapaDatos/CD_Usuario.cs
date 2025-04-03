@@ -19,7 +19,7 @@ namespace CapaDatos
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT u.Id_Usuario, u.Usuario, u.Contraseña, u.Estado, p.Id_Perfil, p.Descripcion");
+                    query.AppendLine("SELECT u.Id_Usuario, u.Usuario, u.Contraseña,u.DNI, u.Estado, p.Id_Perfil, p.Descripcion");
                     query.AppendLine("FROM Usuarios u");
                     query.AppendLine("INNER JOIN Perfiles p ON p.Id_Perfil = u.Id_Perfil");
 
@@ -38,6 +38,7 @@ namespace CapaDatos
                                     Id_Usuario = Convert.ToInt32(dr["Id_Usuario"]),
                                     Usuario = dr["Usuario"].ToString(),
                                     Contraseña = dr["Contraseña"].ToString(),
+                                    Dni = dr["DNI"].ToString(),
                                     Estado = Convert.ToBoolean(dr["Estado"]),
                                     oPerfil = new Perfiles()
                                     {
@@ -67,7 +68,8 @@ namespace CapaDatos
                 {
                     SqlCommand cmd = new SqlCommand("InsertarUsuario", oconexion);
                     cmd.Parameters.AddWithValue("Usuario", obj.Usuario);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Contraseña);
+                    cmd.Parameters.AddWithValue("Contraseña", obj.Contraseña);
+                    cmd.Parameters.AddWithValue("DNI", obj.Dni);
                     cmd.Parameters.AddWithValue("IdRol", obj.oPerfil.Id_Perfil);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
                     cmd.Parameters.Add("IdUsuarioResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -107,6 +109,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("IdUsuario", obj.Id_Usuario);
                     cmd.Parameters.AddWithValue("Usuario", obj.Usuario);
                     cmd.Parameters.AddWithValue("Contraseña", obj.Contraseña);
+                    cmd.Parameters.AddWithValue("DNI", obj.Dni);
                     cmd.Parameters.AddWithValue("Id_Perfil", obj.oPerfil.Id_Perfil);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;

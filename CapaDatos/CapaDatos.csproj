@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,6 +45,7 @@
     <Compile Include="CD_Autos.cs" />
     <Compile Include="CD_Cliente.cs" />
     <Compile Include="CD_Pago.cs" />
+    <Compile Include="CD_Perfiles.cs" />
     <Compile Include="CD_Reserva.cs" />
     <Compile Include="CD_Tipopago.cs" />
     <Compile Include="CD_Usuario.cs" />
