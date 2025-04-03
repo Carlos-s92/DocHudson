@@ -32,17 +32,19 @@ namespace TestGit.Modales
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Usuarios oUsuarios = new CN_Usuario().Listar().Where(u => u.Usuario == CampoUsuario.Texts && u.Contraseña == CampoContraseña.Texts && u.Estado == true).FirstOrDefault(); 
-           
+            Usuarios oUsuarios = new CN_Usuario().Listar().Where(u => u.Usuario == CampoUsuario.Texts && u.Contraseña == CampoContraseña.Texts && u.Estado == true).FirstOrDefault();
+
             if (oUsuarios != null)
             {
                 OnLoginSuccess(oUsuarios);
             }
             else
             {
-                MessageBox.Show("Credenciales incorrectas.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                VentanaEmergente VE = new VentanaEmergente("Credenciales incorrectas", "Intento fallido al iniciar sesión, vuelva a reintentarlo.", "Error");
+                VE.ShowDialog();
             }
         }
+
         // Método para enviar el evento de login exitoso
         private void OnLoginSuccess(Usuarios pUsuario)
         {

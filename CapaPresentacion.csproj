@@ -273,6 +273,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modales\VentanaEmergente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modales\VentanaEmergente.Designer.cs">
+      <DependentUpon>VentanaEmergente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modales\mdAutos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -349,6 +355,9 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modales\VentanaEmergente.resx">
+      <DependentUpon>VentanaEmergente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modales\mdAutos.resx">
       <DependentUpon>mdAutos.cs</DependentUpon>
     </EmbeddedResource>
@@ -395,6 +404,10 @@
     <Content Include="Fondo1.gif" />
     <None Include="Resources\Comp 1_11.gif" />
     <Content Include="Properties\Vicente1.jpg" />
+    <Content Include="Resources\cerrar %287%29.png" />
+    <Content Include="Resources\IconoAlertaVE.png" />
+    <Content Include="Resources\IconoCerrarVE.png" />
+    <Content Include="Resources\IconoInterrogacionVE.png" />
     <Content Include="Resources\Musica.wav" />
   </ItemGroup>
   <ItemGroup>
