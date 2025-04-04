@@ -26,6 +26,8 @@ namespace TestGit.Modales
         public TarjetaAuto(int id,string modelo, string marca, decimal consumo, int puertas, int asientos, decimal kilometros, bool reservado, bool estado, string matricula, int año, string imagen)
         {
             InitializeComponent();
+            this.iconButton1.BackColor = Color.FromArgb(14, 15, 19);
+            this.iconButton2.BackColor = Color.FromArgb(14, 15, 19);
             oAuto.Marca = marca;
             oAuto.Modelo = modelo;
             oAuto.Consumo = consumo;
