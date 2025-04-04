@@ -26,35 +26,39 @@ namespace TestGit
 
         private void rjButton2_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = @"C:";
-            openFileDialog.Filter = "Archivos de imagen (.jpg;.jpeg;.png)|.jpg;.jpeg;.png";
-            openFileDialog.Title = "Seleccione una imagen";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            using (System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog())
             {
-                string sourceFilePath = openFileDialog.FileName;
-                txtImagen.Texts = sourceFilePath;
-                
-                // Genera un nombre único para la imagen
-                nombreImagen = Guid.NewGuid().ToString() + Path.GetExtension(sourceFilePath);
+                openFileDialog.InitialDirectory = @"C:";
+                openFileDialog.Filter = "Archivos de imagen | *.jpg;*.jpeg;*.png";
+                openFileDialog.Title = "Seleccione una imagen";
 
-                // Ruta de destino en tu proyecto (por ejemplo, en una carpeta 'uploads' en la misma ruta de ejecución)
-                //string destinationPath = Path.Combine(Application.StartupPath, "uploads", nombreImagen);
-                string destinationPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"....\uploads" + nombreImagen);
-                Debug.WriteLine(destinationPath);
-                // Asegúrate de que la carpeta de destino existe
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string sourceFilePath = openFileDialog.FileName;
+                    txtImagen.Texts = sourceFilePath;
 
-                Directory.CreateDirectory(Path.GetDirectoryName(destinationPath));
+                    // Genera un nombre único para la imagen
+                    nombreImagen = Guid.NewGuid().ToString() + Path.GetExtension(sourceFilePath);
 
-                // Copia la imagen a la carpeta de destino
-                File.Copy(sourceFilePath, destinationPath, true);
+                    // Definir la carpeta 'uploads' dentro del directorio base del proyecto
+                    string uploadsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "uploads");
+
+                    // Asegurarse de que la carpeta existe
+                    Directory.CreateDirectory(uploadsPath);
+
+                    // Construir la ruta final de la imagen
+                    string destinationPath = Path.Combine(uploadsPath, nombreImagen);
+
+                    Debug.WriteLine(destinationPath);
+
+                    // Copiar la imagen al directorio de destino
+                    File.Copy(sourceFilePath, destinationPath, true);
+
+                    // Mostrar la imagen en el PictureBox
+                    picLogo.Image = Image.FromFile(sourceFilePath);
+                    picLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
             }
-
-            //string imagePath = Path.Combine(Application.StartupPath, "uploads", photoFilePath);
-            string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"....\uploads" + nombreImagen);
-            picLogo.Image = Image.FromFile(imagePath);
-            picLogo.SizeMode = PictureBoxSizeMode.StretchImage;
 
         }
         private bool Validaciones()
@@ -94,7 +98,7 @@ namespace TestGit
                     Negocio obj = new Negocio()
                     {
                         Nombre = txtNombre.Texts,
-                        Imagen = txtImagen.Text,
+                        Imagen = txtImagen.Texts,
                         Direccion = txtDireccion.Texts
                     };
 
@@ -124,13 +128,24 @@ namespace TestGit
             Negocio obj = new CN_Negocio().obtenerDatos();
             txtNombre.Texts = obj.Nombre;
             txtDireccion.Texts = obj.Direccion;
-            if (obj.Imagen != null)
+
+            if(obj.Imagen != null)
             {
-                //string imagePath = Path.Combine(Application.StartupPath, "uploads", photoFilePath);
-                string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"....\uploads" + obj.Imagen);
-                picLogo.Image = Image.FromFile(imagePath);
-                picLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                string uploadsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "uploads");
+                string imagePath = Path.Combine(uploadsPath, obj.Imagen);
+
+                if (File.Exists(imagePath))
+                {
+                    picLogo.Image = Image.FromFile(imagePath);
+                    picLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+                else
+                {
+                    MessageBox.Show("La imagen no se encontró.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
+using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,17 +17,14 @@ namespace TestGit
 {
     public partial class FrmCatalogo : Form
     {
+
+        public Autos _Auto = new Autos();
         public FrmCatalogo()
         {
             InitializeComponent();
 
-            mostrarAutito();
         }
 
-        private void mostrarAutito()
-        {
-
-        }
         private void comboBusqueda_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -39,7 +37,7 @@ namespace TestGit
 
         private void rjButton1_Click(object sender, EventArgs e)
         {
-
+            this.DialogResult = DialogResult.Cancel;
         }
 
         private void FrmCatalogo_Load(object sender, EventArgs e)
@@ -52,6 +50,16 @@ namespace TestGit
                 TarjetaAuto auto = new TarjetaAuto(item.Id_Auto,item.Modelo, item.Marca, item.Consumo, item.Puertas, item.Asientos, item.Kilometros, item.Reservado, item.Estado, item.Matricula, item.Año, item.Imagen);
                 flowLayoutPanel1 .Controls.Add(auto);
 
+            }
+           
+
+            if (this.Owner is Inicio)
+            {
+                btnSalir.Visible = true; // o btnCancelar.Enabled = true;
+            }
+            else
+            {
+                btnSalir.Visible = false;
             }
 
         }
@@ -66,6 +74,24 @@ namespace TestGit
                 flowLayoutPanel1.Controls.Add(auto);
 
             }
+        }
+
+
+
+        public void Envio(Autos pAuto)
+        {
+            if(this.ParentForm is Inicio mainform)
+            {
+
+                mainform.Reservas(pAuto);
+            }
+            else
+            {
+                _Auto = pAuto;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+
         }
     }
 }

@@ -28,10 +28,8 @@ namespace CapaDatos
                     string nombre = "Doc Hudson Fecha " + DateTime.Now.ToString("dd_MM_yyyy") + " Hora " + DateTime.Now.ToString("hh_mm_ss") + ".bak";
 
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("BACKUP DATABASE [DocHudson] TO  DISK = N'C:\\Backup\\" + nombre + "' WITH NOFORMAT, NOINIT,  NAME = N'DocHudson-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10\r\n");
-
-
-                    query.AppendLine("\r\nUpdate BackupR \r\nset fecha_registro = GETDATE()\r\nwhere idBackup = 1");
+                    query.AppendLine("BACKUP DATABASE[DocHudson] TO DISK = N'C:\\Backup\\" + nombre + "' WITH NOFORMAT, NOINIT, NAME = N'DocHudson-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10\r\n");
+                    query.AppendLine("\r\nUpdate BackupR \r\nset Fecha_Registro = GETDATE()\r\nwhere Id_Backup = 1");
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     oconexion.Open();

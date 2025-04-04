@@ -74,7 +74,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("Usuario", obj.Usuario);
                     cmd.Parameters.AddWithValue("Contraseña", obj.Contraseña);
                     cmd.Parameters.AddWithValue("DNI", obj.Dni);
-                    cmd.Parameters.AddWithValue("IdRol", obj.oPerfil.Id_Perfil);
+                    cmd.Parameters.AddWithValue("Id_Perfil", obj.oPerfil.Id_Perfil);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
                     cmd.Parameters.Add("IdUsuarioResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;

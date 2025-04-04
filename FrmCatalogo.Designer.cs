@@ -31,7 +31,7 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.comboBusqueda = new System.Windows.Forms.ComboBox();
             this.rjButton3 = new CustomControls.RJControls.RJButton();
-            this.rjButton1 = new CustomControls.RJControls.RJButton();
+            this.btnSalir = new CustomControls.RJControls.RJButton();
             this.txtBusqueda = new CustomControls.RJControls.RJTextBox();
             this.SuspendLayout();
             // 
@@ -41,7 +41,7 @@
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 87);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(13, 13, 13, 13);
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(13);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(958, 627);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
@@ -72,7 +72,7 @@
             this.rjButton3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.rjButton3.Location = new System.Drawing.Point(735, 29);
-            this.rjButton3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rjButton3.Margin = new System.Windows.Forms.Padding(2);
             this.rjButton3.Name = "rjButton3";
             this.rjButton3.Size = new System.Drawing.Size(101, 37);
             this.rjButton3.TabIndex = 141;
@@ -80,26 +80,28 @@
             this.rjButton3.UseVisualStyleBackColor = false;
             this.rjButton3.Click += new System.EventHandler(this.rjButton3_Click);
             // 
-            // rjButton1
+            // btnSalir
             // 
-            this.rjButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton1.BorderColor = System.Drawing.Color.DimGray;
-            this.rjButton1.BorderRadius = 20;
-            this.rjButton1.BorderSize = 2;
-            this.rjButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton1.FlatAppearance.BorderSize = 0;
-            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton1.Location = new System.Drawing.Point(840, 29);
-            this.rjButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(103, 37);
-            this.rjButton1.TabIndex = 140;
-            this.rjButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton1.UseVisualStyleBackColor = false;
-            this.rjButton1.Click += new System.EventHandler(this.rjButton1_Click);
+            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.btnSalir.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.btnSalir.BorderColor = System.Drawing.Color.DimGray;
+            this.btnSalir.BorderRadius = 20;
+            this.btnSalir.BorderSize = 2;
+            this.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSalir.FlatAppearance.BorderSize = 0;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnSalir.Location = new System.Drawing.Point(852, 29);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(91, 37);
+            this.btnSalir.TabIndex = 140;
+            this.btnSalir.Text = "X";
+            this.btnSalir.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Visible = false;
+            this.btnSalir.Click += new System.EventHandler(this.rjButton1_Click);
             // 
             // txtBusqueda
             // 
@@ -112,7 +114,7 @@
             this.txtBusqueda.ForeColor = System.Drawing.Color.White;
             this.txtBusqueda.IsReadOnly = false;
             this.txtBusqueda.Location = new System.Drawing.Point(23, 23);
-            this.txtBusqueda.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBusqueda.Margin = new System.Windows.Forms.Padding(4);
             this.txtBusqueda.Multiline = false;
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -135,9 +137,10 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.rjButton3);
             this.Controls.Add(this.txtBusqueda);
-            this.Controls.Add(this.rjButton1);
+            this.Controls.Add(this.btnSalir);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmCatalogo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCatalogo";
             this.Load += new System.EventHandler(this.FrmCatalogo_Load);
             this.ResumeLayout(false);
@@ -149,7 +152,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.ComboBox comboBusqueda;
         private CustomControls.RJControls.RJButton rjButton3;
-        private CustomControls.RJControls.RJButton rjButton1;
+        private CustomControls.RJControls.RJButton btnSalir;
         private CustomControls.RJControls.RJTextBox txtBusqueda;
     }
 }

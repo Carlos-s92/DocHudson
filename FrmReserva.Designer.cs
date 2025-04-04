@@ -28,75 +28,77 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.rjTextBox2 = new CustomControls.RJControls.RJTextBox();
-            this.txtCorreo = new CustomControls.RJControls.RJTextBox();
+            this.txtDomicilio = new CustomControls.RJControls.RJTextBox();
+            this.txtLicencia = new CustomControls.RJControls.RJTextBox();
             this.txtTelefono = new CustomControls.RJControls.RJTextBox();
             this.txtDocumento = new CustomControls.RJControls.RJTextBox();
             this.txtNombre = new CustomControls.RJControls.RJTextBox();
             this.BtnLimpiar2 = new CustomControls.RJControls.RJButton();
             this.BtnGuardar2 = new CustomControls.RJControls.RJButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaF = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaI = new System.Windows.Forms.DateTimePicker();
             this.txtConsumo = new CustomControls.RJControls.RJTextBox();
             this.txtModelo = new CustomControls.RJControls.RJTextBox();
             this.txtKilometros = new CustomControls.RJControls.RJTextBox();
             this.txtMatricula = new CustomControls.RJControls.RJTextBox();
             this.txtAño = new CustomControls.RJControls.RJTextBox();
+            this.btnCliente = new CustomControls.RJControls.RJButton();
+            this.btnAuto = new CustomControls.RJControls.RJButton();
+            this.txtIdCliente = new System.Windows.Forms.TextBox();
+            this.txtIdAuto = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.rjButton1 = new CustomControls.RJControls.RJButton();
-            this.rjButton2 = new CustomControls.RJControls.RJButton();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // rjTextBox2
+            // txtDomicilio
             // 
-            this.rjTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.rjTextBox2.BorderColor = System.Drawing.Color.DimGray;
-            this.rjTextBox2.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
-            this.rjTextBox2.BorderRadius = 10;
-            this.rjTextBox2.BorderSize = 2;
-            this.rjTextBox2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox2.ForeColor = System.Drawing.Color.White;
-            this.rjTextBox2.IsReadOnly = false;
-            this.rjTextBox2.Location = new System.Drawing.Point(33, 138);
-            this.rjTextBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox2.Multiline = false;
-            this.rjTextBox2.Name = "rjTextBox2";
-            this.rjTextBox2.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.rjTextBox2.PasswordChar = false;
-            this.rjTextBox2.PlaceholderColor = System.Drawing.Color.White;
-            this.rjTextBox2.PlaceholderText = "Calle, Numero";
-            this.rjTextBox2.ShortcutsEnabled = false;
-            this.rjTextBox2.Size = new System.Drawing.Size(396, 45);
-            this.rjTextBox2.TabIndex = 136;
-            this.rjTextBox2.Texts = "";
-            this.rjTextBox2.UnderlinedStyle = true;
+            this.txtDomicilio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.txtDomicilio.BorderColor = System.Drawing.Color.DimGray;
+            this.txtDomicilio.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
+            this.txtDomicilio.BorderRadius = 10;
+            this.txtDomicilio.BorderSize = 2;
+            this.txtDomicilio.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDomicilio.ForeColor = System.Drawing.Color.White;
+            this.txtDomicilio.IsReadOnly = false;
+            this.txtDomicilio.Location = new System.Drawing.Point(33, 138);
+            this.txtDomicilio.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDomicilio.Multiline = false;
+            this.txtDomicilio.Name = "txtDomicilio";
+            this.txtDomicilio.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtDomicilio.PasswordChar = false;
+            this.txtDomicilio.PlaceholderColor = System.Drawing.Color.White;
+            this.txtDomicilio.PlaceholderText = "Domicilio";
+            this.txtDomicilio.ShortcutsEnabled = false;
+            this.txtDomicilio.Size = new System.Drawing.Size(396, 45);
+            this.txtDomicilio.TabIndex = 136;
+            this.txtDomicilio.Texts = "";
+            this.txtDomicilio.UnderlinedStyle = true;
             // 
-            // txtCorreo
+            // txtLicencia
             // 
-            this.txtCorreo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.txtCorreo.BorderColor = System.Drawing.Color.DimGray;
-            this.txtCorreo.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
-            this.txtCorreo.BorderRadius = 10;
-            this.txtCorreo.BorderSize = 2;
-            this.txtCorreo.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCorreo.ForeColor = System.Drawing.Color.White;
-            this.txtCorreo.IsReadOnly = false;
-            this.txtCorreo.Location = new System.Drawing.Point(478, 13);
-            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCorreo.Multiline = false;
-            this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtCorreo.PasswordChar = false;
-            this.txtCorreo.PlaceholderColor = System.Drawing.Color.White;
-            this.txtCorreo.PlaceholderText = "Licencia de Conducir";
-            this.txtCorreo.ShortcutsEnabled = false;
-            this.txtCorreo.Size = new System.Drawing.Size(446, 45);
-            this.txtCorreo.TabIndex = 134;
-            this.txtCorreo.Texts = "";
-            this.txtCorreo.UnderlinedStyle = true;
+            this.txtLicencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.txtLicencia.BorderColor = System.Drawing.Color.DimGray;
+            this.txtLicencia.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
+            this.txtLicencia.BorderRadius = 10;
+            this.txtLicencia.BorderSize = 2;
+            this.txtLicencia.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLicencia.ForeColor = System.Drawing.Color.White;
+            this.txtLicencia.IsReadOnly = false;
+            this.txtLicencia.Location = new System.Drawing.Point(478, 13);
+            this.txtLicencia.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLicencia.Multiline = false;
+            this.txtLicencia.Name = "txtLicencia";
+            this.txtLicencia.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtLicencia.PasswordChar = false;
+            this.txtLicencia.PlaceholderColor = System.Drawing.Color.White;
+            this.txtLicencia.PlaceholderText = "Licencia de Conducir";
+            this.txtLicencia.ShortcutsEnabled = false;
+            this.txtLicencia.Size = new System.Drawing.Size(446, 45);
+            this.txtLicencia.TabIndex = 134;
+            this.txtLicencia.Texts = "";
+            this.txtLicencia.UnderlinedStyle = true;
             // 
             // txtTelefono
             // 
@@ -189,6 +191,7 @@
             this.BtnLimpiar2.TabIndex = 143;
             this.BtnLimpiar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnLimpiar2.UseVisualStyleBackColor = false;
+            this.BtnLimpiar2.Click += new System.EventHandler(this.BtnLimpiar2_Click);
             // 
             // BtnGuardar2
             // 
@@ -210,42 +213,33 @@
             this.BtnGuardar2.Text = "+";
             this.BtnGuardar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnGuardar2.UseVisualStyleBackColor = false;
+            this.BtnGuardar2.Click += new System.EventHandler(this.BtnGuardar2_Click);
             // 
-            // pictureBox1
+            // dtpFechaF
             // 
-            this.pictureBox1.Image = global::TestGit.Properties.Resources.Comp_1_11;
-            this.pictureBox1.Location = new System.Drawing.Point(-11, 231);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(994, 4);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 144;
-            this.pictureBox1.TabStop = false;
+            this.dtpFechaF.CalendarForeColor = System.Drawing.Color.White;
+            this.dtpFechaF.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.dtpFechaF.CalendarTitleForeColor = System.Drawing.Color.White;
+            this.dtpFechaF.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaF.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaF.Location = new System.Drawing.Point(501, 523);
+            this.dtpFechaF.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaF.Name = "dtpFechaF";
+            this.dtpFechaF.Size = new System.Drawing.Size(396, 33);
+            this.dtpFechaF.TabIndex = 146;
             // 
-            // dateTimePicker1
+            // dtpFechaI
             // 
-            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.White;
-            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.White;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(501, 523);
-            this.dateTimePicker1.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(396, 33);
-            this.dateTimePicker1.TabIndex = 146;
-            // 
-            // dtpFecha
-            // 
-            this.dtpFecha.CalendarForeColor = System.Drawing.Color.White;
-            this.dtpFecha.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.dtpFecha.CalendarTitleForeColor = System.Drawing.Color.White;
-            this.dtpFecha.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(44, 523);
-            this.dtpFecha.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(396, 33);
-            this.dtpFecha.TabIndex = 145;
+            this.dtpFechaI.CalendarForeColor = System.Drawing.Color.White;
+            this.dtpFechaI.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.dtpFechaI.CalendarTitleForeColor = System.Drawing.Color.White;
+            this.dtpFechaI.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaI.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaI.Location = new System.Drawing.Point(44, 523);
+            this.dtpFechaI.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaI.Name = "dtpFechaI";
+            this.dtpFechaI.Size = new System.Drawing.Size(396, 33);
+            this.dtpFechaI.TabIndex = 145;
             // 
             // txtConsumo
             // 
@@ -367,6 +361,68 @@
             this.txtAño.Texts = "";
             this.txtAño.UnderlinedStyle = true;
             // 
+            // btnCliente
+            // 
+            this.btnCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.btnCliente.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.btnCliente.BorderColor = System.Drawing.Color.DimGray;
+            this.btnCliente.BorderRadius = 20;
+            this.btnCliente.BorderSize = 2;
+            this.btnCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCliente.FlatAppearance.BorderSize = 0;
+            this.btnCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCliente.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnCliente.Location = new System.Drawing.Point(478, 142);
+            this.btnCliente.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCliente.Name = "btnCliente";
+            this.btnCliente.Size = new System.Drawing.Size(446, 41);
+            this.btnCliente.TabIndex = 153;
+            this.btnCliente.Text = "+";
+            this.btnCliente.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnCliente.UseVisualStyleBackColor = false;
+            this.btnCliente.Click += new System.EventHandler(this.rjButton1_Click);
+            // 
+            // btnAuto
+            // 
+            this.btnAuto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.btnAuto.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.btnAuto.BorderColor = System.Drawing.Color.DimGray;
+            this.btnAuto.BorderRadius = 20;
+            this.btnAuto.BorderSize = 2;
+            this.btnAuto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAuto.FlatAppearance.BorderSize = 0;
+            this.btnAuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAuto.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAuto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnAuto.Location = new System.Drawing.Point(490, 397);
+            this.btnAuto.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAuto.Name = "btnAuto";
+            this.btnAuto.Size = new System.Drawing.Size(446, 41);
+            this.btnAuto.TabIndex = 154;
+            this.btnAuto.Text = "+";
+            this.btnAuto.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnAuto.UseVisualStyleBackColor = false;
+            this.btnAuto.Click += new System.EventHandler(this.btnAuto_Click);
+            // 
+            // txtIdCliente
+            // 
+            this.txtIdCliente.Location = new System.Drawing.Point(447, 205);
+            this.txtIdCliente.Name = "txtIdCliente";
+            this.txtIdCliente.Size = new System.Drawing.Size(24, 20);
+            this.txtIdCliente.TabIndex = 155;
+            this.txtIdCliente.Text = "0";
+            this.txtIdCliente.Visible = false;
+            // 
+            // txtIdAuto
+            // 
+            this.txtIdAuto.Location = new System.Drawing.Point(447, 447);
+            this.txtIdAuto.Name = "txtIdAuto";
+            this.txtIdAuto.Size = new System.Drawing.Size(24, 20);
+            this.txtIdAuto.TabIndex = 156;
+            this.txtIdAuto.Text = "0";
+            this.txtIdAuto.Visible = false;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::TestGit.Properties.Resources.Comp_1_11;
@@ -377,47 +433,15 @@
             this.pictureBox2.TabIndex = 152;
             this.pictureBox2.TabStop = false;
             // 
-            // rjButton1
+            // pictureBox1
             // 
-            this.rjButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.rjButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.rjButton1.BorderColor = System.Drawing.Color.DimGray;
-            this.rjButton1.BorderRadius = 20;
-            this.rjButton1.BorderSize = 2;
-            this.rjButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton1.FlatAppearance.BorderSize = 0;
-            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton1.Location = new System.Drawing.Point(478, 142);
-            this.rjButton1.Margin = new System.Windows.Forms.Padding(2);
-            this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(446, 41);
-            this.rjButton1.TabIndex = 153;
-            this.rjButton1.Text = "+";
-            this.rjButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton1.UseVisualStyleBackColor = false;
-            // 
-            // rjButton2
-            // 
-            this.rjButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.rjButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.rjButton2.BorderColor = System.Drawing.Color.DimGray;
-            this.rjButton2.BorderRadius = 20;
-            this.rjButton2.BorderSize = 2;
-            this.rjButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton2.FlatAppearance.BorderSize = 0;
-            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton2.Location = new System.Drawing.Point(490, 397);
-            this.rjButton2.Margin = new System.Windows.Forms.Padding(2);
-            this.rjButton2.Name = "rjButton2";
-            this.rjButton2.Size = new System.Drawing.Size(446, 41);
-            this.rjButton2.TabIndex = 154;
-            this.rjButton2.Text = "+";
-            this.rjButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton2.UseVisualStyleBackColor = false;
+            this.pictureBox1.Image = global::TestGit.Properties.Resources.Comp_1_11;
+            this.pictureBox1.Location = new System.Drawing.Point(-11, 231);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(994, 4);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 144;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmReserva
             // 
@@ -425,52 +449,57 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(19)))));
             this.ClientSize = new System.Drawing.Size(982, 726);
-            this.Controls.Add(this.rjButton2);
-            this.Controls.Add(this.rjButton1);
+            this.Controls.Add(this.txtIdAuto);
+            this.Controls.Add(this.txtIdCliente);
+            this.Controls.Add(this.btnAuto);
+            this.Controls.Add(this.btnCliente);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.txtConsumo);
             this.Controls.Add(this.txtModelo);
             this.Controls.Add(this.txtKilometros);
             this.Controls.Add(this.txtMatricula);
             this.Controls.Add(this.txtAño);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.dtpFecha);
+            this.Controls.Add(this.dtpFechaF);
+            this.Controls.Add(this.dtpFechaI);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.BtnLimpiar2);
             this.Controls.Add(this.BtnGuardar2);
-            this.Controls.Add(this.rjTextBox2);
-            this.Controls.Add(this.txtCorreo);
+            this.Controls.Add(this.txtDomicilio);
+            this.Controls.Add(this.txtLicencia);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtDocumento);
             this.Controls.Add(this.txtNombre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmReserva";
             this.Text = "FrmReserva";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private CustomControls.RJControls.RJTextBox rjTextBox2;
-        private CustomControls.RJControls.RJTextBox txtCorreo;
+        private CustomControls.RJControls.RJTextBox txtDomicilio;
+        private CustomControls.RJControls.RJTextBox txtLicencia;
         private CustomControls.RJControls.RJTextBox txtTelefono;
         private CustomControls.RJControls.RJTextBox txtDocumento;
         private CustomControls.RJControls.RJTextBox txtNombre;
         private CustomControls.RJControls.RJButton BtnLimpiar2;
         private CustomControls.RJControls.RJButton BtnGuardar2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.DateTimePicker dtpFechaF;
+        private System.Windows.Forms.DateTimePicker dtpFechaI;
         private CustomControls.RJControls.RJTextBox txtConsumo;
         private CustomControls.RJControls.RJTextBox txtModelo;
         private CustomControls.RJControls.RJTextBox txtKilometros;
         private CustomControls.RJControls.RJTextBox txtMatricula;
         private CustomControls.RJControls.RJTextBox txtAño;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private CustomControls.RJControls.RJButton rjButton1;
-        private CustomControls.RJControls.RJButton rjButton2;
+        private CustomControls.RJControls.RJButton btnCliente;
+        private CustomControls.RJControls.RJButton btnAuto;
+        private System.Windows.Forms.TextBox txtIdCliente;
+        private System.Windows.Forms.TextBox txtIdAuto;
     }
 }

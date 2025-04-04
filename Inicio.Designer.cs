@@ -510,6 +510,7 @@
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio";
+            this.Load += new System.EventHandler(this.Inicio_Load);
             this.BarraTop.ResumeLayout(false);
             this.BarraTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

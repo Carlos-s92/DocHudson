@@ -161,6 +161,7 @@
             this.btnReserva.Text = "Reservar";
             this.btnReserva.TextColor = System.Drawing.Color.White;
             this.btnReserva.UseVisualStyleBackColor = false;
+            this.btnReserva.Click += new System.EventHandler(this.btnReserva_Click);
             // 
             // pictureBox1
             // 

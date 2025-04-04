@@ -1,4 +1,5 @@
 ﻿using CapaEntidad;
+using CapaNegocio;
 using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace TestGit
 {
     public partial class Inicio : Form
     {
+
         // Variables estáticas para gestionar el usuario, el menú activo y el formulario activo.
         //private static Usuario user; // Variable para almacenar el usuario actual.
         public static IconMenuItem menuActivo = null; // Almacena el menú que está activo.
@@ -44,30 +46,27 @@ namespace TestGit
 
         public void Pintar()
         {
-            this.menuMantenimiento.BackColor = Color.FromArgb(27, 43, 66);
+            this.menuMantenimiento.BackColor = Color.FromArgb(23, 24, 28);
             this.menuAutos.BackColor = Color.FromArgb(23, 24, 28);
             this.menuReserva.BackColor = Color.FromArgb(23, 24, 28);
             // Definimos conjuntos de tipos de formularios para cada menú
             var mantenimientoForms = new HashSet<Type>
-    {
-                //Si tenemos submenus
-        //typeof(FrmCategoria),
-        //typeof(FrmCupon),
-        //typeof(FrmNegocio),
-        //typeof(FrmProducto)
-    };
+            {
+                typeof(FrmNegocio),
+                typeof(FrmBackup)
+            };
 
             var autosForms = new HashSet<Type>
-    {
-        //typeof(FrmDetalleCompra),
-        //typeof(FrmCompras)
-    };
+            {
+                typeof(FrmCatalogo),
+                typeof(FrmAutos)
+            };
 
             var reservasForms = new HashSet<Type>
-    {
-        //typeof(FrmDetalleVenta),
-        //typeof(FrmVentas)
-    };
+            {
+                typeof(FrmReserva),
+                typeof(FrmDetalleReserva)
+            };
 
             // Inicializamos el color de fondo por defecto
             Color defaultColor = Color.FromArgb(23, 24, 28);
@@ -209,6 +208,35 @@ namespace TestGit
         {
             abrirFormulario((IconMenuItem)sender, new FrmCatalogo()); // Abre el formulario de inicio.
             this.lblIndicador.Text = "Catalogo";
+        }
+
+        public void Reservas(Autos pAuto)
+        {
+            abrirFormulario(menuReserva, new FrmReserva(pAuto));
+            this.lblIndicador.Text = "Reservas";
+        }
+
+        private void Inicio_Load(object sender, EventArgs e)
+        {
+
+            DateTime fecha = DateTime.Now;
+
+            bool resultado = new CN_Backup().Backup(fecha);
+            if (resultado == true)
+            {
+                MessageBox.Show("Se esta realizando una copia de seguridad automatica, aguarde", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+
+
+            if(user.oPerfil.Descripcion == "Encargado")
+            {
+                this.menuMantenimiento.Visible = false;
+                this.menuUsuarios.Visible = false;
+                this.menuGraficos.Visible = false;
+
+            }
+
+
         }
     }
 }

@@ -17,7 +17,7 @@ namespace TestGit.Modales
     {
 
 
-        private Autos oAuto = new Autos();
+        public Autos oAuto = new Autos();
        
         public TarjetaAuto()
         {
@@ -143,6 +143,21 @@ namespace TestGit.Modales
                 {
                     MessageBox.Show(Mensaje,"Error",MessageBoxButtons.OK);
                 }
+            }
+        }
+
+        private void btnReserva_Click(object sender, EventArgs e)
+        {
+            Envio(oAuto);
+        }
+
+        private void Envio(Autos pAuto)
+        {
+            // Aquí se puede notificar al formulario principal o cambiar el estado de visibilidad
+            if (this.ParentForm is FrmCatalogo mainForm)  // Verificamos que el formulario principal sea el adecuado
+            {
+
+                mainForm.Envio(pAuto); // Llamamos a un método en el formulario principal
             }
         }
     }

@@ -382,6 +382,7 @@
             this.Controls.Add(this.txtAño);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "mdAutos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "mdAutos";
             this.Load += new System.EventHandler(this.mdAutos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

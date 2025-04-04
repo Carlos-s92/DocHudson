@@ -66,7 +66,7 @@ namespace CapaDatos
                     query.AppendLine("update Negocio set Nombre = @Nombre,");
                     query.AppendLine("Imagen = @Imagen,");
                     query.AppendLine("Direccion = @Direccion");
-                    query.AppendLine("where IdNegocio = 1");
+                    query.AppendLine("where Id_Negocio = 1");
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), conexion);
                     cmd.Parameters.AddWithValue("@Nombre", obj.Nombre);
