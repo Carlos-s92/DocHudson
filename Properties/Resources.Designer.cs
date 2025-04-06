@@ -121,6 +121,37 @@ namespace TestGit.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;es&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;meta charset=&quot;UTF-8&quot;&gt;
+        ///    &lt;title&gt;Factura de Reserva - Veh�culo de Alquiler&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        body {
+        ///            font-family: Arial, sans-serif;
+        ///            margin: 40px;
+        ///            color: #333;
+        ///        }
+        ///
+        ///        .factura {
+        ///            max-width: 800px;
+        ///            margin: auto;
+        ///            border: 1px solid #ccc;
+        ///            padding: 20px;
+        ///        }
+        ///
+        ///        h1, h2 {
+        ///            text-align: center;
+        ///            color: #2c3e50;
+        ///    [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string PlantillaReserva {
+            get {
+                return ResourceManager.GetString("PlantillaReserva", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Vicente1 {

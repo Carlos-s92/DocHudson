@@ -1,4 +1,5 @@
 ﻿using CapaEntidad;
+using CapaNegocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,17 +35,71 @@ namespace TestGit
 
         }
 
+        public bool Validaciones()
+        {
+            bool validaciones = true;
+
+            if(txtIdAuto.Text == "0")
+            {
+                validaciones = false;
+            }
+            if(txtIdCliente.Text == "0")
+            {
+                validaciones = false;
+            }
+            if(dtpFechaI.Value >= dtpFechaF.Value)
+            {
+                validaciones = false;
+            }
+
+            return validaciones;
+        }
+
+
         private void BtnGuardar2_Click(object sender, EventArgs e)
         {
-            using (var modal = new mdPagos())
+            if (Validaciones())
             {
-                var result = modal.ShowDialog(); // Muestra el diálogo modal.
-
-                if (result == DialogResult.OK) // Si se selecciona un Cliente, llena los campos de Cliente y precio.
+                using (var modal = new mdPagos())
                 {
+                    var result = modal.ShowDialog(); // Muestra el diálogo modal.
 
+                    if (result == DialogResult.OK) // Si se selecciona un Cliente, llena los campos de Cliente y precio.
+                    {
+                        String Mensaje = string.Empty;
+                        if(modal.Id_Pago != 0)
+                        {
+                            Reserva oReserva = new Reserva();
+
+                            oReserva.oCliente.Id_Cliente= Convert.ToInt32(txtIdCliente.Text);
+                            oReserva.oAuto.Id_Auto = Convert.ToInt32(txtIdAuto.Text);
+                            oReserva.Estado = true;
+                            oReserva.Fecha_Fin = dtpFechaF.Value;
+                            oReserva.Fecha_Inicio = dtpFechaI.Value;
+                            oReserva.oPago.Id_Pago = modal.Id_Pago;
+
+                            int id = new CN_Reserva().Registrar(oReserva,out Mensaje);
+
+                            if(id != 0)
+                            {
+                                MessageBox.Show("Reserva Generada con Exito:" + " " + id,"Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("La Reserva no pudo ser Generada","Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo registrar la reserva", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
             }
+
+
+
         }
 
         private void BtnLimpiar2_Click(object sender, EventArgs e)

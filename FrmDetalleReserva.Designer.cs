@@ -28,24 +28,212 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.dtpFechaF = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaI = new System.Windows.Forms.DateTimePicker();
+            this.txtTotal = new CustomControls.RJControls.RJTextBox();
+            this.txtMarca = new CustomControls.RJControls.RJTextBox();
+            this.rjButton4 = new CustomControls.RJControls.RJButton();
+            this.rjButton3 = new CustomControls.RJControls.RJButton();
+            this.rjButton1 = new CustomControls.RJControls.RJButton();
+            this.rjButton2 = new CustomControls.RJControls.RJButton();
+            this.txtBusqueda = new CustomControls.RJControls.RJTextBox();
             this.txtConsumo = new CustomControls.RJControls.RJTextBox();
             this.txtModelo = new CustomControls.RJControls.RJTextBox();
             this.txtKilometros = new CustomControls.RJControls.RJTextBox();
             this.txtMatricula = new CustomControls.RJControls.RJTextBox();
             this.txtAño = new CustomControls.RJControls.RJTextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
-            this.rjTextBox2 = new CustomControls.RJControls.RJTextBox();
-            this.txtCorreo = new CustomControls.RJControls.RJTextBox();
+            this.txtDomicilio = new CustomControls.RJControls.RJTextBox();
+            this.txtLicencia = new CustomControls.RJControls.RJTextBox();
             this.txtTelefono = new CustomControls.RJControls.RJTextBox();
             this.txtDocumento = new CustomControls.RJControls.RJTextBox();
             this.txtNombre = new CustomControls.RJControls.RJTextBox();
-            this.rjButton2 = new CustomControls.RJControls.RJButton();
-            this.txtBusqueda = new CustomControls.RJControls.RJTextBox();
-            this.rjButton1 = new CustomControls.RJControls.RJButton();
-            this.rjButton3 = new CustomControls.RJControls.RJButton();
-            this.rjButton4 = new CustomControls.RJControls.RJButton();
             this.SuspendLayout();
+            // 
+            // dtpFechaF
+            // 
+            this.dtpFechaF.CalendarForeColor = System.Drawing.Color.White;
+            this.dtpFechaF.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.dtpFechaF.CalendarTitleForeColor = System.Drawing.Color.White;
+            this.dtpFechaF.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaF.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaF.Location = new System.Drawing.Point(483, 532);
+            this.dtpFechaF.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaF.Name = "dtpFechaF";
+            this.dtpFechaF.Size = new System.Drawing.Size(446, 33);
+            this.dtpFechaF.TabIndex = 161;
+            // 
+            // dtpFechaI
+            // 
+            this.dtpFechaI.CalendarForeColor = System.Drawing.Color.White;
+            this.dtpFechaI.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.dtpFechaI.CalendarTitleForeColor = System.Drawing.Color.White;
+            this.dtpFechaI.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaI.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaI.Location = new System.Drawing.Point(38, 532);
+            this.dtpFechaI.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaI.Name = "dtpFechaI";
+            this.dtpFechaI.Size = new System.Drawing.Size(396, 33);
+            this.dtpFechaI.TabIndex = 160;
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.txtTotal.BorderColor = System.Drawing.Color.DimGray;
+            this.txtTotal.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
+            this.txtTotal.BorderRadius = 10;
+            this.txtTotal.BorderSize = 2;
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.txtTotal.ForeColor = System.Drawing.Color.White;
+            this.txtTotal.IsReadOnly = true;
+            this.txtTotal.Location = new System.Drawing.Point(166, 578);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTotal.Multiline = false;
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtTotal.PasswordChar = false;
+            this.txtTotal.PlaceholderColor = System.Drawing.Color.White;
+            this.txtTotal.PlaceholderText = "Total";
+            this.txtTotal.ShortcutsEnabled = false;
+            this.txtTotal.Size = new System.Drawing.Size(96, 36);
+            this.txtTotal.TabIndex = 173;
+            this.txtTotal.Texts = "";
+            this.txtTotal.UnderlinedStyle = true;
+            this.txtTotal.Visible = false;
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.txtMarca.BorderColor = System.Drawing.Color.DimGray;
+            this.txtMarca.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
+            this.txtMarca.BorderRadius = 10;
+            this.txtMarca.BorderSize = 2;
+            this.txtMarca.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.txtMarca.ForeColor = System.Drawing.Color.White;
+            this.txtMarca.IsReadOnly = false;
+            this.txtMarca.Location = new System.Drawing.Point(483, 438);
+            this.txtMarca.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMarca.Multiline = false;
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtMarca.PasswordChar = false;
+            this.txtMarca.PlaceholderColor = System.Drawing.Color.White;
+            this.txtMarca.PlaceholderText = "Marca";
+            this.txtMarca.ShortcutsEnabled = false;
+            this.txtMarca.Size = new System.Drawing.Size(446, 36);
+            this.txtMarca.TabIndex = 172;
+            this.txtMarca.Texts = "";
+            this.txtMarca.UnderlinedStyle = true;
+            // 
+            // rjButton4
+            // 
+            this.rjButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.rjButton4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.rjButton4.BorderColor = System.Drawing.Color.DimGray;
+            this.rjButton4.BorderRadius = 20;
+            this.rjButton4.BorderSize = 2;
+            this.rjButton4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjButton4.FlatAppearance.BorderSize = 0;
+            this.rjButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton4.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.rjButton4.Location = new System.Drawing.Point(840, 620);
+            this.rjButton4.Margin = new System.Windows.Forms.Padding(2);
+            this.rjButton4.Name = "rjButton4";
+            this.rjButton4.Size = new System.Drawing.Size(89, 48);
+            this.rjButton4.TabIndex = 171;
+            this.rjButton4.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.rjButton4.UseVisualStyleBackColor = false;
+            this.rjButton4.Click += new System.EventHandler(this.rjButton4_Click);
+            // 
+            // rjButton3
+            // 
+            this.rjButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.rjButton3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.rjButton3.BorderColor = System.Drawing.Color.DimGray;
+            this.rjButton3.BorderRadius = 20;
+            this.rjButton3.BorderSize = 2;
+            this.rjButton3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjButton3.FlatAppearance.BorderSize = 0;
+            this.rjButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.rjButton3.Location = new System.Drawing.Point(543, 620);
+            this.rjButton3.Margin = new System.Windows.Forms.Padding(2);
+            this.rjButton3.Name = "rjButton3";
+            this.rjButton3.Size = new System.Drawing.Size(196, 48);
+            this.rjButton3.TabIndex = 170;
+            this.rjButton3.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.rjButton3.UseVisualStyleBackColor = false;
+            this.rjButton3.Click += new System.EventHandler(this.rjButton3_Click);
+            // 
+            // rjButton1
+            // 
+            this.rjButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.rjButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.rjButton1.BorderColor = System.Drawing.Color.DimGray;
+            this.rjButton1.BorderRadius = 20;
+            this.rjButton1.BorderSize = 2;
+            this.rjButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjButton1.FlatAppearance.BorderSize = 0;
+            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.rjButton1.Location = new System.Drawing.Point(111, 620);
+            this.rjButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.rjButton1.Name = "rjButton1";
+            this.rjButton1.Size = new System.Drawing.Size(196, 48);
+            this.rjButton1.TabIndex = 169;
+            this.rjButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.rjButton1.UseVisualStyleBackColor = false;
+            this.rjButton1.Click += new System.EventHandler(this.rjButton1_Click);
+            // 
+            // rjButton2
+            // 
+            this.rjButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.rjButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.rjButton2.BorderColor = System.Drawing.Color.DimGray;
+            this.rjButton2.BorderRadius = 20;
+            this.rjButton2.BorderSize = 2;
+            this.rjButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjButton2.FlatAppearance.BorderSize = 0;
+            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.rjButton2.Location = new System.Drawing.Point(568, 24);
+            this.rjButton2.Margin = new System.Windows.Forms.Padding(2);
+            this.rjButton2.Name = "rjButton2";
+            this.rjButton2.Size = new System.Drawing.Size(196, 48);
+            this.rjButton2.TabIndex = 168;
+            this.rjButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.rjButton2.UseVisualStyleBackColor = false;
+            this.rjButton2.Click += new System.EventHandler(this.rjButton2_Click);
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.txtBusqueda.BorderColor = System.Drawing.Color.DimGray;
+            this.txtBusqueda.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
+            this.txtBusqueda.BorderRadius = 10;
+            this.txtBusqueda.BorderSize = 2;
+            this.txtBusqueda.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusqueda.ForeColor = System.Drawing.Color.White;
+            this.txtBusqueda.IsReadOnly = false;
+            this.txtBusqueda.Location = new System.Drawing.Point(38, 27);
+            this.txtBusqueda.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBusqueda.Multiline = false;
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtBusqueda.PasswordChar = false;
+            this.txtBusqueda.PlaceholderColor = System.Drawing.Color.White;
+            this.txtBusqueda.PlaceholderText = "Busqueda...";
+            this.txtBusqueda.ShortcutsEnabled = false;
+            this.txtBusqueda.Size = new System.Drawing.Size(453, 45);
+            this.txtBusqueda.TabIndex = 167;
+            this.txtBusqueda.Texts = "";
+            this.txtBusqueda.UnderlinedStyle = true;
+            this.txtBusqueda._TextChanged += new System.EventHandler(this.txtBusqueda__TextChanged);
+            this.txtBusqueda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBusqueda_KeyDown);
             // 
             // txtConsumo
             // 
@@ -167,79 +355,53 @@
             this.txtAño.Texts = "";
             this.txtAño.UnderlinedStyle = true;
             // 
-            // dateTimePicker1
+            // txtDomicilio
             // 
-            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.White;
-            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.White;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(483, 532);
-            this.dateTimePicker1.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(446, 33);
-            this.dateTimePicker1.TabIndex = 161;
+            this.txtDomicilio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.txtDomicilio.BorderColor = System.Drawing.Color.DimGray;
+            this.txtDomicilio.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
+            this.txtDomicilio.BorderRadius = 10;
+            this.txtDomicilio.BorderSize = 2;
+            this.txtDomicilio.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.txtDomicilio.ForeColor = System.Drawing.Color.White;
+            this.txtDomicilio.IsReadOnly = false;
+            this.txtDomicilio.Location = new System.Drawing.Point(38, 239);
+            this.txtDomicilio.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDomicilio.Multiline = false;
+            this.txtDomicilio.Name = "txtDomicilio";
+            this.txtDomicilio.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtDomicilio.PasswordChar = false;
+            this.txtDomicilio.PlaceholderColor = System.Drawing.Color.White;
+            this.txtDomicilio.PlaceholderText = "Calle, Numero";
+            this.txtDomicilio.ShortcutsEnabled = false;
+            this.txtDomicilio.Size = new System.Drawing.Size(396, 36);
+            this.txtDomicilio.TabIndex = 159;
+            this.txtDomicilio.Texts = "";
+            this.txtDomicilio.UnderlinedStyle = true;
             // 
-            // dtpFecha
+            // txtLicencia
             // 
-            this.dtpFecha.CalendarForeColor = System.Drawing.Color.White;
-            this.dtpFecha.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.dtpFecha.CalendarTitleForeColor = System.Drawing.Color.White;
-            this.dtpFecha.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(38, 532);
-            this.dtpFecha.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(396, 33);
-            this.dtpFecha.TabIndex = 160;
-            // 
-            // rjTextBox2
-            // 
-            this.rjTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.rjTextBox2.BorderColor = System.Drawing.Color.DimGray;
-            this.rjTextBox2.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
-            this.rjTextBox2.BorderRadius = 10;
-            this.rjTextBox2.BorderSize = 2;
-            this.rjTextBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.rjTextBox2.ForeColor = System.Drawing.Color.White;
-            this.rjTextBox2.IsReadOnly = false;
-            this.rjTextBox2.Location = new System.Drawing.Point(38, 239);
-            this.rjTextBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox2.Multiline = false;
-            this.rjTextBox2.Name = "rjTextBox2";
-            this.rjTextBox2.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.rjTextBox2.PasswordChar = false;
-            this.rjTextBox2.PlaceholderColor = System.Drawing.Color.White;
-            this.rjTextBox2.PlaceholderText = "Calle, Numero";
-            this.rjTextBox2.ShortcutsEnabled = false;
-            this.rjTextBox2.Size = new System.Drawing.Size(396, 36);
-            this.rjTextBox2.TabIndex = 159;
-            this.rjTextBox2.Texts = "";
-            this.rjTextBox2.UnderlinedStyle = true;
-            // 
-            // txtCorreo
-            // 
-            this.txtCorreo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.txtCorreo.BorderColor = System.Drawing.Color.DimGray;
-            this.txtCorreo.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
-            this.txtCorreo.BorderRadius = 10;
-            this.txtCorreo.BorderSize = 2;
-            this.txtCorreo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.txtCorreo.ForeColor = System.Drawing.Color.White;
-            this.txtCorreo.IsReadOnly = false;
-            this.txtCorreo.Location = new System.Drawing.Point(483, 114);
-            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCorreo.Multiline = false;
-            this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtCorreo.PasswordChar = false;
-            this.txtCorreo.PlaceholderColor = System.Drawing.Color.White;
-            this.txtCorreo.PlaceholderText = "Licencia de Conducir";
-            this.txtCorreo.ShortcutsEnabled = false;
-            this.txtCorreo.Size = new System.Drawing.Size(446, 36);
-            this.txtCorreo.TabIndex = 157;
-            this.txtCorreo.Texts = "";
-            this.txtCorreo.UnderlinedStyle = true;
+            this.txtLicencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.txtLicencia.BorderColor = System.Drawing.Color.DimGray;
+            this.txtLicencia.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
+            this.txtLicencia.BorderRadius = 10;
+            this.txtLicencia.BorderSize = 2;
+            this.txtLicencia.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.txtLicencia.ForeColor = System.Drawing.Color.White;
+            this.txtLicencia.IsReadOnly = false;
+            this.txtLicencia.Location = new System.Drawing.Point(483, 114);
+            this.txtLicencia.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLicencia.Multiline = false;
+            this.txtLicencia.Name = "txtLicencia";
+            this.txtLicencia.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtLicencia.PasswordChar = false;
+            this.txtLicencia.PlaceholderColor = System.Drawing.Color.White;
+            this.txtLicencia.PlaceholderText = "Licencia de Conducir";
+            this.txtLicencia.ShortcutsEnabled = false;
+            this.txtLicencia.Size = new System.Drawing.Size(446, 36);
+            this.txtLicencia.TabIndex = 157;
+            this.txtLicencia.Texts = "";
+            this.txtLicencia.UnderlinedStyle = true;
             // 
             // txtTelefono
             // 
@@ -313,117 +475,14 @@
             this.txtNombre.Texts = "";
             this.txtNombre.UnderlinedStyle = true;
             // 
-            // rjButton2
-            // 
-            this.rjButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton2.BorderColor = System.Drawing.Color.DimGray;
-            this.rjButton2.BorderRadius = 20;
-            this.rjButton2.BorderSize = 2;
-            this.rjButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton2.FlatAppearance.BorderSize = 0;
-            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton2.Location = new System.Drawing.Point(568, 24);
-            this.rjButton2.Margin = new System.Windows.Forms.Padding(2);
-            this.rjButton2.Name = "rjButton2";
-            this.rjButton2.Size = new System.Drawing.Size(196, 48);
-            this.rjButton2.TabIndex = 168;
-            this.rjButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton2.UseVisualStyleBackColor = false;
-            // 
-            // txtBusqueda
-            // 
-            this.txtBusqueda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.txtBusqueda.BorderColor = System.Drawing.Color.DimGray;
-            this.txtBusqueda.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
-            this.txtBusqueda.BorderRadius = 10;
-            this.txtBusqueda.BorderSize = 2;
-            this.txtBusqueda.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBusqueda.ForeColor = System.Drawing.Color.White;
-            this.txtBusqueda.IsReadOnly = false;
-            this.txtBusqueda.Location = new System.Drawing.Point(38, 27);
-            this.txtBusqueda.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBusqueda.Multiline = false;
-            this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtBusqueda.PasswordChar = false;
-            this.txtBusqueda.PlaceholderColor = System.Drawing.Color.White;
-            this.txtBusqueda.PlaceholderText = "Busqueda...";
-            this.txtBusqueda.ShortcutsEnabled = false;
-            this.txtBusqueda.Size = new System.Drawing.Size(453, 45);
-            this.txtBusqueda.TabIndex = 167;
-            this.txtBusqueda.Texts = "";
-            this.txtBusqueda.UnderlinedStyle = true;
-            this.txtBusqueda._TextChanged += new System.EventHandler(this.txtBusqueda__TextChanged);
-            // 
-            // rjButton1
-            // 
-            this.rjButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton1.BorderColor = System.Drawing.Color.DimGray;
-            this.rjButton1.BorderRadius = 20;
-            this.rjButton1.BorderSize = 2;
-            this.rjButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton1.FlatAppearance.BorderSize = 0;
-            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton1.Location = new System.Drawing.Point(111, 620);
-            this.rjButton1.Margin = new System.Windows.Forms.Padding(2);
-            this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(196, 48);
-            this.rjButton1.TabIndex = 169;
-            this.rjButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton1.UseVisualStyleBackColor = false;
-            // 
-            // rjButton3
-            // 
-            this.rjButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton3.BorderColor = System.Drawing.Color.DimGray;
-            this.rjButton3.BorderRadius = 20;
-            this.rjButton3.BorderSize = 2;
-            this.rjButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton3.FlatAppearance.BorderSize = 0;
-            this.rjButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton3.Location = new System.Drawing.Point(543, 620);
-            this.rjButton3.Margin = new System.Windows.Forms.Padding(2);
-            this.rjButton3.Name = "rjButton3";
-            this.rjButton3.Size = new System.Drawing.Size(196, 48);
-            this.rjButton3.TabIndex = 170;
-            this.rjButton3.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton3.UseVisualStyleBackColor = false;
-            // 
-            // rjButton4
-            // 
-            this.rjButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton4.BorderColor = System.Drawing.Color.DimGray;
-            this.rjButton4.BorderRadius = 20;
-            this.rjButton4.BorderSize = 2;
-            this.rjButton4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton4.FlatAppearance.BorderSize = 0;
-            this.rjButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton4.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton4.Location = new System.Drawing.Point(840, 620);
-            this.rjButton4.Margin = new System.Windows.Forms.Padding(2);
-            this.rjButton4.Name = "rjButton4";
-            this.rjButton4.Size = new System.Drawing.Size(89, 48);
-            this.rjButton4.TabIndex = 171;
-            this.rjButton4.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton4.UseVisualStyleBackColor = false;
-            // 
             // FrmDetalleReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(19)))));
             this.ClientSize = new System.Drawing.Size(982, 726);
+            this.Controls.Add(this.txtTotal);
+            this.Controls.Add(this.txtMarca);
             this.Controls.Add(this.rjButton4);
             this.Controls.Add(this.rjButton3);
             this.Controls.Add(this.rjButton1);
@@ -434,10 +493,10 @@
             this.Controls.Add(this.txtKilometros);
             this.Controls.Add(this.txtMatricula);
             this.Controls.Add(this.txtAño);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.dtpFecha);
-            this.Controls.Add(this.rjTextBox2);
-            this.Controls.Add(this.txtCorreo);
+            this.Controls.Add(this.dtpFechaF);
+            this.Controls.Add(this.dtpFechaI);
+            this.Controls.Add(this.txtDomicilio);
+            this.Controls.Add(this.txtLicencia);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtDocumento);
             this.Controls.Add(this.txtNombre);
@@ -455,10 +514,10 @@
         private CustomControls.RJControls.RJTextBox txtKilometros;
         private CustomControls.RJControls.RJTextBox txtMatricula;
         private CustomControls.RJControls.RJTextBox txtAño;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dtpFecha;
-        private CustomControls.RJControls.RJTextBox rjTextBox2;
-        private CustomControls.RJControls.RJTextBox txtCorreo;
+        private System.Windows.Forms.DateTimePicker dtpFechaF;
+        private System.Windows.Forms.DateTimePicker dtpFechaI;
+        private CustomControls.RJControls.RJTextBox txtDomicilio;
+        private CustomControls.RJControls.RJTextBox txtLicencia;
         private CustomControls.RJControls.RJTextBox txtTelefono;
         private CustomControls.RJControls.RJTextBox txtDocumento;
         private CustomControls.RJControls.RJTextBox txtNombre;
@@ -467,5 +526,7 @@
         private CustomControls.RJControls.RJButton rjButton1;
         private CustomControls.RJControls.RJButton rjButton3;
         private CustomControls.RJControls.RJButton rjButton4;
+        private CustomControls.RJControls.RJTextBox txtMarca;
+        private CustomControls.RJControls.RJTextBox txtTotal;
     }
 }

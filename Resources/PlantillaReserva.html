@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Factura de Reserva - Veh�culo de Alquiler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            color: #333;
+        }
+
+        .factura {
+            max-width: 800px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .info, .detalle, .total {
+            margin-top: 20px;
+        }
+
+            .info td, .detalle th, .detalle td {
+                padding: 8px;
+                border: 1px solid #ccc;
+            }
+
+        .detalle {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .total {
+            text-align: right;
+            font-size: 1.2em;
+            margin-top: 30px;
+        }
+
+        .firma {
+            margin-top: 50px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="factura">
+        <h1>@NombreEmpresa</h1>
+        <h2>Factura de Reserva</h2>
+
+        <div class="info">
+            <table>
+                <tr>
+                    <td><strong>Cliente:</strong> @Cliente</td>
+                    <td><strong>Fecha de Emisi�n:</strong> @FechaActual</td>
+                </tr>
+                <tr>
+                    <td><strong>Tel�fono:</strong> @Telefono</td>
+                    <td><strong>N�mero de Reserva:</strong> @NumeroReserva</td>
+                </tr>
+            </table>
+        </div>
+
+        <table class="detalle">
+            <thead>
+                <tr>
+                    <th>Veh�culo</th>
+                    <th>Modelo</th>
+                    <th>Placa</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th>D�as</th>
+                    <th>Precio x D�a</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Marca</td>
+                    <td>@Modelo</td>
+                    <td>@Matricula</td>
+                    <td>@FechaInicio</td>
+                    <td>@FechaFin</td>
+                    <td>@Dias</td>
+                    <td>@PrecioDia</td>
+                    <td>@Total</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="total">
+            <p><strong>Total a Pagar:</strong> @Total2</p>
+        </div>
+
+        <div class="firma">
+            <p>______________________________</p>
+            <p><em>Firma y sello de la agencia</em></p>
+        </div>
+    </div>
+</body>
+</html>

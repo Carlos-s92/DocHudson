@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CapaEntidad;
+using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,7 @@ namespace TestGit.Modales
 {
     public partial class mdPagos : Form
     {
+        public int Id_Pago = 0;
         public mdPagos()
         {
             InitializeComponent();
@@ -79,12 +82,32 @@ namespace TestGit.Modales
         {
             if (Validaciones())
             {
+                string Mensaje = string.Empty;
                 try
                 {
 
+                    Pago oPago = new Pago();
+
+                    oPago.Total = Convert.ToDecimal(txtMonto.Texts);
+                    if (btnEfectivo.Checked)
+                    {
+                        oPago.oTipoPago.Id_TipoPago = 1;
+                    }
+                    else
+                    {
+                        oPago.oTipoPago.Id_TipoPago = 2;
+                    }
+                    oPago.Fecha_Pago = System.DateTime.Now;
+                    oPago.Estado = true;
+                    int id = new CN_Pago().Registrar(oPago,out Mensaje);
+                    Id_Pago = id;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
-                catch (Exception ex) { 
-                
+                catch (Exception ex) {
+                   
+                    Mensaje = ex.Message;
+                    MessageBox.Show(Mensaje, "Error", MessageBoxButtons.OK);
                 }
             }
             else
