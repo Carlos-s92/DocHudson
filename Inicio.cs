@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestGit.Modales;
 
 namespace TestGit
 {
@@ -35,11 +36,17 @@ namespace TestGit
 
         private void BtnSalir_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Desea Cerrar la sesión?", "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            VentanaEmergente VE = new VentanaEmergente("Cerrar Sesion", "¿Está seguro que desea cerrar sesión?", "Interrogacion");
+            VE.ShowDialog(); //Mostramos el mensaje personalizado.
 
-            if (result == DialogResult.OK)
+            if (VE.DialogResult == DialogResult.Yes)
             {
-                this.Close(); // Cierra el formulario y finaliza la sesión.
+                VE.Close(); //Cerramos el mensaje personalizado una vez evaluado el "DialogResult"
+                this.Close(); // Cerramos el formulario "Inicio"
+            }
+            else
+            {
+                VE.Close(); //Cerramos el mensaje personalizado una vez evaluado el "DialogResult"
             }
         }
 
