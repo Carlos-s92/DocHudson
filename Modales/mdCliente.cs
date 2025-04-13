@@ -112,10 +112,10 @@ namespace TestGit.Modales
             {
                 _Cliente = new Cliente()
                 {
-                    Id_Cliente = Convert.ToInt32(dgvData.Rows[iRow].Cells["Id_Cliente"].Value.ToString()),
+                    Id_Cliente = Convert.ToInt32(dgvData.Rows[iRow].Cells["IdCliente"].Value.ToString()),
                     Dni = dgvData.Rows[iRow].Cells["Documento"].Value.ToString(),
                     Nombre = dgvData.Rows[iRow].Cells["NombreCompleto"].Value.ToString(),
-                    Licencia = dgvData.Rows[iRow].Cells["Licencia"].ToString(),
+                    Licencia = dgvData.Rows[iRow].Cells["Licencia"].Value.ToString(),
                     Telefono = dgvData.Rows[iRow].Cells["Telefono"].Value.ToString(),
                     Provincia = dgvData.Rows[iRow].Cells["Provincia"].Value.ToString(),
                     Localidad = dgvData.Rows[iRow].Cells["Localidad"].Value.ToString(),
