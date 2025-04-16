@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace CapaNegocio
 {
@@ -33,6 +34,7 @@ namespace CapaNegocio
             {
                 Mensaje += "Es Necesario los Kilometros del Auto\n";
             }
+            
             if (obj.Año <= 1886)
             {
                 Mensaje += "Es Necesario un Año Correcto del Auto\n";
@@ -109,5 +111,6 @@ namespace CapaNegocio
         {
             return objcd_Autos.Eliminar(obj, out Mensaje);
         }
+
     }
 }

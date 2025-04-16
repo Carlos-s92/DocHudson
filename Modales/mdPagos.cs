@@ -64,7 +64,6 @@ namespace TestGit.Modales
                 {
                     resultado = false;
                 }
-
             }
             else
             {
@@ -112,7 +111,7 @@ namespace TestGit.Modales
             }
             else
             {
-                MessageBox.Show("Debe completar todas los campos","Alerta",MessageBoxButtons.OK);
+                MessageBox.Show("Debe completar todos los campos","Alerta",MessageBoxButtons.OK);
             }
         }
     }

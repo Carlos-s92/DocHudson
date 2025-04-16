@@ -21,7 +21,7 @@ namespace CapaDatos
                 {
 
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("Select Id_Cliente, DNI, Nombre, Provincia, Localidad, Calle, Numero, Fecha_Nacimiento, Licencia, Telefono, Estado from Cliente");
+                    query.AppendLine("Select Id_Cliente, DNI, Nombre, Provincia, Localidad, Calle, Numero, Fecha_Nacimiento, Mail, Telefono, Estado from Cliente");
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
 
@@ -42,7 +42,7 @@ namespace CapaDatos
                                 Calle = dr["Calle"].ToString(),
                                 Numero = Convert.ToInt32(dr["Numero"]),
                                 Fecha_Nacimiento = Convert.ToDateTime(dr["Fecha_Nacimiento"]),
-                                Licencia = dr["Licencia"].ToString(),
+                                Mail = dr["Mail"].ToString(),
                                 Telefono = dr["Telefono"].ToString(),
                                 Estado = Convert.ToBoolean(dr["Estado"]),
                             });
@@ -121,7 +121,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("Localidad", obj.Localidad);
                     cmd.Parameters.AddWithValue("Calle", obj.Calle);
                     cmd.Parameters.AddWithValue("Numero", obj.Numero);
-                    cmd.Parameters.AddWithValue("Licencia", obj.Licencia);
+                    cmd.Parameters.AddWithValue("Mail", obj.Mail);
                     cmd.Parameters.AddWithValue("Telefono", obj.Telefono);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
                     cmd.Parameters.Add("IdUsuarioResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -168,7 +168,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("Localidad", obj.Localidad);
                     cmd.Parameters.AddWithValue("Calle", obj.Calle);
                     cmd.Parameters.AddWithValue("Numero", obj.Numero);
-                    cmd.Parameters.AddWithValue("Licencia", obj.Licencia);
+                    cmd.Parameters.AddWithValue("Mail", obj.Mail);
                     cmd.Parameters.AddWithValue("Telefono", obj.Telefono);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;

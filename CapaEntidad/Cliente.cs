@@ -16,7 +16,7 @@ namespace CapaEntidad
         public string Localidad { get; set; }
         public string Calle {  get; set; }
         public int Numero { get; set; }
-        public string Licencia { get; set; }
+        public string Mail { get; set; }
         public string Telefono { get; set; }
         public DateTime Fecha_Registro { get; set; }
         public bool Estado { get; set; }

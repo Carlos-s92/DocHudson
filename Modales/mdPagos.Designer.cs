@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtMonto = new CustomControls.RJControls.RJTextBox();
+            this.mdPagos2 = new CustomControls.RJControls.RJTextBox();
             this.btnTarjeta = new System.Windows.Forms.RadioButton();
             this.btnEfectivo = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.rjTextBox2 = new CustomControls.RJControls.RJTextBox();
+            this.txtMonto = new CustomControls.RJControls.RJTextBox();
             this.txtPaga = new CustomControls.RJControls.RJTextBox();
             this.txtCambio = new CustomControls.RJControls.RJTextBox();
             this.txtTarjeta = new CustomControls.RJControls.RJTextBox();
@@ -40,31 +40,31 @@
             this.btnCancelar = new CustomControls.RJControls.RJButton();
             this.SuspendLayout();
             // 
-            // txtMonto
+            // mdPagos2
             // 
-            this.txtMonto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.txtMonto.BorderColor = System.Drawing.Color.DimGray;
-            this.txtMonto.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txtMonto.BorderRadius = 0;
-            this.txtMonto.BorderSize = 2;
-            this.txtMonto.CausesValidation = false;
-            this.txtMonto.Enabled = false;
-            this.txtMonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMonto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtMonto.IsReadOnly = true;
-            this.txtMonto.Location = new System.Drawing.Point(13, 13);
-            this.txtMonto.Margin = new System.Windows.Forms.Padding(4);
-            this.txtMonto.Multiline = true;
-            this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtMonto.PasswordChar = false;
-            this.txtMonto.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtMonto.PlaceholderText = "";
-            this.txtMonto.ShortcutsEnabled = true;
-            this.txtMonto.Size = new System.Drawing.Size(651, 305);
-            this.txtMonto.TabIndex = 0;
-            this.txtMonto.Texts = "";
-            this.txtMonto.UnderlinedStyle = false;
+            this.mdPagos2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.mdPagos2.BorderColor = System.Drawing.Color.DimGray;
+            this.mdPagos2.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.mdPagos2.BorderRadius = 0;
+            this.mdPagos2.BorderSize = 2;
+            this.mdPagos2.CausesValidation = false;
+            this.mdPagos2.Enabled = false;
+            this.mdPagos2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mdPagos2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.mdPagos2.IsReadOnly = true;
+            this.mdPagos2.Location = new System.Drawing.Point(16, 30);
+            this.mdPagos2.Margin = new System.Windows.Forms.Padding(7);
+            this.mdPagos2.Multiline = true;
+            this.mdPagos2.Name = "mdPagos2";
+            this.mdPagos2.Padding = new System.Windows.Forms.Padding(18, 13, 18, 13);
+            this.mdPagos2.PasswordChar = false;
+            this.mdPagos2.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.mdPagos2.PlaceholderText = "";
+            this.mdPagos2.ShortcutsEnabled = true;
+            this.mdPagos2.Size = new System.Drawing.Size(1194, 563);
+            this.mdPagos2.TabIndex = 0;
+            this.mdPagos2.Texts = "";
+            this.mdPagos2.UnderlinedStyle = false;
             // 
             // btnTarjeta
             // 
@@ -72,9 +72,10 @@
             this.btnTarjeta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
             this.btnTarjeta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTarjeta.ForeColor = System.Drawing.Color.White;
-            this.btnTarjeta.Location = new System.Drawing.Point(54, 109);
+            this.btnTarjeta.Location = new System.Drawing.Point(99, 201);
+            this.btnTarjeta.Margin = new System.Windows.Forms.Padding(6);
             this.btnTarjeta.Name = "btnTarjeta";
-            this.btnTarjeta.Size = new System.Drawing.Size(87, 25);
+            this.btnTarjeta.Size = new System.Drawing.Size(143, 42);
             this.btnTarjeta.TabIndex = 1;
             this.btnTarjeta.TabStop = true;
             this.btnTarjeta.Text = "Tarjetas";
@@ -87,9 +88,10 @@
             this.btnEfectivo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
             this.btnEfectivo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEfectivo.ForeColor = System.Drawing.Color.White;
-            this.btnEfectivo.Location = new System.Drawing.Point(54, 151);
+            this.btnEfectivo.Location = new System.Drawing.Point(99, 279);
+            this.btnEfectivo.Margin = new System.Windows.Forms.Padding(6);
             this.btnEfectivo.Name = "btnEfectivo";
-            this.btnEfectivo.Size = new System.Drawing.Size(90, 25);
+            this.btnEfectivo.Size = new System.Drawing.Size(147, 42);
             this.btnEfectivo.TabIndex = 2;
             this.btnEfectivo.TabStop = true;
             this.btnEfectivo.Text = "Efectivo";
@@ -102,36 +104,37 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(40, 67);
+            this.label1.Location = new System.Drawing.Point(73, 124);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 21);
+            this.label1.Size = new System.Drawing.Size(234, 38);
             this.label1.TabIndex = 3;
             this.label1.Text = "Metodo de Pago";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // rjTextBox2
+            // txtMonto
             // 
-            this.rjTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.rjTextBox2.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.rjTextBox2.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.rjTextBox2.BorderRadius = 0;
-            this.rjTextBox2.BorderSize = 2;
-            this.rjTextBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox2.IsReadOnly = true;
-            this.rjTextBox2.Location = new System.Drawing.Point(279, 67);
-            this.rjTextBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox2.Multiline = false;
-            this.rjTextBox2.Name = "rjTextBox2";
-            this.rjTextBox2.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.rjTextBox2.PasswordChar = false;
-            this.rjTextBox2.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.rjTextBox2.PlaceholderText = "MONTO";
-            this.rjTextBox2.ShortcutsEnabled = false;
-            this.rjTextBox2.Size = new System.Drawing.Size(304, 36);
-            this.rjTextBox2.TabIndex = 4;
-            this.rjTextBox2.Texts = "";
-            this.rjTextBox2.UnderlinedStyle = true;
+            this.txtMonto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.txtMonto.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.txtMonto.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txtMonto.BorderRadius = 0;
+            this.txtMonto.BorderSize = 2;
+            this.txtMonto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMonto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtMonto.IsReadOnly = false;
+            this.txtMonto.Location = new System.Drawing.Point(512, 124);
+            this.txtMonto.Margin = new System.Windows.Forms.Padding(7);
+            this.txtMonto.Multiline = false;
+            this.txtMonto.Name = "txtMonto";
+            this.txtMonto.Padding = new System.Windows.Forms.Padding(18, 13, 18, 13);
+            this.txtMonto.PasswordChar = false;
+            this.txtMonto.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txtMonto.PlaceholderText = "MONTO";
+            this.txtMonto.ShortcutsEnabled = false;
+            this.txtMonto.Size = new System.Drawing.Size(557, 65);
+            this.txtMonto.TabIndex = 4;
+            this.txtMonto.Texts = "";
+            this.txtMonto.UnderlinedStyle = true;
             // 
             // txtPaga
             // 
@@ -142,17 +145,17 @@
             this.txtPaga.BorderSize = 2;
             this.txtPaga.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPaga.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPaga.IsReadOnly = true;
-            this.txtPaga.Location = new System.Drawing.Point(279, 121);
-            this.txtPaga.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPaga.IsReadOnly = false;
+            this.txtPaga.Location = new System.Drawing.Point(515, 229);
+            this.txtPaga.Margin = new System.Windows.Forms.Padding(7);
             this.txtPaga.Multiline = false;
             this.txtPaga.Name = "txtPaga";
-            this.txtPaga.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtPaga.Padding = new System.Windows.Forms.Padding(18, 13, 18, 13);
             this.txtPaga.PasswordChar = false;
             this.txtPaga.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtPaga.PlaceholderText = "Paga con";
             this.txtPaga.ShortcutsEnabled = false;
-            this.txtPaga.Size = new System.Drawing.Size(304, 36);
+            this.txtPaga.Size = new System.Drawing.Size(557, 65);
             this.txtPaga.TabIndex = 5;
             this.txtPaga.Texts = "";
             this.txtPaga.UnderlinedStyle = true;
@@ -166,17 +169,17 @@
             this.txtCambio.BorderSize = 2;
             this.txtCambio.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCambio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCambio.IsReadOnly = true;
-            this.txtCambio.Location = new System.Drawing.Point(279, 174);
-            this.txtCambio.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCambio.IsReadOnly = false;
+            this.txtCambio.Location = new System.Drawing.Point(512, 321);
+            this.txtCambio.Margin = new System.Windows.Forms.Padding(7);
             this.txtCambio.Multiline = false;
             this.txtCambio.Name = "txtCambio";
-            this.txtCambio.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtCambio.Padding = new System.Windows.Forms.Padding(18, 13, 18, 13);
             this.txtCambio.PasswordChar = false;
             this.txtCambio.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtCambio.PlaceholderText = "Cambio";
             this.txtCambio.ShortcutsEnabled = false;
-            this.txtCambio.Size = new System.Drawing.Size(304, 36);
+            this.txtCambio.Size = new System.Drawing.Size(557, 65);
             this.txtCambio.TabIndex = 6;
             this.txtCambio.Texts = "";
             this.txtCambio.UnderlinedStyle = true;
@@ -190,17 +193,17 @@
             this.txtTarjeta.BorderSize = 2;
             this.txtTarjeta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTarjeta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtTarjeta.IsReadOnly = true;
-            this.txtTarjeta.Location = new System.Drawing.Point(279, 121);
-            this.txtTarjeta.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTarjeta.IsReadOnly = false;
+            this.txtTarjeta.Location = new System.Drawing.Point(515, 229);
+            this.txtTarjeta.Margin = new System.Windows.Forms.Padding(7);
             this.txtTarjeta.Multiline = false;
             this.txtTarjeta.Name = "txtTarjeta";
-            this.txtTarjeta.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtTarjeta.Padding = new System.Windows.Forms.Padding(18, 13, 18, 13);
             this.txtTarjeta.PasswordChar = false;
             this.txtTarjeta.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtTarjeta.PlaceholderText = "Numero de Tarjeta";
             this.txtTarjeta.ShortcutsEnabled = false;
-            this.txtTarjeta.Size = new System.Drawing.Size(304, 36);
+            this.txtTarjeta.Size = new System.Drawing.Size(557, 65);
             this.txtTarjeta.TabIndex = 8;
             this.txtTarjeta.Texts = "";
             this.txtTarjeta.UnderlinedStyle = true;
@@ -216,9 +219,10 @@
             this.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmar.ForeColor = System.Drawing.Color.White;
-            this.btnConfirmar.Location = new System.Drawing.Point(279, 251);
+            this.btnConfirmar.Location = new System.Drawing.Point(512, 463);
+            this.btnConfirmar.Margin = new System.Windows.Forms.Padding(6);
             this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(133, 40);
+            this.btnConfirmar.Size = new System.Drawing.Size(244, 74);
             this.btnConfirmar.TabIndex = 9;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.TextColor = System.Drawing.Color.White;
@@ -236,9 +240,10 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(449, 251);
+            this.btnCancelar.Location = new System.Drawing.Point(823, 463);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(6);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(136, 40);
+            this.btnCancelar.Size = new System.Drawing.Size(249, 74);
             this.btnCancelar.TabIndex = 10;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextColor = System.Drawing.Color.White;
@@ -247,21 +252,22 @@
             // 
             // mdPagos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(19)))));
-            this.ClientSize = new System.Drawing.Size(677, 330);
+            this.ClientSize = new System.Drawing.Size(1241, 609);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.txtTarjeta);
             this.Controls.Add(this.txtCambio);
             this.Controls.Add(this.txtPaga);
-            this.Controls.Add(this.rjTextBox2);
+            this.Controls.Add(this.txtMonto);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEfectivo);
             this.Controls.Add(this.btnTarjeta);
-            this.Controls.Add(this.txtMonto);
+            this.Controls.Add(this.mdPagos2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "mdPagos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "mdPagos";
@@ -273,11 +279,11 @@
 
         #endregion
 
-        private CustomControls.RJControls.RJTextBox txtMonto;
+        private CustomControls.RJControls.RJTextBox mdPagos2;
         private System.Windows.Forms.RadioButton btnTarjeta;
         private System.Windows.Forms.RadioButton btnEfectivo;
         private System.Windows.Forms.Label label1;
-        private CustomControls.RJControls.RJTextBox rjTextBox2;
+        private CustomControls.RJControls.RJTextBox txtMonto;
         private CustomControls.RJControls.RJTextBox txtPaga;
         private CustomControls.RJControls.RJTextBox txtCambio;
         private CustomControls.RJControls.RJTextBox txtTarjeta;

@@ -51,6 +51,7 @@
     <Compile Include="CD_Reserva.cs" />
     <Compile Include="CD_Tipopago.cs" />
     <Compile Include="CD_Usuario.cs" />
+    <Compile Include="CD_Provincia.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

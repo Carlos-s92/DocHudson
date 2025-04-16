@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -42,6 +43,14 @@ namespace TestGit
             comboBusqueda.ValueMember = "Valor";
             comboBusqueda.SelectedIndex = 0;
 
+            /////////// Muestra las provincias en el comboProvincia//////////////////////////////////////////////////
+            List<Provincia> listaProvincias = new CN_Provincia().Listar();
+            foreach (Provincia item in listaProvincias)
+            {
+                comboProvincia.Items.Add(item.Nombre);
+            }
+            comboProvincia.SelectedIndex = 5;
+
             // Muestra los clientes en el DataGridView.
             List<Cliente> listaClientes = new CN_Cliente().Listar();
 
@@ -61,7 +70,7 @@ namespace TestGit
                                 item.Nombre,
                                 edad,
                                 item.Fecha_Nacimiento,
-                                item.Licencia,
+                                item.Mail,
                                 item.Provincia + " " + item.Localidad + " " + item.Calle + " " + item.Numero,
                                 item.Telefono,
                                 item.Estado == true ? 1 : 0, // Estado como valor
@@ -108,10 +117,11 @@ namespace TestGit
             this.txtLocalidad.Texts = "";
             this.txtProvincia.Texts = "";
             this.txtTelefono.Texts = "";
-            this.txtLicencia.Texts = "";
+            this.txtMail.Texts = "";
             this.txtid.Text = "0";
             txtindice.Text = "-1";
             comboEstado.SelectedIndex = 0;
+            comboProvincia.SelectedIndex = 5;
             dtpFecha.Value = System.DateTime.Now;
         }
 
@@ -142,11 +152,11 @@ namespace TestGit
                         Id_Cliente = Convert.ToInt32(txtid.Text),
                         Dni = txtDocumento.Texts,
                         Nombre = txtNombre.Texts,
-                        Provincia = txtProvincia.Texts,
+                        Provincia = comboProvincia.Text,
                         Localidad = txtLocalidad.Texts,
                         Calle = txtCalle.Texts,
                         Numero = Convert.ToInt32(txtNumero.Texts),
-                        Licencia = txtLicencia.Texts,
+                        Mail = txtMail.Texts,
                         Telefono = txtTelefono.Texts,
                         Fecha_Nacimiento = dtpFecha.Value,
                         Estado = Convert.ToInt32(((OpcionesCombo)comboEstado.SelectedItem).Valor) == 1 ? true : false
@@ -174,12 +184,12 @@ namespace TestGit
                                 txtNombre.Texts,
                                 edad,
                                 dtpFecha.Value,
-                                txtLicencia.Texts,
-                                txtProvincia.Texts + " " + txtLocalidad.Texts + " " + txtCalle.Texts + " " + txtNumero.Texts,
+                                txtMail.Texts,
+                                comboProvincia.Text + " " + txtLocalidad.Texts + " " + txtCalle.Texts + " " + txtNumero.Texts,
                                 txtTelefono.Texts,
                                 ((OpcionesCombo)comboEstado.SelectedItem).Valor.ToString(),
                                 ((OpcionesCombo)comboEstado.SelectedItem).Texto.ToString(),
-                                txtProvincia.Texts, 
+                                comboProvincia.Text, 
                                 txtLocalidad.Texts,
                                 txtCalle.Texts,
                                 txtNumero.Texts
@@ -203,12 +213,12 @@ namespace TestGit
                             row.Cells["NombreCompleto"].Value = txtNombre.Texts;
                             row.Cells["Edad"].Value = edad;
                             row.Cells["Fecha_Nacimiento"].Value = dtpFecha.Value;
-                            row.Cells["Licencia"].Value = txtLicencia.Texts;
-                            row.Cells["Domicilio"].Value = txtProvincia.Texts + " " + txtLocalidad.Texts + " " + txtCalle.Texts + " " + txtNumero.Texts;
+                            row.Cells["Mail"].Value = txtMail.Texts;
+                            row.Cells["Domicilio"].Value = comboProvincia.Text + " " + txtLocalidad.Texts + " " + txtCalle.Texts + " " + txtNumero.Texts;
                             row.Cells["Telefono"].Value = txtTelefono.Texts;
                             row.Cells["EstadoValor"].Value = ((OpcionesCombo)comboEstado.SelectedItem).Valor.ToString();
                             row.Cells["Estado"].Value = ((OpcionesCombo)comboEstado.SelectedItem).Texto.ToString();
-                            row.Cells["Provincia"].Value = txtProvincia.Texts;
+                            row.Cells["Provincia"].Value = comboProvincia.Text;
                             row.Cells["Localidad"].Value = txtLocalidad.Texts;
                             row.Cells["Calle"].Value = txtCalle.Texts;
                             row.Cells["Numero"].Value = txtNumero.Texts;
@@ -245,12 +255,12 @@ namespace TestGit
                 confirmacion = false;
             }
             // Verifica que el campo de Dirección no esté vacío.
-            if (txtCalle.Texts == "" || txtProvincia.Texts == "" || txtLocalidad.Texts == "" || txtNumero.Texts == "")
+            if (txtCalle.Texts == "" || comboProvincia.Text == "" || txtLocalidad.Texts == "" || txtNumero.Texts == "")
             {
                 confirmacion = false;
             }
             // Verifica que el correo tenga formato válido.
-            if (txtLicencia.Texts == "")
+            if (txtMail.Texts == "")
             {
                 confirmacion = false;
             }
@@ -355,9 +365,9 @@ namespace TestGit
                     txtDocumento.Texts = dgvData.Rows[indice].Cells["Documento"].Value.ToString();
                     txtNombre.Texts = dgvData.Rows[indice].Cells["NombreCompleto"].Value.ToString();
                     dtpFecha.Value = Convert.ToDateTime(dgvData.Rows[indice].Cells["Fecha_Nacimiento"].Value);
-                    txtLicencia.Texts = dgvData.Rows[indice].Cells["Licencia"].Value.ToString();
+                    txtMail.Texts = dgvData.Rows[indice].Cells["Mail"].Value.ToString();
 
-                    txtProvincia.Texts = dgvData.Rows[indice].Cells["Provincia"].Value.ToString();
+                    comboProvincia.Text = dgvData.Rows[indice].Cells["Provincia"].Value.ToString();
                     txtLocalidad.Texts = dgvData.Rows[indice].Cells["Localidad"].Value.ToString();
                     txtCalle.Texts = dgvData.Rows[indice].Cells["Calle"].Value.ToString();
                     txtNumero.Texts = dgvData.Rows[indice].Cells["Numero"].Value.ToString();
@@ -386,5 +396,67 @@ namespace TestGit
                 }
             }
         }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        private void txtDocumento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Escribe solo numeros
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Escribe solo numeros
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Escribe solo numeros
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Escribe solo Letras
+            if (Regex.IsMatch(e.KeyChar.ToString(), @"^[a-zA-Z\s\b]"))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true; 
+            }
+        }
+
+        private void txtCalle_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Escribe solo Letras
+            if (Regex.IsMatch(e.KeyChar.ToString(), @"^[a-zA-Z\s\b]"))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+
+
+
     }
 }

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autos.cs" />
+    <Compile Include="Provincia.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Negocio.cs" />
     <Compile Include="Pago.cs" />

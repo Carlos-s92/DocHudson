@@ -53,7 +53,7 @@ namespace CapaNegocio
             {
                 Mensaje += "Es Necesario el Numero de Calle del Cliente\n";
             }
-            if (obj.Licencia == "")
+            if (obj.Mail == "")
             {
                 Mensaje += "Es Necesario la Licencia del Cliente\n";
             }
@@ -105,7 +105,7 @@ namespace CapaNegocio
             {
                 Mensaje += "Es Necesario el Numero de Calle del Cliente\n";
             }
-            if (obj.Licencia == "")
+            if (obj.Mail == "")
             {
                 Mensaje += "Es Necesario la Licencia del Cliente\n";
             }

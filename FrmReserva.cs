@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestGit.Modales;
@@ -113,7 +114,7 @@ namespace TestGit
             this.txtIdCliente.Text = "0";
             this.txtAño.Texts = "";
             this.txtConsumo.Texts = "";
-            this.txtLicencia.Texts = "";
+            this.txtMail.Texts = "";
             this.txtDocumento.Texts = "";
             this.txtDomicilio.Texts = "";
             this.txtKilometros.Texts = "";
@@ -125,7 +126,7 @@ namespace TestGit
             this.dtpFechaF.Value = System.DateTime.Now;
         }
 
-        private void rjButton1_Click(object sender, EventArgs e)
+        private void rjButton1_Click(object sender, EventArgs e)//Botón para agregar Cliente
         {
             // Abre un modal para seleccionar un Cliente.
             using (var modal = new mdCliente())
@@ -137,7 +138,7 @@ namespace TestGit
                     txtIdCliente.Text = modal._Cliente.Id_Cliente.ToString();
                     txtDocumento.Texts = modal._Cliente.Dni.ToString();
                     txtNombre.Texts = modal._Cliente.Nombre.ToString();
-                    txtLicencia.Texts = modal._Cliente.Licencia.ToString();
+                    txtMail.Texts = modal._Cliente.Mail.ToString();
                     txtTelefono.Texts = modal._Cliente.Telefono.ToString();
 
                     string domicilio = modal._Cliente.Provincia + " " + modal._Cliente.Localidad + " " + modal._Cliente.Calle + " " + modal._Cliente.Numero.ToString();
@@ -174,5 +175,44 @@ namespace TestGit
             }
 
         }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void txtDocumento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Escribe solo numeros
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Escribe solo Letras
+            if (Regex.IsMatch(e.KeyChar.ToString(), @"^[a-zA-Z\s\b]"))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Escribe solo numeros
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+
     }
 }

@@ -61,7 +61,7 @@ namespace TestGit
                     this.txtDocumento.Texts = oCliente.Dni.ToString();
                     this.txtNombre.Texts = oCliente.Nombre.ToString();
                     this.txtTelefono.Texts = oCliente.Telefono.ToString();
-                    this.txtLicencia.Texts = oCliente.Licencia.ToString();
+                    this.txtLicencia.Texts = oCliente.Mail.ToString();
                     this.txtDomicilio.Texts = oCliente.Provincia + " " + oCliente.Localidad + " " + oCliente.Calle + " " + oCliente.Numero.ToString();
 
                     this.dtpFechaI.Value = oReserva.Fecha_Inicio;
