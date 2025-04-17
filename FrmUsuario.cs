@@ -347,5 +347,14 @@ namespace TestGit
                 }
             }
         }
+
+        private void txtDni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Escribe solo numeros
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

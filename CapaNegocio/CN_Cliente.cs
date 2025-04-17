@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CapaNegocio
@@ -55,9 +56,27 @@ namespace CapaNegocio
             }
             if (obj.Mail == "")
             {
-                Mensaje += "Es Necesario la Licencia del Cliente\n";
+                Mensaje += "Es Necesario el Mail del Cliente\n";
+            }
+            ////////////////////////////////////////////////////////////
+            if (!MailValido(obj.Mail))//Llamada al método para verificar mail
+            {
+                Mensaje += "Verificar que el Mail sea Correcto\n";
             }
 
+            DateTime fechaNacimiento = obj.Fecha_Nacimiento;//Cálculo de Edad y Mensaje si es menor de edad
+            int edad = DateTime.Now.Year - fechaNacimiento.Year;
+
+            if (fechaNacimiento > DateTime.Now.AddYears(-edad))
+            {
+                edad--;
+            }
+
+            if (edad < 18)
+            {
+                Mensaje += "El Cliente debe tener 18 años o más para Alquilar un Auto\n";
+            }
+            /////////////////////////////////////////////////////////////
 
             if (Mensaje != string.Empty)
             {
@@ -107,8 +126,27 @@ namespace CapaNegocio
             }
             if (obj.Mail == "")
             {
-                Mensaje += "Es Necesario la Licencia del Cliente\n";
+                Mensaje += "Es Necesario el Mail del Cliente\n";
             }
+            ///////////////////////////////////////////////////////////
+            if (!MailValido(obj.Mail))//Llamada al método para verificar mail
+            {
+                Mensaje += "Verificar que el Mail sea Correcto\n";
+            }
+
+            DateTime fechaNacimiento = obj.Fecha_Nacimiento;//Cálculo de Edad y Mensaje si es menor de edad
+            int edad = DateTime.Now.Year - fechaNacimiento.Year;
+
+            if (fechaNacimiento > DateTime.Now.AddYears(-edad))
+            {
+                edad--;
+            }
+
+            if (edad < 18)
+            {
+                Mensaje += "El Cliente debe tener 18 años o más para Alquilar un Auto\n";
+            }
+            ///////////////////////////////////////////////////////////
             if (Mensaje != string.Empty)
             {
                 return false;
@@ -123,6 +161,13 @@ namespace CapaNegocio
         public bool Eliminar(Cliente obj, out string Mensaje)
         {
             return objcd_cliente.Eliminar(obj, out Mensaje);
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        public bool MailValido(string email)//Método que verifica si el E-Mail es Válido, devuelve True en caso de ser verdadero
+        {
+            string regex = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, regex, RegexOptions.IgnoreCase);
         }
     }
 }

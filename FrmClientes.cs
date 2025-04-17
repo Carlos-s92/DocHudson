@@ -241,13 +241,13 @@ namespace TestGit
         private bool Validaciones()
         {
             bool confirmacion = true;
-            DateTime fechaNacimiento = dtpFecha.Value;
+            /*DateTime fechaNacimiento = dtpFecha.Value;
             int edad = DateTime.Now.Year - fechaNacimiento.Year;
 
             if (fechaNacimiento > DateTime.Now.AddYears(-edad))
             {
                 edad--;
-            }
+            }*/
 
             // Verifica que el campo de Documento no esté vacío.
             if (txtDocumento.Texts == "")
@@ -274,10 +274,10 @@ namespace TestGit
             {
                 confirmacion = false;
             }
-            if ( edad < 18)
+            /*if ( edad < 18)
             {
                 confirmacion = false;
-            }
+            }*/
 
             // Retorna el resultado de las validaciones.
             return confirmacion;
@@ -431,31 +431,45 @@ namespace TestGit
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Escribe solo Letras
-            if (Regex.IsMatch(e.KeyChar.ToString(), @"^[a-zA-Z\s\b]"))
+            // Letras
+            bool esLetra = char.IsLetter(e.KeyChar);
+
+            // Caracteres de control como borrar
+            bool esControl = char.IsControl(e.KeyChar);
+
+            // Acentos y Ñ
+            string acentos = "áéíóúÁÉÍÓÚñÑ";
+
+            // Tecla espacio
+            bool esEspacio = e.KeyChar == ' ';
+
+            if (!esLetra && !acentos.Contains(e.KeyChar) && !esControl && !esEspacio)
             {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true; 
+                e.Handled = true; // Bloquea el carácter
             }
         }
 
         private void txtCalle_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Escribe solo Letras
-            if (Regex.IsMatch(e.KeyChar.ToString(), @"^[a-zA-Z\s\b]"))
+            // Letras
+            bool esLetra = char.IsLetter(e.KeyChar);
+
+            // Caracteres de control como borrar
+            bool esControl = char.IsControl(e.KeyChar);
+
+            // Acentos y Ñ
+            string acentos = "áéíóúÁÉÍÓÚñÑ";
+
+            // Tecla espacio
+            bool esEspacio = e.KeyChar == ' ';
+
+            if (!esLetra && !acentos.Contains(e.KeyChar) && !esControl && !esEspacio)
             {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
+                e.Handled = true; // Bloquea el carácter
             }
         }
 
-
+        
 
 
     }

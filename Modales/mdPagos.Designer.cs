@@ -194,7 +194,7 @@
             this.txtTarjeta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTarjeta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtTarjeta.IsReadOnly = false;
-            this.txtTarjeta.Location = new System.Drawing.Point(515, 229);
+            this.txtTarjeta.Location = new System.Drawing.Point(512, 229);
             this.txtTarjeta.Margin = new System.Windows.Forms.Padding(7);
             this.txtTarjeta.Multiline = false;
             this.txtTarjeta.Name = "txtTarjeta";

@@ -28,10 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvData = new System.Windows.Forms.DataGridView();
+            this.btnseleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.IdCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreCompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha_Nacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstadoValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Provincia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.comboEstado = new System.Windows.Forms.ComboBox();
             this.txtindice = new System.Windows.Forms.TextBox();
@@ -50,21 +65,6 @@
             this.txtTelefono = new CustomControls.RJControls.RJTextBox();
             this.txtDocumento = new CustomControls.RJControls.RJTextBox();
             this.txtNombre = new CustomControls.RJControls.RJTextBox();
-            this.btnseleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.IdCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreCompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha_Nacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EstadoValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Provincia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,15 +75,15 @@
             this.dgvData.AllowUserToResizeColumns = false;
             this.dgvData.AllowUserToResizeRows = false;
             this.dgvData.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnseleccionar,
@@ -101,15 +101,15 @@
             this.Localidad,
             this.Calle,
             this.Numero});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvData.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvData.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvData.EnableHeadersVisualStyles = false;
             this.dgvData.Location = new System.Drawing.Point(82, 805);
             this.dgvData.Margin = new System.Windows.Forms.Padding(6);
@@ -118,9 +118,9 @@
             this.dgvData.ReadOnly = true;
             this.dgvData.RowHeadersVisible = false;
             this.dgvData.RowHeadersWidth = 72;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvData.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvData.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvData.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
             this.dgvData.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvData.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
@@ -131,18 +131,145 @@
             this.dgvData.TabIndex = 115;
             this.dgvData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellContentClick);
             // 
+            // btnseleccionar
+            // 
+            this.btnseleccionar.HeaderText = "";
+            this.btnseleccionar.MinimumWidth = 9;
+            this.btnseleccionar.Name = "btnseleccionar";
+            this.btnseleccionar.ReadOnly = true;
+            this.btnseleccionar.Width = 32;
+            // 
+            // IdCliente
+            // 
+            this.IdCliente.HeaderText = "IdCliente";
+            this.IdCliente.MinimumWidth = 9;
+            this.IdCliente.Name = "IdCliente";
+            this.IdCliente.ReadOnly = true;
+            this.IdCliente.Visible = false;
+            this.IdCliente.Width = 175;
+            // 
+            // Documento
+            // 
+            this.Documento.HeaderText = "Documento";
+            this.Documento.MinimumWidth = 9;
+            this.Documento.Name = "Documento";
+            this.Documento.ReadOnly = true;
+            this.Documento.Width = 175;
+            // 
+            // NombreCompleto
+            // 
+            this.NombreCompleto.HeaderText = "Nombre Completo";
+            this.NombreCompleto.MinimumWidth = 9;
+            this.NombreCompleto.Name = "NombreCompleto";
+            this.NombreCompleto.ReadOnly = true;
+            this.NombreCompleto.Width = 150;
+            // 
+            // Edad
+            // 
+            this.Edad.HeaderText = "Edad";
+            this.Edad.MinimumWidth = 9;
+            this.Edad.Name = "Edad";
+            this.Edad.ReadOnly = true;
+            this.Edad.Width = 175;
+            // 
+            // Fecha_Nacimiento
+            // 
+            this.Fecha_Nacimiento.HeaderText = "Fecha Nacimiento";
+            this.Fecha_Nacimiento.MinimumWidth = 9;
+            this.Fecha_Nacimiento.Name = "Fecha_Nacimiento";
+            this.Fecha_Nacimiento.ReadOnly = true;
+            this.Fecha_Nacimiento.Visible = false;
+            this.Fecha_Nacimiento.Width = 175;
+            // 
+            // Mail
+            // 
+            this.Mail.HeaderText = "Mail";
+            this.Mail.MinimumWidth = 9;
+            this.Mail.Name = "Mail";
+            this.Mail.ReadOnly = true;
+            this.Mail.Width = 112;
+            // 
+            // Domicilio
+            // 
+            this.Domicilio.HeaderText = "Domicilio";
+            this.Domicilio.MinimumWidth = 9;
+            this.Domicilio.Name = "Domicilio";
+            this.Domicilio.ReadOnly = true;
+            this.Domicilio.Width = 110;
+            // 
+            // Telefono
+            // 
+            this.Telefono.HeaderText = "Telefono";
+            this.Telefono.MinimumWidth = 9;
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            this.Telefono.Width = 175;
+            // 
+            // EstadoValor
+            // 
+            this.EstadoValor.HeaderText = "EstadoValor";
+            this.EstadoValor.MinimumWidth = 9;
+            this.EstadoValor.Name = "EstadoValor";
+            this.EstadoValor.ReadOnly = true;
+            this.EstadoValor.Visible = false;
+            this.EstadoValor.Width = 175;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.MinimumWidth = 9;
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            this.Estado.Width = 175;
+            // 
+            // Provincia
+            // 
+            this.Provincia.HeaderText = "Provincia";
+            this.Provincia.MinimumWidth = 9;
+            this.Provincia.Name = "Provincia";
+            this.Provincia.ReadOnly = true;
+            this.Provincia.Visible = false;
+            this.Provincia.Width = 175;
+            // 
+            // Localidad
+            // 
+            this.Localidad.HeaderText = "Localidad";
+            this.Localidad.MinimumWidth = 9;
+            this.Localidad.Name = "Localidad";
+            this.Localidad.ReadOnly = true;
+            this.Localidad.Visible = false;
+            this.Localidad.Width = 175;
+            // 
+            // Calle
+            // 
+            this.Calle.HeaderText = "Calle";
+            this.Calle.MinimumWidth = 9;
+            this.Calle.Name = "Calle";
+            this.Calle.ReadOnly = true;
+            this.Calle.Visible = false;
+            this.Calle.Width = 175;
+            // 
+            // Numero
+            // 
+            this.Numero.HeaderText = "Numero";
+            this.Numero.MinimumWidth = 9;
+            this.Numero.Name = "Numero";
+            this.Numero.ReadOnly = true;
+            this.Numero.Visible = false;
+            this.Numero.Width = 175;
+            // 
             // dtpFecha
             // 
             this.dtpFecha.CalendarForeColor = System.Drawing.Color.White;
             this.dtpFecha.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
             this.dtpFecha.CalendarTitleForeColor = System.Drawing.Color.White;
-            this.dtpFecha.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFecha.Font = new System.Drawing.Font("Segoe UI", 15.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(82, 404);
+            this.dtpFecha.Location = new System.Drawing.Point(93, 389);
             this.dtpFecha.Margin = new System.Windows.Forms.Padding(6);
             this.dtpFecha.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(723, 52);
+            this.dtpFecha.Size = new System.Drawing.Size(716, 55);
             this.dtpFecha.TabIndex = 130;
             // 
             // comboEstado
@@ -153,10 +280,10 @@
             this.comboEstado.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboEstado.ForeColor = System.Drawing.Color.White;
             this.comboEstado.FormattingEnabled = true;
-            this.comboEstado.Location = new System.Drawing.Point(920, 395);
+            this.comboEstado.Location = new System.Drawing.Point(898, 386);
             this.comboEstado.Margin = new System.Windows.Forms.Padding(6);
             this.comboEstado.Name = "comboEstado";
-            this.comboEstado.Size = new System.Drawing.Size(792, 58);
+            this.comboEstado.Size = new System.Drawing.Size(818, 58);
             this.comboEstado.TabIndex = 122;
             // 
             // txtindice
@@ -493,133 +620,6 @@
             this.txtNombre.Texts = "";
             this.txtNombre.UnderlinedStyle = true;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
-            // 
-            // btnseleccionar
-            // 
-            this.btnseleccionar.HeaderText = "";
-            this.btnseleccionar.MinimumWidth = 9;
-            this.btnseleccionar.Name = "btnseleccionar";
-            this.btnseleccionar.ReadOnly = true;
-            this.btnseleccionar.Width = 32;
-            // 
-            // IdCliente
-            // 
-            this.IdCliente.HeaderText = "IdCliente";
-            this.IdCliente.MinimumWidth = 9;
-            this.IdCliente.Name = "IdCliente";
-            this.IdCliente.ReadOnly = true;
-            this.IdCliente.Visible = false;
-            this.IdCliente.Width = 175;
-            // 
-            // Documento
-            // 
-            this.Documento.HeaderText = "Documento";
-            this.Documento.MinimumWidth = 9;
-            this.Documento.Name = "Documento";
-            this.Documento.ReadOnly = true;
-            this.Documento.Width = 175;
-            // 
-            // NombreCompleto
-            // 
-            this.NombreCompleto.HeaderText = "Nombre Completo";
-            this.NombreCompleto.MinimumWidth = 9;
-            this.NombreCompleto.Name = "NombreCompleto";
-            this.NombreCompleto.ReadOnly = true;
-            this.NombreCompleto.Width = 150;
-            // 
-            // Edad
-            // 
-            this.Edad.HeaderText = "Edad";
-            this.Edad.MinimumWidth = 9;
-            this.Edad.Name = "Edad";
-            this.Edad.ReadOnly = true;
-            this.Edad.Width = 175;
-            // 
-            // Fecha_Nacimiento
-            // 
-            this.Fecha_Nacimiento.HeaderText = "Fecha Nacimiento";
-            this.Fecha_Nacimiento.MinimumWidth = 9;
-            this.Fecha_Nacimiento.Name = "Fecha_Nacimiento";
-            this.Fecha_Nacimiento.ReadOnly = true;
-            this.Fecha_Nacimiento.Visible = false;
-            this.Fecha_Nacimiento.Width = 175;
-            // 
-            // Mail
-            // 
-            this.Mail.HeaderText = "Mail";
-            this.Mail.MinimumWidth = 9;
-            this.Mail.Name = "Mail";
-            this.Mail.ReadOnly = true;
-            this.Mail.Width = 112;
-            // 
-            // Domicilio
-            // 
-            this.Domicilio.HeaderText = "Domicilio";
-            this.Domicilio.MinimumWidth = 9;
-            this.Domicilio.Name = "Domicilio";
-            this.Domicilio.ReadOnly = true;
-            this.Domicilio.Width = 110;
-            // 
-            // Telefono
-            // 
-            this.Telefono.HeaderText = "Telefono";
-            this.Telefono.MinimumWidth = 9;
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
-            this.Telefono.Width = 175;
-            // 
-            // EstadoValor
-            // 
-            this.EstadoValor.HeaderText = "EstadoValor";
-            this.EstadoValor.MinimumWidth = 9;
-            this.EstadoValor.Name = "EstadoValor";
-            this.EstadoValor.ReadOnly = true;
-            this.EstadoValor.Visible = false;
-            this.EstadoValor.Width = 175;
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.MinimumWidth = 9;
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            this.Estado.Width = 175;
-            // 
-            // Provincia
-            // 
-            this.Provincia.HeaderText = "Provincia";
-            this.Provincia.MinimumWidth = 9;
-            this.Provincia.Name = "Provincia";
-            this.Provincia.ReadOnly = true;
-            this.Provincia.Visible = false;
-            this.Provincia.Width = 175;
-            // 
-            // Localidad
-            // 
-            this.Localidad.HeaderText = "Localidad";
-            this.Localidad.MinimumWidth = 9;
-            this.Localidad.Name = "Localidad";
-            this.Localidad.ReadOnly = true;
-            this.Localidad.Visible = false;
-            this.Localidad.Width = 175;
-            // 
-            // Calle
-            // 
-            this.Calle.HeaderText = "Calle";
-            this.Calle.MinimumWidth = 9;
-            this.Calle.Name = "Calle";
-            this.Calle.ReadOnly = true;
-            this.Calle.Visible = false;
-            this.Calle.Width = 175;
-            // 
-            // Numero
-            // 
-            this.Numero.HeaderText = "Numero";
-            this.Numero.MinimumWidth = 9;
-            this.Numero.Name = "Numero";
-            this.Numero.ReadOnly = true;
-            this.Numero.Visible = false;
-            this.Numero.Width = 175;
             // 
             // FrmClientes
             // 
