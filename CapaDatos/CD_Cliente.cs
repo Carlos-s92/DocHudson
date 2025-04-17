@@ -21,7 +21,10 @@ namespace CapaDatos
                 {
 
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("Select Id_Cliente, DNI, Nombre, Provincia, Localidad, Calle, Numero, Fecha_Nacimiento, Mail, Telefono, Estado from Cliente");
+                    query.AppendLine("Select Id_Cliente, DNI, Nombre, p.Id_Provincia,p.Provincia, l.Id_Localidad,l.Localidad, d.Calle, d.Numero, Fecha_Nacimiento, Mail, Telefono, Estado from Cliente c");
+                    query.AppendLine("inner join Direccion d on d.Id_Direccion = c.Id_Direccion");
+                    query.AppendLine("inner join Localidad l on d.Id_Localidad = l.Id_Localidad and d.Id_Provincia = l.Id_Provincia");
+                    query.AppendLine("inner join Provincia p on l.Id_Provincia = p.Id_Provincia");
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
 
@@ -36,11 +39,26 @@ namespace CapaDatos
                             {
                                 Id_Cliente = Convert.ToInt32(dr["Id_Cliente"]),
                                 Dni = dr["DNI"].ToString(),
-                                Nombre = dr["Nombre"].ToString(),                   
-                                Provincia = dr["Provincia"].ToString(),
-                                Localidad = dr["Localidad"].ToString(),
-                                Calle = dr["Calle"].ToString(),
-                                Numero = Convert.ToInt32(dr["Numero"]),
+                                Nombre = dr["Nombre"].ToString(), 
+                                domicilio = new Domicilio()
+                                {
+                                    Calle = dr["Calle"].ToString(),
+                                    Numero = Convert.ToInt32(dr["Numero"]),
+                                    oLocalidad = new Localidad()
+                                    {
+                                        Id_Localidad = Convert.ToInt32(dr["Id_Localidad"]),
+                                        localidad = dr["Localidad"].ToString(),
+                                        oProvincia = new Provincia()
+                                        {
+                                            Id_Provincia = Convert.ToInt32(dr["Id_Provincia"]),
+                                            provincia = dr["Provincia"].ToString()
+                                        }
+                                    }
+                                },
+                                //Provincia = dr["Provincia"].ToString(),
+                                //Localidad = dr["Localidad"].ToString(),
+                                //Calle = dr["Calle"].ToString(),
+                                //Numero = Convert.ToInt32(dr["Numero"]),
                                 Fecha_Nacimiento = Convert.ToDateTime(dr["Fecha_Nacimiento"]),
                                 Mail = dr["Mail"].ToString(),
                                 Telefono = dr["Telefono"].ToString(),
@@ -117,10 +135,10 @@ namespace CapaDatos
                  
                     cmd.Parameters.AddWithValue("DNI", obj.Dni);
                     cmd.Parameters.AddWithValue("Fecha_Nacimiento", obj.Fecha_Nacimiento);
-                    cmd.Parameters.AddWithValue("Provincia", obj.Provincia);
-                    cmd.Parameters.AddWithValue("Localidad", obj.Localidad);
-                    cmd.Parameters.AddWithValue("Calle", obj.Calle);
-                    cmd.Parameters.AddWithValue("Numero", obj.Numero);
+                    cmd.Parameters.AddWithValue("Provincia", obj.domicilio.oLocalidad.oProvincia.Id_Provincia);
+                    cmd.Parameters.AddWithValue("Localidad", obj.domicilio.oLocalidad.Id_Localidad);
+                    cmd.Parameters.AddWithValue("Calle", obj.domicilio.Calle);
+                    cmd.Parameters.AddWithValue("Numero", obj.domicilio.Numero);
                     cmd.Parameters.AddWithValue("Mail", obj.Mail);
                     cmd.Parameters.AddWithValue("Telefono", obj.Telefono);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
@@ -164,10 +182,10 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("Nombre", obj.Nombre);
                     cmd.Parameters.AddWithValue("DNI", obj.Dni);
                     cmd.Parameters.AddWithValue("Fecha_Nacimiento", obj.Fecha_Nacimiento);
-                    cmd.Parameters.AddWithValue("Provincia", obj.Provincia);
-                    cmd.Parameters.AddWithValue("Localidad", obj.Localidad);
-                    cmd.Parameters.AddWithValue("Calle", obj.Calle);
-                    cmd.Parameters.AddWithValue("Numero", obj.Numero);
+                    cmd.Parameters.AddWithValue("Provincia", obj.domicilio.oLocalidad.oProvincia.Id_Provincia);
+                    cmd.Parameters.AddWithValue("Localidad", obj.domicilio.oLocalidad.Id_Localidad);
+                    cmd.Parameters.AddWithValue("Calle", obj.domicilio.Calle);
+                    cmd.Parameters.AddWithValue("Numero", obj.domicilio.Numero);
                     cmd.Parameters.AddWithValue("Mail", obj.Mail);
                     cmd.Parameters.AddWithValue("Telefono", obj.Telefono);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);

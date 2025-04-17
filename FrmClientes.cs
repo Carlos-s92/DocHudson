@@ -47,8 +47,10 @@ namespace TestGit
             List<Provincia> listaProvincias = new CN_Provincia().Listar();
             foreach (Provincia item in listaProvincias)
             {
-                comboProvincia.Items.Add(item.Nombre);
+                comboProvincia.Items.Add(new OpcionesCombo() { Valor = item.Id_Provincia, Texto = item.provincia });
             }
+            comboProvincia.DisplayMember = "Texto";
+            comboProvincia.ValueMember = "Valor";
             comboProvincia.SelectedIndex = 5;
 
             // Muestra los clientes en el DataGridView.
@@ -71,14 +73,14 @@ namespace TestGit
                                 edad,
                                 item.Fecha_Nacimiento,
                                 item.Mail,
-                                item.Provincia + " " + item.Localidad + " " + item.Calle + " " + item.Numero,
+                                item.domicilio.oLocalidad.oProvincia.provincia + " " + item.domicilio.oLocalidad.localidad + " " + item.domicilio.Calle + " " + item.domicilio.Numero,
                                 item.Telefono,
                                 item.Estado == true ? 1 : 0, // Estado como valor
                                 item.Estado == true ? "Activo" : "No Activo", // Estado como texto
-                                item.Provincia,
-                                item.Localidad,
-                                item.Calle,
-                                item.Numero
+                                item.domicilio.oLocalidad.oProvincia.Id_Provincia,
+                                item.domicilio.oLocalidad.Id_Localidad,
+                                item.domicilio.Calle,
+                                item.domicilio.Numero
                             });
             }
         }
@@ -152,10 +154,29 @@ namespace TestGit
                         Id_Cliente = Convert.ToInt32(txtid.Text),
                         Dni = txtDocumento.Texts,
                         Nombre = txtNombre.Texts,
-                        Provincia = comboProvincia.Text,
-                        Localidad = txtLocalidad.Texts,
-                        Calle = txtCalle.Texts,
-                        Numero = Convert.ToInt32(txtNumero.Texts),
+
+                        domicilio = new Domicilio()
+                        {
+                            Calle = txtCalle.Texts,
+                            Numero = Convert.ToInt32(txtNumero.Texts),
+                            oLocalidad = new Localidad()
+                            {
+                                localidad = txtLocalidad.Texts,
+                                oProvincia = new Provincia()
+                                {
+                                    Id_Provincia = Convert.ToInt32(((OpcionesCombo)comboProvincia.SelectedItem).Valor),
+                                }
+                                
+                            }
+                        },
+                        // ^
+                        // |
+                        //Creo que para solucionarlo hay que aplicar el caos de arriba
+
+                        //Provincia = comboProvincia.Text,
+                        //Localidad = txtLocalidad.Texts,
+                        //Calle = txtCalle.Texts,
+                        //Numero = Convert.ToInt32(txtNumero.Texts),
                         Mail = txtMail.Texts,
                         Telefono = txtTelefono.Texts,
                         Fecha_Nacimiento = dtpFecha.Value,
@@ -218,7 +239,7 @@ namespace TestGit
                             row.Cells["Telefono"].Value = txtTelefono.Texts;
                             row.Cells["EstadoValor"].Value = ((OpcionesCombo)comboEstado.SelectedItem).Valor.ToString();
                             row.Cells["Estado"].Value = ((OpcionesCombo)comboEstado.SelectedItem).Texto.ToString();
-                            row.Cells["Provincia"].Value = comboProvincia.Text;
+                            row.Cells["Provincia"].Value = ((OpcionesCombo)comboProvincia.SelectedItem).Valor.ToString();
                             row.Cells["Localidad"].Value = txtLocalidad.Texts;
                             row.Cells["Calle"].Value = txtCalle.Texts;
                             row.Cells["Numero"].Value = txtNumero.Texts;

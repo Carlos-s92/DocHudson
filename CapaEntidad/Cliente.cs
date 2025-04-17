@@ -12,10 +12,7 @@ namespace CapaEntidad
         public string Nombre { get; set; }
         public string Dni { get; set; }
         public DateTime Fecha_Nacimiento { get; set; }
-        public string Provincia { get; set; }
-        public string Localidad { get; set; }
-        public string Calle {  get; set; }
-        public int Numero { get; set; }
+        public Domicilio domicilio { get; set; }
         public string Mail { get; set; }
         public string Telefono { get; set; }
         public DateTime Fecha_Registro { get; set; }

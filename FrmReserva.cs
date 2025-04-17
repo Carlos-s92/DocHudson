@@ -17,16 +17,18 @@ namespace TestGit
 {
     public partial class FrmReserva : Form
     {
+        Usuarios user = new Usuarios();
         Autos oAuto = new Autos();
-        public FrmReserva()
+        public FrmReserva(Usuarios user)
         {
             InitializeComponent();
+            this.user = user;
         }
-        public FrmReserva(Autos oAuto)
+        public FrmReserva(Autos oAuto, Usuarios user)
         {
             InitializeComponent();
             this.oAuto = oAuto;
-
+            this.user = user;
             this.txtAño.Texts = oAuto.Año.ToString();
             this.txtConsumo.Texts = oAuto.Consumo.ToString();
             this.txtIdAuto.Text = oAuto.Id_Auto.ToString();
@@ -71,14 +73,30 @@ namespace TestGit
                         if(modal.Id_Pago != 0)
                         {
                             Reserva oReserva = new Reserva();
+                            oReserva.oCliente = new Cliente()
+                            {
+                                Id_Cliente = Convert.ToInt32(txtIdCliente.Text)
+                            };
+                            oReserva.oAuto = new Autos()
+                            {
+                                Id_Auto = Convert.ToInt32(txtIdAuto.Text)
+                            };
+                            oReserva.oUsuario = new Usuarios()
+                            {
+                                Id_Usuario = this.user.Id_Usuario
+                            };
 
-                            oReserva.oCliente.Id_Cliente= Convert.ToInt32(txtIdCliente.Text);
-                            oReserva.oAuto.Id_Auto = Convert.ToInt32(txtIdAuto.Text);
+                            //oReserva.oCliente.Id_Cliente= Convert.ToInt32(txtIdCliente.Text);
+                            //oReserva.oAuto.Id_Auto = Convert.ToInt32(txtIdAuto.Text);
                             oReserva.Estado = true;
-                            oReserva.Fecha_Fin = dtpFechaF.Value;
                             oReserva.Fecha_Inicio = dtpFechaI.Value;
-                            oReserva.oPago.Id_Pago = modal.Id_Pago;
-
+                            oReserva.Fecha_Fin = dtpFechaF.Value;
+                          
+                            oReserva.oPago = new Pago()
+                            {
+                                Id_Pago = modal.Id_Pago
+                            };
+                        
                             int id = new CN_Reserva().Registrar(oReserva,out Mensaje);
 
                             if(id != 0)
@@ -141,7 +159,7 @@ namespace TestGit
                     txtMail.Texts = modal._Cliente.Mail.ToString();
                     txtTelefono.Texts = modal._Cliente.Telefono.ToString();
 
-                    string domicilio = modal._Cliente.Provincia + " " + modal._Cliente.Localidad + " " + modal._Cliente.Calle + " " + modal._Cliente.Numero.ToString();
+                    string domicilio = modal._Cliente.domicilio.oLocalidad.oProvincia.provincia + " " + modal._Cliente.domicilio.oLocalidad.localidad + " " + modal._Cliente.domicilio.Calle + " " + modal._Cliente.domicilio.Numero.ToString();
 
                     txtDomicilio.Texts = domicilio;
                 }

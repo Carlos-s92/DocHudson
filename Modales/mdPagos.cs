@@ -90,11 +90,17 @@ namespace TestGit.Modales
                     oPago.Total = Convert.ToDecimal(txtMonto.Texts);
                     if (btnEfectivo.Checked)
                     {
-                        oPago.oTipoPago.Id_TipoPago = 1;
+                        oPago.oTipoPago = new TipoPago()
+                        {
+                            Id_TipoPago = 2
+                        };
                     }
                     else
                     {
-                        oPago.oTipoPago.Id_TipoPago = 2;
+                        oPago.oTipoPago = new TipoPago()
+                        {
+                            Id_TipoPago = 1
+                        };
                     }
                     oPago.Fecha_Pago = System.DateTime.Now;
                     oPago.Estado = true;

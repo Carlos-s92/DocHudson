@@ -16,6 +16,7 @@ namespace TestGit.Modales
     public partial class mdCliente : Form
     {
         public Cliente _Cliente = new Cliente();
+
         public mdCliente()
         {
             InitializeComponent();
@@ -55,14 +56,14 @@ namespace TestGit.Modales
                                 edad,
                                 item.Fecha_Nacimiento,
                                 item.Mail,
-                                item.Provincia + " " + item.Localidad + " " + item.Calle + " " + item.Numero,
+                                item.domicilio.oLocalidad.oProvincia.provincia + " " + item.domicilio.oLocalidad.localidad + " " + item.domicilio.Calle + " " + item.domicilio.Numero,
                                 item.Telefono,
                                 item.Estado == true ? 1 : 0, // Estado como valor
                                 item.Estado == true ? "Activo" : "No Activo", // Estado como texto
-                                item.Provincia,
-                                item.Localidad,
-                                item.Calle,
-                                item.Numero
+                                item.domicilio.oLocalidad.oProvincia.Id_Provincia,
+                                item.domicilio.oLocalidad.Id_Localidad,
+                                item.domicilio.Calle,
+                                item.domicilio.Numero
                             });
             }
         }
@@ -117,10 +118,20 @@ namespace TestGit.Modales
                     Nombre = dgvData.Rows[iRow].Cells["NombreCompleto"].Value.ToString(),
                     Mail = dgvData.Rows[iRow].Cells["Mail"].Value.ToString(),
                     Telefono = dgvData.Rows[iRow].Cells["Telefono"].Value.ToString(),
-                    Provincia = dgvData.Rows[iRow].Cells["Provincia"].Value.ToString(),
-                    Localidad = dgvData.Rows[iRow].Cells["Localidad"].Value.ToString(),
-                    Calle = dgvData.Rows[iRow].Cells["Calle"].Value.ToString(),
-                    Numero = Convert.ToInt32(dgvData.Rows[iRow].Cells["Numero"].Value.ToString())
+
+                    domicilio = new Domicilio()
+                    {
+                        Calle = dgvData.Rows[iRow].Cells["Calle"].Value.ToString(),
+                        Numero = Convert.ToInt32(dgvData.Rows[iRow].Cells["Numero"].Value.ToString()),
+                        oLocalidad = new Localidad()
+                        {
+                            Id_Localidad = Convert.ToInt32(dgvData.Rows[iRow].Cells["Localidad"].Value),
+                            oProvincia = new Provincia()
+                            {
+                                Id_Provincia = Convert.ToInt32(dgvData.Rows[iRow].Cells["Provincia"].Value)
+                            }
+                        }
+                    }
                 };
 
                 this.DialogResult = DialogResult.OK;

@@ -14,6 +14,7 @@ namespace CapaEntidad
         public Autos oAuto { get; set; }
         public Pago oPago { get; set; }
         public Cliente oCliente { get; set; }
+        public Usuarios oUsuario { get; set; }
         public bool Estado { get; set; }
     }
 }
