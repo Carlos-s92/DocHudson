@@ -20,7 +20,7 @@ namespace CapaDatos
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT Nombre FROM Provincia");
+                    query.AppendLine("SELECT Provincia FROM Provincia");
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
 
@@ -34,7 +34,7 @@ namespace CapaDatos
                             lista.Add(new Provincia()
                             {
 
-                                Nombre = dr["Nombre"].ToString(),
+                                Nombre = dr["Provincia"].ToString(),
                                 
                             });
                         }

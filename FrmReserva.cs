@@ -83,17 +83,20 @@ namespace TestGit
 
                             if(id != 0)
                             {
-                                MessageBox.Show("Reserva Generada con Exito:" + " " + id,"Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                VentanaEmergente msg = new VentanaEmergente("Exito", "Reserva Generada con Exito:" + " " + id, "Informacion");
+                                msg.ShowDialog();
                             }
                             else
                             {
-                                MessageBox.Show("La Reserva no pudo ser Generada","Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                VentanaEmergente msg = new VentanaEmergente("Error", "La Reserva no pudo ser Generada", "Error");
+                                msg.ShowDialog();
                             }
 
                         }
                         else
                         {
-                            MessageBox.Show("No se pudo registrar la reserva", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            VentanaEmergente msg = new VentanaEmergente("Error", "No se pudo registrar la reserva", "Error");
+                            msg.ShowDialog();
                         }
                     }
                 }

@@ -231,7 +231,8 @@ namespace TestGit
             bool resultado = new CN_Backup().Backup(fecha);
             if (resultado == true)
             {
-                MessageBox.Show("Se esta realizando una copia de seguridad automatica, aguarde", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                VentanaEmergente MSG = new VentanaEmergente("Backup Automatico","Se está realizando una copia de seguridad automatica, aguarde...","Informacion");
+                MSG.ShowDialog();
             }
 
 

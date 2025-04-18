@@ -14,6 +14,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestGit.Modales;
 
 namespace TestGit
 {
@@ -100,21 +101,18 @@ namespace TestGit
             // Valida los campos antes de proceder.
             if (Validaciones())
             {
-                DialogResult confirmacion;
-
                 string mensaje = string.Empty;
 
-         
-                confirmacion = MessageBox.Show("¿Seguro desea agregar el Auto?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                VentanaEmergente confirmacion = new VentanaEmergente("Confirmacion","¿Seguro desea agregar el Auto?","Interrogacion");
+                confirmacion.ShowDialog();
                 
-             
-
                 // Si la respuesta es afirmativa, se crea o edita el Auto.
-                if (confirmacion == DialogResult.Yes)
+                if (confirmacion.DialogResult == DialogResult.Yes)
                 {
+                    confirmacion.Close();
                     Autos objAuto = new Autos()
                     {
-                        Id_Auto = Convert.ToInt32(txtid.Text),
+                        //Id_Auto = Convert.ToInt32(txtid.Text),
                         Modelo = txtModelo.Texts,
                         Marca = txtMarca.Texts,
                         Matricula = txtMatricula.Texts,
@@ -134,16 +132,20 @@ namespace TestGit
                         }
                         else
                         {
-                            MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            VentanaEmergente MsgError = new VentanaEmergente("Error", mensaje, "Error");
+                            MsgError.ShowDialog();
                         }
-                    
-                   
+                }
+                else
+                {
+                    confirmacion.Close();
                 }
             }
             else
             {
                 // Muestra un mensaje si no se completan todos los campos obligatorios.
-                MessageBox.Show("Debe Completar todos los campos", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                VentanaEmergente MsgError = new VentanaEmergente("Alerta", "Debe Completar todos los campos", "Informacion");
+                MsgError.ShowDialog();
             }
         }
 

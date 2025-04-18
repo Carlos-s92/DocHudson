@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestGit.Modales;
 
 namespace TestGit
 {
@@ -130,23 +131,26 @@ namespace TestGit
             // Valida los campos antes de proceder.
             if (Validaciones())
             {
-                DialogResult confirmacion;
+                VentanaEmergente confirmacion;
 
                 string mensaje = string.Empty;
 
                 // Confirma si se va a agregar o editar un cliente.
                 if (Convert.ToInt32(txtid.Text) == 0)
                 {
-                    confirmacion = MessageBox.Show("¿Seguro desea agregar el Cliente?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    confirmacion = new VentanaEmergente("Confirmacion", "¿Seguro desea agregar el Cliente?","Interrogacion");
+                    confirmacion.ShowDialog();
                 }
                 else
                 {
-                    confirmacion = MessageBox.Show("¿Seguro desea editar el Cliente?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    confirmacion = new VentanaEmergente("Confirmacion", "¿Seguro desea editar el Cliente?", "Interrogacion");
+                    confirmacion.ShowDialog();
                 }
 
                 // Si la respuesta es afirmativa, se crea o edita el cliente.
-                if (confirmacion == DialogResult.Yes)
+                if (confirmacion.DialogResult == DialogResult.Yes)
                 {
+                    confirmacion.Close();
                     Cliente objCliente = new Cliente()
                     {
                         Id_Cliente = Convert.ToInt32(txtid.Text),
@@ -198,7 +202,8 @@ namespace TestGit
                         }
                         else
                         {
-                            MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            VentanaEmergente Error = new VentanaEmergente("Error", mensaje, "Error");
+                            Error.ShowDialog();
                         }
                     }
                     else
@@ -226,15 +231,21 @@ namespace TestGit
                         }
                         else
                         {
-                            MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            VentanaEmergente Error = new VentanaEmergente("Error", mensaje, "Error");
+                            Error.ShowDialog();
                         }
                     }
+                }
+                else
+                {
+                    confirmacion.Close();
                 }
             }
             else
             {
                 // Muestra un mensaje si no se completan todos los campos obligatorios.
-                MessageBox.Show("Debe Completar todos los campos", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                VentanaEmergente Alerta = new VentanaEmergente("Alerta", "Debe Completar todos los campos", "Informacion");
+                Alerta.ShowDialog();
             }
         }
 
@@ -299,8 +310,12 @@ namespace TestGit
             if (Convert.ToInt32(txtid.Text) != 0)
             {
                 // Pregunta al usuario si desea eliminar el cliente.
-                if (MessageBox.Show("¿Desea eliminar el Cliente?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                VentanaEmergente pregunta = new VentanaEmergente("Mensaje","¿Desea eliminar al cliente?","Interrogacion");
+                pregunta.ShowDialog();
+                
+                if (pregunta.DialogResult == DialogResult.Yes)
                 {
+                    pregunta.Close();
                     string mensaje = string.Empty;
                     Cliente objCliente = new Cliente()
                     {
@@ -318,8 +333,13 @@ namespace TestGit
                     }
                     else
                     {
-                        MessageBox.Show(mensaje, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        VentanaEmergente Alerta = new VentanaEmergente("Alerta", mensaje, "Informacion");
+                        Alerta.ShowDialog();
                     }
+                }
+                else
+                {
+                    pregunta.Close();
                 }
             }
         }

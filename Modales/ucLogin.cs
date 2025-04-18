@@ -21,6 +21,7 @@ namespace TestGit.Modales
             InitializeComponent();
 
             this.Paint += UcLogin_Paint; //Suscripción al evento paint (manualmente)
+            this.Load += UcLogin_Load;
 
             //Se fuerza el redibujado de los textbox del userControl para verlos correctamente.
             CampoUsuario.Invalidate();      

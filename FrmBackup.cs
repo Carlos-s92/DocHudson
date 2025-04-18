@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestGit.Modales;
 
 namespace TestGit
 {
@@ -21,7 +22,8 @@ namespace TestGit
         private void BtnGuardar2_Click(object sender, EventArgs e)
         {
             string mensaje = new CN_Backup().Backup();
-            DialogResult respuesta = MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            VentanaEmergente respuesta = new VentanaEmergente("Aviso",mensaje,"Informacion");
+            respuesta.ShowDialog();
 
         }
 
@@ -37,8 +39,8 @@ namespace TestGit
                 this.txtDireccion2.Texts = ruta;
 
                 string mensaje = new CN_Backup().Restore(ruta);
-                DialogResult respuesta = MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                VentanaEmergente respuesta = new VentanaEmergente("Aviso", mensaje, "Informacion");
+                respuesta.ShowDialog();
 
             }
         }

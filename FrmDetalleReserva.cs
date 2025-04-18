@@ -73,7 +73,8 @@ namespace TestGit
                 }
                 else
                 {
-                    MessageBox.Show("Ese numero de reserva no existe","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    VentanaEmergente mensaje = new VentanaEmergente("Error", "Ese numero de reserva no existe","Error");
+                    mensaje.ShowDialog();
                 }
             }
         }
@@ -113,7 +114,8 @@ namespace TestGit
             // Verifica si hay una compra seleccionada antes de intentar generar el PDF
             if (txtDocumento.Texts == "")
             {
-                MessageBox.Show("No se encontraron resultados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                VentanaEmergente mensaje = new VentanaEmergente("Mensaje", "No se encontraron resultados", "Informacion");
+                mensaje.ShowDialog();
                 return;
             }
            // si es de tipo string
@@ -171,7 +173,8 @@ namespace TestGit
                     // Cerrar el documento y el stream
                     pdfDoc.Close();
                     stream.Close();
-                    MessageBox.Show("Pdf Generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    VentanaEmergente mensaje = new VentanaEmergente("Mensaje", "Pdf Generado", "Informacion");
+                    mensaje.ShowDialog();
                 }
             }
         }

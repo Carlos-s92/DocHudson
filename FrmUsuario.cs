@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using TestGit.Modales;
 
 namespace TestGit
 {
@@ -92,11 +93,12 @@ namespace TestGit
             if (Validaciones()) // Llama a la función de validación
             {
                 string mensaje = string.Empty; // Variable para almacenar mensajes de error
-                DialogResult confirmacion;
+                VentanaEmergente confirmacion;
 
                 if (((OpcionesCombo)comboRol.SelectedItem).Texto == "Gerente" && ((OpcionesCombo)comboEstado.SelectedItem).Texto == "No Activo")
                 {
-                    MessageBox.Show("No se puede desactivar al Gerente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    VentanaEmergente msg = new VentanaEmergente("Error","No se puede desactivar al gerente","Error");
+                    msg.ShowDialog();
                     return;
                 }
 
@@ -105,14 +107,16 @@ namespace TestGit
                 // Determina si es un nuevo usuario o una edición
                 if (Convert.ToInt32(txtid.Text) == 0)
                 {
-                    confirmacion = MessageBox.Show("¿Seguro desea agregar el usuario?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    confirmacion = new VentanaEmergente("Confirmacion", "¿Seguro desea agregar el usuario?", "Interrogacion");
+                    confirmacion.ShowDialog();
                 }
                 else
                 {
-                    confirmacion = MessageBox.Show("¿Seguro desea editar el usuario?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    confirmacion = new VentanaEmergente("Confirmacion", "¿Seguro desea editar el usuario?", "Interrogacion");
+                    confirmacion.ShowDialog();
                 }
 
-                if (confirmacion == DialogResult.Yes) // Confirma la acción del usuario
+                if (confirmacion.DialogResult == DialogResult.Yes) // Confirma la acción del usuario
                 {
                     // Crea un nuevo objeto Usuario con los datos ingresados
                     Usuarios objUsuario = new Usuarios()
@@ -148,7 +152,8 @@ namespace TestGit
                         }
                         else
                         {
-                            MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // Muestra un mensaje de error
+                            VentanaEmergente error = new VentanaEmergente("Error", mensaje, "Error");
+                            error.ShowDialog();
                         }
                     }
                     else // Si es un usuario existente
@@ -171,14 +176,16 @@ namespace TestGit
                         }
                         else
                         {
-                            MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // Muestra un mensaje de error
+                            VentanaEmergente error = new VentanaEmergente("Error", mensaje, "Error");
+                            error.ShowDialog();
                         }
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Debe Completar todos los campos", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); // Alerta si hay campos vacíos
+                VentanaEmergente msg = new VentanaEmergente("Alerta", "Debe completar todos los campos", "Informacion");
+                msg.ShowDialog();
             }
         }
 
@@ -189,7 +196,8 @@ namespace TestGit
 
                 if (((OpcionesCombo)comboRol.SelectedItem).Texto == "Gerente")
                 {
-                    MessageBox.Show("No se puede eliminar el Gerente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    VentanaEmergente msg = new VentanaEmergente("Error", "No se puede eliminar el gerente", "Error");
+                    msg.ShowDialog();
                     return;
                 }
 
@@ -214,7 +222,8 @@ namespace TestGit
                     }
                     else
                     {
-                        MessageBox.Show(mensaje, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); // Muestra un mensaje de error
+                        VentanaEmergente msg = new VentanaEmergente("Error", mensaje, "Error");
+                        msg.ShowDialog();
                     }
                 }
             }

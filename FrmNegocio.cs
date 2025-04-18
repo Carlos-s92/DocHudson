@@ -11,7 +11,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Interop;
 using System.Windows.Media.TextFormatting;
+using TestGit.Modales;
 
 namespace TestGit
 {
@@ -91,9 +93,11 @@ namespace TestGit
             if (Validaciones())
             {
                 // Solicitar confirmación del usuario antes de realizar cambios
-                DialogResult confirmacion = MessageBox.Show("¿Seguro desea cambiar los datos?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (confirmacion == DialogResult.Yes)
+                VentanaEmergente confirmacion = new VentanaEmergente("Confirmacion", "¿Seguro desea cambiar los datos?", "Interrogacion");
+                confirmacion.ShowDialog();
+                if (confirmacion.DialogResult == DialogResult.Yes)
                 {
+                    confirmacion.Close();
                     // Crear un objeto Negocio con los datos ingresados por el usuario
                     Negocio obj = new Negocio()
                     {
@@ -108,18 +112,25 @@ namespace TestGit
                     // Mostrar mensajes según el resultado de la operación
                     if (respuesta)
                     {
-                        MessageBox.Show("Los cambios fueron guardados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        VentanaEmergente msg = new VentanaEmergente("Mensaje", "Los cambios fueron guardados", "Informacion");
+                        msg.ShowDialog();
                     }
                     else
                     {
-                        MessageBox.Show("No se guardaron los cambios", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        VentanaEmergente msg = new VentanaEmergente("Mensaje", "No se guardaron los cambios", "Error");
+                        msg.ShowDialog();
                     }
+                }
+                else
+                {
+                    confirmacion.Close();
                 }
             }
             else
             {
                 // Mostrar un mensaje de advertencia si algún campo está incompleto
-                MessageBox.Show("Debe Completar todos los campos", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                VentanaEmergente msg = new VentanaEmergente("Alerta", "Debe completar todos los campos", "Informacion");
+                msg.ShowDialog();
             }
         }
 
@@ -142,7 +153,8 @@ namespace TestGit
                 }
                 else
                 {
-                    MessageBox.Show("La imagen no se encontró.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    VentanaEmergente msg = new VentanaEmergente("Error", "La imagen no se encontró.", "Error");
+                    msg.ShowDialog();
                 }
             }
 
