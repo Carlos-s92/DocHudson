@@ -81,6 +81,7 @@ namespace CapaDatos
                     SqlCommand cmd = new SqlCommand("InsertarReserva", oconexion);
                     cmd.Parameters.AddWithValue("Id_Auto", obj.oAuto.Id_Auto);
                     cmd.Parameters.AddWithValue("Id_Pago", obj.oPago.Id_Pago);
+                    cmd.Parameters.AddWithValue("Id_Usuario", obj.oUsuario.Id_Usuario);
                     cmd.Parameters.AddWithValue("Id_Cliente", obj.oCliente.Id_Cliente);
                     cmd.Parameters.AddWithValue("Fecha_Inicio", obj.Fecha_Inicio);
                     cmd.Parameters.AddWithValue("Fecha_Fin", obj.Fecha_Fin);

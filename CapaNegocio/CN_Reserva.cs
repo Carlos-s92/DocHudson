@@ -21,7 +21,7 @@ namespace CapaNegocio
         {
             Mensaje = string.Empty;
 
-            if (obj.Fecha_Inicio <= obj.Fecha_Fin )
+            if (obj.Fecha_Inicio >= obj.Fecha_Fin )
             {
                 Mensaje += "La fecha de fin no puede ser menor que la de inicio\n";
             }
@@ -41,6 +41,7 @@ namespace CapaNegocio
             {
                 Mensaje += "Es Necesario un Pago para Reservar\n";
             }
+  
 
 
 

@@ -189,7 +189,7 @@ namespace TestGit
 
         private void menuRegistrarReserva_Click(object sender, EventArgs e)
         {
-            abrirFormulario((IconMenuItem)sender, new FrmReserva()); // Abre el formulario de inicio.
+            abrirFormulario((IconMenuItem)sender, new FrmReserva(this.user)); // Abre el formulario de inicio.
             this.lblIndicador.Text = "Reservas";
         }
 
@@ -219,7 +219,7 @@ namespace TestGit
 
         public void Reservas(Autos pAuto)
         {
-            abrirFormulario(menuReserva, new FrmReserva(pAuto));
+            abrirFormulario(menuReserva, new FrmReserva(pAuto,this.user));
             this.lblIndicador.Text = "Reservas";
         }
 

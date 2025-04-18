@@ -20,7 +20,7 @@ namespace CapaDatos
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT Provincia FROM Provincia");
+                    query.AppendLine("SELECT Id_Provincia, Provincia FROM Provincia");
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
 
@@ -33,16 +33,18 @@ namespace CapaDatos
                         {
                             lista.Add(new Provincia()
                             {
-
-                                Nombre = dr["Provincia"].ToString(),
+                                Id_Provincia = Convert.ToInt32(dr["Id_Provincia"]),
+                                provincia = dr["Provincia"].ToString(),
                                 
                             });
                         }
+                        
                     }
+                    oconexion.Close();
                 }
                 catch (Exception ex) 
                 {
-                    Console.WriteLine("no hay provincias");
+                    lista = new List<Provincia>();
                 }
             }
             return lista;

@@ -38,19 +38,19 @@ namespace CapaNegocio
             {
                 Mensaje += "Es Necesario el DNI del Cliente\n";
             }
-            if (obj.Provincia == "")
+            if (obj.domicilio.oLocalidad.oProvincia.Id_Provincia == 0)
             {
                 Mensaje += "Es Necesario la Provincia del Cliente\n";
             }
-            if (obj.Localidad == "")
+            if (obj.domicilio.oLocalidad.localidad == "")
             {
                 Mensaje += "Es Necesario la Localidad del Cliente\n";
             }
-            if (obj.Calle == "")
+            if (obj.domicilio.Calle == "")
             {
                 Mensaje += "Es Necesario la Calle del Cliente\n";
             }
-            if (obj.Numero == 0)
+            if (obj.domicilio.Numero == 0)
             {
                 Mensaje += "Es Necesario el Numero de Calle del Cliente\n";
             }
@@ -108,19 +108,19 @@ namespace CapaNegocio
             {
                 Mensaje += "Es Necesario el DNI del Cliente\n";
             }
-            if (obj.Provincia == "")
+            if (obj.domicilio.oLocalidad.oProvincia.Id_Provincia == 0)
             {
                 Mensaje += "Es Necesario la Provincia del Cliente\n";
             }
-            if (obj.Localidad == "")
+            if (obj.domicilio.oLocalidad.localidad == "")
             {
                 Mensaje += "Es Necesario la Localidad del Cliente\n";
             }
-            if (obj.Calle == "")
+            if (obj.domicilio.Calle == "")
             {
                 Mensaje += "Es Necesario la Calle del Cliente\n";
             }
-            if (obj.Numero == 0)
+            if (obj.domicilio.Numero == 0)
             {
                 Mensaje += "Es Necesario el Numero de Calle del Cliente\n";
             }
