@@ -44,15 +44,19 @@ namespace TestGit
             comboBusqueda.ValueMember = "Valor";
             comboBusqueda.SelectedIndex = 0;
 
+
             /////////// Muestra las provincias en el comboProvincia//////////////////////////////////////////////////
             List<Provincia> listaProvincias = new CN_Provincia().Listar();
             foreach (Provincia item in listaProvincias)
             {
                 comboProvincia.Items.Add(new OpcionesCombo() { Valor = item.Id_Provincia, Texto = item.provincia });
             }
+            //comboProvincia.DataSource = listaProvincias;
             comboProvincia.DisplayMember = "Texto";
             comboProvincia.ValueMember = "Valor";
             comboProvincia.SelectedIndex = 5;
+
+            //comboProvincia.SelectedIndexChanged += comboProvincia_SelectedIndexChanged;
 
             // Muestra los clientes en el DataGridView.
             List<Cliente> listaClientes = new CN_Cliente().Listar();
@@ -510,8 +514,21 @@ namespace TestGit
             }
         }
 
-        
+        private void comboProvincia_SelectedIndexChanged(object sender, EventArgs e)//Muestra las localidades de la provincia seleccionada
+        {
+            List<Localidad> listaLocalidades = new CN_Localidad().Listar();
 
+            int provinciaId = Convert.ToInt32(((OpcionesCombo)comboProvincia.SelectedItem).Valor);//asigna el id de la provincia seleccionada
 
+            var localidadesFiltradas = listaLocalidades
+            .Where(l => l.oProvincia != null && l.oProvincia.Id_Provincia == provinciaId)
+            .Select(l => new OpcionesCombo {Valor = l.Id_Localidad, Texto = l.localidad})
+            .ToList();
+
+            // Asignar al combo de localidad
+            comboLocalidad.DataSource = localidadesFiltradas;
+            comboLocalidad.DisplayMember = "Texto";
+            comboLocalidad.ValueMember = "Valor";
+        }
     }
 }
