@@ -113,7 +113,7 @@
             this.dgvData.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvData.EnableHeadersVisualStyles = false;
             this.dgvData.Location = new System.Drawing.Point(67, 671);
-            this.dgvData.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dgvData.Margin = new System.Windows.Forms.Padding(5);
             this.dgvData.MultiSelect = false;
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
@@ -267,11 +267,12 @@
             this.dtpFecha.Font = new System.Drawing.Font("Segoe UI", 15.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFecha.Location = new System.Drawing.Point(76, 324);
-            this.dtpFecha.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dtpFecha.Margin = new System.Windows.Forms.Padding(5);
             this.dtpFecha.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(587, 48);
             this.dtpFecha.TabIndex = 130;
+            this.dtpFecha.Value = new System.DateTime(2025, 4, 19, 12, 30, 26, 0);
             // 
             // comboEstado
             // 
@@ -282,7 +283,7 @@
             this.comboEstado.ForeColor = System.Drawing.Color.White;
             this.comboEstado.FormattingEnabled = true;
             this.comboEstado.Location = new System.Drawing.Point(735, 322);
-            this.comboEstado.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.comboEstado.Margin = new System.Windows.Forms.Padding(5);
             this.comboEstado.Name = "comboEstado";
             this.comboEstado.Size = new System.Drawing.Size(670, 53);
             this.comboEstado.TabIndex = 122;
@@ -290,7 +291,7 @@
             // txtindice
             // 
             this.txtindice.Location = new System.Drawing.Point(1415, 114);
-            this.txtindice.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtindice.Margin = new System.Windows.Forms.Padding(5);
             this.txtindice.Name = "txtindice";
             this.txtindice.Size = new System.Drawing.Size(34, 26);
             this.txtindice.TabIndex = 124;
@@ -300,7 +301,7 @@
             // txtid
             // 
             this.txtid.Location = new System.Drawing.Point(1415, 80);
-            this.txtid.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtid.Margin = new System.Windows.Forms.Padding(5);
             this.txtid.Name = "txtid";
             this.txtid.Size = new System.Drawing.Size(34, 26);
             this.txtid.TabIndex = 123;
@@ -316,7 +317,7 @@
             this.comboBusqueda.ForeColor = System.Drawing.Color.White;
             this.comboBusqueda.FormattingEnabled = true;
             this.comboBusqueda.Location = new System.Drawing.Point(753, 588);
-            this.comboBusqueda.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.comboBusqueda.Margin = new System.Windows.Forms.Padding(5);
             this.comboBusqueda.Name = "comboBusqueda";
             this.comboBusqueda.Size = new System.Drawing.Size(312, 53);
             this.comboBusqueda.TabIndex = 132;
@@ -331,7 +332,7 @@
             this.comboProvincia.ForeColor = System.Drawing.Color.White;
             this.comboProvincia.FormattingEnabled = true;
             this.comboProvincia.Location = new System.Drawing.Point(76, 242);
-            this.comboProvincia.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.comboProvincia.Margin = new System.Windows.Forms.Padding(5);
             this.comboProvincia.Name = "comboProvincia";
             this.comboProvincia.Size = new System.Drawing.Size(264, 53);
             this.comboProvincia.TabIndex = 140;
@@ -348,7 +349,7 @@
             this.comboLocalidad.ForeColor = System.Drawing.Color.White;
             this.comboLocalidad.FormattingEnabled = true;
             this.comboLocalidad.Location = new System.Drawing.Point(389, 242);
-            this.comboLocalidad.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.comboLocalidad.Margin = new System.Windows.Forms.Padding(5);
             this.comboLocalidad.Name = "comboLocalidad";
             this.comboLocalidad.Size = new System.Drawing.Size(264, 53);
             this.comboLocalidad.TabIndex = 141;
@@ -664,7 +665,7 @@
             this.Controls.Add(this.txtid);
             this.Controls.Add(this.dgvData);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FrmClientes";
             this.Text = "FrmClientes";
             this.Load += new System.EventHandler(this.FrmClientes_Load);

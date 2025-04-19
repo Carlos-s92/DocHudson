@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -157,26 +158,36 @@ namespace TestGit
                 if (confirmacion.DialogResult == DialogResult.Yes)
                 {
                     confirmacion.Close();
+
+                    Provincia provincia = new Provincia()
+                    {
+                        Id_Provincia = Convert.ToInt32(((OpcionesCombo)comboProvincia.SelectedItem).Valor),
+                    };
+
+                    Localidad localidad = new Localidad()
+                    {
+                        Id_Localidad = Convert.ToInt32(((OpcionesCombo)comboLocalidad.SelectedItem).Valor),
+                        oProvincia = provincia,
+                    };
+
+
+                    Domicilio domicilio = new Domicilio()
+                    {
+                        Calle = txtCalle.Texts,
+                        Numero = Convert.ToInt32(txtNumero.Texts),
+                        oLocalidad = localidad,
+                    };
+
+
                     Cliente objCliente = new Cliente()
                     {
                         Id_Cliente = Convert.ToInt32(txtid.Text),
                         Dni = txtDocumento.Texts,
                         Nombre = txtNombre.Texts,
+                        domicilio = domicilio,
 
-                        domicilio = new Domicilio()
-                        {
-                            Calle = txtCalle.Texts,
-                            Numero = Convert.ToInt32(txtNumero.Texts),
-                            oLocalidad = new Localidad()
-                            {
-                                localidad = txtLocalidad.Texts,
-                                oProvincia = new Provincia()
-                                {
-                                    Id_Provincia = Convert.ToInt32(((OpcionesCombo)comboProvincia.SelectedItem).Valor),
-                                }
-                                
-                            }
-                        },
+
+                                            
                         // ^
                         // |
                         //Creo que para solucionarlo hay que aplicar el caos de arriba
@@ -190,6 +201,7 @@ namespace TestGit
                         Fecha_Nacimiento = dtpFecha.Value,
                         Estado = Convert.ToInt32(((OpcionesCombo)comboEstado.SelectedItem).Valor) == 1 ? true : false
                     };
+
                     DateTime fechaNacimiento = dtpFecha.Value;
                     int edad = DateTime.Now.Year - fechaNacimiento.Year;
                     if (fechaNacimiento > DateTime.Now.AddYears(-edad))
@@ -201,9 +213,10 @@ namespace TestGit
                     if (objCliente.Id_Cliente == 0)
                     {
                         int idClienteGenerado = new CN_Cliente().Registrar(objCliente, out mensaje);
+                        Console.WriteLine(idClienteGenerado.ToString() + " numero de id");
                         if (idClienteGenerado != 0)
                         {
-                            
+                            Console.WriteLine(idClienteGenerado.ToString() + " ENTRÓ o NO?=");
 
                             // Agrega el nuevo cliente al DataGridView.
                             dgvData.Rows.Add(new object[] {
