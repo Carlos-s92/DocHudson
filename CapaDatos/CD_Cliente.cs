@@ -135,7 +135,6 @@ namespace CapaDatos
                  
                     cmd.Parameters.AddWithValue("DNI", obj.Dni);
                     cmd.Parameters.AddWithValue("Fecha_Nacimiento", obj.Fecha_Nacimiento);
-                    cmd.Parameters.AddWithValue("Id_Direccion", obj.domicilio.Id_Domicilio);
                     cmd.Parameters.AddWithValue("Provincia", obj.domicilio.oLocalidad.oProvincia.Id_Provincia);
                     cmd.Parameters.AddWithValue("Localidad", obj.domicilio.oLocalidad.Id_Localidad);
                     cmd.Parameters.AddWithValue("Calle", obj.domicilio.Calle);
