@@ -55,12 +55,10 @@
             this.comboProvincia = new System.Windows.Forms.ComboBox();
             this.comboLocalidad = new System.Windows.Forms.ComboBox();
             this.txtNumero = new CustomControls.RJControls.RJTextBox();
-            this.txtLocalidad = new CustomControls.RJControls.RJTextBox();
             this.rjButton3 = new CustomControls.RJControls.RJButton();
             this.txtBusqueda = new CustomControls.RJControls.RJTextBox();
             this.BtnLimpiar2 = new CustomControls.RJControls.RJButton();
             this.BtnGuardar2 = new CustomControls.RJControls.RJButton();
-            this.txtProvincia = new CustomControls.RJControls.RJTextBox();
             this.txtCalle = new CustomControls.RJControls.RJTextBox();
             this.txtMail = new CustomControls.RJControls.RJTextBox();
             this.txtTelefono = new CustomControls.RJControls.RJTextBox();
@@ -346,7 +344,6 @@
             this.comboLocalidad.Size = new System.Drawing.Size(177, 38);
             this.comboLocalidad.TabIndex = 141;
             this.comboLocalidad.Tag = "";
-
             // 
             // txtNumero
             // 
@@ -372,30 +369,6 @@
             this.txtNumero.Texts = "";
             this.txtNumero.UnderlinedStyle = true;
             this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
-            // 
-            // txtLocalidad
-            // 
-            this.txtLocalidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.txtLocalidad.BorderColor = System.Drawing.Color.DimGray;
-            this.txtLocalidad.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
-            this.txtLocalidad.BorderRadius = 10;
-            this.txtLocalidad.BorderSize = 2;
-            this.txtLocalidad.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLocalidad.ForeColor = System.Drawing.Color.White;
-            this.txtLocalidad.IsReadOnly = false;
-            this.txtLocalidad.Location = new System.Drawing.Point(247, 252);
-            this.txtLocalidad.Margin = new System.Windows.Forms.Padding(4);
-            this.txtLocalidad.Multiline = false;
-            this.txtLocalidad.Name = "txtLocalidad";
-            this.txtLocalidad.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtLocalidad.PasswordChar = false;
-            this.txtLocalidad.PlaceholderColor = System.Drawing.Color.White;
-            this.txtLocalidad.PlaceholderText = "Localidad";
-            this.txtLocalidad.ShortcutsEnabled = false;
-            this.txtLocalidad.Size = new System.Drawing.Size(194, 45);
-            this.txtLocalidad.TabIndex = 138;
-            this.txtLocalidad.Texts = "";
-            this.txtLocalidad.UnderlinedStyle = true;
             // 
             // rjButton3
             // 
@@ -485,30 +458,6 @@
             this.BtnGuardar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnGuardar2.UseVisualStyleBackColor = false;
             this.BtnGuardar2.Click += new System.EventHandler(this.BtnGuardar2_Click);
-            // 
-            // txtProvincia
-            // 
-            this.txtProvincia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.txtProvincia.BorderColor = System.Drawing.Color.DimGray;
-            this.txtProvincia.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
-            this.txtProvincia.BorderRadius = 10;
-            this.txtProvincia.BorderSize = 2;
-            this.txtProvincia.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProvincia.ForeColor = System.Drawing.Color.White;
-            this.txtProvincia.IsReadOnly = false;
-            this.txtProvincia.Location = new System.Drawing.Point(51, 252);
-            this.txtProvincia.Margin = new System.Windows.Forms.Padding(4);
-            this.txtProvincia.Multiline = false;
-            this.txtProvincia.Name = "txtProvincia";
-            this.txtProvincia.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtProvincia.PasswordChar = false;
-            this.txtProvincia.PlaceholderColor = System.Drawing.Color.White;
-            this.txtProvincia.PlaceholderText = "Provincia";
-            this.txtProvincia.ShortcutsEnabled = false;
-            this.txtProvincia.Size = new System.Drawing.Size(175, 45);
-            this.txtProvincia.TabIndex = 131;
-            this.txtProvincia.Texts = "";
-            this.txtProvincia.UnderlinedStyle = true;
             // 
             // txtCalle
             // 
@@ -643,13 +592,11 @@
             this.Controls.Add(this.comboLocalidad);
             this.Controls.Add(this.comboProvincia);
             this.Controls.Add(this.txtNumero);
-            this.Controls.Add(this.txtLocalidad);
             this.Controls.Add(this.comboBusqueda);
             this.Controls.Add(this.rjButton3);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.BtnLimpiar2);
             this.Controls.Add(this.BtnGuardar2);
-            this.Controls.Add(this.txtProvincia);
             this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.txtCalle);
             this.Controls.Add(this.txtMail);
@@ -681,13 +628,11 @@
         private System.Windows.Forms.ComboBox comboEstado;
         private System.Windows.Forms.TextBox txtindice;
         private System.Windows.Forms.TextBox txtid;
-        private CustomControls.RJControls.RJTextBox txtProvincia;
         private System.Windows.Forms.ComboBox comboBusqueda;
         private CustomControls.RJControls.RJButton rjButton3;
         private CustomControls.RJControls.RJTextBox txtBusqueda;
         private CustomControls.RJControls.RJButton BtnLimpiar2;
         private CustomControls.RJControls.RJButton BtnGuardar2;
-        private CustomControls.RJControls.RJTextBox txtLocalidad;
         private CustomControls.RJControls.RJTextBox txtNumero;
         private System.Windows.Forms.ComboBox comboProvincia;
         private System.Windows.Forms.DataGridViewButtonColumn btnseleccionar;

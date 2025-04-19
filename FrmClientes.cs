@@ -269,8 +269,8 @@ namespace TestGit
                                 txtTelefono.Texts,
                                 ((OpcionesCombo)comboEstado.SelectedItem).Valor.ToString(),
                                 ((OpcionesCombo)comboEstado.SelectedItem).Texto.ToString(),
-                                ((OpcionesCombo)comboProvincia.SelectedItem).Texto.ToString(), //
-                                ((OpcionesCombo)comboLocalidad.SelectedItem).Texto.ToString(), //
+                                ((OpcionesCombo)comboProvincia.SelectedItem).Valor.ToString(), //
+                                ((OpcionesCombo)comboLocalidad.SelectedItem).Valor.ToString(), //
                                 txtCalle.Texts,
                                 txtNumero.Texts
                             });
