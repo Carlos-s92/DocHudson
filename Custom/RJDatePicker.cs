@@ -93,7 +93,11 @@ namespace CustomControls.RJControls
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
             base.OnKeyPress(e);
-            e.Handled = true;
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '/')
+            {
+                e.Handled = true;
+            }
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -171,7 +175,7 @@ namespace CustomControls.RJControls
             // Crear panel que contendrá el calendario
             Panel calendarPanel = new Panel();
             calendarPanel.Name = "calendarPanel";
-            calendarPanel.Size = new System.Drawing.Size(291, 191); // Tamaño fijo que vos querés
+            calendarPanel.Size = new System.Drawing.Size(291, 203);
             calendarPanel.BackColor = Color.White;
             calendarPanel.BorderStyle = BorderStyle.FixedSingle;
 

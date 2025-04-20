@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,8 @@ namespace TestGit.Custom
         public userCalendar()
         {
             InitializeComponent();
+            PLine.Paint += PLine_Paint;
+            configurarPline();
             establecerFecha();
         }
 
@@ -134,7 +137,7 @@ namespace TestGit.Custom
                     {
                         btn.Enabled = true;
                         btn.ForeColor = Color.White;
-                        btn.Font = new Font("Segoe UI", 7, FontStyle.Regular);
+                        btn.Font = new Font("Segoe UI", 8, FontStyle.Regular);
 
                         int indice = (fila - 1) * 7 + col;
 
@@ -151,7 +154,7 @@ namespace TestGit.Custom
 
                             if (new DateTime(currentDate.Year, currentDate.Month, dia) == DateTime.Today)
                             {
-                                btn.Font = new Font("Segoe UI", 7, FontStyle.Bold);
+                                btn.Font = new Font("Segoe UI", 8, FontStyle.Bold);
                                 btn.ForeColor = Color.Cyan;
                             }
 
@@ -179,14 +182,14 @@ namespace TestGit.Custom
             {
                 if (control is Button btn && btn.Enabled)
                 {
-                    btn.Font = new Font("Segoe UI", 7, FontStyle.Regular);
+                    btn.Font = new Font("Segoe UI", 8, FontStyle.Regular);
                     btn.ForeColor = Color.White;
                 }
             }
 
             if (sender is Button clickedBtn)
             {
-                clickedBtn.Font = new Font("Segoe UI", 7, FontStyle.Bold);
+                clickedBtn.Font = new Font("Segoe UI", 8, FontStyle.Bold);
                 clickedBtn.ForeColor = Color.Cyan;
 
                 int diaSeleccionado = int.Parse(clickedBtn.Text);
@@ -267,6 +270,29 @@ namespace TestGit.Custom
             selectorActivo = SelectorActivo.Ninguno;
             establecerFecha();
             CargarDias();
+            DateTime fechaSeleccionada = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day);
+            FechaSeleccionada?.Invoke(this, fechaSeleccionada);
+        }
+        private void PLine_Paint(object sender, PaintEventArgs e)
+        {
+            Panel panel = sender as Panel;
+            if (panel != null)
+            {
+                using (LinearGradientBrush brush = new LinearGradientBrush(panel.ClientRectangle,
+                Color.LightSkyBlue,
+                Color.LightPink,
+                LinearGradientMode.Horizontal))
+                {
+                    e.Graphics.FillRectangle(brush, panel.ClientRectangle);
+                }
+            }
+        }
+
+        private void configurarPline()
+        {
+            PLine.BringToFront();
+            PLine.Visible = true;
+            PLine.Location = new Point(3, 30);
         }
     }
 }
