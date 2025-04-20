@@ -50,7 +50,7 @@ namespace TestGit
             {
                 validaciones = false;
             }
-            if(dtpFechaI.Value >= dtpFechaF.Value)
+            if(asd.Value >= dtpFechaFsadsad.Value)
             {
                 validaciones = false;
             }
@@ -89,8 +89,8 @@ namespace TestGit
                             //oReserva.oCliente.Id_Cliente= Convert.ToInt32(txtIdCliente.Text);
                             //oReserva.oAuto.Id_Auto = Convert.ToInt32(txtIdAuto.Text);
                             oReserva.Estado = true;
-                            oReserva.Fecha_Inicio = dtpFechaI.Value;
-                            oReserva.Fecha_Fin = dtpFechaF.Value;
+                            oReserva.Fecha_Inicio = asd.Value;
+                            oReserva.Fecha_Fin = dtpFechaFsadsad.Value;
                           
                             oReserva.oPago = new Pago()
                             {
@@ -143,8 +143,8 @@ namespace TestGit
             this.txtModelo.Texts = "";
             this.txtNombre.Texts = "";
             this.txtTelefono.Texts = "";
-            this.dtpFechaI.Value = System.DateTime.Now;
-            this.dtpFechaF.Value = System.DateTime.Now;
+            this.asd.Value = System.DateTime.Now;
+            this.dtpFechaFsadsad.Value = System.DateTime.Now;
         }
 
         private void rjButton1_Click(object sender, EventArgs e)//Botón para agregar Cliente
