@@ -168,7 +168,7 @@ namespace TestGit
             txtindice.Text = "-1";
             comboEstado.SelectedIndex = 0;
             comboProvincia.SelectedIndex = 5;
-            dtpFecha.Value = System.DateTime.Now;
+            //rjdtpFecha.Value = System.DateTime.Now;
         }
 
         private void BtnGuardar2_Click(object sender, EventArgs e)
@@ -225,22 +225,14 @@ namespace TestGit
                         domicilio = domicilio,
 
 
-                                            
-                        // ^
-                        // |
-                        //Creo que para solucionarlo hay que aplicar el caos de arriba
-
-                        //Provincia = comboProvincia.Text,
-                        //Localidad = txtLocalidad.Texts,
-                        //Calle = txtCalle.Texts,
-                        //Numero = Convert.ToInt32(txtNumero.Texts),
                         Mail = txtMail.Texts,
                         Telefono = txtTelefono.Texts,
-                        Fecha_Nacimiento = dtpFecha.Value,
+                        Fecha_Nacimiento = rjdtpFecha.Value,
                         Estado = Convert.ToInt32(((OpcionesCombo)comboEstado.SelectedItem).Valor) == 1 ? true : false
                     };
 
-                    DateTime fechaNacimiento = dtpFecha.Value;
+                    DateTime fechaNacimiento = rjdtpFecha.Value;
+
                     int edad = DateTime.Now.Year - fechaNacimiento.Year;
                     if (fechaNacimiento > DateTime.Now.AddYears(-edad))
                     {
@@ -263,7 +255,7 @@ namespace TestGit
                                 txtDocumento.Texts,
                                 txtNombre.Texts,
                                 edad,
-                                dtpFecha.Value,
+                                rjdtpFecha.Value,
                                 txtMail.Texts,
                                 ((OpcionesCombo)comboProvincia.SelectedItem).Texto.ToString() + " " + ((OpcionesCombo)comboLocalidad.SelectedItem).Texto.ToString() + " " + txtCalle.Texts + " " + txtNumero.Texts,
                                 txtTelefono.Texts,
@@ -293,7 +285,7 @@ namespace TestGit
                             row.Cells["Documento"].Value = txtDocumento.Texts;
                             row.Cells["NombreCompleto"].Value = txtNombre.Texts;
                             row.Cells["Edad"].Value = edad;
-                            row.Cells["Fecha_Nacimiento"].Value = dtpFecha.Value;
+                            row.Cells["Fecha_Nacimiento"].Value = rjdtpFecha.Value;
                             row.Cells["Mail"].Value = txtMail.Texts;
                             row.Cells["Domicilio"].Value = ((OpcionesCombo)comboProvincia.SelectedItem).Texto.ToString() + " " + ((OpcionesCombo)comboLocalidad.SelectedItem).Texto.ToString() + " " + txtCalle.Texts + " " + txtNumero.Texts;
                             row.Cells["Telefono"].Value = txtTelefono.Texts;
@@ -463,7 +455,7 @@ namespace TestGit
                     txtid.Text = dgvData.Rows[indice].Cells["IdCliente"].Value.ToString();
                     txtDocumento.Texts = dgvData.Rows[indice].Cells["Documento"].Value.ToString();
                     txtNombre.Texts = dgvData.Rows[indice].Cells["NombreCompleto"].Value.ToString();
-                    dtpFecha.Value = Convert.ToDateTime(dgvData.Rows[indice].Cells["Fecha_Nacimiento"].Value);
+                    rjdtpFecha.Value = Convert.ToDateTime(dgvData.Rows[indice].Cells["Fecha_Nacimiento"].Value);
                     txtMail.Texts = dgvData.Rows[indice].Cells["Mail"].Value.ToString();
 
                     // Provincia

@@ -47,13 +47,14 @@
             this.Localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.comboEstado = new System.Windows.Forms.ComboBox();
             this.txtindice = new System.Windows.Forms.TextBox();
             this.txtid = new System.Windows.Forms.TextBox();
             this.comboBusqueda = new System.Windows.Forms.ComboBox();
             this.comboProvincia = new System.Windows.Forms.ComboBox();
             this.comboLocalidad = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.rjdtpFecha = new CustomControls.RJControls.RJDatePicker();
             this.txtNumero = new CustomControls.RJControls.RJTextBox();
             this.rjButton3 = new CustomControls.RJControls.RJButton();
             this.txtBusqueda = new CustomControls.RJControls.RJTextBox();
@@ -256,20 +257,7 @@
             this.Numero.Visible = false;
             this.Numero.Width = 175;
             // 
-            // dtpFecha
-            // 
-            this.dtpFecha.CalendarForeColor = System.Drawing.Color.White;
-            this.dtpFecha.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.dtpFecha.CalendarTitleForeColor = System.Drawing.Color.White;
-            this.dtpFecha.Font = new System.Drawing.Font("Segoe UI", 15.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(51, 211);
-            this.dtpFecha.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(393, 35);
-            this.dtpFecha.TabIndex = 130;
-            this.dtpFecha.Value = new System.DateTime(2025, 4, 19, 12, 30, 26, 0);
-            // 
+
             // comboEstado
             // 
             this.comboEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
@@ -345,6 +333,37 @@
             this.comboLocalidad.TabIndex = 141;
             this.comboLocalidad.Tag = "";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(46, 212);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(103, 25);
+            this.label1.TabIndex = 143;
+            this.label1.Text = "Fecha nac.";
+            // 
+            // rjdtpFecha
+            // 
+            this.rjdtpFecha.BorderColor = System.Drawing.Color.DimGray;
+            this.rjdtpFecha.BorderSize = 2;
+            this.rjdtpFecha.CalendarFont = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjdtpFecha.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.rjdtpFecha.CalendarMonthBackground = System.Drawing.Color.Blue;
+            this.rjdtpFecha.CalendarTitleBackColor = System.Drawing.Color.Yellow;
+            this.rjdtpFecha.CalendarTitleForeColor = System.Drawing.Color.Red;
+            this.rjdtpFecha.CalendarTrailingForeColor = System.Drawing.Color.Lime;
+            this.rjdtpFecha.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjdtpFecha.Location = new System.Drawing.Point(155, 206);
+            this.rjdtpFecha.MinimumSize = new System.Drawing.Size(4, 35);
+            this.rjdtpFecha.Name = "rjdtpFecha";
+            this.rjdtpFecha.Size = new System.Drawing.Size(281, 35);
+            this.rjdtpFecha.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.rjdtpFecha.TabIndex = 142;
+            this.rjdtpFecha.TextColor = System.Drawing.Color.White;
+            this.rjdtpFecha.Value = new System.DateTime(2025, 4, 20, 3, 45, 43, 130);
+            // 
             // txtNumero
             // 
             this.txtNumero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
@@ -370,6 +389,7 @@
             this.txtNumero.UnderlinedStyle = true;
             this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
             // 
+
             // rjButton3
             // 
             this.rjButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -459,6 +479,7 @@
             this.BtnGuardar2.UseVisualStyleBackColor = false;
             this.BtnGuardar2.Click += new System.EventHandler(this.BtnGuardar2_Click);
             // 
+
             // txtCalle
             // 
             this.txtCalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
@@ -577,7 +598,9 @@
             this.txtNombre.PlaceholderColor = System.Drawing.Color.White;
             this.txtNombre.PlaceholderText = "Nombre Cliente";
             this.txtNombre.ShortcutsEnabled = true;
+
             this.txtNombre.Size = new System.Drawing.Size(399, 45);
+
             this.txtNombre.TabIndex = 126;
             this.txtNombre.Texts = "";
             this.txtNombre.UnderlinedStyle = true;
@@ -588,7 +611,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(19)))));
-            this.ClientSize = new System.Drawing.Size(982, 726);
+
+            this.ClientSize = new System.Drawing.Size(920, 512);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.rjdtpFecha);
             this.Controls.Add(this.comboLocalidad);
             this.Controls.Add(this.comboProvincia);
             this.Controls.Add(this.txtNumero);
@@ -597,7 +623,6 @@
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.BtnLimpiar2);
             this.Controls.Add(this.BtnGuardar2);
-            this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.txtCalle);
             this.Controls.Add(this.txtMail);
             this.Controls.Add(this.txtTelefono);
@@ -619,7 +644,6 @@
 
         #endregion
         private System.Windows.Forms.DataGridView dgvData;
-        private System.Windows.Forms.DateTimePicker dtpFecha;
         private CustomControls.RJControls.RJTextBox txtCalle;
         private CustomControls.RJControls.RJTextBox txtMail;
         private CustomControls.RJControls.RJTextBox txtTelefono;
@@ -651,5 +675,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Calle;
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
         private System.Windows.Forms.ComboBox comboLocalidad;
+        private CustomControls.RJControls.RJDatePicker rjdtpFecha;
+        private System.Windows.Forms.Label label1;
     }
 }
