@@ -1,5 +1,4 @@
 ﻿using System;
-
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -220,7 +219,9 @@ namespace CustomControls.RJControls
             base.WndProc(ref m);
         }
 
-        private DateTime _selectedDate = DateTime.Now;
+        private DateTime _selectedDate = DateTime.Now.Date;
+
+
         public new DateTime Value
         {
             get => _selectedDate;

@@ -129,7 +129,7 @@ namespace TestGit
             txtindice.Text = "-1";
             comboEstado.SelectedIndex = 0;
             comboProvincia.SelectedIndex = 5;
-            rjdtpFecha.Value = System.DateTime.Now;
+            //rjdtpFecha.Value = System.DateTime.Now;
         }
 
         private void BtnGuardar2_Click(object sender, EventArgs e)

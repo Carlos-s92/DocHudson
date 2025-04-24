@@ -57,7 +57,6 @@ namespace TestGit.Modales
             {
                 this.btnReserva.BackColor = Color.Red;
                 this.btnReserva.Text = "Reservado";
-                this.btnReserva.Click += label9_Click(); 
             }
 
 
@@ -86,10 +85,8 @@ namespace TestGit.Modales
 
         }
 
-        private EventHandler label9_Click()
-        {
-            throw new NotImplementedException();
-        }
+
+
 
         private void label9_Click(object sender, EventArgs e)
         {
@@ -148,6 +145,11 @@ namespace TestGit.Modales
 
         private void btnReserva_Click(object sender, EventArgs e)
         {
+            if (this.oAuto.Reservado)
+            {
+                MessageBox.Show("Este auto ya está reservado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             Envio(oAuto);
         }
 
