@@ -132,7 +132,7 @@ namespace CapaDatos
                     SqlCommand cmd = new SqlCommand("InsertarCliente", oconexion);
                    
                     cmd.Parameters.AddWithValue("Nombre", obj.Nombre);
-                 
+                    //Faltaria para terminar de insertar el cliente, agregar el apellido y la licencia
                     cmd.Parameters.AddWithValue("DNI", obj.Dni);
                     cmd.Parameters.AddWithValue("Fecha_Nacimiento", obj.Fecha_Nacimiento);
                     cmd.Parameters.AddWithValue("Provincia", obj.domicilio.oLocalidad.oProvincia.Id_Provincia);
@@ -180,6 +180,7 @@ namespace CapaDatos
                     SqlCommand cmd = new SqlCommand("ActualizarCliente", oconexion);
                     cmd.Parameters.AddWithValue("Id_Cliente", obj.Id_Cliente);
                     cmd.Parameters.AddWithValue("Nombre", obj.Nombre);
+                    //Falta agregar el apellido y la licencia
                     cmd.Parameters.AddWithValue("DNI", obj.Dni);
                     cmd.Parameters.AddWithValue("Fecha_Nacimiento", obj.Fecha_Nacimiento);
                     cmd.Parameters.AddWithValue("Provincia", obj.domicilio.oLocalidad.oProvincia.Id_Provincia);

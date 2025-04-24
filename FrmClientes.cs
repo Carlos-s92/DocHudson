@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -17,6 +18,9 @@ namespace TestGit
 {
     public partial class FrmClientes : Form
     {
+
+        private bool cargandoDatos = false;
+
         public FrmClientes()
         {
             InitializeComponent();
@@ -54,7 +58,40 @@ namespace TestGit
             //comboProvincia.DataSource = listaProvincias;
             comboProvincia.DisplayMember = "Texto";
             comboProvincia.ValueMember = "Valor";
-            comboProvincia.SelectedIndex = 5;
+            comboProvincia.SelectedIndex = 0;
+
+
+            ///////////// Muestra las provincias en el comboProvincia//////////////////////////////////////////////////
+            //List<Localidad> listaLocalidades = new CN_Localidad().Listar();
+            //foreach (Localidad item in listaLocalidades)
+            //{
+            //    comboLocalidad.Items.Add(new OpcionesCombo() { Valor = item.Id_Localidad, Texto = item.localidad });
+            //}
+            ////comboProvincia.DataSource = listaProvincias;
+            //comboLocalidad.DisplayMember = "Texto";
+            //comboLocalidad.ValueMember = "Valor";
+            //comboLocalidad.SelectedIndex = 0;
+
+
+
+
+
+            //List<Localidad> listaLocalidades = new CN_Localidad().Listar();
+
+            //int provinciaId = Convert.ToInt32(((OpcionesCombo)comboProvincia.SelectedItem).Valor);//asigna el id de la provincia seleccionada
+
+            //var localidadesFiltradas = listaLocalidades
+            //.Where(l => l.oProvincia != null && l.oProvincia.Id_Provincia == provinciaId)
+            //.Select(l => new OpcionesCombo { Valor = l.Id_Localidad, Texto = l.localidad })
+            //.ToList();
+
+            //// Asignar al combo de localidad
+            //comboLocalidad.DataSource = localidadesFiltradas;
+            //comboLocalidad.DisplayMember = "Texto";
+            //comboLocalidad.ValueMember = "Valor";
+
+
+
 
             //comboProvincia.SelectedIndexChanged += comboProvincia_SelectedIndexChanged;
 
@@ -121,8 +158,10 @@ namespace TestGit
             this.txtDocumento.Texts = "";
             this.txtCalle.Texts = "";
             this.txtNumero.Texts = "";
-            this.txtLocalidad.Texts = "";
-            this.txtProvincia.Texts = "";
+
+            this.comboLocalidad.SelectedIndex = 0;
+            this.comboProvincia.SelectedIndex = 0;
+  
             this.txtTelefono.Texts = "";
             this.txtMail.Texts = "";
             this.txtid.Text = "0";
@@ -157,31 +196,43 @@ namespace TestGit
                 if (confirmacion.DialogResult == DialogResult.Yes)
                 {
                     confirmacion.Close();
+
+                    Provincia provincia = new Provincia()
+                    {
+                        Id_Provincia = Convert.ToInt32(((OpcionesCombo)comboProvincia.SelectedItem).Valor),
+                    };
+
+                    Localidad localidad = new Localidad()
+                    {
+                        Id_Localidad = Convert.ToInt32(((OpcionesCombo)comboLocalidad.SelectedItem).Valor),
+                        oProvincia = provincia,
+                    };
+
+
+                    Domicilio domicilio = new Domicilio()
+                    {
+                        Calle = txtCalle.Texts,
+                        Numero = Convert.ToInt32(txtNumero.Texts),
+                        oLocalidad = localidad,
+                    };
+
+
                     Cliente objCliente = new Cliente()
                     {
                         Id_Cliente = Convert.ToInt32(txtid.Text),
                         Dni = txtDocumento.Texts,
                         Nombre = txtNombre.Texts,
+                        domicilio = domicilio,
 
-                        domicilio = new Domicilio()
-                        {
-                            Calle = txtCalle.Texts,
-                            Numero = Convert.ToInt32(txtNumero.Texts),
-                            oLocalidad = new Localidad()
-                            {
-                                localidad = txtLocalidad.Texts,
-                                oProvincia = new Provincia()
-                                {
-                                    Id_Provincia = Convert.ToInt32(((OpcionesCombo)comboProvincia.SelectedItem).Valor),
-                                }
-                            }
-                        },
+
                         Mail = txtMail.Texts,
                         Telefono = txtTelefono.Texts,
                         Fecha_Nacimiento = rjdtpFecha.Value,
                         Estado = Convert.ToInt32(((OpcionesCombo)comboEstado.SelectedItem).Valor) == 1 ? true : false
                     };
+
                     DateTime fechaNacimiento = rjdtpFecha.Value;
+
                     int edad = DateTime.Now.Year - fechaNacimiento.Year;
                     if (fechaNacimiento > DateTime.Now.AddYears(-edad))
                     {
@@ -192,9 +243,10 @@ namespace TestGit
                     if (objCliente.Id_Cliente == 0)
                     {
                         int idClienteGenerado = new CN_Cliente().Registrar(objCliente, out mensaje);
+                        Console.WriteLine(idClienteGenerado.ToString() + " numero de id");
                         if (idClienteGenerado != 0)
                         {
-                            
+                            Console.WriteLine(idClienteGenerado.ToString() + " ENTRÓ o NO?=");
 
                             // Agrega el nuevo cliente al DataGridView.
                             dgvData.Rows.Add(new object[] {
@@ -205,12 +257,12 @@ namespace TestGit
                                 edad,
                                 rjdtpFecha.Value,
                                 txtMail.Texts,
-                                comboProvincia.Text + " " + txtLocalidad.Texts + " " + txtCalle.Texts + " " + txtNumero.Texts,
+                                ((OpcionesCombo)comboProvincia.SelectedItem).Texto.ToString() + " " + ((OpcionesCombo)comboLocalidad.SelectedItem).Texto.ToString() + " " + txtCalle.Texts + " " + txtNumero.Texts,
                                 txtTelefono.Texts,
                                 ((OpcionesCombo)comboEstado.SelectedItem).Valor.ToString(),
                                 ((OpcionesCombo)comboEstado.SelectedItem).Texto.ToString(),
-                                comboProvincia.Text, 
-                                txtLocalidad.Texts,
+                                ((OpcionesCombo)comboProvincia.SelectedItem).Valor.ToString(), //
+                                ((OpcionesCombo)comboLocalidad.SelectedItem).Valor.ToString(), //
                                 txtCalle.Texts,
                                 txtNumero.Texts
                             });
@@ -235,12 +287,12 @@ namespace TestGit
                             row.Cells["Edad"].Value = edad;
                             row.Cells["Fecha_Nacimiento"].Value = rjdtpFecha.Value;
                             row.Cells["Mail"].Value = txtMail.Texts;
-                            row.Cells["Domicilio"].Value = comboProvincia.Text + " " + txtLocalidad.Texts + " " + txtCalle.Texts + " " + txtNumero.Texts;
+                            row.Cells["Domicilio"].Value = ((OpcionesCombo)comboProvincia.SelectedItem).Texto.ToString() + " " + ((OpcionesCombo)comboLocalidad.SelectedItem).Texto.ToString() + " " + txtCalle.Texts + " " + txtNumero.Texts;
                             row.Cells["Telefono"].Value = txtTelefono.Texts;
                             row.Cells["EstadoValor"].Value = ((OpcionesCombo)comboEstado.SelectedItem).Valor.ToString();
                             row.Cells["Estado"].Value = ((OpcionesCombo)comboEstado.SelectedItem).Texto.ToString();
                             row.Cells["Provincia"].Value = ((OpcionesCombo)comboProvincia.SelectedItem).Valor.ToString();
-                            row.Cells["Localidad"].Value = txtLocalidad.Texts;
+                            row.Cells["Localidad"].Value = ((OpcionesCombo)comboLocalidad.SelectedItem).Valor.ToString(); ;
                             row.Cells["Calle"].Value = txtCalle.Texts;
                             row.Cells["Numero"].Value = txtNumero.Texts;
                             LimpiarCampos(); // Limpia los campos del formulario.
@@ -282,7 +334,7 @@ namespace TestGit
                 confirmacion = false;
             }
             // Verifica que el campo de Dirección no esté vacío.
-            if (txtCalle.Texts == "" || comboProvincia.Text == "" || txtLocalidad.Texts == "" || txtNumero.Texts == "")
+            if (txtCalle.Texts == "" || txtNumero.Texts == "")
             {
                 confirmacion = false;
             }
@@ -395,6 +447,9 @@ namespace TestGit
 
                 if (indice >= 0)
                 {
+                    cargandoDatos = true;
+
+
                     // Carga los datos del cliente seleccionado en los campos del formulario.
                     txtindice.Text = indice.ToString();
                     txtid.Text = dgvData.Rows[indice].Cells["IdCliente"].Value.ToString();
@@ -403,8 +458,21 @@ namespace TestGit
                     rjdtpFecha.Value = Convert.ToDateTime(dgvData.Rows[indice].Cells["Fecha_Nacimiento"].Value);
                     txtMail.Texts = dgvData.Rows[indice].Cells["Mail"].Value.ToString();
 
-                    comboProvincia.Text = dgvData.Rows[indice].Cells["Provincia"].Value.ToString();
-                    txtLocalidad.Texts = dgvData.Rows[indice].Cells["Localidad"].Value.ToString();
+                    // Provincia
+                    int idProvincia = Convert.ToInt32(dgvData.Rows[indice].Cells["Provincia"].Value);
+                    int idLocalidad = Convert.ToInt32(dgvData.Rows[indice].Cells["Localidad"].Value);
+
+                    // Seleccionar la provincia (buscando por valor)
+                    foreach (OpcionesCombo item in comboProvincia.Items)
+                    {
+                        if ((int)item.Valor == idProvincia)
+                        {
+                            comboProvincia.SelectedItem = item;
+                            break;
+                        }
+                    }
+
+
                     txtCalle.Texts = dgvData.Rows[indice].Cells["Calle"].Value.ToString();
                     txtNumero.Texts = dgvData.Rows[indice].Cells["Numero"].Value.ToString();
 
@@ -429,9 +497,43 @@ namespace TestGit
                             break;
                         }
                     }
+
+
+                    CargarLocalidades(idProvincia, idLocalidad);
+                    cargandoDatos = false;
+
+
                 }
             }
         }
+
+
+
+        /////////////////////////////////////////
+        private void CargarLocalidades(object provinciaId, int? idLocalidadSeleccionada = null)
+        {
+            List<Localidad> listaLocalidades = new CN_Localidad().Listar();
+
+            var localidadesFiltradas = listaLocalidades
+                .Where(l => l.oProvincia != null && l.oProvincia.Id_Provincia == Convert.ToInt32(provinciaId))
+                .Select(l => new OpcionesCombo
+                {
+                    Valor = l.Id_Localidad,
+                    Texto = l.localidad
+                })
+                .ToList();
+
+            comboLocalidad.DataSource = localidadesFiltradas;
+            comboLocalidad.DisplayMember = "Texto";
+            comboLocalidad.ValueMember = "Valor";
+
+            // Si viene un id específico para seleccionar, lo asignamos
+            if (idLocalidadSeleccionada.HasValue)
+            {
+                comboLocalidad.SelectedValue = idLocalidadSeleccionada.Value;
+            }
+        }
+
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -505,21 +607,21 @@ namespace TestGit
             }
         }
 
+
+
+
         private void comboProvincia_SelectedIndexChanged(object sender, EventArgs e)//Muestra las localidades de la provincia seleccionada
         {
-            List<Localidad> listaLocalidades = new CN_Localidad().Listar();
 
-            int provinciaId = Convert.ToInt32(((OpcionesCombo)comboProvincia.SelectedItem).Valor);//asigna el id de la provincia seleccionada
+            if (cargandoDatos) return;
 
-            var localidadesFiltradas = listaLocalidades
-            .Where(l => l.oProvincia != null && l.oProvincia.Id_Provincia == provinciaId)
-            .Select(l => new OpcionesCombo {Valor = l.Id_Localidad, Texto = l.localidad})
-            .ToList();
-
-            // Asignar al combo de localidad
-            comboLocalidad.DataSource = localidadesFiltradas;
-            comboLocalidad.DisplayMember = "Texto";
-            comboLocalidad.ValueMember = "Valor";
+            if (comboProvincia.SelectedItem is OpcionesCombo opcionSeleccionada)
+            {
+                CargarLocalidades(opcionSeleccionada.Valor);
+            }
         }
+
     }
 }
+
+

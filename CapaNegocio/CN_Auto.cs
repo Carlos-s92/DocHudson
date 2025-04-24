@@ -26,20 +26,26 @@ namespace CapaNegocio
             {
                 Mensaje += "Es Necesario la Matricula del Auto\n";
             }
-            if (obj.Marca == "")
+            ////////////////////////////////////////////////////////////
+            if (obj.oModelo.modelo == "")
+            {
+                Mensaje += "Es Necesario el Modelo del Auto\n";
+            }
+            if (obj.oModelo.oMarca.marca == "")
             {
                 Mensaje += "Es Necesario la Marca del Auto\n";
             }
+            ////////////////////////////////////////////////////////////
             if (obj.Kilometros == 0)
             {
                 Mensaje += "Es Necesario los Kilometros del Auto\n";
             }
-            
             if (obj.Año <= 1886)
             {
                 Mensaje += "Es Necesario un Año Correcto del Auto\n";
             }
-            if (obj.Consumo == 0)
+            ////////////////////--VER ESTO--////////////////////////////////////////
+            /*if (obj.Consumo == 0)
             {
                 Mensaje += "Es Necesario un Consumo del Auto\n";
             }
@@ -50,7 +56,7 @@ namespace CapaNegocio
             if (obj.Asientos == 0)
             {
                 Mensaje += "Es Necesario la Cantidad de Asientos del Auto\n";
-            }
+            }*/
             if (Mensaje != string.Empty)
             {
                 return 0;
@@ -72,10 +78,16 @@ namespace CapaNegocio
             {
                 Mensaje += "Es Necesario la Matricula del Auto\n";
             }
-            if (obj.Marca == "")
+            ////////////////////////////////////////////////////////////
+            if (obj.oModelo.modelo == "")
+            {
+                Mensaje += "Es Necesario el Modelo del Auto\n";
+            }
+            if (obj.oModelo.oMarca.marca == "")
             {
                 Mensaje += "Es Necesario la Marca del Auto\n";
             }
+            ////////////////////////////////////////////////////////////
             if (obj.Kilometros == 0)
             {
                 Mensaje += "Es Necesario los Kilometros del Auto\n";
@@ -84,7 +96,8 @@ namespace CapaNegocio
             {
                 Mensaje += "Es Necesario un Año Correcto del Auto\n";
             }
-            if (obj.Consumo == 0)
+            ////////////////////--VER ESTO--////////////////////////////////////////
+            /*if (obj.Consumo == 0)
             {
                 Mensaje += "Es Necesario un Consumo del Auto\n";
             }
@@ -95,7 +108,7 @@ namespace CapaNegocio
             if (obj.Asientos == 0)
             {
                 Mensaje += "Es Necesario la Cantidad de Asientos del Auto\n";
-            }
+            }*/
             if (Mensaje != string.Empty)
             {
                 return false;

@@ -28,13 +28,14 @@ namespace TestGit.Modales
         {
             InitializeComponent();
             this.txtId.Text = id.ToString();
-            this.txtModelo.Texts = pAuto.Modelo;
-            this.txtMarca.Texts = pAuto.Marca;
-            this.txtConsumo.Texts = pAuto.Consumo.ToString();
+            /////////////VER MODELO, MARCA; CONSUMO, PUERTAS, ASIENTOS////////////////////////////////////////////////////////////////////////////////////////////////////////
+            this.txtModelo.Texts = pAuto.oModelo.modelo;
+            this.txtMarca.Texts = pAuto.oModelo.oMarca.marca;
+            this.txtConsumo.Texts = pAuto.oModelo.Consumo.ToString();
             this.txtKilometros.Texts = pAuto.Kilometros.ToString();
             this.txtMatricula.Texts = pAuto.Matricula.ToString();
-            this.txtPuertas.Texts = pAuto.Puertas.ToString();
-            this.txtAsientos.Texts = pAuto.Asientos.ToString();
+            this.txtPuertas.Texts = pAuto.oModelo.Puertas.ToString();
+            this.txtAsientos.Texts = pAuto.oModelo.Asientos.ToString();
             this.txtAño.Texts = pAuto.Año.ToString();
             this.estado = pAuto.Estado;
             this.nombreImagen = pAuto.Imagen;
@@ -124,13 +125,14 @@ namespace TestGit.Modales
                     Autos objAuto = new Autos()
                     {
                         Id_Auto = Convert.ToInt32(txtId.Text),
-                        Modelo = txtModelo.Texts,
-                        Marca = txtMarca.Texts,
+                        ////////////COMENTÉ MODELO, MARCA; CONSUMO, PUERTAS, ASIENTOS/////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        //Modelo = txtModelo.Texts,
+                        //Marca = txtMarca.Texts,
                         Matricula = txtMatricula.Texts,
                         Kilometros = Convert.ToDecimal(txtKilometros.Texts),
-                        Consumo = Convert.ToDecimal(txtConsumo.Texts),
+                        /*Consumo = Convert.ToDecimal(txtConsumo.Texts),
                         Puertas = Convert.ToInt32(txtPuertas.Texts),
-                        Asientos = Convert.ToInt32(txtAsientos.Texts),
+                        Asientos = Convert.ToInt32(txtAsientos.Texts),*/
                         Año = Convert.ToInt32(txtAño.Texts),
                         Imagen = nombreImagen,
                         Estado = Convert.ToInt32(((OpcionesCombo)comboEstado.SelectedItem).Valor) == 1 ? true : false

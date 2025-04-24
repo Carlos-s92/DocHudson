@@ -77,13 +77,14 @@ namespace CapaNegocio
                 Mensaje += "El Cliente debe tener 18 años o más para Alquilar un Auto\n";
             }
             /////////////////////////////////////////////////////////////
-
             if (Mensaje != string.Empty)
             {
+                Console.WriteLine("devuelve 0");
                 return 0;
             }
             else
             {
+                Console.WriteLine("devuelve OBJETO CD_CLIENTE");
                 return objcd_cliente.Registrar(obj, out Mensaje);
             }
 
