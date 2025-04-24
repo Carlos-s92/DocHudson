@@ -577,7 +577,7 @@
             this.txtNombre.PlaceholderColor = System.Drawing.Color.White;
             this.txtNombre.PlaceholderText = "Nombre Cliente";
             this.txtNombre.ShortcutsEnabled = true;
-            this.txtNombre.Size = new System.Drawing.Size(396, 45);
+            this.txtNombre.Size = new System.Drawing.Size(399, 45);
             this.txtNombre.TabIndex = 126;
             this.txtNombre.Texts = "";
             this.txtNombre.UnderlinedStyle = true;
