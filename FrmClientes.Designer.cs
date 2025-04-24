@@ -65,6 +65,8 @@
             this.txtTelefono = new CustomControls.RJControls.RJTextBox();
             this.txtDocumento = new CustomControls.RJControls.RJTextBox();
             this.txtNombre = new CustomControls.RJControls.RJTextBox();
+            this.txtApellido = new CustomControls.RJControls.RJTextBox();
+            this.txtLicencia = new CustomControls.RJControls.RJTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -257,7 +259,6 @@
             this.Numero.Visible = false;
             this.Numero.Width = 175;
             // 
-
             // comboEstado
             // 
             this.comboEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
@@ -389,7 +390,6 @@
             this.txtNumero.UnderlinedStyle = true;
             this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
             // 
-
             // rjButton3
             // 
             this.rjButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -479,7 +479,6 @@
             this.BtnGuardar2.UseVisualStyleBackColor = false;
             this.BtnGuardar2.Click += new System.EventHandler(this.BtnGuardar2_Click);
             // 
-
             // txtCalle
             // 
             this.txtCalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
@@ -515,7 +514,7 @@
             this.txtMail.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMail.ForeColor = System.Drawing.Color.White;
             this.txtMail.IsReadOnly = false;
-            this.txtMail.Location = new System.Drawing.Point(490, 27);
+            this.txtMail.Location = new System.Drawing.Point(45, 90);
             this.txtMail.Margin = new System.Windows.Forms.Padding(4);
             this.txtMail.Multiline = false;
             this.txtMail.Name = "txtMail";
@@ -524,7 +523,7 @@
             this.txtMail.PlaceholderColor = System.Drawing.Color.White;
             this.txtMail.PlaceholderText = "Mail";
             this.txtMail.ShortcutsEnabled = false;
-            this.txtMail.Size = new System.Drawing.Size(446, 45);
+            this.txtMail.Size = new System.Drawing.Size(396, 45);
             this.txtMail.TabIndex = 127;
             this.txtMail.Texts = "";
             this.txtMail.UnderlinedStyle = true;
@@ -573,7 +572,7 @@
             this.txtDocumento.PlaceholderColor = System.Drawing.Color.White;
             this.txtDocumento.PlaceholderText = "Documento";
             this.txtDocumento.ShortcutsEnabled = false;
-            this.txtDocumento.Size = new System.Drawing.Size(396, 45);
+            this.txtDocumento.Size = new System.Drawing.Size(196, 45);
             this.txtDocumento.TabIndex = 125;
             this.txtDocumento.Texts = "";
             this.txtDocumento.UnderlinedStyle = true;
@@ -589,30 +588,77 @@
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.White;
             this.txtNombre.IsReadOnly = false;
-            this.txtNombre.Location = new System.Drawing.Point(45, 90);
+            this.txtNombre.Location = new System.Drawing.Point(490, 27);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Multiline = false;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
             this.txtNombre.PasswordChar = false;
             this.txtNombre.PlaceholderColor = System.Drawing.Color.White;
-            this.txtNombre.PlaceholderText = "Nombre Cliente";
+            this.txtNombre.PlaceholderText = "Nombre ";
             this.txtNombre.ShortcutsEnabled = true;
-
-            this.txtNombre.Size = new System.Drawing.Size(399, 45);
-
+            this.txtNombre.Size = new System.Drawing.Size(221, 45);
             this.txtNombre.TabIndex = 126;
             this.txtNombre.Texts = "";
             this.txtNombre.UnderlinedStyle = true;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
+            // 
+            // txtApellido
+            // 
+            this.txtApellido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.txtApellido.BorderColor = System.Drawing.Color.DimGray;
+            this.txtApellido.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
+            this.txtApellido.BorderRadius = 10;
+            this.txtApellido.BorderSize = 2;
+            this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApellido.ForeColor = System.Drawing.Color.White;
+            this.txtApellido.IsReadOnly = false;
+            this.txtApellido.Location = new System.Drawing.Point(724, 27);
+            this.txtApellido.Margin = new System.Windows.Forms.Padding(4);
+            this.txtApellido.Multiline = false;
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtApellido.PasswordChar = false;
+            this.txtApellido.PlaceholderColor = System.Drawing.Color.White;
+            this.txtApellido.PlaceholderText = "Apellido";
+            this.txtApellido.ShortcutsEnabled = true;
+            this.txtApellido.Size = new System.Drawing.Size(212, 45);
+            this.txtApellido.TabIndex = 144;
+            this.txtApellido.Texts = "";
+            this.txtApellido.UnderlinedStyle = true;
+            // 
+            // txtLicencia
+            // 
+            this.txtLicencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.txtLicencia.BorderColor = System.Drawing.Color.DimGray;
+            this.txtLicencia.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
+            this.txtLicencia.BorderRadius = 10;
+            this.txtLicencia.BorderSize = 2;
+            this.txtLicencia.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLicencia.ForeColor = System.Drawing.Color.White;
+            this.txtLicencia.IsReadOnly = false;
+            this.txtLicencia.Location = new System.Drawing.Point(249, 27);
+            this.txtLicencia.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLicencia.Multiline = false;
+            this.txtLicencia.Name = "txtLicencia";
+            this.txtLicencia.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtLicencia.PasswordChar = false;
+            this.txtLicencia.PlaceholderColor = System.Drawing.Color.White;
+            this.txtLicencia.PlaceholderText = "Licencia";
+            this.txtLicencia.ShortcutsEnabled = false;
+            this.txtLicencia.Size = new System.Drawing.Size(187, 45);
+            this.txtLicencia.TabIndex = 145;
+            this.txtLicencia.Texts = "";
+            this.txtLicencia.UnderlinedStyle = true;
             // 
             // FrmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(19)))));
-
-            this.ClientSize = new System.Drawing.Size(920, 512);
+            this.ClientSize = new System.Drawing.Size(982, 726);
+            this.Controls.Add(this.txtLicencia);
+            this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rjdtpFecha);
             this.Controls.Add(this.comboLocalidad);
@@ -677,5 +723,7 @@
         private System.Windows.Forms.ComboBox comboLocalidad;
         private CustomControls.RJControls.RJDatePicker rjdtpFecha;
         private System.Windows.Forms.Label label1;
+        private CustomControls.RJControls.RJTextBox txtApellido;
+        private CustomControls.RJControls.RJTextBox txtLicencia;
     }
 }
