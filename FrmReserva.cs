@@ -30,11 +30,14 @@ namespace TestGit
             this.oAuto = oAuto;
             this.user = user;
             this.txtAño.Texts = oAuto.Año.ToString();
-            this.txtConsumo.Texts = oAuto.Consumo.ToString();
+            ///////////////VER CONSUMO//////////////////////////////////////////////////////////
+            this.txtConsumo.Texts = oAuto.oModelo.Consumo.ToString();
             this.txtIdAuto.Text = oAuto.Id_Auto.ToString();
             this.txtKilometros.Texts = oAuto.Kilometros.ToString();
             this.txtMatricula.Texts = oAuto.Matricula;
-            this.txtModelo.Texts = oAuto.Modelo.ToString();
+            ///////////////VER MODELO//////////////////////////////////////////////////////////
+            this.txtModelo.Texts = oAuto.oModelo.modelo.ToString();
+
 
         }
 
@@ -183,8 +186,9 @@ namespace TestGit
                 if (result == DialogResult.OK) // Si se selecciona un Cliente, llena los campos de Cliente y precio.
                 {
                     this.txtAño.Texts = modal._Auto.Año.ToString();
-                    this.txtConsumo.Texts = modal._Auto.Consumo.ToString();
-                    this.txtModelo.Texts = modal._Auto.Modelo.ToString();
+                    //////////////////////VER CONSUMO Y MODELO//////////////////////////////////////////////////////////////////////////////////////////
+                    this.txtConsumo.Texts = modal._Auto.oModelo.Consumo.ToString();
+                    this.txtModelo.Texts = modal._Auto.oModelo.modelo.ToString();
                     this.txtIdAuto.Text = modal._Auto.Id_Auto.ToString();
                     this.txtKilometros.Texts = modal._Auto.Kilometros.ToString();
                     this.txtMatricula.Texts = modal._Auto.Matricula;

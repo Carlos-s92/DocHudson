@@ -52,11 +52,13 @@ namespace TestGit
                     Pago oPago = new CN_Pago().Listar().Where(p => p.Id_Pago == oReserva.oPago.Id_Pago).FirstOrDefault();
 
                     this.txtAño.Texts = oAuto.Año.ToString();
-                    this.txtModelo.Texts = oAuto.Modelo.ToString();
-                    this.txtConsumo.Texts = oAuto.Consumo.ToString();
+
+                    ///////////////////// VER MODELO, CONSUMO y MARCA //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    this.txtModelo.Texts = oAuto.oModelo.modelo.ToString();
+                    this.txtConsumo.Texts = oAuto.oModelo.Consumo.ToString();
                     this.txtMatricula.Texts = oAuto.Matricula.ToString();
                     this.txtKilometros.Texts = oAuto.Kilometros.ToString();
-                    this.txtMarca.Texts = oAuto.Marca.ToString();
+                    this.txtMarca.Texts = oAuto.oModelo.Consumo.ToString();
 
                     this.txtDocumento.Texts = oCliente.Dni.ToString();
                     this.txtNombre.Texts = oCliente.Nombre.ToString();

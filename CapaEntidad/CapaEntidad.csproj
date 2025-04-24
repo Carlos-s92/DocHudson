@@ -44,6 +44,8 @@
     <Compile Include="Autos.cs" />
     <Compile Include="Domicilio.cs" />
     <Compile Include="Localidad.cs" />
+    <Compile Include="Marca.cs" />
+    <Compile Include="Modelo.cs" />
     <Compile Include="Provincia.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Negocio.cs" />

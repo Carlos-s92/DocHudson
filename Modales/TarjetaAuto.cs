@@ -18,6 +18,7 @@ namespace TestGit.Modales
 
 
         public Autos oAuto = new Autos();
+
        
         public TarjetaAuto()
         {
@@ -25,15 +26,18 @@ namespace TestGit.Modales
         }
         public TarjetaAuto(int id,string modelo, string marca, decimal consumo, int puertas, int asientos, decimal kilometros, bool reservado, bool estado, string matricula, int año, string imagen)
         {
+            //oAuto.oModelo = new Modelo();
+            //oAuto.oModelo.oMarca = new Marca();
             InitializeComponent();
             this.iconButton1.BackColor = Color.FromArgb(14, 15, 19);
             this.iconButton2.BackColor = Color.FromArgb(14, 15, 19);
-            oAuto.Marca = marca;
-            oAuto.Modelo = modelo;
-            oAuto.Consumo = consumo;
+            ///////////VER MARCA, MODELO, CONSUMO, PUERTAS, ASIENTOS//////////////////////////////////////////////////////////////////////////////////////////////////////////
+            oAuto.oModelo.oMarca.marca = marca;
+            oAuto.oModelo.modelo = modelo;
+            oAuto.oModelo.Consumo = consumo;
             oAuto.Kilometros = kilometros;
-            oAuto.Puertas = puertas;
-            oAuto.Asientos = asientos;
+            oAuto.oModelo.Puertas = puertas;
+            oAuto.oModelo.Asientos = asientos;
             oAuto.Estado = estado;
             oAuto.Id_Auto = id;
             oAuto.Reservado = reservado;
@@ -41,7 +45,8 @@ namespace TestGit.Modales
             oAuto.Año = Convert.ToInt32(año);
             oAuto.Imagen = imagen;
 
-           if(oAuto.Estado != true){
+
+            if (oAuto.Estado != true){
                 this.BackColor = Color.Red;
            }
           

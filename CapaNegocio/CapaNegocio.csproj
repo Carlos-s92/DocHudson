@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CN_Localidad.cs" />
+    <Compile Include="CN_Marca.cs" />
+    <Compile Include="CN_Modelo.cs" />
     <Compile Include="CN_Provincia.cs" />
     <Compile Include="CN_Auto.cs" />
     <Compile Include="CN_Backup.cs" />

@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class CD_Localidad
+    public class CD_Modelo
     {
-        public List<Localidad> Listar()
+        public List<Modelo> Listar()
         {
-            List<Localidad> lista = new List<Localidad>();
+            List<Modelo> lista = new List<Modelo>();
 
             using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
             {
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT Id_Localidad, Id_Provincia, localidad FROM Localidad");
+                    query.AppendLine("SELECT Id_Modelo, Id_Marca, modelo, Consumo, Puertas, Asientos FROM Modelo");
                     using (SqlCommand cmd = new SqlCommand(query.ToString(), oconexion))
                     {
                         cmd.CommandType = CommandType.Text;
@@ -31,19 +31,18 @@ namespace CapaDatos
                         {
                             while (dr.Read())
                             {
-                                /*int idLoc = Convert.ToInt32(dr["Id_Localidad"]);
-                                if ( == idLoc)
+                                lista.Add(new Modelo()
                                 {
 
-                                }*/
-                                lista.Add(new Localidad()
-                                {
-                                    Id_Localidad = Convert.ToInt32(dr["Id_Localidad"]),
-                                    oProvincia = new Provincia()
+                                    Id_Modelo = Convert.ToInt32(dr["Id_Modelo"]),
+                                    oMarca = new Marca()
                                     {
-                                        Id_Provincia = Convert.ToInt32(dr["Id_Provincia"]),
+                                        Id_Marca = Convert.ToInt32(dr["Id_Marca"]),
                                     },
-                                    localidad = dr["localidad"].ToString(),
+                                    modelo = dr["modelo"].ToString(),
+                                    Consumo = Convert.ToDecimal(dr["Consumo"]),
+                                    Puertas = Convert.ToInt32(dr["Puertas"]),
+                                    Asientos = Convert.ToInt32(dr["Asientos"]),
                                 });
                             }
                         }
@@ -51,11 +50,10 @@ namespace CapaDatos
                 }
                 catch (Exception ex)
                 {
-                    lista = new List<Localidad>(); // Asegura que no se retorne null
+                    lista = new List<Modelo>(); // Asegura que no se retorne null
                 }
             }
             return lista;
         }
-
     }
 }

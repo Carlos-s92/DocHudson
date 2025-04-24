@@ -40,15 +40,17 @@ namespace TestGit
             this.DialogResult = DialogResult.Cancel;
         }
 
-        private void FrmCatalogo_Load(object sender, EventArgs e)
+        private void FrmCatalogo_Load(object sender, EventArgs e)//////////////////REVISAR MODELO Y MARCA//////////////////////////////////
         {
             List<Autos> autos = new CN_Auto().Listar();
 
-            foreach(Autos item in autos)
+
+            foreach (Autos item in autos)
             {
 
-                TarjetaAuto auto = new TarjetaAuto(item.Id_Auto,item.Modelo, item.Marca, item.Consumo, item.Puertas, item.Asientos, item.Kilometros, item.Reservado, item.Estado, item.Matricula, item.Año, item.Imagen);
+                TarjetaAuto auto = new TarjetaAuto(item.Id_Auto,item.oModelo.modelo, item.oModelo.oMarca.marca, item.oModelo.Consumo, item.oModelo.Puertas, item.oModelo.Asientos, item.Kilometros, item.Reservado, item.Estado, item.Matricula, item.Año, item.Imagen);
                 flowLayoutPanel1 .Controls.Add(auto);
+                
 
             }
            
@@ -70,7 +72,7 @@ namespace TestGit
 
             foreach (Autos item in autos)
             {
-                TarjetaAuto auto = new TarjetaAuto(item.Id_Auto, item.Modelo, item.Marca, item.Consumo, item.Puertas, item.Asientos, item.Kilometros, item.Reservado, item.Estado, item.Matricula,item.Año, item.Imagen);
+                TarjetaAuto auto = new TarjetaAuto(item.Id_Auto, item.oModelo.modelo, item.oModelo.oMarca.marca, item.oModelo.Consumo, item.oModelo.Puertas, item.oModelo.Asientos, item.Kilometros, item.Reservado, item.Estado, item.Matricula,item.Año, item.Imagen);
                 flowLayoutPanel1.Controls.Add(auto);
 
             }
