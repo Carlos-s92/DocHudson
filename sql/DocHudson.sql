@@ -576,7 +576,7 @@ BEGIN
         SET @Mensaje = 'El cliente no existe';
         RETURN;
     END
-	    IF EXISTS (SELECT 1 FROM Cliente WHERE Licencia = @Licencia)
+	    IF EXISTS (SELECT 1 FROM Cliente WHERE Licencia = @Licencia and Id_Cliente <> @Id_Cliente)
     BEGIN
         SET @Mensaje = 'Ya existe un cliente con esa licencia';
         RETURN;
