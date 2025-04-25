@@ -1207,7 +1207,7 @@ insert into Modelo (Id_Marca, Modelo, Consumo, Puertas, Asientos) values
 Insert into Perfiles (Descripcion) values ('Gerente')
 Insert into Perfiles (Descripcion) values ('Encargado')
 
-Insert Into Domicilio(Id_Localidad,Id_Provincia,Calle,Numero) Values (7,3,'Libertad',565)
+Insert Into Domicilio(Id_Localidad,Calle,Numero) Values (7,'Libertad',565)
 
 Insert into Persona(DNI,Nombre,Apellido,Fecha_Nacimiento,Mail,Telefono,Id_Domicilio) values ('15963251','Jose Emilio','Perez','2002-04-24','Josesito234@Gmail.com','3444589625',1)
 
