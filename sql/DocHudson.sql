@@ -1159,7 +1159,7 @@ BEGIN
             Numero = @Numero,
             Id_Localidad = @Id_Localidad
         WHERE Id_Domicilio = @Id_Domicilio;
-		SET @Resultado = 1;
+		SET @Resultado = @Id_Domicilio;
         COMMIT;
     END TRY
     BEGIN CATCH
