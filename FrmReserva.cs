@@ -160,12 +160,12 @@ namespace TestGit
                 if (result == DialogResult.OK) // Si se selecciona un Cliente, llena los campos de Cliente y precio.
                 {
                     txtIdCliente.Text = modal._Cliente.Id_Cliente.ToString();
-                    txtDocumento.Texts = modal._Cliente.Dni.ToString();
-                    txtNombre.Texts = modal._Cliente.Nombre.ToString();
-                    txtMail.Texts = modal._Cliente.Mail.ToString();
-                    txtTelefono.Texts = modal._Cliente.Telefono.ToString();
+                    txtDocumento.Texts = modal._Cliente.oPersona.DNI.ToString();
+                    txtNombre.Texts = modal._Cliente.oPersona.Nombre.ToString();
+                    txtMail.Texts = modal._Cliente.oPersona.Mail.ToString();
+                    txtTelefono.Texts = modal._Cliente.oPersona.Telefono.ToString();
 
-                    string domicilio = modal._Cliente.domicilio.oLocalidad.oProvincia.provincia + " " + modal._Cliente.domicilio.oLocalidad.localidad + " " + modal._Cliente.domicilio.Calle + " " + modal._Cliente.domicilio.Numero.ToString();
+                    string domicilio = modal._Cliente.oPersona.oDomicilio.oLocalidad.oProvincia.provincia + " " + modal._Cliente.oPersona.oDomicilio.oLocalidad.localidad + " " + modal._Cliente.oPersona.oDomicilio.Calle + " " + modal._Cliente.oPersona.oDomicilio.Numero.ToString();
 
                     txtDomicilio.Texts = domicilio;
                 }

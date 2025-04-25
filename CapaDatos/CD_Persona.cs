@@ -79,10 +79,15 @@ namespace CapaDatos
             Mensaje = string.Empty;
             try
             {
-                using (var oConexion = new SqlConnection(Conexion.cadena))
-                using (var cmd = new SqlCommand("InsertarPersona", oConexion))
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    obj.oDomicilio.Id_Domicilio = new CD_Domicilio().Registrar(obj.oDomicilio);
+
+
+                    SqlCommand cmd = new SqlCommand("InsertarPersona", oconexion);
+
+               
                     cmd.Parameters.AddWithValue("DNI", obj.DNI);
                     cmd.Parameters.AddWithValue("Nombre", obj.Nombre);
                     cmd.Parameters.AddWithValue("Apellido", obj.Apellido);
@@ -94,7 +99,8 @@ namespace CapaDatos
                     cmd.Parameters.Add("IdResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
 
-                    oConexion.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    oconexion.Open();
                     cmd.ExecuteNonQuery();
 
                     idGenerado = Convert.ToInt32(cmd.Parameters["IdResultado"].Value);
@@ -175,9 +181,43 @@ namespace CapaDatos
             return obj;
         }
 
-        public bool Editar(Persona obj, out string Mensaje)
+        public int BusquedaDni(string dni)
         {
-            bool respuesta = false;
+            int obj = 0;
+            using (var oConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    var sb = new StringBuilder();
+                    sb.AppendLine("SELECT p.DNI FROM Persona p WHERE p.DNI = @dni");
+
+                    using (var cmd = new SqlCommand(sb.ToString(), oConexion))
+                    {
+                        cmd.Parameters.AddWithValue("dni", dni);
+                        cmd.CommandType = CommandType.Text;
+                        oConexion.Open();
+                        using (var dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                obj = Convert.ToInt32(dr["Id_Persona"]);
+                               
+                            }
+                        }
+                        oConexion.Close();
+                    }
+                }
+                catch
+                {
+                    obj = 0;
+                }
+            }
+            return obj;
+        }
+
+        public int Editar(Persona obj, out string Mensaje)
+        {
+            int respuesta = 0;
             Mensaje = string.Empty;
             try
             {
@@ -200,13 +240,13 @@ namespace CapaDatos
                     oConexion.Open();
                     cmd.ExecuteNonQuery();
 
-                    respuesta = Convert.ToBoolean(cmd.Parameters["IdResultado"].Value);
+                    respuesta = Convert.ToInt32(cmd.Parameters["IdResultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].ToString();
                 }
             }
             catch (Exception ex)
             {
-                respuesta = false;
+                respuesta = 0;
                 Mensaje = ex.Message;
             }
             return respuesta;

@@ -41,7 +41,7 @@ namespace TestGit.Modales
 
             foreach (Cliente item in listaClientes)
             {
-                DateTime fechaNacimiento = item.Fecha_Nacimiento;
+                DateTime fechaNacimiento = item.oPersona.Fecha_Nacimiento;
                 int edad = DateTime.Now.Year - fechaNacimiento.Year;
                 if (fechaNacimiento > DateTime.Now.AddYears(-edad))
                 {
@@ -51,19 +51,19 @@ namespace TestGit.Modales
                 dgvData.Rows.Add(new object[] {
                                 "", // Columna para el icono de selección
                                 item.Id_Cliente,
-                                item.Dni,
-                                item.Nombre,
+                                item.oPersona.DNI,
+                                item.oPersona.Nombre,
                                 edad,
-                                item.Fecha_Nacimiento,
-                                item.Mail,
-                                item.domicilio.oLocalidad.oProvincia.provincia + " " + item.domicilio.oLocalidad.localidad + " " + item.domicilio.Calle + " " + item.domicilio.Numero,
-                                item.Telefono,
+                                item.oPersona.Fecha_Nacimiento,
+                                item.oPersona.Mail,
+                                item.oPersona.oDomicilio.oLocalidad.oProvincia.provincia + " " + item.oPersona.oDomicilio.oLocalidad.localidad + " " + item.oPersona.oDomicilio.Calle + " " + item.oPersona.oDomicilio.Numero,
+                                item.oPersona.Telefono,
                                 item.Estado == true ? 1 : 0, // Estado como valor
                                 item.Estado == true ? "Activo" : "No Activo", // Estado como texto
-                                item.domicilio.oLocalidad.oProvincia.Id_Provincia,
-                                item.domicilio.oLocalidad.Id_Localidad,
-                                item.domicilio.Calle,
-                                item.domicilio.Numero
+                                item.oPersona.oDomicilio.oLocalidad.oProvincia.Id_Provincia,
+                                item.oPersona.oDomicilio.oLocalidad.Id_Localidad,
+                                item.oPersona.oDomicilio.Calle,
+                                item.oPersona.oDomicilio.Numero
                             });
             }
         }
@@ -114,24 +114,31 @@ namespace TestGit.Modales
                 _Cliente = new Cliente()
                 {
                     Id_Cliente = Convert.ToInt32(dgvData.Rows[iRow].Cells["IdCliente"].Value.ToString()),
-                    Dni = dgvData.Rows[iRow].Cells["Documento"].Value.ToString(),
-                    Nombre = dgvData.Rows[iRow].Cells["NombreCompleto"].Value.ToString(),
-                    Mail = dgvData.Rows[iRow].Cells["Mail"].Value.ToString(),
-                    Telefono = dgvData.Rows[iRow].Cells["Telefono"].Value.ToString(),
+             
 
-                    domicilio = new Domicilio()
+                    oPersona = new Persona()
                     {
-                        Calle = dgvData.Rows[iRow].Cells["Calle"].Value.ToString(),
-                        Numero = Convert.ToInt32(dgvData.Rows[iRow].Cells["Numero"].Value.ToString()),
-                        oLocalidad = new Localidad()
+                        DNI = dgvData.Rows[iRow].Cells["Documento"].Value.ToString(),
+                        Nombre = dgvData.Rows[iRow].Cells["NombreCompleto"].Value.ToString(),
+                        Mail = dgvData.Rows[iRow].Cells["Mail"].Value.ToString(),
+                        Telefono = dgvData.Rows[iRow].Cells["Telefono"].Value.ToString(),
+
+                        oDomicilio = new Domicilio()
                         {
-                            Id_Localidad = Convert.ToInt32(dgvData.Rows[iRow].Cells["Localidad"].Value),
-                            oProvincia = new Provincia()
+                            Calle = dgvData.Rows[iRow].Cells["Calle"].Value.ToString(),
+                            Numero = Convert.ToInt32(dgvData.Rows[iRow].Cells["Numero"].Value.ToString()),
+                            oLocalidad = new Localidad()
                             {
-                                Id_Provincia = Convert.ToInt32(dgvData.Rows[iRow].Cells["Provincia"].Value)
+                                Id_Localidad = Convert.ToInt32(dgvData.Rows[iRow].Cells["Localidad"].Value),
+                                oProvincia = new Provincia()
+                                {
+                                    Id_Provincia = Convert.ToInt32(dgvData.Rows[iRow].Cells["Provincia"].Value)
+                                }
                             }
                         }
                     }
+                    
+
                 };
 
                 this.DialogResult = DialogResult.OK;
