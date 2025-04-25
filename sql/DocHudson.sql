@@ -1123,6 +1123,87 @@ BEGIN
 END
 GO
 
+	CREATE OR ALTER   PROCEDURE EditarDomicilio(
+    @Id_Domicilio INT,
+    @Calle VARCHAR(100),
+    @Numero INT,
+    @Id_Localidad INT,
+	@Resultado Int output,
+    @Mensaje VARCHAR(500) OUTPUT
+)AS
+BEGIN
+    SET @Mensaje = '';
+	SET @Resultado = 0;
+
+    BEGIN TRANSACTION;
+    BEGIN TRY
+        -- Validamos que el domicilio exista
+        IF NOT EXISTS (SELECT 1 FROM Domicilio WHERE Id_Domicilio = @Id_Domicilio)
+        BEGIN
+            SET @Mensaje = 'El domicilio especificado no existe.';
+            ROLLBACK;
+            RETURN;
+        END
+
+        -- Validamos que la localidad exista
+        IF NOT EXISTS (SELECT 1 FROM Localidad WHERE Id_Localidad = @Id_Localidad)
+        BEGIN
+            SET @Mensaje = 'La localidad especificada no existe.';
+            ROLLBACK;
+            RETURN;
+        END
+
+        -- Actualizamos el domicilio
+        UPDATE Domicilio
+        SET Calle = @Calle,
+            Numero = @Numero,
+            Id_Localidad = @Id_Localidad
+        WHERE Id_Domicilio = @Id_Domicilio;
+		SET @Resultado = 1;
+        COMMIT;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        SET @Mensaje = ERROR_MESSAGE();
+    END CATCH
+END;
+
+
+
+CREATE OR ALTER   PROCEDURE InsertarDomicilio(
+    @Calle VARCHAR(100),
+    @Numero INT,
+    @Id_Localidad INT,
+    @IdResultado INT OUTPUT,
+    @Mensaje VARCHAR(500) OUTPUT
+)AS
+BEGIN
+    SET @IdResultado = 0;
+    SET @Mensaje = '';
+
+    BEGIN TRANSACTION;
+    BEGIN TRY
+        -- Validamos que la localidad exista
+        IF NOT EXISTS (SELECT 1 FROM Localidad WHERE Id_Localidad = @Id_Localidad)
+        BEGIN
+            SET @Mensaje = 'La localidad especificada no existe.';
+            ROLLBACK;
+            RETURN;
+        END
+
+        -- Insertamos el domicilio
+        INSERT INTO Domicilio (Calle, Numero, Id_Localidad)
+        VALUES (@Calle, @Numero, @Id_Localidad);
+
+        SET @IdResultado = SCOPE_IDENTITY();
+        COMMIT;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        SET @Mensaje = ERROR_MESSAGE();
+    END CATCH
+END;
+
 
 --Inserciones basicas para el sistema
 
