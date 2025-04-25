@@ -50,6 +50,7 @@
     <Compile Include="CD_Negocio.cs" />
     <Compile Include="CD_Pago.cs" />
     <Compile Include="CD_Perfiles.cs" />
+    <Compile Include="CD_Persona.cs" />
     <Compile Include="CD_Reserva.cs" />
     <Compile Include="CD_Tipopago.cs" />
     <Compile Include="CD_Usuario.cs" />
