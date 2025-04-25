@@ -56,5 +56,37 @@ namespace CapaDatos
         }
 
 
+        public int EditarDomicilio(Domicilio domicilio)
+        {
+            int id = 0;
+            string Mensaje = string.Empty;
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            {
+
+                SqlCommand cmd = new SqlCommand("EditarDomicilio", oconexion);
+                
+                cmd.Parameters.AddWithValue("Id_Domicilio", domicilio.Id_Domicilio);
+                cmd.Parameters.AddWithValue("Calle", domicilio.Calle);
+                cmd.Parameters.AddWithValue("Numero", domicilio.Numero);
+                cmd.Parameters.AddWithValue("Id_Localidad", domicilio.oLocalidad.Id_Localidad);
+                cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                oconexion.Open();
+
+                cmd.ExecuteNonQuery();
+
+                id = Convert.ToInt32(cmd.Parameters["Resultado"].Value);
+                Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+
+            }
+
+            return id;
+
+        }
+
+
+
     }
 }

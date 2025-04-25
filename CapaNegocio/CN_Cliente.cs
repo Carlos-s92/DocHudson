@@ -17,6 +17,15 @@ namespace CapaNegocio
         {
             return objcd_cliente.Listar();
         }
+
+        public int BusquedaDomicilio(int persona)
+        {
+            int id = 0;
+
+            id = new CD_Persona().BusquedaDomicilio(persona);
+
+            return id;
+        }
  
         public int Registrar(Cliente obj, out string Mensaje)
         {
@@ -189,6 +198,11 @@ namespace CapaNegocio
         {
             string regex = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             return Regex.IsMatch(email, regex, RegexOptions.IgnoreCase);
+        }
+
+        public int BusquedaDomicilio()
+        {
+            throw new NotImplementedException();
         }
     }
 }

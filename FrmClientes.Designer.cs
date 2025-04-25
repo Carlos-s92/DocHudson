@@ -39,19 +39,6 @@
             this.comboProvincia = new System.Windows.Forms.ComboBox();
             this.comboLocalidad = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.rjdtpFecha = new CustomControls.RJControls.RJDatePicker();
-            this.txtNumero = new CustomControls.RJControls.RJTextBox();
-            this.rjButton3 = new CustomControls.RJControls.RJButton();
-            this.txtBusqueda = new CustomControls.RJControls.RJTextBox();
-            this.BtnLimpiar2 = new CustomControls.RJControls.RJButton();
-            this.BtnGuardar2 = new CustomControls.RJControls.RJButton();
-            this.txtCalle = new CustomControls.RJControls.RJTextBox();
-            this.txtMail = new CustomControls.RJControls.RJTextBox();
-            this.txtTelefono = new CustomControls.RJControls.RJTextBox();
-            this.txtDocumento = new CustomControls.RJControls.RJTextBox();
-            this.txtNombre = new CustomControls.RJControls.RJTextBox();
-            this.txtApellido = new CustomControls.RJControls.RJTextBox();
-            this.txtLicencia = new CustomControls.RJControls.RJTextBox();
             this.txtPersona = new System.Windows.Forms.TextBox();
             this.btnseleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.IdCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +58,21 @@
             this.Calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Persona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdDomicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtDomicilio = new System.Windows.Forms.TextBox();
+            this.txtLicencia = new CustomControls.RJControls.RJTextBox();
+            this.txtApellido = new CustomControls.RJControls.RJTextBox();
+            this.rjdtpFecha = new CustomControls.RJControls.RJDatePicker();
+            this.txtNumero = new CustomControls.RJControls.RJTextBox();
+            this.rjButton3 = new CustomControls.RJControls.RJButton();
+            this.txtBusqueda = new CustomControls.RJControls.RJTextBox();
+            this.BtnLimpiar2 = new CustomControls.RJControls.RJButton();
+            this.BtnGuardar2 = new CustomControls.RJControls.RJButton();
+            this.txtCalle = new CustomControls.RJControls.RJTextBox();
+            this.txtMail = new CustomControls.RJControls.RJTextBox();
+            this.txtTelefono = new CustomControls.RJControls.RJTextBox();
+            this.txtDocumento = new CustomControls.RJControls.RJTextBox();
+            this.txtNombre = new CustomControls.RJControls.RJTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,7 +111,8 @@
             this.Localidad,
             this.Calle,
             this.Numero,
-            this.Persona});
+            this.Persona,
+            this.IdDomicilio});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -224,6 +227,224 @@
             this.label1.Size = new System.Drawing.Size(103, 25);
             this.label1.TabIndex = 143;
             this.label1.Text = "Fecha nac.";
+            // 
+            // txtPersona
+            // 
+            this.txtPersona.Location = new System.Drawing.Point(943, 100);
+            this.txtPersona.Name = "txtPersona";
+            this.txtPersona.Size = new System.Drawing.Size(24, 20);
+            this.txtPersona.TabIndex = 146;
+            this.txtPersona.Text = "0";
+            this.txtPersona.Visible = false;
+            // 
+            // btnseleccionar
+            // 
+            this.btnseleccionar.HeaderText = "";
+            this.btnseleccionar.MinimumWidth = 9;
+            this.btnseleccionar.Name = "btnseleccionar";
+            this.btnseleccionar.ReadOnly = true;
+            this.btnseleccionar.Width = 32;
+            // 
+            // IdCliente
+            // 
+            this.IdCliente.HeaderText = "IdCliente";
+            this.IdCliente.MinimumWidth = 9;
+            this.IdCliente.Name = "IdCliente";
+            this.IdCliente.ReadOnly = true;
+            this.IdCliente.Visible = false;
+            this.IdCliente.Width = 175;
+            // 
+            // Documento
+            // 
+            this.Documento.HeaderText = "Documento";
+            this.Documento.MinimumWidth = 9;
+            this.Documento.Name = "Documento";
+            this.Documento.ReadOnly = true;
+            this.Documento.Width = 175;
+            // 
+            // Licencia
+            // 
+            this.Licencia.HeaderText = "Licencia";
+            this.Licencia.Name = "Licencia";
+            this.Licencia.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.MinimumWidth = 9;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 150;
+            // 
+            // Apellido
+            // 
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            // 
+            // Edad
+            // 
+            this.Edad.HeaderText = "Edad";
+            this.Edad.MinimumWidth = 9;
+            this.Edad.Name = "Edad";
+            this.Edad.ReadOnly = true;
+            this.Edad.Width = 175;
+            // 
+            // Fecha_Nacimiento
+            // 
+            this.Fecha_Nacimiento.HeaderText = "Fecha Nacimiento";
+            this.Fecha_Nacimiento.MinimumWidth = 9;
+            this.Fecha_Nacimiento.Name = "Fecha_Nacimiento";
+            this.Fecha_Nacimiento.ReadOnly = true;
+            this.Fecha_Nacimiento.Visible = false;
+            this.Fecha_Nacimiento.Width = 175;
+            // 
+            // Mail
+            // 
+            this.Mail.HeaderText = "Mail";
+            this.Mail.MinimumWidth = 9;
+            this.Mail.Name = "Mail";
+            this.Mail.ReadOnly = true;
+            this.Mail.Width = 112;
+            // 
+            // Domicilio
+            // 
+            this.Domicilio.HeaderText = "Domicilio";
+            this.Domicilio.MinimumWidth = 9;
+            this.Domicilio.Name = "Domicilio";
+            this.Domicilio.ReadOnly = true;
+            this.Domicilio.Width = 110;
+            // 
+            // Telefono
+            // 
+            this.Telefono.HeaderText = "Telefono";
+            this.Telefono.MinimumWidth = 9;
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            this.Telefono.Width = 175;
+            // 
+            // EstadoValor
+            // 
+            this.EstadoValor.HeaderText = "EstadoValor";
+            this.EstadoValor.MinimumWidth = 9;
+            this.EstadoValor.Name = "EstadoValor";
+            this.EstadoValor.ReadOnly = true;
+            this.EstadoValor.Visible = false;
+            this.EstadoValor.Width = 175;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.MinimumWidth = 9;
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            this.Estado.Width = 175;
+            // 
+            // Provincia
+            // 
+            this.Provincia.HeaderText = "Provincia";
+            this.Provincia.MinimumWidth = 9;
+            this.Provincia.Name = "Provincia";
+            this.Provincia.ReadOnly = true;
+            this.Provincia.Visible = false;
+            this.Provincia.Width = 175;
+            // 
+            // Localidad
+            // 
+            this.Localidad.HeaderText = "Localidad";
+            this.Localidad.MinimumWidth = 9;
+            this.Localidad.Name = "Localidad";
+            this.Localidad.ReadOnly = true;
+            this.Localidad.Visible = false;
+            this.Localidad.Width = 175;
+            // 
+            // Calle
+            // 
+            this.Calle.HeaderText = "Calle";
+            this.Calle.MinimumWidth = 9;
+            this.Calle.Name = "Calle";
+            this.Calle.ReadOnly = true;
+            this.Calle.Visible = false;
+            this.Calle.Width = 175;
+            // 
+            // Numero
+            // 
+            this.Numero.HeaderText = "Numero";
+            this.Numero.MinimumWidth = 9;
+            this.Numero.Name = "Numero";
+            this.Numero.ReadOnly = true;
+            this.Numero.Visible = false;
+            this.Numero.Width = 175;
+            // 
+            // Persona
+            // 
+            this.Persona.HeaderText = "Persona";
+            this.Persona.Name = "Persona";
+            this.Persona.ReadOnly = true;
+            this.Persona.Visible = false;
+            // 
+            // IdDomicilio
+            // 
+            this.IdDomicilio.HeaderText = "IdDomicilio";
+            this.IdDomicilio.Name = "IdDomicilio";
+            this.IdDomicilio.ReadOnly = true;
+            this.IdDomicilio.Visible = false;
+            // 
+            // txtDomicilio
+            // 
+            this.txtDomicilio.Location = new System.Drawing.Point(943, 126);
+            this.txtDomicilio.Name = "txtDomicilio";
+            this.txtDomicilio.Size = new System.Drawing.Size(24, 20);
+            this.txtDomicilio.TabIndex = 147;
+            this.txtDomicilio.Text = "0";
+            // 
+            // txtLicencia
+            // 
+            this.txtLicencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.txtLicencia.BorderColor = System.Drawing.Color.DimGray;
+            this.txtLicencia.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
+            this.txtLicencia.BorderRadius = 10;
+            this.txtLicencia.BorderSize = 2;
+            this.txtLicencia.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLicencia.ForeColor = System.Drawing.Color.White;
+            this.txtLicencia.IsReadOnly = false;
+            this.txtLicencia.Location = new System.Drawing.Point(249, 27);
+            this.txtLicencia.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLicencia.Multiline = false;
+            this.txtLicencia.Name = "txtLicencia";
+            this.txtLicencia.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtLicencia.PasswordChar = false;
+            this.txtLicencia.PlaceholderColor = System.Drawing.Color.White;
+            this.txtLicencia.PlaceholderText = "Licencia";
+            this.txtLicencia.ShortcutsEnabled = false;
+            this.txtLicencia.Size = new System.Drawing.Size(187, 45);
+            this.txtLicencia.TabIndex = 145;
+            this.txtLicencia.Texts = "";
+            this.txtLicencia.UnderlinedStyle = true;
+            // 
+            // txtApellido
+            // 
+            this.txtApellido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.txtApellido.BorderColor = System.Drawing.Color.DimGray;
+            this.txtApellido.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
+            this.txtApellido.BorderRadius = 10;
+            this.txtApellido.BorderSize = 2;
+            this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApellido.ForeColor = System.Drawing.Color.White;
+            this.txtApellido.IsReadOnly = false;
+            this.txtApellido.Location = new System.Drawing.Point(724, 27);
+            this.txtApellido.Margin = new System.Windows.Forms.Padding(4);
+            this.txtApellido.Multiline = false;
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtApellido.PasswordChar = false;
+            this.txtApellido.PlaceholderColor = System.Drawing.Color.White;
+            this.txtApellido.PlaceholderText = "Apellido";
+            this.txtApellido.ShortcutsEnabled = true;
+            this.txtApellido.Size = new System.Drawing.Size(212, 45);
+            this.txtApellido.TabIndex = 144;
+            this.txtApellido.Texts = "";
+            this.txtApellido.UnderlinedStyle = true;
             // 
             // rjdtpFecha
             // 
@@ -483,215 +704,13 @@
             this.txtNombre.UnderlinedStyle = true;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
-            // txtApellido
-            // 
-            this.txtApellido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.txtApellido.BorderColor = System.Drawing.Color.DimGray;
-            this.txtApellido.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
-            this.txtApellido.BorderRadius = 10;
-            this.txtApellido.BorderSize = 2;
-            this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApellido.ForeColor = System.Drawing.Color.White;
-            this.txtApellido.IsReadOnly = false;
-            this.txtApellido.Location = new System.Drawing.Point(724, 27);
-            this.txtApellido.Margin = new System.Windows.Forms.Padding(4);
-            this.txtApellido.Multiline = false;
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtApellido.PasswordChar = false;
-            this.txtApellido.PlaceholderColor = System.Drawing.Color.White;
-            this.txtApellido.PlaceholderText = "Apellido";
-            this.txtApellido.ShortcutsEnabled = true;
-            this.txtApellido.Size = new System.Drawing.Size(212, 45);
-            this.txtApellido.TabIndex = 144;
-            this.txtApellido.Texts = "";
-            this.txtApellido.UnderlinedStyle = true;
-            // 
-            // txtLicencia
-            // 
-            this.txtLicencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.txtLicencia.BorderColor = System.Drawing.Color.DimGray;
-            this.txtLicencia.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
-            this.txtLicencia.BorderRadius = 10;
-            this.txtLicencia.BorderSize = 2;
-            this.txtLicencia.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLicencia.ForeColor = System.Drawing.Color.White;
-            this.txtLicencia.IsReadOnly = false;
-            this.txtLicencia.Location = new System.Drawing.Point(249, 27);
-            this.txtLicencia.Margin = new System.Windows.Forms.Padding(4);
-            this.txtLicencia.Multiline = false;
-            this.txtLicencia.Name = "txtLicencia";
-            this.txtLicencia.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtLicencia.PasswordChar = false;
-            this.txtLicencia.PlaceholderColor = System.Drawing.Color.White;
-            this.txtLicencia.PlaceholderText = "Licencia";
-            this.txtLicencia.ShortcutsEnabled = false;
-            this.txtLicencia.Size = new System.Drawing.Size(187, 45);
-            this.txtLicencia.TabIndex = 145;
-            this.txtLicencia.Texts = "";
-            this.txtLicencia.UnderlinedStyle = true;
-            // 
-            // txtPersona
-            // 
-            this.txtPersona.Location = new System.Drawing.Point(943, 100);
-            this.txtPersona.Name = "txtPersona";
-            this.txtPersona.Size = new System.Drawing.Size(24, 20);
-            this.txtPersona.TabIndex = 146;
-            this.txtPersona.Text = "0";
-            this.txtPersona.Visible = false;
-            // 
-            // btnseleccionar
-            // 
-            this.btnseleccionar.HeaderText = "";
-            this.btnseleccionar.MinimumWidth = 9;
-            this.btnseleccionar.Name = "btnseleccionar";
-            this.btnseleccionar.ReadOnly = true;
-            this.btnseleccionar.Width = 32;
-            // 
-            // IdCliente
-            // 
-            this.IdCliente.HeaderText = "IdCliente";
-            this.IdCliente.MinimumWidth = 9;
-            this.IdCliente.Name = "IdCliente";
-            this.IdCliente.ReadOnly = true;
-            this.IdCliente.Visible = false;
-            this.IdCliente.Width = 175;
-            // 
-            // Documento
-            // 
-            this.Documento.HeaderText = "Documento";
-            this.Documento.MinimumWidth = 9;
-            this.Documento.Name = "Documento";
-            this.Documento.ReadOnly = true;
-            this.Documento.Width = 175;
-            // 
-            // Licencia
-            // 
-            this.Licencia.HeaderText = "Licencia";
-            this.Licencia.Name = "Licencia";
-            this.Licencia.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.MinimumWidth = 9;
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 150;
-            // 
-            // Apellido
-            // 
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.Name = "Apellido";
-            this.Apellido.ReadOnly = true;
-            // 
-            // Edad
-            // 
-            this.Edad.HeaderText = "Edad";
-            this.Edad.MinimumWidth = 9;
-            this.Edad.Name = "Edad";
-            this.Edad.ReadOnly = true;
-            this.Edad.Width = 175;
-            // 
-            // Fecha_Nacimiento
-            // 
-            this.Fecha_Nacimiento.HeaderText = "Fecha Nacimiento";
-            this.Fecha_Nacimiento.MinimumWidth = 9;
-            this.Fecha_Nacimiento.Name = "Fecha_Nacimiento";
-            this.Fecha_Nacimiento.ReadOnly = true;
-            this.Fecha_Nacimiento.Visible = false;
-            this.Fecha_Nacimiento.Width = 175;
-            // 
-            // Mail
-            // 
-            this.Mail.HeaderText = "Mail";
-            this.Mail.MinimumWidth = 9;
-            this.Mail.Name = "Mail";
-            this.Mail.ReadOnly = true;
-            this.Mail.Width = 112;
-            // 
-            // Domicilio
-            // 
-            this.Domicilio.HeaderText = "Domicilio";
-            this.Domicilio.MinimumWidth = 9;
-            this.Domicilio.Name = "Domicilio";
-            this.Domicilio.ReadOnly = true;
-            this.Domicilio.Width = 110;
-            // 
-            // Telefono
-            // 
-            this.Telefono.HeaderText = "Telefono";
-            this.Telefono.MinimumWidth = 9;
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
-            this.Telefono.Width = 175;
-            // 
-            // EstadoValor
-            // 
-            this.EstadoValor.HeaderText = "EstadoValor";
-            this.EstadoValor.MinimumWidth = 9;
-            this.EstadoValor.Name = "EstadoValor";
-            this.EstadoValor.ReadOnly = true;
-            this.EstadoValor.Visible = false;
-            this.EstadoValor.Width = 175;
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.MinimumWidth = 9;
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            this.Estado.Width = 175;
-            // 
-            // Provincia
-            // 
-            this.Provincia.HeaderText = "Provincia";
-            this.Provincia.MinimumWidth = 9;
-            this.Provincia.Name = "Provincia";
-            this.Provincia.ReadOnly = true;
-            this.Provincia.Visible = false;
-            this.Provincia.Width = 175;
-            // 
-            // Localidad
-            // 
-            this.Localidad.HeaderText = "Localidad";
-            this.Localidad.MinimumWidth = 9;
-            this.Localidad.Name = "Localidad";
-            this.Localidad.ReadOnly = true;
-            this.Localidad.Visible = false;
-            this.Localidad.Width = 175;
-            // 
-            // Calle
-            // 
-            this.Calle.HeaderText = "Calle";
-            this.Calle.MinimumWidth = 9;
-            this.Calle.Name = "Calle";
-            this.Calle.ReadOnly = true;
-            this.Calle.Visible = false;
-            this.Calle.Width = 175;
-            // 
-            // Numero
-            // 
-            this.Numero.HeaderText = "Numero";
-            this.Numero.MinimumWidth = 9;
-            this.Numero.Name = "Numero";
-            this.Numero.ReadOnly = true;
-            this.Numero.Visible = false;
-            this.Numero.Width = 175;
-            // 
-            // Persona
-            // 
-            this.Persona.HeaderText = "Persona";
-            this.Persona.Name = "Persona";
-            this.Persona.ReadOnly = true;
-            this.Persona.Visible = false;
-            // 
             // FrmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(19)))));
             this.ClientSize = new System.Drawing.Size(982, 726);
+            this.Controls.Add(this.txtDomicilio);
             this.Controls.Add(this.txtPersona);
             this.Controls.Add(this.txtLicencia);
             this.Controls.Add(this.txtApellido);
@@ -765,5 +784,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Calle;
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Persona;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdDomicilio;
+        private System.Windows.Forms.TextBox txtDomicilio;
     }
 }

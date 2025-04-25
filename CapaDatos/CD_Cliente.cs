@@ -24,10 +24,10 @@ namespace CapaDatos
 
                     StringBuilder query = new StringBuilder();
 
-                    query.AppendLine("Select Id_Cliente, Licencia, pe.DNI, pe.Nombre, pe.Apellido, p.Id_Provincia,p.Provincia, l.Id_Localidad,l.Localidad, d.Calle, d.Numero, pe.Fecha_Nacimiento, pe.Mail, pe.Telefono, Estado from Cliente c");
+                    query.AppendLine("Select Id_Cliente, Licencia, pe.DNI, pe.Id_Persona, pe.Nombre, pe.Apellido, p.Id_Provincia, p.Provincia, l.Id_Localidad,l.Localidad, d.Calle,d.Id_Domicilio, d.Numero, pe.Fecha_Nacimiento, pe.Mail, pe.Telefono, Estado from Cliente c");
                     query.AppendLine("inner join Persona pe on pe.Id_Persona = c.Id_Persona");
-                    query.AppendLine("inner join Direccion d on d.Id_Direccion = pe.Id_Direccion");
-                    query.AppendLine("inner join Localidad l on d.Id_Localidad = l.Id_Localidad and d.Id_Provincia = l.Id_Provincia");
+                    query.AppendLine("inner join Domicilio d on d.Id_Domicilio = pe.Id_Domicilio");
+                    query.AppendLine("inner join Localidad l on d.Id_Localidad = l.Id_Localidad");
                     query.AppendLine("inner join Provincia p on l.Id_Provincia = p.Id_Provincia");
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
@@ -55,6 +55,7 @@ namespace CapaDatos
                                     Telefono = dr["Telefono"].ToString(),
                                     oDomicilio = new Domicilio()
                                     {
+                                        Id_Domicilio = Convert.ToInt32(dr["Id_Domicilio"]),
                                         Calle = dr["Calle"].ToString(),
                                         Numero = Convert.ToInt32(dr["Numero"]),
                                         oLocalidad = new Localidad()
@@ -140,6 +141,7 @@ namespace CapaDatos
             try
             {
                 int persona = new CD_Persona().Editar(obj.oPersona, out Mensaje);
+                
 
                 if (persona != 0){
                 

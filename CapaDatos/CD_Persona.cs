@@ -215,15 +215,54 @@ namespace CapaDatos
             return obj;
         }
 
+        public int BusquedaDomicilio(int persona)
+        {
+            int obj = 0;
+            using (var oConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    var sb = new StringBuilder();
+                    sb.AppendLine("SELECT d.Id_Domicilio FROM Persona p \r\ninner join Domicilio d on d.Id_Domicilio = p.Id_Domicilio\r\nwhere p.Id_Persona = @Id");
+
+                    using (var cmd = new SqlCommand(sb.ToString(), oConexion))
+                    {
+                        cmd.Parameters.AddWithValue("Id", persona);
+                        cmd.CommandType = CommandType.Text;
+                        oConexion.Open();
+                        using (var dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                obj = Convert.ToInt32(dr["Id_Domicilio"]);
+
+                            }
+                        }
+                        oConexion.Close();
+                    }
+                }
+                catch
+                {
+                    obj = 0;
+                }
+            }
+            return obj;
+        }
+
+
         public int Editar(Persona obj, out string Mensaje)
         {
+            int id = 0;
             int respuesta = 0;
             Mensaje = string.Empty;
             try
             {
+
+                id = new CD_Domicilio().EditarDomicilio(obj.oDomicilio);
                 using (var oConexion = new SqlConnection(Conexion.cadena))
-                using (var cmd = new SqlCommand("ActualizarPersona", oConexion))
                 {
+                    SqlCommand cmd = new SqlCommand("ActualizarPersona", oConexion);
+
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("Id_Persona", obj.Id_Persona);
                     cmd.Parameters.AddWithValue("DNI", obj.DNI);
@@ -231,7 +270,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("Apellido", obj.Apellido);
                     cmd.Parameters.AddWithValue("Mail", obj.Mail);
                     cmd.Parameters.AddWithValue("Telefono", obj.Telefono);
-                    cmd.Parameters.AddWithValue("Id_Domicilio", obj.oDomicilio.Id_Domicilio);
+                    cmd.Parameters.AddWithValue("Id_Domicilio", id);
                     cmd.Parameters.AddWithValue("Fecha_Nacimiento", obj.Fecha_Nacimiento);
 
                     cmd.Parameters.Add("IdResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
