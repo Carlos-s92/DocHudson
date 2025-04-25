@@ -313,7 +313,7 @@ BEGIN
 END
 GO
 
-CREATE OR ALTER PROCEDURE EditarPersona(
+CREATE OR ALTER PROCEDURE ActualizarPersona(
     @Id_Persona INT,
     @Nombre VARCHAR(150),
     @Apellido VARCHAR(150),
