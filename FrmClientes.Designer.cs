@@ -32,14 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.comboEstado = new System.Windows.Forms.ComboBox();
-            this.txtindice = new System.Windows.Forms.TextBox();
-            this.txtid = new System.Windows.Forms.TextBox();
-            this.comboBusqueda = new System.Windows.Forms.ComboBox();
-            this.comboProvincia = new System.Windows.Forms.ComboBox();
-            this.comboLocalidad = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtPersona = new System.Windows.Forms.TextBox();
             this.btnseleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.IdCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,7 +51,6 @@
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Persona = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdDomicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-
             this.comboEstado = new System.Windows.Forms.ComboBox();
             this.txtindice = new System.Windows.Forms.TextBox();
             this.txtid = new System.Windows.Forms.TextBox();
@@ -70,7 +61,6 @@
             this.txtPersona = new System.Windows.Forms.TextBox();
             this.txtDomicilio = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-
             this.txtLicencia = new CustomControls.RJControls.RJTextBox();
             this.txtApellido = new CustomControls.RJControls.RJTextBox();
             this.rjdtpFecha = new CustomControls.RJControls.RJDatePicker();
@@ -84,9 +74,7 @@
             this.txtTelefono = new CustomControls.RJControls.RJTextBox();
             this.txtDocumento = new CustomControls.RJControls.RJTextBox();
             this.txtNombre = new CustomControls.RJControls.RJTextBox();
-
             this.label3 = new System.Windows.Forms.Label();
-
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,101 +144,6 @@
             this.dgvData.TabIndex = 115;
             this.dgvData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellContentClick);
             // 
-            // comboEstado
-            // 
-            this.comboEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.comboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboEstado.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboEstado.ForeColor = System.Drawing.Color.White;
-            this.comboEstado.FormattingEnabled = true;
-            this.comboEstado.Location = new System.Drawing.Point(490, 209);
-            this.comboEstado.Name = "comboEstado";
-            this.comboEstado.Size = new System.Drawing.Size(448, 38);
-            this.comboEstado.TabIndex = 122;
-            // 
-            // txtindice
-            // 
-            this.txtindice.Location = new System.Drawing.Point(943, 74);
-            this.txtindice.Name = "txtindice";
-            this.txtindice.Size = new System.Drawing.Size(24, 20);
-            this.txtindice.TabIndex = 124;
-            this.txtindice.Text = "-1";
-            this.txtindice.Visible = false;
-            // 
-            // txtid
-            // 
-            this.txtid.Location = new System.Drawing.Point(943, 52);
-            this.txtid.Name = "txtid";
-            this.txtid.Size = new System.Drawing.Size(24, 20);
-            this.txtid.TabIndex = 123;
-            this.txtid.Text = "0";
-            this.txtid.Visible = false;
-            // 
-            // comboBusqueda
-            // 
-            this.comboBusqueda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.comboBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBusqueda.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBusqueda.ForeColor = System.Drawing.Color.White;
-            this.comboBusqueda.FormattingEnabled = true;
-            this.comboBusqueda.Location = new System.Drawing.Point(502, 382);
-            this.comboBusqueda.Name = "comboBusqueda";
-            this.comboBusqueda.Size = new System.Drawing.Size(209, 38);
-            this.comboBusqueda.TabIndex = 132;
-            // 
-            // comboProvincia
-            // 
-            this.comboProvincia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.comboProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboProvincia.DropDownWidth = 350;
-            this.comboProvincia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboProvincia.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboProvincia.ForeColor = System.Drawing.Color.White;
-            this.comboProvincia.FormattingEnabled = true;
-            this.comboProvincia.Location = new System.Drawing.Point(51, 157);
-            this.comboProvincia.Name = "comboProvincia";
-            this.comboProvincia.Size = new System.Drawing.Size(177, 38);
-            this.comboProvincia.TabIndex = 140;
-            this.comboProvincia.Tag = "";
-            this.comboProvincia.SelectedIndexChanged += new System.EventHandler(this.comboProvincia_SelectedIndexChanged);
-            // 
-            // comboLocalidad
-            // 
-            this.comboLocalidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.comboLocalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboLocalidad.DropDownWidth = 300;
-            this.comboLocalidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboLocalidad.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboLocalidad.ForeColor = System.Drawing.Color.White;
-            this.comboLocalidad.FormattingEnabled = true;
-            this.comboLocalidad.Location = new System.Drawing.Point(259, 157);
-            this.comboLocalidad.Name = "comboLocalidad";
-            this.comboLocalidad.Size = new System.Drawing.Size(177, 38);
-            this.comboLocalidad.TabIndex = 141;
-            this.comboLocalidad.Tag = "";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(46, 212);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 25);
-            this.label1.TabIndex = 143;
-            this.label1.Text = "Fecha nac.";
-            // 
-            // txtPersona
-            // 
-            this.txtPersona.Location = new System.Drawing.Point(943, 100);
-            this.txtPersona.Name = "txtPersona";
-            this.txtPersona.Size = new System.Drawing.Size(24, 20);
-            this.txtPersona.TabIndex = 146;
-            this.txtPersona.Text = "0";
-            this.txtPersona.Visible = false;
-            // 
             // btnseleccionar
             // 
             this.btnseleccionar.HeaderText = "";
@@ -292,7 +185,6 @@
             // 
             // Apellido
             // 
-
             this.Apellido.HeaderText = "Apellido";
             this.Apellido.Name = "Apellido";
             this.Apellido.ReadOnly = true;
@@ -392,7 +284,6 @@
             this.Numero.Width = 175;
             // 
             // Persona
-
             // 
             this.Persona.HeaderText = "Persona";
             this.Persona.Name = "Persona";
@@ -429,16 +320,16 @@
             this.txtindice.Visible = false;
             // 
             // txtid
-
             // 
-            this.Persona.HeaderText = "Persona";
-            this.Persona.Name = "Persona";
-            this.Persona.ReadOnly = true;
-            this.Persona.Visible = false;
+            this.txtid.Location = new System.Drawing.Point(943, 52);
+            this.txtid.Name = "txtid";
+            this.txtid.Size = new System.Drawing.Size(24, 20);
+            this.txtid.TabIndex = 123;
+            this.txtid.Text = "0";
+            this.txtid.Visible = false;
             // 
-            // IdDomicilio
+            // comboBusqueda
             // 
-
             this.comboBusqueda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
             this.comboBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -449,48 +340,40 @@
             this.comboBusqueda.Name = "comboBusqueda";
             this.comboBusqueda.Size = new System.Drawing.Size(265, 38);
             this.comboBusqueda.TabIndex = 132;
-
-            this.IdDomicilio.HeaderText = "IdDomicilio";
-            this.IdDomicilio.Name = "IdDomicilio";
-            this.IdDomicilio.ReadOnly = true;
-            this.IdDomicilio.Visible = false;
-
             // 
-            // txtDomicilio
+            // comboProvincia
             // 
-            this.txtDomicilio.Location = new System.Drawing.Point(943, 126);
-            this.txtDomicilio.Name = "txtDomicilio";
-            this.txtDomicilio.Size = new System.Drawing.Size(24, 20);
-            this.txtDomicilio.TabIndex = 147;
-            this.txtDomicilio.Text = "0";
+            this.comboProvincia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.comboProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboProvincia.DropDownWidth = 350;
+            this.comboProvincia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboProvincia.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboProvincia.ForeColor = System.Drawing.Color.White;
+            this.comboProvincia.FormattingEnabled = true;
+            this.comboProvincia.Location = new System.Drawing.Point(51, 157);
+            this.comboProvincia.Name = "comboProvincia";
+            this.comboProvincia.Size = new System.Drawing.Size(177, 38);
+            this.comboProvincia.TabIndex = 140;
+            this.comboProvincia.Tag = "";
+            this.comboProvincia.SelectedIndexChanged += new System.EventHandler(this.comboProvincia_SelectedIndexChanged);
             // 
-            // txtLicencia
+            // comboLocalidad
             // 
-            this.txtLicencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.txtLicencia.BorderColor = System.Drawing.Color.DimGray;
-            this.txtLicencia.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
-            this.txtLicencia.BorderRadius = 10;
-            this.txtLicencia.BorderSize = 2;
-            this.txtLicencia.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLicencia.ForeColor = System.Drawing.Color.White;
-            this.txtLicencia.IsReadOnly = false;
-            this.txtLicencia.Location = new System.Drawing.Point(249, 27);
-            this.txtLicencia.Margin = new System.Windows.Forms.Padding(4);
-            this.txtLicencia.Multiline = false;
-            this.txtLicencia.Name = "txtLicencia";
-            this.txtLicencia.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtLicencia.PasswordChar = false;
-            this.txtLicencia.PlaceholderColor = System.Drawing.Color.White;
-            this.txtLicencia.PlaceholderText = "Licencia";
-            this.txtLicencia.ShortcutsEnabled = false;
-            this.txtLicencia.Size = new System.Drawing.Size(187, 45);
-            this.txtLicencia.TabIndex = 145;
-            this.txtLicencia.Texts = "";
-            this.txtLicencia.UnderlinedStyle = true;
+            this.comboLocalidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.comboLocalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboLocalidad.DropDownWidth = 300;
+            this.comboLocalidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboLocalidad.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboLocalidad.ForeColor = System.Drawing.Color.White;
+            this.comboLocalidad.FormattingEnabled = true;
+            this.comboLocalidad.Location = new System.Drawing.Point(259, 157);
+            this.comboLocalidad.Name = "comboLocalidad";
+            this.comboLocalidad.Size = new System.Drawing.Size(177, 38);
+            this.comboLocalidad.TabIndex = 141;
+            this.comboLocalidad.Tag = "";
             // 
-            // txtApellido
+            // label1
             // 
-
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
@@ -499,29 +382,6 @@
             this.label1.Size = new System.Drawing.Size(103, 25);
             this.label1.TabIndex = 143;
             this.label1.Text = "Fecha nac.";
-
-            this.txtApellido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.txtApellido.BorderColor = System.Drawing.Color.DimGray;
-            this.txtApellido.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
-            this.txtApellido.BorderRadius = 10;
-            this.txtApellido.BorderSize = 2;
-            this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApellido.ForeColor = System.Drawing.Color.White;
-            this.txtApellido.IsReadOnly = false;
-            this.txtApellido.Location = new System.Drawing.Point(724, 27);
-            this.txtApellido.Margin = new System.Windows.Forms.Padding(4);
-            this.txtApellido.Multiline = false;
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtApellido.PasswordChar = false;
-            this.txtApellido.PlaceholderColor = System.Drawing.Color.White;
-            this.txtApellido.PlaceholderText = "Apellido";
-            this.txtApellido.ShortcutsEnabled = true;
-            this.txtApellido.Size = new System.Drawing.Size(212, 45);
-            this.txtApellido.TabIndex = 144;
-            this.txtApellido.Texts = "";
-            this.txtApellido.UnderlinedStyle = true;
-
             // 
             // txtPersona
             // 
@@ -574,6 +434,7 @@
             this.txtLicencia.TabIndex = 145;
             this.txtLicencia.Texts = "";
             this.txtLicencia.UnderlinedStyle = true;
+            this.txtLicencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLicencia_KeyPress);
             // 
             // txtApellido
             // 
@@ -598,6 +459,7 @@
             this.txtApellido.TabIndex = 144;
             this.txtApellido.Texts = "";
             this.txtApellido.UnderlinedStyle = true;
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // rjdtpFecha
             // 
@@ -860,7 +722,6 @@
             this.txtNombre.UnderlinedStyle = true;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
-
             // label3
             // 
             this.label3.AutoSize = true;
@@ -872,17 +733,14 @@
             this.label3.TabIndex = 149;
             this.label3.Text = "Filtrar por Campo";
             // 
-
             // FrmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(19)))));
             this.ClientSize = new System.Drawing.Size(982, 726);
-
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-
             this.Controls.Add(this.txtDomicilio);
             this.Controls.Add(this.txtPersona);
             this.Controls.Add(this.txtLicencia);

@@ -543,6 +543,14 @@ namespace TestGit
                 e.Handled = true;
             }
         }
+        private void txtLicencia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Escribe solo numeros
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
 
         private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -563,6 +571,25 @@ namespace TestGit
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Letras
+            bool esLetra = char.IsLetter(e.KeyChar);
+
+            // Caracteres de control como borrar
+            bool esControl = char.IsControl(e.KeyChar);
+
+            // Acentos y Ñ
+            string acentos = "áéíóúÁÉÍÓÚñÑ";
+
+            // Tecla espacio
+            bool esEspacio = e.KeyChar == ' ';
+
+            if (!esLetra && !acentos.Contains(e.KeyChar) && !esControl && !esEspacio)
+            {
+                e.Handled = true; // Bloquea el carácter
+            }
+        }
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Letras
             bool esLetra = char.IsLetter(e.KeyChar);
