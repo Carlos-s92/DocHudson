@@ -14,7 +14,7 @@ namespace CapaNegocio
 
         public Negocio obtenerDatos()
         {
-            return objcd_Negocio.ObtenerDatos();
+            return objcd_Negocio.obtenerDatos();
         }
 
         public bool guardarDatos(Negocio obj, out string Mensaje)

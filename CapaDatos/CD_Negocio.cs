@@ -11,7 +11,7 @@ namespace CapaDatos
 {
     public class CD_Negocio
     {
-        public Negocio ObtenerDatos()
+        public Negocio obtenerDatos()
         {
             Negocio obj = new Negocio();
 
@@ -39,7 +39,7 @@ namespace CapaDatos
                             };
                         }
                     }
-
+                    conexion.Close();
                 }
             }
             catch
@@ -82,7 +82,7 @@ namespace CapaDatos
                         respuesta = false;
                     }
 
-
+                    conexion.Close();
 
                 }
             }

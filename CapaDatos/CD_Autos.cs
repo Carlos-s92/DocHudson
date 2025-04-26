@@ -3,11 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
-using System.Reflection;
 
 namespace CapaDatos
 {
@@ -73,6 +69,7 @@ namespace CapaDatos
                                 });
                             }
                         }
+                        oconexion.Close();
                     }
                 }
                 catch (Exception ex)
@@ -119,7 +116,7 @@ namespace CapaDatos
 
                     IdAutoGenerado = Convert.ToInt32(cmd.Parameters["IdAutoResultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-
+                    oconexion.Close();
                 }
 
             }
@@ -166,7 +163,7 @@ namespace CapaDatos
 
                     Respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-
+                    oconexion.Close();
                 }
 
             }
@@ -203,7 +200,7 @@ namespace CapaDatos
 
                     Respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-
+                    oconexion.Close();
                 }
 
             }

@@ -35,7 +35,7 @@ namespace CapaDatos
                     oconexion.Open();
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
-
+                    oconexion.Close();
                     resultado = "Copia realizada exitosamente";
 
                 }
@@ -68,7 +68,7 @@ namespace CapaDatos
                     oconexion.Open();
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
-
+                    oconexion.Close();
                     resultado = "Restauración exitosa";
                 }
                 catch (Exception ex)
@@ -109,7 +109,7 @@ namespace CapaDatos
                         oconexion.Open();
                         cmd.CommandType = CommandType.Text;
                         cmd.ExecuteNonQuery();
-
+                        oconexion.Close();
                         resultado = true;
 
                     }
@@ -155,6 +155,7 @@ namespace CapaDatos
                     {
                         resultado = Convert.ToBoolean(result);
                     }
+                    connection.Close();
                 }
                 catch (Exception ex)
                 {

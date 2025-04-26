@@ -22,35 +22,35 @@ namespace TestGit
 
         private void FrmPagos_Load(object sender, EventArgs e)
         {
-            // Configura el comboBusqueda para filtrar los resultados en el DataGridView.
-            foreach (DataGridViewColumn columna in dgvData.Columns)
-            {
-                if (columna.Visible == true && columna.Name != "btnseleccionar")
-                {
-                    comboBusqueda.Items.Add(new OpcionesCombo() { Valor = columna.Name, Texto = columna.HeaderText });
-                }
-            }
-            comboBusqueda.DisplayMember = "Texto";
-            comboBusqueda.ValueMember = "Valor";
-            comboBusqueda.SelectedIndex = 0;
-            // Muestra los Pagos en el DataGridView.
-            List<Pago> listaPagos = new CN_Pago().Listar();
+            //// Configura el comboBusqueda para filtrar los resultados en el DataGridView.
+            //foreach (DataGridViewColumn columna in dgvData.Columns)
+            //{
+            //    if (columna.Visible == true && columna.Name != "btnseleccionar")
+            //    {
+            //        comboBusqueda.Items.Add(new OpcionesCombo() { Valor = columna.Name, Texto = columna.HeaderText });
+            //    }
+            //}
+            //comboBusqueda.DisplayMember = "Texto";
+            //comboBusqueda.ValueMember = "Valor";
+            //comboBusqueda.SelectedIndex = 0;
+            //// Muestra los Pagos en el DataGridView.
+            //List<Pago> listaPagos = new CN_Pago().Listar();
 
-            foreach (Pago item in listaPagos)
-            {
-                Cliente cliente = new CN_Cliente().ClientePorPago(item.Id_Pago);
+            //foreach (Pago item in listaPagos)
+            //{
+            //    //Cliente cliente = new CN_Cliente().ClientePorPago(item.Id_Pago);
 
-                dgvData.Rows.Add(new object[] {
-                                "", // Columna para el icono de selección
-                                item.Id_Pago,
-                                item.Total,
-                                cliente.Dni,
-                                cliente.Nombre,
-                                item.Estado == true ? 1 : 0, // Estado como valor
-                                item.Estado == true ? "Activo" : "No Activo", // Estado como texto
+            //    dgvData.Rows.Add(new object[] {
+            //                    "", // Columna para el icono de selección
+            //                    item.Id_Pago,
+            //                    item.Total,
+            //                    cliente.oPersona.DNI,
+            //                    cliente.oPersona.Nombre,
+            //                    item.Estado == true ? 1 : 0, // Estado como valor
+            //                    item.Estado == true ? "Activo" : "No Activo", // Estado como texto
                    
-                });
-            }
+            //    });
+            //}
         }
 
         private void rjButton1_Click(object sender, EventArgs e)
