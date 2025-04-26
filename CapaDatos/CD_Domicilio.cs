@@ -18,6 +18,7 @@ namespace CapaDatos
             string Mensaje = string.Empty;
             try
             {
+
             
                     using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                     {
@@ -39,7 +40,7 @@ namespace CapaDatos
                         Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
                         oconexion.Close();
                     }
-                
+
 
 
 
@@ -64,7 +65,7 @@ namespace CapaDatos
             {
 
                 SqlCommand cmd = new SqlCommand("EditarDomicilio", oconexion);
-                
+
                 cmd.Parameters.AddWithValue("Id_Domicilio", domicilio.Id_Domicilio);
                 cmd.Parameters.AddWithValue("Calle", domicilio.Calle);
                 cmd.Parameters.AddWithValue("Numero", domicilio.Numero);
@@ -79,6 +80,7 @@ namespace CapaDatos
 
                 id = Convert.ToInt32(cmd.Parameters["Resultado"].Value);
                 Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+
                 oconexion.Close();
             }
 
@@ -90,3 +92,4 @@ namespace CapaDatos
 
     }
 }
+

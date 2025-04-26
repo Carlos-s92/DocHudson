@@ -62,10 +62,12 @@ namespace CapaDatos
                                     }
                                 });
                             }
+
                           
 
                         }
                         oConexion.Close();
+
                     }
                 }
                 catch
@@ -108,7 +110,9 @@ namespace CapaDatos
 
                     idGenerado = Convert.ToInt32(cmd.Parameters["IdResultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].ToString();
+
                     oconexion.Close();
+
                 }
             }
             catch (Exception ex)
@@ -118,6 +122,7 @@ namespace CapaDatos
             }
             return idGenerado;
         }
+
 
         //public Persona Buscar(int id)
         //{
@@ -184,6 +189,7 @@ namespace CapaDatos
         //    }
         //    return obj;
         //}
+
 
         public int BusquedaDni(string dni)
         {
@@ -285,7 +291,9 @@ namespace CapaDatos
 
                     respuesta = Convert.ToInt32(cmd.Parameters["IdResultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].ToString();
+
                     oConexion.Close();
+
                 }
             }
             catch (Exception ex)

@@ -109,7 +109,7 @@
             this.btnAuto.Name = "btnAuto";
             this.btnAuto.Size = new System.Drawing.Size(446, 41);
             this.btnAuto.TabIndex = 154;
-            this.btnAuto.Text = "+";
+            this.btnAuto.Text = "Buscar Auto";
             this.btnAuto.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.btnAuto.UseVisualStyleBackColor = false;
             this.btnAuto.Click += new System.EventHandler(this.btnAuto_Click);
@@ -131,7 +131,7 @@
             this.btnCliente.Name = "btnCliente";
             this.btnCliente.Size = new System.Drawing.Size(446, 41);
             this.btnCliente.TabIndex = 153;
-            this.btnCliente.Text = "+";
+            this.btnCliente.Text = "Buscar Cliente";
             this.btnCliente.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.btnCliente.UseVisualStyleBackColor = false;
             this.btnCliente.Click += new System.EventHandler(this.rjButton1_Click);
@@ -266,13 +266,14 @@
             this.BtnLimpiar2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnLimpiar2.FlatAppearance.BorderSize = 0;
             this.BtnLimpiar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnLimpiar2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnLimpiar2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.BtnLimpiar2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnLimpiar2.Location = new System.Drawing.Point(490, 641);
             this.BtnLimpiar2.Margin = new System.Windows.Forms.Padding(2);
             this.BtnLimpiar2.Name = "BtnLimpiar2";
             this.BtnLimpiar2.Size = new System.Drawing.Size(434, 41);
             this.BtnLimpiar2.TabIndex = 143;
+            this.BtnLimpiar2.Text = "Limpiar Campos";
             this.BtnLimpiar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnLimpiar2.UseVisualStyleBackColor = false;
             this.BtnLimpiar2.Click += new System.EventHandler(this.BtnLimpiar2_Click);
@@ -294,7 +295,7 @@
             this.BtnGuardar2.Name = "BtnGuardar2";
             this.BtnGuardar2.Size = new System.Drawing.Size(396, 41);
             this.BtnGuardar2.TabIndex = 142;
-            this.BtnGuardar2.Text = "+";
+            this.BtnGuardar2.Text = "Guardar";
             this.BtnGuardar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnGuardar2.UseVisualStyleBackColor = false;
             this.BtnGuardar2.Click += new System.EventHandler(this.BtnGuardar2_Click);

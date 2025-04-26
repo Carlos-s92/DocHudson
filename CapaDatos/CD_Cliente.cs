@@ -26,6 +26,7 @@ namespace CapaDatos
 
                     StringBuilder query = new StringBuilder();
 
+
                     // Forma la consulta SQL
                     query.AppendLine("Select Id_Cliente, Licencia, pe.DNI, pe.Id_Persona, pe.Nombre, pe.Apellido, p.Id_Provincia, p.Provincia, l.Id_Localidad,l.Localidad, d.Calle,d.Id_Domicilio, d.Numero, pe.Fecha_Nacimiento, pe.Mail, pe.Telefono, Estado from Cliente c");
                     query.AppendLine("inner join Persona pe on pe.Id_Persona = c.Id_Persona");
@@ -94,6 +95,7 @@ namespace CapaDatos
         }
 
         // Metodo para conectarse con la base de datos y registrar un cliente
+
         public int Registrar(Cliente obj, out string Mensaje)
         {
             // Genere una variable local de id y mensaje
@@ -102,15 +104,18 @@ namespace CapaDatos
 
             try
             {
+
                 // Metodo para registrar y retornar el id de la persona
                 int persona = new CD_Persona().Registrar(obj.oPersona,out Mensaje);
 
                 if(persona != 0) // Si la persona se registro exitosamente
+
                 {
                     using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                     {
 
                         SqlCommand cmd = new SqlCommand("InsertarCliente", oconexion);
+
 
                         //Se añaden los parametros y sus respectivos valores para el procedimiento SQL
                         cmd.Parameters.AddWithValue("Id_Persona", persona);
@@ -126,7 +131,9 @@ namespace CapaDatos
 
                         IdClienteGenerado = Convert.ToInt32(cmd.Parameters["IdUsuarioResultado"].Value);
                         Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+
                         oconexion.Close();
+
                     }
                 }
 
@@ -152,16 +159,14 @@ namespace CapaDatos
 
             try
             {
+
                 // Metodo para editar la persona asociada al cliente
                 int persona = new CD_Persona().Editar(obj.oPersona, out Mensaje);
-                
-
                 if (persona != 0){
                 
         
                     using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                     {
-
 
                         SqlCommand cmd = new SqlCommand("ActualizarCliente", oconexion);
 

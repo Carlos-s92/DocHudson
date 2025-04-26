@@ -64,7 +64,9 @@ namespace TestGit
 
             foreach (Cliente item in listaClientes)
             {
+
                 //Se calcula el valor de la edad
+
                 DateTime fechaNacimiento = item.oPersona.Fecha_Nacimiento;
                 int edad = DateTime.Now.Year - fechaNacimiento.Year;
                 if (fechaNacimiento > DateTime.Now.AddYears(-edad))
@@ -107,6 +109,7 @@ namespace TestGit
             this.txtNumero.Texts = "";
             this.comboLocalidad.SelectedIndex = 0;
             this.comboProvincia.SelectedIndex = 0;
+
             this.txtTelefono.Texts = "";
             this.txtMail.Texts = "";
             this.txtid.Text = "0";
@@ -131,7 +134,7 @@ namespace TestGit
                 // Confirma si se va a agregar o editar un cliente.
                 if (Convert.ToInt32(txtid.Text) == 0)
                 {
-                    confirmacion = new VentanaEmergente("Confirmacion", "¿Seguro desea agregar el Cliente?","Interrogacion");
+                    confirmacion = new VentanaEmergente("Confirmacion", "¿Seguro desea agregar el Cliente?", "Interrogacion");
                     confirmacion.ShowDialog();
                 }
                 else
@@ -201,9 +204,11 @@ namespace TestGit
                     // Si es un nuevo cliente, se registra en la base de datos.
                     if (objCliente.Id_Cliente == 0)
                     {
+
                         int idClienteGenerado = new CN_Cliente().Registrar(objCliente, out mensaje); //Se registra el cliente y retorna el id del mismo
                         int idPersona = new CN_Cliente().BusquedaDni(txtDocumento.Texts); // Se busca el id de la persona segun el documento
                         int idDomicilio = new CN_Cliente().BusquedaDomicilio(idPersona); //Se busca el domicilio segun la persona
+
 
 
                         if (idClienteGenerado != 0) //Si el cliente se genero correctamente
@@ -317,6 +322,7 @@ namespace TestGit
             {
                 confirmacion = false;
             }
+
             // Verifica que el apellido no este vacio
             if (txtApellido.Texts == "")
             {
@@ -332,6 +338,7 @@ namespace TestGit
             {
                 confirmacion = false;
             }
+
 
             // Retorna el resultado de las validaciones.
             return confirmacion;
@@ -353,9 +360,9 @@ namespace TestGit
             if (Convert.ToInt32(txtid.Text) != 0)
             {
                 // Pregunta al usuario si desea eliminar el cliente.
-                VentanaEmergente pregunta = new VentanaEmergente("Mensaje","¿Desea eliminar al cliente?","Interrogacion");
+                VentanaEmergente pregunta = new VentanaEmergente("Mensaje", "¿Desea eliminar al cliente?", "Interrogacion");
                 pregunta.ShowDialog();
-                
+    
                 // Confirma si desea eliminar el cliente
                 if (pregunta.DialogResult == DialogResult.Yes)
                 {
@@ -440,10 +447,12 @@ namespace TestGit
                     txtMail.Texts = dgvData.Rows[indice].Cells["Mail"].Value.ToString();
                    
 
+
                     // Provincia
                     int idProvincia = Convert.ToInt32(dgvData.Rows[indice].Cells["Provincia"].Value);
                     int idLocalidad = Convert.ToInt32(dgvData.Rows[indice].Cells["Localidad"].Value);
                     
+
 
                     // Seleccionar la provincia (buscando por valor)
                     foreach (OpcionesCombo item in comboProvincia.Items)
@@ -609,5 +618,3 @@ namespace TestGit
 
     }
 }
-
-
