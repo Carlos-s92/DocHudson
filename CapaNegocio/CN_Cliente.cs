@@ -200,9 +200,6 @@ namespace CapaNegocio
             return Regex.IsMatch(email, regex, RegexOptions.IgnoreCase);
         }
 
-        public int BusquedaDomicilio()
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

@@ -250,6 +250,8 @@ namespace TestGit
                                 idPersona,
                                 idDomicilio
                             });
+                            VentanaEmergente Succeso = new VentanaEmergente("Exito", "Cliente registrado exitosamente","Exito") ;
+
                             LimpiarCampos(); // Limpia los campos del formulario.
                         }
                         else

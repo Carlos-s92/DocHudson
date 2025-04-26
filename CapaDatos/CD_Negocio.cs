@@ -11,7 +11,7 @@ namespace CapaDatos
 {
     public class CD_Negocio
     {
-        public Negocio ObtenerDatos()
+        public Negocio obtenerDatos()
         {
             Negocio obj = new Negocio();
 
