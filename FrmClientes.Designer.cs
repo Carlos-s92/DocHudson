@@ -125,7 +125,8 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvData.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvData.EnableHeadersVisualStyles = false;
-            this.dgvData.Location = new System.Drawing.Point(45, 436);
+            this.dgvData.Location = new System.Drawing.Point(68, 671);
+            this.dgvData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvData.MultiSelect = false;
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
@@ -140,7 +141,7 @@
             this.dgvData.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
             this.dgvData.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.SystemColors.Highlight;
             this.dgvData.RowTemplate.Height = 28;
-            this.dgvData.Size = new System.Drawing.Size(891, 267);
+            this.dgvData.Size = new System.Drawing.Size(1336, 411);
             this.dgvData.TabIndex = 115;
             this.dgvData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellContentClick);
             // 
@@ -172,8 +173,10 @@
             // Licencia
             // 
             this.Licencia.HeaderText = "Licencia";
+            this.Licencia.MinimumWidth = 8;
             this.Licencia.Name = "Licencia";
             this.Licencia.ReadOnly = true;
+            this.Licencia.Width = 150;
             // 
             // Nombre
             // 
@@ -186,8 +189,10 @@
             // Apellido
             // 
             this.Apellido.HeaderText = "Apellido";
+            this.Apellido.MinimumWidth = 8;
             this.Apellido.Name = "Apellido";
             this.Apellido.ReadOnly = true;
+            this.Apellido.Width = 150;
             // 
             // Edad
             // 
@@ -286,16 +291,20 @@
             // Persona
             // 
             this.Persona.HeaderText = "Persona";
+            this.Persona.MinimumWidth = 8;
             this.Persona.Name = "Persona";
             this.Persona.ReadOnly = true;
             this.Persona.Visible = false;
+            this.Persona.Width = 150;
             // 
             // IdDomicilio
             // 
             this.IdDomicilio.HeaderText = "IdDomicilio";
+            this.IdDomicilio.MinimumWidth = 8;
             this.IdDomicilio.Name = "IdDomicilio";
             this.IdDomicilio.ReadOnly = true;
             this.IdDomicilio.Visible = false;
+            this.IdDomicilio.Width = 150;
             // 
             // comboEstado
             // 
@@ -305,25 +314,28 @@
             this.comboEstado.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboEstado.ForeColor = System.Drawing.Color.White;
             this.comboEstado.FormattingEnabled = true;
-            this.comboEstado.Location = new System.Drawing.Point(657, 212);
+            this.comboEstado.Location = new System.Drawing.Point(986, 326);
+            this.comboEstado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboEstado.Name = "comboEstado";
-            this.comboEstado.Size = new System.Drawing.Size(281, 38);
+            this.comboEstado.Size = new System.Drawing.Size(420, 53);
             this.comboEstado.TabIndex = 122;
             // 
             // txtindice
             // 
-            this.txtindice.Location = new System.Drawing.Point(943, 74);
+            this.txtindice.Location = new System.Drawing.Point(1414, 114);
+            this.txtindice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtindice.Name = "txtindice";
-            this.txtindice.Size = new System.Drawing.Size(24, 20);
+            this.txtindice.Size = new System.Drawing.Size(34, 26);
             this.txtindice.TabIndex = 124;
             this.txtindice.Text = "-1";
             this.txtindice.Visible = false;
             // 
             // txtid
             // 
-            this.txtid.Location = new System.Drawing.Point(943, 52);
+            this.txtid.Location = new System.Drawing.Point(1414, 80);
+            this.txtid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtid.Name = "txtid";
-            this.txtid.Size = new System.Drawing.Size(24, 20);
+            this.txtid.Size = new System.Drawing.Size(34, 26);
             this.txtid.TabIndex = 123;
             this.txtid.Text = "0";
             this.txtid.Visible = false;
@@ -336,9 +348,10 @@
             this.comboBusqueda.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBusqueda.ForeColor = System.Drawing.Color.White;
             this.comboBusqueda.FormattingEnabled = true;
-            this.comboBusqueda.Location = new System.Drawing.Point(661, 382);
+            this.comboBusqueda.Location = new System.Drawing.Point(992, 588);
+            this.comboBusqueda.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBusqueda.Name = "comboBusqueda";
-            this.comboBusqueda.Size = new System.Drawing.Size(265, 38);
+            this.comboBusqueda.Size = new System.Drawing.Size(396, 53);
             this.comboBusqueda.TabIndex = 132;
             // 
             // comboProvincia
@@ -350,9 +363,10 @@
             this.comboProvincia.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboProvincia.ForeColor = System.Drawing.Color.White;
             this.comboProvincia.FormattingEnabled = true;
-            this.comboProvincia.Location = new System.Drawing.Point(51, 157);
+            this.comboProvincia.Location = new System.Drawing.Point(76, 242);
+            this.comboProvincia.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboProvincia.Name = "comboProvincia";
-            this.comboProvincia.Size = new System.Drawing.Size(177, 38);
+            this.comboProvincia.Size = new System.Drawing.Size(264, 53);
             this.comboProvincia.TabIndex = 140;
             this.comboProvincia.Tag = "";
             this.comboProvincia.SelectedIndexChanged += new System.EventHandler(this.comboProvincia_SelectedIndexChanged);
@@ -366,9 +380,10 @@
             this.comboLocalidad.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboLocalidad.ForeColor = System.Drawing.Color.White;
             this.comboLocalidad.FormattingEnabled = true;
-            this.comboLocalidad.Location = new System.Drawing.Point(259, 157);
+            this.comboLocalidad.Location = new System.Drawing.Point(388, 242);
+            this.comboLocalidad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboLocalidad.Name = "comboLocalidad";
-            this.comboLocalidad.Size = new System.Drawing.Size(177, 38);
+            this.comboLocalidad.Size = new System.Drawing.Size(264, 53);
             this.comboLocalidad.TabIndex = 141;
             this.comboLocalidad.Tag = "";
             // 
@@ -377,26 +392,29 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(46, 215);
+            this.label1.Location = new System.Drawing.Point(69, 331);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 25);
+            this.label1.Size = new System.Drawing.Size(159, 40);
             this.label1.TabIndex = 143;
             this.label1.Text = "Fecha nac.";
             // 
             // txtPersona
             // 
-            this.txtPersona.Location = new System.Drawing.Point(943, 100);
+            this.txtPersona.Location = new System.Drawing.Point(1414, 154);
+            this.txtPersona.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPersona.Name = "txtPersona";
-            this.txtPersona.Size = new System.Drawing.Size(24, 20);
+            this.txtPersona.Size = new System.Drawing.Size(34, 26);
             this.txtPersona.TabIndex = 146;
             this.txtPersona.Text = "0";
             this.txtPersona.Visible = false;
             // 
             // txtDomicilio
             // 
-            this.txtDomicilio.Location = new System.Drawing.Point(943, 126);
+            this.txtDomicilio.Location = new System.Drawing.Point(1414, 194);
+            this.txtDomicilio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDomicilio.Name = "txtDomicilio";
-            this.txtDomicilio.Size = new System.Drawing.Size(24, 20);
+            this.txtDomicilio.Size = new System.Drawing.Size(34, 26);
             this.txtDomicilio.TabIndex = 147;
             this.txtDomicilio.Text = "0";
             // 
@@ -405,9 +423,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(485, 219);
+            this.label2.Location = new System.Drawing.Point(728, 337);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(166, 25);
+            this.label2.Size = new System.Drawing.Size(257, 40);
             this.label2.TabIndex = 148;
             this.label2.Text = "Estado del cliente";
             // 
@@ -416,9 +435,10 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(485, 389);
+            this.label3.Location = new System.Drawing.Point(728, 598);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(170, 25);
+            this.label3.Size = new System.Drawing.Size(260, 40);
             this.label3.TabIndex = 149;
             this.label3.Text = "Filtrar por Campo";
             // 
@@ -432,16 +452,16 @@
             this.txtLicencia.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLicencia.ForeColor = System.Drawing.Color.White;
             this.txtLicencia.IsReadOnly = false;
-            this.txtLicencia.Location = new System.Drawing.Point(249, 27);
-            this.txtLicencia.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLicencia.Location = new System.Drawing.Point(374, 42);
+            this.txtLicencia.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtLicencia.Multiline = false;
             this.txtLicencia.Name = "txtLicencia";
-            this.txtLicencia.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtLicencia.Padding = new System.Windows.Forms.Padding(15, 11, 15, 11);
             this.txtLicencia.PasswordChar = false;
             this.txtLicencia.PlaceholderColor = System.Drawing.Color.White;
             this.txtLicencia.PlaceholderText = "Licencia";
             this.txtLicencia.ShortcutsEnabled = false;
-            this.txtLicencia.Size = new System.Drawing.Size(187, 45);
+            this.txtLicencia.Size = new System.Drawing.Size(280, 68);
             this.txtLicencia.TabIndex = 145;
             this.txtLicencia.Texts = "";
             this.txtLicencia.UnderlinedStyle = true;
@@ -457,16 +477,16 @@
             this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellido.ForeColor = System.Drawing.Color.White;
             this.txtApellido.IsReadOnly = false;
-            this.txtApellido.Location = new System.Drawing.Point(724, 27);
-            this.txtApellido.Margin = new System.Windows.Forms.Padding(4);
+            this.txtApellido.Location = new System.Drawing.Point(1086, 42);
+            this.txtApellido.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtApellido.Multiline = false;
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtApellido.Padding = new System.Windows.Forms.Padding(15, 11, 15, 11);
             this.txtApellido.PasswordChar = false;
             this.txtApellido.PlaceholderColor = System.Drawing.Color.White;
             this.txtApellido.PlaceholderText = "Apellido";
             this.txtApellido.ShortcutsEnabled = true;
-            this.txtApellido.Size = new System.Drawing.Size(212, 45);
+            this.txtApellido.Size = new System.Drawing.Size(318, 68);
             this.txtApellido.TabIndex = 144;
             this.txtApellido.Texts = "";
             this.txtApellido.UnderlinedStyle = true;
@@ -483,10 +503,11 @@
             this.rjdtpFecha.CalendarTitleForeColor = System.Drawing.Color.Red;
             this.rjdtpFecha.CalendarTrailingForeColor = System.Drawing.Color.Lime;
             this.rjdtpFecha.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjdtpFecha.Location = new System.Drawing.Point(155, 209);
+            this.rjdtpFecha.Location = new System.Drawing.Point(232, 322);
+            this.rjdtpFecha.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rjdtpFecha.MinimumSize = new System.Drawing.Size(4, 35);
             this.rjdtpFecha.Name = "rjdtpFecha";
-            this.rjdtpFecha.Size = new System.Drawing.Size(281, 35);
+            this.rjdtpFecha.Size = new System.Drawing.Size(420, 35);
             this.rjdtpFecha.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
             this.rjdtpFecha.TabIndex = 142;
             this.rjdtpFecha.TextColor = System.Drawing.Color.White;
@@ -502,16 +523,16 @@
             this.txtNumero.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumero.ForeColor = System.Drawing.Color.White;
             this.txtNumero.IsReadOnly = false;
-            this.txtNumero.Location = new System.Drawing.Point(761, 152);
-            this.txtNumero.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNumero.Location = new System.Drawing.Point(1142, 234);
+            this.txtNumero.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtNumero.Multiline = false;
             this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtNumero.Padding = new System.Windows.Forms.Padding(15, 11, 15, 11);
             this.txtNumero.PasswordChar = false;
             this.txtNumero.PlaceholderColor = System.Drawing.Color.White;
             this.txtNumero.PlaceholderText = "Numero";
             this.txtNumero.ShortcutsEnabled = false;
-            this.txtNumero.Size = new System.Drawing.Size(175, 45);
+            this.txtNumero.Size = new System.Drawing.Size(262, 68);
             this.txtNumero.TabIndex = 139;
             this.txtNumero.Texts = "";
             this.txtNumero.UnderlinedStyle = true;
@@ -531,10 +552,9 @@
             this.rjButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjButton3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton3.Location = new System.Drawing.Point(45, 380);
-            this.rjButton3.Margin = new System.Windows.Forms.Padding(2);
+            this.rjButton3.Location = new System.Drawing.Point(68, 585);
             this.rjButton3.Name = "rjButton3";
-            this.rjButton3.Size = new System.Drawing.Size(40, 40);
+            this.rjButton3.Size = new System.Drawing.Size(60, 62);
             this.rjButton3.TabIndex = 137;
             this.rjButton3.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.rjButton3.UseVisualStyleBackColor = false;
@@ -550,16 +570,16 @@
             this.txtBusqueda.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBusqueda.ForeColor = System.Drawing.Color.White;
             this.txtBusqueda.IsReadOnly = false;
-            this.txtBusqueda.Location = new System.Drawing.Point(91, 375);
-            this.txtBusqueda.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBusqueda.Location = new System.Drawing.Point(136, 577);
+            this.txtBusqueda.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtBusqueda.Multiline = false;
             this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtBusqueda.Padding = new System.Windows.Forms.Padding(15, 11, 15, 11);
             this.txtBusqueda.PasswordChar = false;
             this.txtBusqueda.PlaceholderColor = System.Drawing.Color.White;
             this.txtBusqueda.PlaceholderText = "Busqueda...";
             this.txtBusqueda.ShortcutsEnabled = false;
-            this.txtBusqueda.Size = new System.Drawing.Size(350, 45);
+            this.txtBusqueda.Size = new System.Drawing.Size(525, 68);
             this.txtBusqueda.TabIndex = 135;
             this.txtBusqueda.Texts = "";
             this.txtBusqueda.UnderlinedStyle = true;
@@ -577,10 +597,9 @@
             this.BtnLimpiar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnLimpiar2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.BtnLimpiar2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.BtnLimpiar2.Location = new System.Drawing.Point(502, 299);
-            this.BtnLimpiar2.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnLimpiar2.Location = new System.Drawing.Point(753, 460);
             this.BtnLimpiar2.Name = "BtnLimpiar2";
-            this.BtnLimpiar2.Size = new System.Drawing.Size(434, 41);
+            this.BtnLimpiar2.Size = new System.Drawing.Size(651, 63);
             this.BtnLimpiar2.TabIndex = 134;
             this.BtnLimpiar2.Text = "Eliminar Cliente";
             this.BtnLimpiar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
@@ -599,10 +618,9 @@
             this.BtnGuardar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardar2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGuardar2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.BtnGuardar2.Location = new System.Drawing.Point(45, 299);
-            this.BtnGuardar2.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnGuardar2.Location = new System.Drawing.Point(68, 460);
             this.BtnGuardar2.Name = "BtnGuardar2";
-            this.BtnGuardar2.Size = new System.Drawing.Size(396, 41);
+            this.BtnGuardar2.Size = new System.Drawing.Size(594, 63);
             this.BtnGuardar2.TabIndex = 133;
             this.BtnGuardar2.Text = "Registrar Cliente";
             this.BtnGuardar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
@@ -619,16 +637,16 @@
             this.txtCalle.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCalle.ForeColor = System.Drawing.Color.White;
             this.txtCalle.IsReadOnly = false;
-            this.txtCalle.Location = new System.Drawing.Point(490, 152);
-            this.txtCalle.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCalle.Location = new System.Drawing.Point(735, 234);
+            this.txtCalle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtCalle.Multiline = false;
             this.txtCalle.Name = "txtCalle";
-            this.txtCalle.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtCalle.Padding = new System.Windows.Forms.Padding(15, 11, 15, 11);
             this.txtCalle.PasswordChar = false;
             this.txtCalle.PlaceholderColor = System.Drawing.Color.White;
             this.txtCalle.PlaceholderText = "Calle";
             this.txtCalle.ShortcutsEnabled = false;
-            this.txtCalle.Size = new System.Drawing.Size(263, 45);
+            this.txtCalle.Size = new System.Drawing.Size(394, 68);
             this.txtCalle.TabIndex = 129;
             this.txtCalle.Texts = "";
             this.txtCalle.UnderlinedStyle = true;
@@ -644,16 +662,16 @@
             this.txtMail.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMail.ForeColor = System.Drawing.Color.White;
             this.txtMail.IsReadOnly = false;
-            this.txtMail.Location = new System.Drawing.Point(45, 90);
-            this.txtMail.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMail.Location = new System.Drawing.Point(68, 138);
+            this.txtMail.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtMail.Multiline = false;
             this.txtMail.Name = "txtMail";
-            this.txtMail.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtMail.Padding = new System.Windows.Forms.Padding(15, 11, 15, 11);
             this.txtMail.PasswordChar = false;
             this.txtMail.PlaceholderColor = System.Drawing.Color.White;
             this.txtMail.PlaceholderText = "Mail";
             this.txtMail.ShortcutsEnabled = false;
-            this.txtMail.Size = new System.Drawing.Size(396, 45);
+            this.txtMail.Size = new System.Drawing.Size(594, 68);
             this.txtMail.TabIndex = 127;
             this.txtMail.Texts = "";
             this.txtMail.UnderlinedStyle = true;
@@ -669,16 +687,16 @@
             this.txtTelefono.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono.ForeColor = System.Drawing.Color.White;
             this.txtTelefono.IsReadOnly = false;
-            this.txtTelefono.Location = new System.Drawing.Point(490, 90);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTelefono.Location = new System.Drawing.Point(735, 138);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtTelefono.Multiline = false;
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtTelefono.Padding = new System.Windows.Forms.Padding(15, 11, 15, 11);
             this.txtTelefono.PasswordChar = false;
             this.txtTelefono.PlaceholderColor = System.Drawing.Color.White;
             this.txtTelefono.PlaceholderText = "Telefono";
             this.txtTelefono.ShortcutsEnabled = false;
-            this.txtTelefono.Size = new System.Drawing.Size(446, 45);
+            this.txtTelefono.Size = new System.Drawing.Size(669, 68);
             this.txtTelefono.TabIndex = 128;
             this.txtTelefono.Texts = "";
             this.txtTelefono.UnderlinedStyle = true;
@@ -694,16 +712,16 @@
             this.txtDocumento.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDocumento.ForeColor = System.Drawing.Color.White;
             this.txtDocumento.IsReadOnly = false;
-            this.txtDocumento.Location = new System.Drawing.Point(45, 27);
-            this.txtDocumento.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDocumento.Location = new System.Drawing.Point(68, 42);
+            this.txtDocumento.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtDocumento.Multiline = false;
             this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtDocumento.Padding = new System.Windows.Forms.Padding(15, 11, 15, 11);
             this.txtDocumento.PasswordChar = false;
             this.txtDocumento.PlaceholderColor = System.Drawing.Color.White;
             this.txtDocumento.PlaceholderText = "Documento";
             this.txtDocumento.ShortcutsEnabled = false;
-            this.txtDocumento.Size = new System.Drawing.Size(196, 45);
+            this.txtDocumento.Size = new System.Drawing.Size(294, 68);
             this.txtDocumento.TabIndex = 125;
             this.txtDocumento.Texts = "";
             this.txtDocumento.UnderlinedStyle = true;
@@ -719,16 +737,16 @@
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.White;
             this.txtNombre.IsReadOnly = false;
-            this.txtNombre.Location = new System.Drawing.Point(490, 27);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNombre.Location = new System.Drawing.Point(735, 42);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtNombre.Multiline = false;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtNombre.Padding = new System.Windows.Forms.Padding(15, 11, 15, 11);
             this.txtNombre.PasswordChar = false;
             this.txtNombre.PlaceholderColor = System.Drawing.Color.White;
             this.txtNombre.PlaceholderText = "Nombre ";
             this.txtNombre.ShortcutsEnabled = true;
-            this.txtNombre.Size = new System.Drawing.Size(221, 45);
+            this.txtNombre.Size = new System.Drawing.Size(332, 68);
             this.txtNombre.TabIndex = 126;
             this.txtNombre.Texts = "";
             this.txtNombre.UnderlinedStyle = true;
@@ -736,10 +754,10 @@
             // 
             // FrmClientes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(19)))));
-            this.ClientSize = new System.Drawing.Size(982, 726);
+            this.ClientSize = new System.Drawing.Size(1473, 1117);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtDomicilio);
@@ -766,6 +784,7 @@
             this.Controls.Add(this.txtid);
             this.Controls.Add(this.dgvData);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmClientes";
             this.Text = "FrmClientes";
             this.Load += new System.EventHandler(this.FrmClientes_Load);
