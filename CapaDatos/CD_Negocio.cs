@@ -39,7 +39,7 @@ namespace CapaDatos
                             };
                         }
                     }
-
+                    conexion.Close();
                 }
             }
             catch
@@ -82,7 +82,7 @@ namespace CapaDatos
                         respuesta = false;
                     }
 
-
+                    conexion.Close();
 
                 }
             }

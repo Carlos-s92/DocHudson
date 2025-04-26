@@ -13,8 +13,10 @@ namespace CapaDatos
 {
     public class CD_Cliente
     {
+        // Metodo para conectarse y listar en la base de datos
         public List<Cliente> Listar()
         {
+            //Genera una lista de clientes vacia
             List<Cliente> lista = new List<Cliente>();
 
             using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
@@ -24,6 +26,7 @@ namespace CapaDatos
 
                     StringBuilder query = new StringBuilder();
 
+                    // Forma la consulta SQL
                     query.AppendLine("Select Id_Cliente, Licencia, pe.DNI, pe.Id_Persona, pe.Nombre, pe.Apellido, p.Id_Provincia, p.Provincia, l.Id_Localidad,l.Localidad, d.Calle,d.Id_Domicilio, d.Numero, pe.Fecha_Nacimiento, pe.Mail, pe.Telefono, Estado from Cliente c");
                     query.AppendLine("inner join Persona pe on pe.Id_Persona = c.Id_Persona");
                     query.AppendLine("inner join Domicilio d on d.Id_Domicilio = pe.Id_Domicilio");
@@ -32,13 +35,16 @@ namespace CapaDatos
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
 
+                    // Tipo de comando SQL
                     cmd.CommandType = CommandType.Text;
 
+                    // Abre la conexion con la base de datos
                     oconexion.Open();
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
                         while (dr.Read())
                         {
+                            // Añade a la lista de clientes, cada cliente que encuentre
                             lista.Add(new Cliente()
                             {
                                 Id_Cliente = Convert.ToInt32(dr["Id_Cliente"]),
@@ -76,33 +82,37 @@ namespace CapaDatos
                             });
                         }
                     }
-
+                    oconexion.Close();
                 }
                 catch (Exception ex)
                 {
+                    //Si encuentra un error genera una lista vacia de clientes
                     lista = new List<Cliente>();
                 }
             }
             return lista;
         }
 
-
+        // Metodo para conectarse con la base de datos y registrar un cliente
         public int Registrar(Cliente obj, out string Mensaje)
         {
+            // Genere una variable local de id y mensaje
             int IdClienteGenerado = 0;
             Mensaje = string.Empty;
 
             try
             {
+                // Metodo para registrar y retornar el id de la persona
                 int persona = new CD_Persona().Registrar(obj.oPersona,out Mensaje);
 
-                if(persona != 0)
+                if(persona != 0) // Si la persona se registro exitosamente
                 {
                     using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                     {
 
                         SqlCommand cmd = new SqlCommand("InsertarCliente", oconexion);
 
+                        //Se añaden los parametros y sus respectivos valores para el procedimiento SQL
                         cmd.Parameters.AddWithValue("Id_Persona", persona);
                         cmd.Parameters.AddWithValue("Licencia", obj.Licencia);
                         cmd.Parameters.AddWithValue("Estado", obj.Estado);
@@ -116,7 +126,7 @@ namespace CapaDatos
 
                         IdClienteGenerado = Convert.ToInt32(cmd.Parameters["IdUsuarioResultado"].Value);
                         Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-
+                        oconexion.Close();
                     }
                 }
 
@@ -125,6 +135,7 @@ namespace CapaDatos
             }
             catch (Exception ex)
             {
+                // Si no se registro, el id del cliente se inicializa en 0
                 IdClienteGenerado = 0;
                 Mensaje = ex.Message;
             }
@@ -133,6 +144,7 @@ namespace CapaDatos
 
         }
 
+        // Metodo para conectarse a la base de datos y editar un cliente
         public bool Editar(Cliente obj, out string Mensaje)
         {
             bool Respuesta = false;
@@ -140,6 +152,7 @@ namespace CapaDatos
 
             try
             {
+                // Metodo para editar la persona asociada al cliente
                 int persona = new CD_Persona().Editar(obj.oPersona, out Mensaje);
                 
 
@@ -151,6 +164,8 @@ namespace CapaDatos
 
 
                         SqlCommand cmd = new SqlCommand("ActualizarCliente", oconexion);
+
+                        // Agrega los parametros necesarios para el procedimiento SQL
                         cmd.Parameters.AddWithValue("Id_Cliente", obj.Id_Cliente);
                         cmd.Parameters.AddWithValue("Id_Persona", persona);
                         cmd.Parameters.AddWithValue("Licencia", obj.Licencia);
@@ -160,18 +175,17 @@ namespace CapaDatos
                         cmd.CommandType = CommandType.StoredProcedure;
 
                         oconexion.Open();
-
                         cmd.ExecuteNonQuery();
-
                         Respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
                         Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-
+                        oconexion.Close();
                     }
 
                 }
             }
             catch (Exception ex)
             {
+                // Si no se edito el usuario que devuelva falso
                 Respuesta = false;
                 Mensaje = ex.Message;
             }
@@ -180,6 +194,7 @@ namespace CapaDatos
 
         }
 
+        // Metodo para conectarse a una base de datos y eliminar el cliente
         public bool Eliminar(Cliente obj, out string Mensaje)
         {
             bool Respuesta = false;
@@ -192,6 +207,8 @@ namespace CapaDatos
 
 
                     SqlCommand cmd = new SqlCommand("EliminarCliente", oconexion);
+
+                    // Se agregan los parametros necesarios para el procedimiento SQL
                     cmd.Parameters.AddWithValue("Id_Cliente", obj.Id_Cliente);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
@@ -203,12 +220,14 @@ namespace CapaDatos
 
                     Respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+                    oconexion.Close();
 
                 }
 
             }
             catch (Exception ex)
             {
+                // En caso de error retorna falso
                 Respuesta = false;
                 Mensaje = ex.Message;
             }

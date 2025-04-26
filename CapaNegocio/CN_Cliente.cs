@@ -13,11 +13,13 @@ namespace CapaNegocio
     {
         private CD_Cliente objcd_cliente = new CD_Cliente();
 
+        // Metodo para listar todos los clientes
         public List<Cliente> Listar()
         {
             return objcd_cliente.Listar();
         }
 
+        // Metodo para buscar un domicilio segun una persona
         public int BusquedaDomicilio(int persona)
         {
             int id = 0;
@@ -27,6 +29,7 @@ namespace CapaNegocio
             return id;
         }
  
+        // Metodo para registrar un cliente
         public int Registrar(Cliente obj, out string Mensaje)
         {
             Mensaje = string.Empty;
@@ -103,6 +106,7 @@ namespace CapaNegocio
 
         }
 
+        // Metodo para traer un id de persona segun un documento
         public int BusquedaDni(string dni)
         {
             int id = 0;
@@ -112,7 +116,7 @@ namespace CapaNegocio
             return id;
         }
 
-
+        // Metodo para editar un cliente
         public bool Editar(Cliente obj, out string Mensaje)
         {
             Mensaje = string.Empty;
@@ -187,13 +191,14 @@ namespace CapaNegocio
             }
         }
 
-
+        // Metodo para eliminar un cliente
         public bool Eliminar(Cliente obj, out string Mensaje)
         {
             return objcd_cliente.Eliminar(obj, out Mensaje);
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Metodo para verificar si el mail es valido
         public bool MailValido(string email)//Método que verifica si el E-Mail es Válido, devuelve True en caso de ser verdadero
         {
             string regex = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
