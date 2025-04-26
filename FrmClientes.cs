@@ -3,14 +3,8 @@ using CapaNegocio;
 using CapaPresentacion.Utilidades;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestGit.Modales;
 
@@ -61,46 +55,12 @@ namespace TestGit
             comboProvincia.SelectedIndex = 0;
 
 
-            ///////////// Muestra las provincias en el comboProvincia//////////////////////////////////////////////////
-            //List<Localidad> listaLocalidades = new CN_Localidad().Listar();
-            //foreach (Localidad item in listaLocalidades)
-            //{
-            //    comboLocalidad.Items.Add(new OpcionesCombo() { Valor = item.Id_Localidad, Texto = item.localidad });
-            //}
-            ////comboProvincia.DataSource = listaProvincias;
-            //comboLocalidad.DisplayMember = "Texto";
-            //comboLocalidad.ValueMember = "Valor";
-            //comboLocalidad.SelectedIndex = 0;
-
-
-
-
-
-            //List<Localidad> listaLocalidades = new CN_Localidad().Listar();
-
-            //int provinciaId = Convert.ToInt32(((OpcionesCombo)comboProvincia.SelectedItem).Valor);//asigna el id de la provincia seleccionada
-
-            //var localidadesFiltradas = listaLocalidades
-            //.Where(l => l.oProvincia != null && l.oProvincia.Id_Provincia == provinciaId)
-            //.Select(l => new OpcionesCombo { Valor = l.Id_Localidad, Texto = l.localidad })
-            //.ToList();
-
-            //// Asignar al combo de localidad
-            //comboLocalidad.DataSource = localidadesFiltradas;
-            //comboLocalidad.DisplayMember = "Texto";
-            //comboLocalidad.ValueMember = "Valor";
-
-
-
-
-            //comboProvincia.SelectedIndexChanged += comboProvincia_SelectedIndexChanged;
-
             // Muestra los clientes en el DataGridView.
             List<Cliente> listaClientes = new CN_Cliente().Listar();
 
             foreach (Cliente item in listaClientes)
             {
-                DateTime fechaNacimiento = item.Fecha_Nacimiento;
+                DateTime fechaNacimiento = item.oPersona.Fecha_Nacimiento;
                 int edad = DateTime.Now.Year - fechaNacimiento.Year;
                 if (fechaNacimiento > DateTime.Now.AddYears(-edad))
                 {
@@ -110,19 +70,23 @@ namespace TestGit
                 dgvData.Rows.Add(new object[] {
                                 "", // Columna para el icono de selección
                                 item.Id_Cliente,
-                                item.Dni,
-                                item.Nombre,
+                                item.oPersona.DNI,
+                                item.Licencia,
+                                item.oPersona.Nombre,
+                                item.oPersona.Apellido,
                                 edad,
-                                item.Fecha_Nacimiento,
-                                item.Mail,
-                                item.domicilio.oLocalidad.oProvincia.provincia + " " + item.domicilio.oLocalidad.localidad + " " + item.domicilio.Calle + " " + item.domicilio.Numero,
-                                item.Telefono,
+                                item.oPersona.Fecha_Nacimiento,
+                                item.oPersona.Mail,
+                                item.oPersona.oDomicilio.oLocalidad.oProvincia.provincia + " " + item.oPersona.oDomicilio.oLocalidad.localidad + " " + item.oPersona.oDomicilio.Calle + " " + item.oPersona.oDomicilio.Numero,
+                                item.oPersona.Telefono,
                                 item.Estado == true ? 1 : 0, // Estado como valor
                                 item.Estado == true ? "Activo" : "No Activo", // Estado como texto
-                                item.domicilio.oLocalidad.oProvincia.Id_Provincia,
-                                item.domicilio.oLocalidad.Id_Localidad,
-                                item.domicilio.Calle,
-                                item.domicilio.Numero
+                                item.oPersona.oDomicilio.oLocalidad.oProvincia.Id_Provincia,
+                                item.oPersona.oDomicilio.oLocalidad.Id_Localidad,
+                                item.oPersona.oDomicilio.Calle,
+                                item.oPersona.oDomicilio.Numero,
+                                item.oPersona.Id_Persona,
+                                item.oPersona.oDomicilio.Id_Domicilio
                             });
             }
         }
@@ -155,6 +119,8 @@ namespace TestGit
         private void LimpiarCampos()
         {
             this.txtNombre.Texts = "";
+            this.txtLicencia.Texts = "";
+            this.txtApellido.Texts = "";
             this.txtDocumento.Texts = "";
             this.txtCalle.Texts = "";
             this.txtNumero.Texts = "";
@@ -165,10 +131,12 @@ namespace TestGit
             this.txtTelefono.Texts = "";
             this.txtMail.Texts = "";
             this.txtid.Text = "0";
+            this.txtPersona.Text = "0";
+            this.txtDomicilio.Text = "0";
             txtindice.Text = "-1";
             comboEstado.SelectedIndex = 0;
             comboProvincia.SelectedIndex = 5;
-            //rjdtpFecha.Value = System.DateTime.Now;
+            rjdtpFecha.Value = System.DateTime.Now;
         }
 
         private void BtnGuardar2_Click(object sender, EventArgs e)
@@ -200,34 +168,44 @@ namespace TestGit
                     Provincia provincia = new Provincia()
                     {
                         Id_Provincia = Convert.ToInt32(((OpcionesCombo)comboProvincia.SelectedItem).Valor),
+                        provincia = ((OpcionesCombo)comboProvincia.SelectedItem).Texto
                     };
 
                     Localidad localidad = new Localidad()
                     {
                         Id_Localidad = Convert.ToInt32(((OpcionesCombo)comboLocalidad.SelectedItem).Valor),
                         oProvincia = provincia,
+                        localidad = ((OpcionesCombo)comboLocalidad.SelectedItem).Texto
                     };
 
 
                     Domicilio domicilio = new Domicilio()
                     {
+                        Id_Domicilio = Convert.ToInt32(txtDomicilio.Text),
                         Calle = txtCalle.Texts,
                         Numero = Convert.ToInt32(txtNumero.Texts),
                         oLocalidad = localidad,
+                    };
+
+                    Persona persona = new Persona()
+                    {
+                        Id_Persona = Convert.ToInt32(txtPersona.Text),
+                        DNI = txtDocumento.Texts,
+                        Nombre = txtNombre.Texts,
+                        Apellido = txtApellido.Texts,
+                        oDomicilio = domicilio,
+                        Mail = txtMail.Texts,
+                        Telefono = txtTelefono.Texts,
+                        Fecha_Nacimiento = rjdtpFecha.Value,
                     };
 
 
                     Cliente objCliente = new Cliente()
                     {
                         Id_Cliente = Convert.ToInt32(txtid.Text),
-                        Dni = txtDocumento.Texts,
-                        Nombre = txtNombre.Texts,
-                        domicilio = domicilio,
+                        oPersona = persona,
+                        Licencia = txtLicencia.Texts,
 
-
-                        Mail = txtMail.Texts,
-                        Telefono = txtTelefono.Texts,
-                        Fecha_Nacimiento = rjdtpFecha.Value,
                         Estado = Convert.ToInt32(((OpcionesCombo)comboEstado.SelectedItem).Valor) == 1 ? true : false
                     };
 
@@ -243,17 +221,21 @@ namespace TestGit
                     if (objCliente.Id_Cliente == 0)
                     {
                         int idClienteGenerado = new CN_Cliente().Registrar(objCliente, out mensaje);
-                        Console.WriteLine(idClienteGenerado.ToString() + " numero de id");
+                        int idPersona = new CN_Cliente().BusquedaDni(txtDocumento.Texts);
+                        int idDomicilio = new CN_Cliente().BusquedaDomicilio(idPersona);
+
                         if (idClienteGenerado != 0)
                         {
-                            Console.WriteLine(idClienteGenerado.ToString() + " ENTRÓ o NO?=");
+                    
 
                             // Agrega el nuevo cliente al DataGridView.
                             dgvData.Rows.Add(new object[] {
                                 "", // Columna para el icono de selección
                                 idClienteGenerado,
                                 txtDocumento.Texts,
+                                txtLicencia.Texts,
                                 txtNombre.Texts,
+                                txtApellido.Texts,
                                 edad,
                                 rjdtpFecha.Value,
                                 txtMail.Texts,
@@ -264,7 +246,9 @@ namespace TestGit
                                 ((OpcionesCombo)comboProvincia.SelectedItem).Valor.ToString(), //
                                 ((OpcionesCombo)comboLocalidad.SelectedItem).Valor.ToString(), //
                                 txtCalle.Texts,
-                                txtNumero.Texts
+                                txtNumero.Texts,
+                                idPersona,
+                                idDomicilio
                             });
                             LimpiarCampos(); // Limpia los campos del formulario.
                         }
@@ -283,7 +267,9 @@ namespace TestGit
                             DataGridViewRow row = dgvData.Rows[Convert.ToInt32(txtindice.Text)];
                             row.Cells["IdCliente"].Value = txtid.Text;
                             row.Cells["Documento"].Value = txtDocumento.Texts;
-                            row.Cells["NombreCompleto"].Value = txtNombre.Texts;
+                            row.Cells["Licencia"].Value = txtLicencia.Texts;
+                            row.Cells["Nombre"].Value = txtNombre.Texts;
+                            row.Cells["Apellido"].Value = txtApellido.Texts;
                             row.Cells["Edad"].Value = edad;
                             row.Cells["Fecha_Nacimiento"].Value = rjdtpFecha.Value;
                             row.Cells["Mail"].Value = txtMail.Texts;
@@ -295,6 +281,8 @@ namespace TestGit
                             row.Cells["Localidad"].Value = ((OpcionesCombo)comboLocalidad.SelectedItem).Valor.ToString(); ;
                             row.Cells["Calle"].Value = txtCalle.Texts;
                             row.Cells["Numero"].Value = txtNumero.Texts;
+                            row.Cells["Persona"].Value = txtPersona.Text;
+                            row.Cells["IdDomicilio"].Value = txtDomicilio.Text;
                             LimpiarCampos(); // Limpia los campos del formulario.
                         }
                         else
@@ -320,13 +308,6 @@ namespace TestGit
         private bool Validaciones()
         {
             bool confirmacion = true;
-            /*DateTime fechaNacimiento = dtpFecha.Value;
-            int edad = DateTime.Now.Year - fechaNacimiento.Year;
-
-            if (fechaNacimiento > DateTime.Now.AddYears(-edad))
-            {
-                edad--;
-            }*/
 
             // Verifica que el campo de Documento no esté vacío.
             if (txtDocumento.Texts == "")
@@ -348,15 +329,19 @@ namespace TestGit
             {
                 confirmacion = false;
             }
+            if (txtApellido.Texts == "")
+            {
+                confirmacion = false;
+            }
+            if (txtLicencia.Texts == "")
+            {
+                confirmacion = false;
+            }
             // Verifica que el campo de Teléfono no esté vacío.
             if (txtTelefono.Texts == "")
             {
                 confirmacion = false;
             }
-            /*if ( edad < 18)
-            {
-                confirmacion = false;
-            }*/
 
             // Retorna el resultado de las validaciones.
             return confirmacion;
@@ -454,13 +439,17 @@ namespace TestGit
                     txtindice.Text = indice.ToString();
                     txtid.Text = dgvData.Rows[indice].Cells["IdCliente"].Value.ToString();
                     txtDocumento.Texts = dgvData.Rows[indice].Cells["Documento"].Value.ToString();
-                    txtNombre.Texts = dgvData.Rows[indice].Cells["NombreCompleto"].Value.ToString();
+                    txtLicencia.Texts = dgvData.Rows[indice].Cells["Licencia"].Value.ToString();
+                    txtNombre.Texts = dgvData.Rows[indice].Cells["Nombre"].Value.ToString();
+                    txtApellido.Texts = dgvData.Rows[indice].Cells["Apellido"].Value.ToString();
                     rjdtpFecha.Value = Convert.ToDateTime(dgvData.Rows[indice].Cells["Fecha_Nacimiento"].Value);
                     txtMail.Texts = dgvData.Rows[indice].Cells["Mail"].Value.ToString();
+                   
 
                     // Provincia
                     int idProvincia = Convert.ToInt32(dgvData.Rows[indice].Cells["Provincia"].Value);
                     int idLocalidad = Convert.ToInt32(dgvData.Rows[indice].Cells["Localidad"].Value);
+                    
 
                     // Seleccionar la provincia (buscando por valor)
                     foreach (OpcionesCombo item in comboProvincia.Items)
@@ -475,6 +464,8 @@ namespace TestGit
 
                     txtCalle.Texts = dgvData.Rows[indice].Cells["Calle"].Value.ToString();
                     txtNumero.Texts = dgvData.Rows[indice].Cells["Numero"].Value.ToString();
+                    txtPersona.Text = dgvData.Rows[indice].Cells["Persona"].Value.ToString();
+                    txtDomicilio.Text = dgvData.Rows[indice].Cells["IdDomicilio"].Value.ToString();
 
                     txtTelefono.Texts = dgvData.Rows[indice].Cells["Telefono"].Value.ToString();
                     // Selecciona el estado correspondiente en el comboEstado.
