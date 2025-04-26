@@ -18,28 +18,28 @@ namespace CapaDatos
             string Mensaje = string.Empty;
             try
             {
-            
-                    using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
-                    {
 
-                        SqlCommand cmd = new SqlCommand("InsertarDomicilio", oconexion);
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
 
-                        cmd.Parameters.AddWithValue("Calle", domicilio.Calle);
-                        cmd.Parameters.AddWithValue("Numero", domicilio.Numero);
-                        cmd.Parameters.AddWithValue("Id_Localidad", domicilio.oLocalidad.Id_Localidad);
-                        cmd.Parameters.Add("IdResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
-                        cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
-                        cmd.CommandType = CommandType.StoredProcedure;
+                    SqlCommand cmd = new SqlCommand("InsertarDomicilio", oconexion);
 
-                        oconexion.Open();
+                    cmd.Parameters.AddWithValue("Calle", domicilio.Calle);
+                    cmd.Parameters.AddWithValue("Numero", domicilio.Numero);
+                    cmd.Parameters.AddWithValue("Id_Localidad", domicilio.oLocalidad.Id_Localidad);
+                    cmd.Parameters.Add("IdResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                        cmd.ExecuteNonQuery();
+                    oconexion.Open();
 
-                        id = Convert.ToInt32(cmd.Parameters["IdResultado"].Value);
-                        Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+                    cmd.ExecuteNonQuery();
 
-                    }
-                
+                    id = Convert.ToInt32(cmd.Parameters["IdResultado"].Value);
+                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+
+                }
+
 
 
 
@@ -64,7 +64,7 @@ namespace CapaDatos
             {
 
                 SqlCommand cmd = new SqlCommand("EditarDomicilio", oconexion);
-                
+
                 cmd.Parameters.AddWithValue("Id_Domicilio", domicilio.Id_Domicilio);
                 cmd.Parameters.AddWithValue("Calle", domicilio.Calle);
                 cmd.Parameters.AddWithValue("Numero", domicilio.Numero);
@@ -81,12 +81,7 @@ namespace CapaDatos
                 Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
 
             }
-
             return id;
-
         }
-
-
-
     }
 }

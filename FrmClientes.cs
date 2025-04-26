@@ -54,7 +54,6 @@ namespace TestGit
             comboProvincia.ValueMember = "Valor";
             comboProvincia.SelectedIndex = 0;
 
-
             // Muestra los clientes en el DataGridView.
             List<Cliente> listaClientes = new CN_Cliente().Listar();
 
@@ -127,7 +126,7 @@ namespace TestGit
 
             this.comboLocalidad.SelectedIndex = 0;
             this.comboProvincia.SelectedIndex = 0;
-  
+
             this.txtTelefono.Texts = "";
             this.txtMail.Texts = "";
             this.txtid.Text = "0";
@@ -151,7 +150,7 @@ namespace TestGit
                 // Confirma si se va a agregar o editar un cliente.
                 if (Convert.ToInt32(txtid.Text) == 0)
                 {
-                    confirmacion = new VentanaEmergente("Confirmacion", "¿Seguro desea agregar el Cliente?","Interrogacion");
+                    confirmacion = new VentanaEmergente("Confirmacion", "¿Seguro desea agregar el Cliente?", "Interrogacion");
                     confirmacion.ShowDialog();
                 }
                 else
@@ -226,7 +225,7 @@ namespace TestGit
 
                         if (idClienteGenerado != 0)
                         {
-                    
+
 
                             // Agrega el nuevo cliente al DataGridView.
                             dgvData.Rows.Add(new object[] {
@@ -363,9 +362,9 @@ namespace TestGit
             if (Convert.ToInt32(txtid.Text) != 0)
             {
                 // Pregunta al usuario si desea eliminar el cliente.
-                VentanaEmergente pregunta = new VentanaEmergente("Mensaje","¿Desea eliminar al cliente?","Interrogacion");
+                VentanaEmergente pregunta = new VentanaEmergente("Mensaje", "¿Desea eliminar al cliente?", "Interrogacion");
                 pregunta.ShowDialog();
-                
+
                 if (pregunta.DialogResult == DialogResult.Yes)
                 {
                     pregunta.Close();
@@ -444,12 +443,12 @@ namespace TestGit
                     txtApellido.Texts = dgvData.Rows[indice].Cells["Apellido"].Value.ToString();
                     rjdtpFecha.Value = Convert.ToDateTime(dgvData.Rows[indice].Cells["Fecha_Nacimiento"].Value);
                     txtMail.Texts = dgvData.Rows[indice].Cells["Mail"].Value.ToString();
-                   
+
 
                     // Provincia
                     int idProvincia = Convert.ToInt32(dgvData.Rows[indice].Cells["Provincia"].Value);
                     int idLocalidad = Convert.ToInt32(dgvData.Rows[indice].Cells["Localidad"].Value);
-                    
+
 
                     // Seleccionar la provincia (buscando por valor)
                     foreach (OpcionesCombo item in comboProvincia.Items)
@@ -614,5 +613,3 @@ namespace TestGit
 
     }
 }
-
-
