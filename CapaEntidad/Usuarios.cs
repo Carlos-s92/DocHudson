@@ -19,6 +19,8 @@ namespace CapaEntidad
 
         public bool Estado { get; set; }
 
+        public Persona oPersona { get; set; }
+
         public DateTime Fecha_Registro { get; set; }
 
     }

@@ -13,12 +13,15 @@ namespace TestGit
     public partial class FrmClientes : Form
     {
 
-        private bool cargandoDatos = false;
+        private bool cargandoDatos = false; //Variable global para frenar la carga de datos en el combobox
 
+        //Constructor del formulario
         public FrmClientes()
         {
             InitializeComponent();
         }
+
+        //Evento de carga del formulario
         private void FrmClientes_Load(object sender, EventArgs e)
         {
             // Inicializa el comboEstado con opciones para el estado del cliente (Activo, No Activo).
@@ -38,6 +41,7 @@ namespace TestGit
                     comboBusqueda.Items.Add(new OpcionesCombo() { Valor = columna.Name, Texto = columna.HeaderText });
                 }
             }
+            // Configura las propiedades de visualización del comboBusqueda.
             comboBusqueda.DisplayMember = "Texto";
             comboBusqueda.ValueMember = "Valor";
             comboBusqueda.SelectedIndex = 0;
@@ -49,23 +53,27 @@ namespace TestGit
             {
                 comboProvincia.Items.Add(new OpcionesCombo() { Valor = item.Id_Provincia, Texto = item.provincia });
             }
-            //comboProvincia.DataSource = listaProvincias;
+            // Configura las propiedades de visualización del comboProvincia.
             comboProvincia.DisplayMember = "Texto";
             comboProvincia.ValueMember = "Valor";
             comboProvincia.SelectedIndex = 0;
+
 
             // Muestra los clientes en el DataGridView.
             List<Cliente> listaClientes = new CN_Cliente().Listar();
 
             foreach (Cliente item in listaClientes)
             {
+
+                //Se calcula el valor de la edad
+
                 DateTime fechaNacimiento = item.oPersona.Fecha_Nacimiento;
                 int edad = DateTime.Now.Year - fechaNacimiento.Year;
                 if (fechaNacimiento > DateTime.Now.AddYears(-edad))
                 {
                     edad--;
                 }
-
+                //Añade cada cliente a una fila del datagridview
                 dgvData.Rows.Add(new object[] {
                                 "", // Columna para el icono de selección
                                 item.Id_Cliente,
@@ -90,31 +98,7 @@ namespace TestGit
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBusqueda_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rjTextBox1__TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rjButton5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rjButton4_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        //Metodo para limpiar los campos del formulario
         private void LimpiarCampos()
         {
             this.txtNombre.Texts = "";
@@ -123,7 +107,6 @@ namespace TestGit
             this.txtDocumento.Texts = "";
             this.txtCalle.Texts = "";
             this.txtNumero.Texts = "";
-
             this.comboLocalidad.SelectedIndex = 0;
             this.comboProvincia.SelectedIndex = 0;
 
@@ -138,6 +121,7 @@ namespace TestGit
             rjdtpFecha.Value = System.DateTime.Now;
         }
 
+        //Evento para realizar el registro del cliente
         private void BtnGuardar2_Click(object sender, EventArgs e)
         {
             // Valida los campos antes de proceder.
@@ -164,6 +148,7 @@ namespace TestGit
                 {
                     confirmacion.Close();
 
+                    //Se crean las instancias de Provincia, Localidad, Domicilio, Persona y Cliente
                     Provincia provincia = new Provincia()
                     {
                         Id_Provincia = Convert.ToInt32(((OpcionesCombo)comboProvincia.SelectedItem).Valor),
@@ -208,8 +193,8 @@ namespace TestGit
                         Estado = Convert.ToInt32(((OpcionesCombo)comboEstado.SelectedItem).Valor) == 1 ? true : false
                     };
 
+                    // Se calcula la edad del cliente
                     DateTime fechaNacimiento = rjdtpFecha.Value;
-
                     int edad = DateTime.Now.Year - fechaNacimiento.Year;
                     if (fechaNacimiento > DateTime.Now.AddYears(-edad))
                     {
@@ -219,14 +204,15 @@ namespace TestGit
                     // Si es un nuevo cliente, se registra en la base de datos.
                     if (objCliente.Id_Cliente == 0)
                     {
-                        int idClienteGenerado = new CN_Cliente().Registrar(objCliente, out mensaje);
-                        int idPersona = new CN_Cliente().BusquedaDni(txtDocumento.Texts);
-                        int idDomicilio = new CN_Cliente().BusquedaDomicilio(idPersona);
 
-                        if (idClienteGenerado != 0)
+                        int idClienteGenerado = new CN_Cliente().Registrar(objCliente, out mensaje); //Se registra el cliente y retorna el id del mismo
+                        int idPersona = new CN_Cliente().BusquedaDni(txtDocumento.Texts); // Se busca el id de la persona segun el documento
+                        int idDomicilio = new CN_Cliente().BusquedaDomicilio(idPersona); //Se busca el domicilio segun la persona
+
+
+
+                        if (idClienteGenerado != 0) //Si el cliente se genero correctamente
                         {
-
-
                             // Agrega el nuevo cliente al DataGridView.
                             dgvData.Rows.Add(new object[] {
                                 "", // Columna para el icono de selección
@@ -249,10 +235,15 @@ namespace TestGit
                                 idPersona,
                                 idDomicilio
                             });
+
+                            // Se muestra la ventana emergente que indica que el cliente se registro con exito
+                            VentanaEmergente Succeso = new VentanaEmergente("Exito", "Cliente registrado exitosamente","Informacion") ;
+
                             LimpiarCampos(); // Limpia los campos del formulario.
                         }
                         else
                         {
+                            // Se muestra la ventana emergente de error
                             VentanaEmergente Error = new VentanaEmergente("Error", mensaje, "Error");
                             Error.ShowDialog();
                         }
@@ -263,6 +254,7 @@ namespace TestGit
                         bool resultado = new CN_Cliente().Editar(objCliente, out mensaje);
                         if (resultado == true)
                         {
+                            //Se modifican las columnas de ese cliente
                             DataGridViewRow row = dgvData.Rows[Convert.ToInt32(txtindice.Text)];
                             row.Cells["IdCliente"].Value = txtid.Text;
                             row.Cells["Documento"].Value = txtDocumento.Texts;
@@ -286,6 +278,7 @@ namespace TestGit
                         }
                         else
                         {
+                            //Se muestra la ventana emergente del error
                             VentanaEmergente Error = new VentanaEmergente("Error", mensaje, "Error");
                             Error.ShowDialog();
                         }
@@ -293,6 +286,7 @@ namespace TestGit
                 }
                 else
                 {
+                    //Se cierra la ventana emergente
                     confirmacion.Close();
                 }
             }
@@ -313,12 +307,12 @@ namespace TestGit
             {
                 confirmacion = false;
             }
-            // Verifica que el campo de Dirección no esté vacío.
+            // Verifica que el campo de calle y numero no esté vacío.
             if (txtCalle.Texts == "" || txtNumero.Texts == "")
             {
                 confirmacion = false;
             }
-            // Verifica que el correo tenga formato válido.
+            // Verifica que el correo no este vacio.
             if (txtMail.Texts == "")
             {
                 confirmacion = false;
@@ -328,10 +322,13 @@ namespace TestGit
             {
                 confirmacion = false;
             }
+
+            // Verifica que el apellido no este vacio
             if (txtApellido.Texts == "")
             {
                 confirmacion = false;
             }
+            // Verifica que la licencia no este vacia
             if (txtLicencia.Texts == "")
             {
                 confirmacion = false;
@@ -341,6 +338,7 @@ namespace TestGit
             {
                 confirmacion = false;
             }
+
 
             // Retorna el resultado de las validaciones.
             return confirmacion;
@@ -364,7 +362,8 @@ namespace TestGit
                 // Pregunta al usuario si desea eliminar el cliente.
                 VentanaEmergente pregunta = new VentanaEmergente("Mensaje", "¿Desea eliminar al cliente?", "Interrogacion");
                 pregunta.ShowDialog();
-
+    
+                // Confirma si desea eliminar el cliente
                 if (pregunta.DialogResult == DialogResult.Yes)
                 {
                     pregunta.Close();
@@ -385,12 +384,14 @@ namespace TestGit
                     }
                     else
                     {
+                        // Muestra la ventana emergente si sucede un error
                         VentanaEmergente Alerta = new VentanaEmergente("Alerta", mensaje, "Informacion");
                         Alerta.ShowDialog();
                     }
                 }
                 else
                 {
+                    // Cierra la ventana emergente si el usuario cancela
                     pregunta.Close();
                 }
             }
@@ -427,11 +428,12 @@ namespace TestGit
             // Verifica si se ha hecho clic en la columna de selección.
             if (dgvData.Columns[e.ColumnIndex].Name == "btnseleccionar")
             {
+                // Obtiene el indice del cliente desde el datagridview
                 int indice = e.RowIndex;
 
                 if (indice >= 0)
                 {
-                    cargandoDatos = true;
+                    cargandoDatos = true; //Cambia el estado de la variable para evitar la carga de datos en los combobox
 
 
                     // Carga los datos del cliente seleccionado en los campos del formulario.
@@ -443,11 +445,13 @@ namespace TestGit
                     txtApellido.Texts = dgvData.Rows[indice].Cells["Apellido"].Value.ToString();
                     rjdtpFecha.Value = Convert.ToDateTime(dgvData.Rows[indice].Cells["Fecha_Nacimiento"].Value);
                     txtMail.Texts = dgvData.Rows[indice].Cells["Mail"].Value.ToString();
+                   
 
 
                     // Provincia
                     int idProvincia = Convert.ToInt32(dgvData.Rows[indice].Cells["Provincia"].Value);
                     int idLocalidad = Convert.ToInt32(dgvData.Rows[indice].Cells["Localidad"].Value);
+                    
 
 
                     // Seleccionar la provincia (buscando por valor)
@@ -489,7 +493,7 @@ namespace TestGit
                     }
 
 
-                    CargarLocalidades(idProvincia, idLocalidad);
+                    CargarLocalidades(idProvincia, idLocalidad); //Metodo para cargar las localidades segun la provincia
                     cargandoDatos = false;
 
 
@@ -500,6 +504,7 @@ namespace TestGit
 
 
         /////////////////////////////////////////
+        // Metodo para cargar las localidades segun la provincia
         private void CargarLocalidades(object provinciaId, int? idLocalidadSeleccionada = null)
         {
             List<Localidad> listaLocalidades = new CN_Localidad().Listar();
