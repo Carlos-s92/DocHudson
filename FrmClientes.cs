@@ -1,6 +1,7 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
 using CapaPresentacion.Utilidades;
+using CustomControls.RJControls;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -537,16 +538,40 @@ namespace TestGit
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         private void txtDocumento_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Escribe solo numeros
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
+            // Limitar longitud a 50 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 50 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
+        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            // Limitar longitud a 50 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
         private void txtLicencia_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Escribe solo numeros
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            // Limitar longitud a 100 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 100 && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -554,17 +579,13 @@ namespace TestGit
 
         private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Escribe solo numeros
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
-        }
-
-        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //Escribe solo numeros
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            // Limitar longitud a 50 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 50 && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -572,64 +593,82 @@ namespace TestGit
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Letras
             bool esLetra = char.IsLetter(e.KeyChar);
-
-            // Caracteres de control como borrar
             bool esControl = char.IsControl(e.KeyChar);
-
-            // Acentos y Ñ
             string acentos = "áéíóúÁÉÍÓÚñÑ";
-
-            // Tecla espacio
             bool esEspacio = e.KeyChar == ' ';
 
             if (!esLetra && !acentos.Contains(e.KeyChar) && !esControl && !esEspacio)
             {
-                e.Handled = true; // Bloquea el carácter
+                e.Handled = true;
+            }
+            // Limitar longitud a 150 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 150 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
+
         private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Letras
             bool esLetra = char.IsLetter(e.KeyChar);
-
-            // Caracteres de control como borrar
             bool esControl = char.IsControl(e.KeyChar);
-
-            // Acentos y Ñ
             string acentos = "áéíóúÁÉÍÓÚñÑ";
-
-            // Tecla espacio
             bool esEspacio = e.KeyChar == ' ';
 
             if (!esLetra && !acentos.Contains(e.KeyChar) && !esControl && !esEspacio)
             {
-                e.Handled = true; // Bloquea el carácter
+                e.Handled = true;
+            }
+            // Limitar longitud a 150 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 150 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
 
         private void txtCalle_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Letras
             bool esLetra = char.IsLetter(e.KeyChar);
-
-            // Caracteres de control como borrar
             bool esControl = char.IsControl(e.KeyChar);
-
-            // Acentos y Ñ
             string acentos = "áéíóúÁÉÍÓÚñÑ";
-
-            // Tecla espacio
             bool esEspacio = e.KeyChar == ' ';
 
             if (!esLetra && !acentos.Contains(e.KeyChar) && !esControl && !esEspacio)
             {
-                e.Handled = true; // Bloquea el carácter
+                e.Handled = true;
+            }
+            // (Acá también podrías limitar la longitud si tuvieras un tamaño en la base para "calle")
+            // Limitar longitud a 150 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 100 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
 
 
+        private void txtMail_Leave(object sender, EventArgs e)
+        {
+            RJTextBox txt = sender as RJTextBox;
+  
+
+            // Limitar longitud a 150
+            if (txt.Texts.Length > 150)
+            {
+                MessageBox.Show("El correo no puede superar los 150 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt.Texts = txt.Texts.Substring(0, 150);
+            }
+
+            // Validar formato de correo
+            if (!System.Text.RegularExpressions.Regex.IsMatch(txt.Texts, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                MessageBox.Show("Ingrese un correo electrónico válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt.Focus();
+            }
+        }
 
 
         private void comboProvincia_SelectedIndexChanged(object sender, EventArgs e)//Muestra las localidades de la provincia seleccionada

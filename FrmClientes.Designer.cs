@@ -61,6 +61,7 @@
             this.txtPersona = new System.Windows.Forms.TextBox();
             this.txtDomicilio = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtLicencia = new CustomControls.RJControls.RJTextBox();
             this.txtApellido = new CustomControls.RJControls.RJTextBox();
             this.rjdtpFecha = new CustomControls.RJControls.RJDatePicker();
@@ -74,7 +75,6 @@
             this.txtTelefono = new CustomControls.RJControls.RJTextBox();
             this.txtDocumento = new CustomControls.RJControls.RJTextBox();
             this.txtNombre = new CustomControls.RJControls.RJTextBox();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -411,6 +411,17 @@
             this.label2.TabIndex = 148;
             this.label2.Text = "Estado del cliente";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(485, 389);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(170, 25);
+            this.label3.TabIndex = 149;
+            this.label3.Text = "Filtrar por Campo";
+            // 
             // txtLicencia
             // 
             this.txtLicencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
@@ -646,6 +657,7 @@
             this.txtMail.TabIndex = 127;
             this.txtMail.Texts = "";
             this.txtMail.UnderlinedStyle = true;
+            this.txtMail.Leave += new System.EventHandler(this.txtMail_Leave);
             // 
             // txtTelefono
             // 
@@ -721,17 +733,6 @@
             this.txtNombre.Texts = "";
             this.txtNombre.UnderlinedStyle = true;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(485, 389);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(170, 25);
-            this.label3.TabIndex = 149;
-            this.label3.Text = "Filtrar por Campo";
             // 
             // FrmClientes
             // 
