@@ -108,6 +108,7 @@ namespace TestGit
             this.txtDocumento.Texts = "";
             this.txtCalle.Texts = "";
             this.txtNumero.Texts = "";
+            this.BtnGuardar2.Text = "Registrar Cliente";
             this.comboLocalidad.SelectedIndex = 0;
             this.comboProvincia.SelectedIndex = 0;
 
@@ -237,10 +238,11 @@ namespace TestGit
                                 idDomicilio
                             });
 
-                            // Se muestra la ventana emergente que indica que el cliente se registro con exito
-                            VentanaEmergente Succeso = new VentanaEmergente("Exito", "Cliente registrado exitosamente","Informacion") ;
-
                             LimpiarCampos(); // Limpia los campos del formulario.
+
+                            // Se muestra la ventana emergente que indica que el cliente se registro con exito
+                            VentanaEmergente Succeso = new VentanaEmergente("Exito", "Cliente registrado exitosamente", "Informacion");
+                            Succeso.ShowDialog();
                         }
                         else
                         {
@@ -275,7 +277,12 @@ namespace TestGit
                             row.Cells["Numero"].Value = txtNumero.Texts;
                             row.Cells["Persona"].Value = txtPersona.Text;
                             row.Cells["IdDomicilio"].Value = txtDomicilio.Text;
+
                             LimpiarCampos(); // Limpia los campos del formulario.
+
+                            // Se muestra la ventana emergente que indica que el cliente se modificó con exito
+                            VentanaEmergente Succeso = new VentanaEmergente("Exito", "Cliente modificado exitosamente", "Informacion");
+                            Succeso.ShowDialog();
                         }
                         else
                         {
@@ -382,6 +389,10 @@ namespace TestGit
                         dgvData.Rows[Convert.ToInt32(txtindice.Text)].Cells["EstadoValor"].Value = 0;
                         dgvData.Rows[Convert.ToInt32(txtindice.Text)].Cells["Estado"].Value = "No Activo";
                         LimpiarCampos(); // Limpia los campos del formulario.
+
+                        // Se muestra la ventana emergente que indica que el cliente se elimino con exito
+                        VentanaEmergente Succeso = new VentanaEmergente("Exito", "Cliente eliminado exitosamente", "Informacion");
+                        Succeso.ShowDialog();
                     }
                     else
                     {
@@ -426,6 +437,8 @@ namespace TestGit
 
         private void dgvData_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            this.BtnGuardar2.Text = "Editar Cliente";
+
             // Verifica si se ha hecho clic en la columna de selección.
             if (dgvData.Columns[e.ColumnIndex].Name == "btnseleccionar")
             {
@@ -682,5 +695,9 @@ namespace TestGit
             }
         }
 
+        private void txtDomicilio_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
