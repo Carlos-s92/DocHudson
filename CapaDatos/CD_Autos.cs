@@ -96,16 +96,11 @@ namespace CapaDatos
                     SqlCommand cmd = new SqlCommand("InsertarAuto", oconexion);
                     
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
-                    cmd.Parameters.AddWithValue("Modelo", obj.oModelo.modelo);
                     cmd.Parameters.AddWithValue("Id_Modelo", obj.oModelo.Id_Modelo);
                     cmd.Parameters.AddWithValue("Matricula", obj.Matricula);
                     cmd.Parameters.AddWithValue("Kilometros", obj.Kilometros);
                     cmd.Parameters.AddWithValue("Año", obj.Año);
-                    cmd.Parameters.AddWithValue("Consumo", obj.oModelo.Consumo);
                     cmd.Parameters.AddWithValue("Imagen", obj.Imagen);
-                    cmd.Parameters.AddWithValue("Puertas", obj.oModelo.Puertas);
-                    cmd.Parameters.AddWithValue("Id_Marca", obj.oModelo.oMarca.Id_Marca);
-                    cmd.Parameters.AddWithValue("Asientos", obj.oModelo.Asientos);
                     cmd.Parameters.Add("IdAutoResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
