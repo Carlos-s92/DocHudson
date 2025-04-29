@@ -194,10 +194,31 @@
     <Compile Include="Custom\RJButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Custom\RJDatePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Custom\RJTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Custom\RJTextBox.Designer.cs" />
+    <Compile Include="Custom\userCalendar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Custom\userCalendar.Designer.cs">
+      <DependentUpon>userCalendar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Custom\userMonthSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Custom\userMonthSelector.Designer.cs">
+      <DependentUpon>userMonthSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Custom\userYearSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Custom\userYearSelector.Designer.cs">
+      <DependentUpon>userYearSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAutos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +354,15 @@
     </Compile>
     <Compile Include="Utilidades\OpcionesCombo.cs" />
     <EmbeddedResource Include="Custom\RJTextBox.resx" />
+    <EmbeddedResource Include="Custom\userCalendar.resx">
+      <DependentUpon>userCalendar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Custom\userMonthSelector.resx">
+      <DependentUpon>userMonthSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Custom\userYearSelector.resx">
+      <DependentUpon>userYearSelector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAutos.resx">
       <DependentUpon>FrmAutos.cs</DependentUpon>
     </EmbeddedResource>
@@ -423,6 +453,12 @@
     <None Include="Resources\Fondo1.gif" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\reiniciar.png" />
+    <None Include="Resources\calendarDark.png" />
+    <None Include="Resources\calendarWhite.png" />
+    <None Include="Resources\ArrowLeft.png" />
+    <None Include="Resources\ArrowRight.png" />
+    <None Include="Resources\actualizar %281%29.png" />
     <Content Include="Resources\PlantillaReserva.html" />
     <None Include="Resources\Vicente1.jpg" />
     <None Include="Resources\More21.png" />

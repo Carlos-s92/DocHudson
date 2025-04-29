@@ -1,15 +1,11 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
 using CapaPresentacion.Utilidades;
+using CustomControls.RJControls;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestGit.Modales;
 
@@ -17,10 +13,16 @@ namespace TestGit
 {
     public partial class FrmClientes : Form
     {
+
+        private bool cargandoDatos = false; //Variable global para frenar la carga de datos en el combobox
+
+        //Constructor del formulario
         public FrmClientes()
         {
             InitializeComponent();
         }
+
+        //Evento de carga del formulario
         private void FrmClientes_Load(object sender, EventArgs e)
         {
             // Inicializa el comboEstado con opciones para el estado del cliente (Activo, No Activo).
@@ -40,6 +42,7 @@ namespace TestGit
                     comboBusqueda.Items.Add(new OpcionesCombo() { Valor = columna.Name, Texto = columna.HeaderText });
                 }
             }
+            // Configura las propiedades de visualización del comboBusqueda.
             comboBusqueda.DisplayMember = "Texto";
             comboBusqueda.ValueMember = "Valor";
             comboBusqueda.SelectedIndex = 0;
@@ -51,87 +54,76 @@ namespace TestGit
             {
                 comboProvincia.Items.Add(new OpcionesCombo() { Valor = item.Id_Provincia, Texto = item.provincia });
             }
-            //comboProvincia.DataSource = listaProvincias;
+            // Configura las propiedades de visualización del comboProvincia.
             comboProvincia.DisplayMember = "Texto";
             comboProvincia.ValueMember = "Valor";
-            comboProvincia.SelectedIndex = 5;
+            comboProvincia.SelectedIndex = 0;
 
-            //comboProvincia.SelectedIndexChanged += comboProvincia_SelectedIndexChanged;
 
             // Muestra los clientes en el DataGridView.
             List<Cliente> listaClientes = new CN_Cliente().Listar();
 
             foreach (Cliente item in listaClientes)
             {
-                DateTime fechaNacimiento = item.Fecha_Nacimiento;
+
+                //Se calcula el valor de la edad
+
+                DateTime fechaNacimiento = item.oPersona.Fecha_Nacimiento;
                 int edad = DateTime.Now.Year - fechaNacimiento.Year;
                 if (fechaNacimiento > DateTime.Now.AddYears(-edad))
                 {
                     edad--;
                 }
-
+                //Añade cada cliente a una fila del datagridview
                 dgvData.Rows.Add(new object[] {
                                 "", // Columna para el icono de selección
                                 item.Id_Cliente,
-                                item.Dni,
-                                item.Nombre,
+                                item.oPersona.DNI,
+                                item.Licencia,
+                                item.oPersona.Nombre,
+                                item.oPersona.Apellido,
                                 edad,
-                                item.Fecha_Nacimiento,
-                                item.Mail,
-                                item.domicilio.oLocalidad.oProvincia.provincia + " " + item.domicilio.oLocalidad.localidad + " " + item.domicilio.Calle + " " + item.domicilio.Numero,
-                                item.Telefono,
+                                item.oPersona.Fecha_Nacimiento,
+                                item.oPersona.Mail,
+                                item.oPersona.oDomicilio.oLocalidad.oProvincia.provincia + " " + item.oPersona.oDomicilio.oLocalidad.localidad + " " + item.oPersona.oDomicilio.Calle + " " + item.oPersona.oDomicilio.Numero,
+                                item.oPersona.Telefono,
                                 item.Estado == true ? 1 : 0, // Estado como valor
                                 item.Estado == true ? "Activo" : "No Activo", // Estado como texto
-                                item.domicilio.oLocalidad.oProvincia.Id_Provincia,
-                                item.domicilio.oLocalidad.Id_Localidad,
-                                item.domicilio.Calle,
-                                item.domicilio.Numero
+                                item.oPersona.oDomicilio.oLocalidad.oProvincia.Id_Provincia,
+                                item.oPersona.oDomicilio.oLocalidad.Id_Localidad,
+                                item.oPersona.oDomicilio.Calle,
+                                item.oPersona.oDomicilio.Numero,
+                                item.oPersona.Id_Persona,
+                                item.oPersona.oDomicilio.Id_Domicilio
                             });
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBusqueda_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rjTextBox1__TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rjButton5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rjButton4_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        //Metodo para limpiar los campos del formulario
         private void LimpiarCampos()
         {
             this.txtNombre.Texts = "";
+            this.txtLicencia.Texts = "";
+            this.txtApellido.Texts = "";
             this.txtDocumento.Texts = "";
             this.txtCalle.Texts = "";
             this.txtNumero.Texts = "";
-            this.txtLocalidad.Texts = "";
-            this.txtProvincia.Texts = "";
+            this.BtnGuardar2.Text = "Registrar Cliente";
+            this.comboLocalidad.SelectedIndex = 0;
+            this.comboProvincia.SelectedIndex = 0;
+
             this.txtTelefono.Texts = "";
             this.txtMail.Texts = "";
             this.txtid.Text = "0";
+            this.txtPersona.Text = "0";
+            this.txtDomicilio.Text = "0";
             txtindice.Text = "-1";
             comboEstado.SelectedIndex = 0;
             comboProvincia.SelectedIndex = 5;
-            dtpFecha.Value = System.DateTime.Now;
+            rjdtpFecha.Value = System.DateTime.Now;
         }
 
+        //Evento para realizar el registro del cliente
         private void BtnGuardar2_Click(object sender, EventArgs e)
         {
             // Valida los campos antes de proceder.
@@ -144,7 +136,7 @@ namespace TestGit
                 // Confirma si se va a agregar o editar un cliente.
                 if (Convert.ToInt32(txtid.Text) == 0)
                 {
-                    confirmacion = new VentanaEmergente("Confirmacion", "¿Seguro desea agregar el Cliente?","Interrogacion");
+                    confirmacion = new VentanaEmergente("Confirmacion", "¿Seguro desea agregar el Cliente?", "Interrogacion");
                     confirmacion.ShowDialog();
                 }
                 else
@@ -157,40 +149,54 @@ namespace TestGit
                 if (confirmacion.DialogResult == DialogResult.Yes)
                 {
                     confirmacion.Close();
+
+                    //Se crean las instancias de Provincia, Localidad, Domicilio, Persona y Cliente
+                    Provincia provincia = new Provincia()
+                    {
+                        Id_Provincia = Convert.ToInt32(((OpcionesCombo)comboProvincia.SelectedItem).Valor),
+                        provincia = ((OpcionesCombo)comboProvincia.SelectedItem).Texto
+                    };
+
+                    Localidad localidad = new Localidad()
+                    {
+                        Id_Localidad = Convert.ToInt32(((OpcionesCombo)comboLocalidad.SelectedItem).Valor),
+                        oProvincia = provincia,
+                        localidad = ((OpcionesCombo)comboLocalidad.SelectedItem).Texto
+                    };
+
+
+                    Domicilio domicilio = new Domicilio()
+                    {
+                        Id_Domicilio = Convert.ToInt32(txtDomicilio.Text),
+                        Calle = txtCalle.Texts,
+                        Numero = Convert.ToInt32(txtNumero.Texts),
+                        oLocalidad = localidad,
+                    };
+
+                    Persona persona = new Persona()
+                    {
+                        Id_Persona = Convert.ToInt32(txtPersona.Text),
+                        DNI = txtDocumento.Texts,
+                        Nombre = txtNombre.Texts,
+                        Apellido = txtApellido.Texts,
+                        oDomicilio = domicilio,
+                        Mail = txtMail.Texts,
+                        Telefono = txtTelefono.Texts,
+                        Fecha_Nacimiento = rjdtpFecha.Value,
+                    };
+
+
                     Cliente objCliente = new Cliente()
                     {
                         Id_Cliente = Convert.ToInt32(txtid.Text),
-                        Dni = txtDocumento.Texts,
-                        Nombre = txtNombre.Texts,
+                        oPersona = persona,
+                        Licencia = txtLicencia.Texts,
 
-                        domicilio = new Domicilio()
-                        {
-                            Calle = txtCalle.Texts,
-                            Numero = Convert.ToInt32(txtNumero.Texts),
-                            oLocalidad = new Localidad()
-                            {
-                                localidad = txtLocalidad.Texts,
-                                oProvincia = new Provincia()
-                                {
-                                    Id_Provincia = Convert.ToInt32(((OpcionesCombo)comboProvincia.SelectedItem).Valor),
-                                }
-                                
-                            }
-                        },
-                        // ^
-                        // |
-                        //Creo que para solucionarlo hay que aplicar el caos de arriba
-
-                        //Provincia = comboProvincia.Text,
-                        //Localidad = txtLocalidad.Texts,
-                        //Calle = txtCalle.Texts,
-                        //Numero = Convert.ToInt32(txtNumero.Texts),
-                        Mail = txtMail.Texts,
-                        Telefono = txtTelefono.Texts,
-                        Fecha_Nacimiento = dtpFecha.Value,
                         Estado = Convert.ToInt32(((OpcionesCombo)comboEstado.SelectedItem).Valor) == 1 ? true : false
                     };
-                    DateTime fechaNacimiento = dtpFecha.Value;
+
+                    // Se calcula la edad del cliente
+                    DateTime fechaNacimiento = rjdtpFecha.Value;
                     int edad = DateTime.Now.Year - fechaNacimiento.Year;
                     if (fechaNacimiento > DateTime.Now.AddYears(-edad))
                     {
@@ -200,33 +206,47 @@ namespace TestGit
                     // Si es un nuevo cliente, se registra en la base de datos.
                     if (objCliente.Id_Cliente == 0)
                     {
-                        int idClienteGenerado = new CN_Cliente().Registrar(objCliente, out mensaje);
-                        if (idClienteGenerado != 0)
-                        {
-                            
 
+                        int idClienteGenerado = new CN_Cliente().Registrar(objCliente, out mensaje); //Se registra el cliente y retorna el id del mismo
+                        int idPersona = new CN_Cliente().BusquedaDni(txtDocumento.Texts); // Se busca el id de la persona segun el documento
+                        int idDomicilio = new CN_Cliente().BusquedaDomicilio(idPersona); //Se busca el domicilio segun la persona
+
+
+
+                        if (idClienteGenerado != 0) //Si el cliente se genero correctamente
+                        {
                             // Agrega el nuevo cliente al DataGridView.
                             dgvData.Rows.Add(new object[] {
                                 "", // Columna para el icono de selección
                                 idClienteGenerado,
                                 txtDocumento.Texts,
+                                txtLicencia.Texts,
                                 txtNombre.Texts,
+                                txtApellido.Texts,
                                 edad,
-                                dtpFecha.Value,
+                                rjdtpFecha.Value,
                                 txtMail.Texts,
-                                comboProvincia.Text + " " + txtLocalidad.Texts + " " + txtCalle.Texts + " " + txtNumero.Texts,
+                                ((OpcionesCombo)comboProvincia.SelectedItem).Texto.ToString() + " " + ((OpcionesCombo)comboLocalidad.SelectedItem).Texto.ToString() + " " + txtCalle.Texts + " " + txtNumero.Texts,
                                 txtTelefono.Texts,
                                 ((OpcionesCombo)comboEstado.SelectedItem).Valor.ToString(),
                                 ((OpcionesCombo)comboEstado.SelectedItem).Texto.ToString(),
-                                comboProvincia.Text, 
-                                txtLocalidad.Texts,
+                                ((OpcionesCombo)comboProvincia.SelectedItem).Valor.ToString(), //
+                                ((OpcionesCombo)comboLocalidad.SelectedItem).Valor.ToString(), //
                                 txtCalle.Texts,
-                                txtNumero.Texts
+                                txtNumero.Texts,
+                                idPersona,
+                                idDomicilio
                             });
+
                             LimpiarCampos(); // Limpia los campos del formulario.
+
+                            // Se muestra la ventana emergente que indica que el cliente se registro con exito
+                            VentanaEmergente Succeso = new VentanaEmergente("Exito", "Cliente registrado exitosamente", "Informacion");
+                            Succeso.ShowDialog();
                         }
                         else
                         {
+                            // Se muestra la ventana emergente de error
                             VentanaEmergente Error = new VentanaEmergente("Error", mensaje, "Error");
                             Error.ShowDialog();
                         }
@@ -237,25 +257,36 @@ namespace TestGit
                         bool resultado = new CN_Cliente().Editar(objCliente, out mensaje);
                         if (resultado == true)
                         {
+                            //Se modifican las columnas de ese cliente
                             DataGridViewRow row = dgvData.Rows[Convert.ToInt32(txtindice.Text)];
                             row.Cells["IdCliente"].Value = txtid.Text;
                             row.Cells["Documento"].Value = txtDocumento.Texts;
-                            row.Cells["NombreCompleto"].Value = txtNombre.Texts;
+                            row.Cells["Licencia"].Value = txtLicencia.Texts;
+                            row.Cells["Nombre"].Value = txtNombre.Texts;
+                            row.Cells["Apellido"].Value = txtApellido.Texts;
                             row.Cells["Edad"].Value = edad;
-                            row.Cells["Fecha_Nacimiento"].Value = dtpFecha.Value;
+                            row.Cells["Fecha_Nacimiento"].Value = rjdtpFecha.Value;
                             row.Cells["Mail"].Value = txtMail.Texts;
-                            row.Cells["Domicilio"].Value = comboProvincia.Text + " " + txtLocalidad.Texts + " " + txtCalle.Texts + " " + txtNumero.Texts;
+                            row.Cells["Domicilio"].Value = ((OpcionesCombo)comboProvincia.SelectedItem).Texto.ToString() + " " + ((OpcionesCombo)comboLocalidad.SelectedItem).Texto.ToString() + " " + txtCalle.Texts + " " + txtNumero.Texts;
                             row.Cells["Telefono"].Value = txtTelefono.Texts;
                             row.Cells["EstadoValor"].Value = ((OpcionesCombo)comboEstado.SelectedItem).Valor.ToString();
                             row.Cells["Estado"].Value = ((OpcionesCombo)comboEstado.SelectedItem).Texto.ToString();
                             row.Cells["Provincia"].Value = ((OpcionesCombo)comboProvincia.SelectedItem).Valor.ToString();
-                            row.Cells["Localidad"].Value = txtLocalidad.Texts;
+                            row.Cells["Localidad"].Value = ((OpcionesCombo)comboLocalidad.SelectedItem).Valor.ToString(); ;
                             row.Cells["Calle"].Value = txtCalle.Texts;
                             row.Cells["Numero"].Value = txtNumero.Texts;
+                            row.Cells["Persona"].Value = txtPersona.Text;
+                            row.Cells["IdDomicilio"].Value = txtDomicilio.Text;
+
                             LimpiarCampos(); // Limpia los campos del formulario.
+
+                            // Se muestra la ventana emergente que indica que el cliente se modificó con exito
+                            VentanaEmergente Succeso = new VentanaEmergente("Exito", "Cliente modificado exitosamente", "Informacion");
+                            Succeso.ShowDialog();
                         }
                         else
                         {
+                            //Se muestra la ventana emergente del error
                             VentanaEmergente Error = new VentanaEmergente("Error", mensaje, "Error");
                             Error.ShowDialog();
                         }
@@ -263,6 +294,7 @@ namespace TestGit
                 }
                 else
                 {
+                    //Se cierra la ventana emergente
                     confirmacion.Close();
                 }
             }
@@ -277,25 +309,18 @@ namespace TestGit
         private bool Validaciones()
         {
             bool confirmacion = true;
-            /*DateTime fechaNacimiento = dtpFecha.Value;
-            int edad = DateTime.Now.Year - fechaNacimiento.Year;
-
-            if (fechaNacimiento > DateTime.Now.AddYears(-edad))
-            {
-                edad--;
-            }*/
 
             // Verifica que el campo de Documento no esté vacío.
             if (txtDocumento.Texts == "")
             {
                 confirmacion = false;
             }
-            // Verifica que el campo de Dirección no esté vacío.
-            if (txtCalle.Texts == "" || comboProvincia.Text == "" || txtLocalidad.Texts == "" || txtNumero.Texts == "")
+            // Verifica que el campo de calle y numero no esté vacío.
+            if (txtCalle.Texts == "" || txtNumero.Texts == "")
             {
                 confirmacion = false;
             }
-            // Verifica que el correo tenga formato válido.
+            // Verifica que el correo no este vacio.
             if (txtMail.Texts == "")
             {
                 confirmacion = false;
@@ -305,15 +330,23 @@ namespace TestGit
             {
                 confirmacion = false;
             }
+
+            // Verifica que el apellido no este vacio
+            if (txtApellido.Texts == "")
+            {
+                confirmacion = false;
+            }
+            // Verifica que la licencia no este vacia
+            if (txtLicencia.Texts == "")
+            {
+                confirmacion = false;
+            }
             // Verifica que el campo de Teléfono no esté vacío.
             if (txtTelefono.Texts == "")
             {
                 confirmacion = false;
             }
-            /*if ( edad < 18)
-            {
-                confirmacion = false;
-            }*/
+
 
             // Retorna el resultado de las validaciones.
             return confirmacion;
@@ -335,9 +368,10 @@ namespace TestGit
             if (Convert.ToInt32(txtid.Text) != 0)
             {
                 // Pregunta al usuario si desea eliminar el cliente.
-                VentanaEmergente pregunta = new VentanaEmergente("Mensaje","¿Desea eliminar al cliente?","Interrogacion");
+                VentanaEmergente pregunta = new VentanaEmergente("Mensaje", "¿Desea eliminar al cliente?", "Interrogacion");
                 pregunta.ShowDialog();
-                
+    
+                // Confirma si desea eliminar el cliente
                 if (pregunta.DialogResult == DialogResult.Yes)
                 {
                     pregunta.Close();
@@ -355,15 +389,21 @@ namespace TestGit
                         dgvData.Rows[Convert.ToInt32(txtindice.Text)].Cells["EstadoValor"].Value = 0;
                         dgvData.Rows[Convert.ToInt32(txtindice.Text)].Cells["Estado"].Value = "No Activo";
                         LimpiarCampos(); // Limpia los campos del formulario.
+
+                        // Se muestra la ventana emergente que indica que el cliente se elimino con exito
+                        VentanaEmergente Succeso = new VentanaEmergente("Exito", "Cliente eliminado exitosamente", "Informacion");
+                        Succeso.ShowDialog();
                     }
                     else
                     {
+                        // Muestra la ventana emergente si sucede un error
                         VentanaEmergente Alerta = new VentanaEmergente("Alerta", mensaje, "Informacion");
                         Alerta.ShowDialog();
                     }
                 }
                 else
                 {
+                    // Cierra la ventana emergente si el usuario cancela
                     pregunta.Close();
                 }
             }
@@ -397,25 +437,52 @@ namespace TestGit
 
         private void dgvData_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            this.BtnGuardar2.Text = "Editar Cliente";
+
             // Verifica si se ha hecho clic en la columna de selección.
             if (dgvData.Columns[e.ColumnIndex].Name == "btnseleccionar")
             {
+                // Obtiene el indice del cliente desde el datagridview
                 int indice = e.RowIndex;
 
                 if (indice >= 0)
                 {
+                    cargandoDatos = true; //Cambia el estado de la variable para evitar la carga de datos en los combobox
+
+
                     // Carga los datos del cliente seleccionado en los campos del formulario.
                     txtindice.Text = indice.ToString();
                     txtid.Text = dgvData.Rows[indice].Cells["IdCliente"].Value.ToString();
                     txtDocumento.Texts = dgvData.Rows[indice].Cells["Documento"].Value.ToString();
-                    txtNombre.Texts = dgvData.Rows[indice].Cells["NombreCompleto"].Value.ToString();
-                    dtpFecha.Value = Convert.ToDateTime(dgvData.Rows[indice].Cells["Fecha_Nacimiento"].Value);
+                    txtLicencia.Texts = dgvData.Rows[indice].Cells["Licencia"].Value.ToString();
+                    txtNombre.Texts = dgvData.Rows[indice].Cells["Nombre"].Value.ToString();
+                    txtApellido.Texts = dgvData.Rows[indice].Cells["Apellido"].Value.ToString();
+                    rjdtpFecha.Value = Convert.ToDateTime(dgvData.Rows[indice].Cells["Fecha_Nacimiento"].Value);
                     txtMail.Texts = dgvData.Rows[indice].Cells["Mail"].Value.ToString();
+                   
 
-                    comboProvincia.Text = dgvData.Rows[indice].Cells["Provincia"].Value.ToString();
-                    txtLocalidad.Texts = dgvData.Rows[indice].Cells["Localidad"].Value.ToString();
+
+                    // Provincia
+                    int idProvincia = Convert.ToInt32(dgvData.Rows[indice].Cells["Provincia"].Value);
+                    int idLocalidad = Convert.ToInt32(dgvData.Rows[indice].Cells["Localidad"].Value);
+                    
+
+
+                    // Seleccionar la provincia (buscando por valor)
+                    foreach (OpcionesCombo item in comboProvincia.Items)
+                    {
+                        if ((int)item.Valor == idProvincia)
+                        {
+                            comboProvincia.SelectedItem = item;
+                            break;
+                        }
+                    }
+
+
                     txtCalle.Texts = dgvData.Rows[indice].Cells["Calle"].Value.ToString();
                     txtNumero.Texts = dgvData.Rows[indice].Cells["Numero"].Value.ToString();
+                    txtPersona.Text = dgvData.Rows[indice].Cells["Persona"].Value.ToString();
+                    txtDomicilio.Text = dgvData.Rows[indice].Cells["IdDomicilio"].Value.ToString();
 
                     txtTelefono.Texts = dgvData.Rows[indice].Cells["Telefono"].Value.ToString();
                     // Selecciona el estado correspondiente en el comboEstado.
@@ -438,9 +505,44 @@ namespace TestGit
                             break;
                         }
                     }
+
+
+                    CargarLocalidades(idProvincia, idLocalidad); //Metodo para cargar las localidades segun la provincia
+                    cargandoDatos = false;
+
+
                 }
             }
         }
+
+
+
+        /////////////////////////////////////////
+        // Metodo para cargar las localidades segun la provincia
+        private void CargarLocalidades(object provinciaId, int? idLocalidadSeleccionada = null)
+        {
+            List<Localidad> listaLocalidades = new CN_Localidad().Listar();
+
+            var localidadesFiltradas = listaLocalidades
+                .Where(l => l.oProvincia != null && l.oProvincia.Id_Provincia == Convert.ToInt32(provinciaId))
+                .Select(l => new OpcionesCombo
+                {
+                    Valor = l.Id_Localidad,
+                    Texto = l.localidad
+                })
+                .ToList();
+
+            comboLocalidad.DataSource = localidadesFiltradas;
+            comboLocalidad.DisplayMember = "Texto";
+            comboLocalidad.ValueMember = "Valor";
+
+            // Si viene un id específico para seleccionar, lo asignamos
+            if (idLocalidadSeleccionada.HasValue)
+            {
+                comboLocalidad.SelectedValue = idLocalidadSeleccionada.Value;
+            }
+        }
+
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -449,8 +551,40 @@ namespace TestGit
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         private void txtDocumento_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Escribe solo numeros
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            // Limitar longitud a 50 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 50 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            // Limitar longitud a 50 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtLicencia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            // Limitar longitud a 100 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 100 && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -458,17 +592,13 @@ namespace TestGit
 
         private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Escribe solo numeros
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
-        }
-
-        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //Escribe solo numeros
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            // Limitar longitud a 50 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 50 && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -476,59 +606,98 @@ namespace TestGit
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Letras
             bool esLetra = char.IsLetter(e.KeyChar);
-
-            // Caracteres de control como borrar
             bool esControl = char.IsControl(e.KeyChar);
-
-            // Acentos y Ñ
             string acentos = "áéíóúÁÉÍÓÚñÑ";
-
-            // Tecla espacio
             bool esEspacio = e.KeyChar == ' ';
 
             if (!esLetra && !acentos.Contains(e.KeyChar) && !esControl && !esEspacio)
             {
-                e.Handled = true; // Bloquea el carácter
+                e.Handled = true;
+            }
+            // Limitar longitud a 150 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 150 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool esLetra = char.IsLetter(e.KeyChar);
+            bool esControl = char.IsControl(e.KeyChar);
+            string acentos = "áéíóúÁÉÍÓÚñÑ";
+            bool esEspacio = e.KeyChar == ' ';
+
+            if (!esLetra && !acentos.Contains(e.KeyChar) && !esControl && !esEspacio)
+            {
+                e.Handled = true;
+            }
+            // Limitar longitud a 150 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 150 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
 
         private void txtCalle_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Letras
             bool esLetra = char.IsLetter(e.KeyChar);
-
-            // Caracteres de control como borrar
             bool esControl = char.IsControl(e.KeyChar);
-
-            // Acentos y Ñ
             string acentos = "áéíóúÁÉÍÓÚñÑ";
-
-            // Tecla espacio
             bool esEspacio = e.KeyChar == ' ';
 
             if (!esLetra && !acentos.Contains(e.KeyChar) && !esControl && !esEspacio)
             {
-                e.Handled = true; // Bloquea el carácter
+                e.Handled = true;
+            }
+            // (Acá también podrías limitar la longitud si tuvieras un tamaño en la base para "calle")
+            // Limitar longitud a 150 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 100 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
 
+
+        private void txtMail_Leave(object sender, EventArgs e)
+        {
+            RJTextBox txt = sender as RJTextBox;
+  
+
+            // Limitar longitud a 150
+            if (txt.Texts.Length > 150)
+            {
+                MessageBox.Show("El correo no puede superar los 150 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt.Texts = txt.Texts.Substring(0, 150);
+            }
+
+            // Validar formato de correo
+            if (!System.Text.RegularExpressions.Regex.IsMatch(txt.Texts, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                MessageBox.Show("Ingrese un correo electrónico válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt.Focus();
+            }
+        }
+
+
         private void comboProvincia_SelectedIndexChanged(object sender, EventArgs e)//Muestra las localidades de la provincia seleccionada
         {
-            List<Localidad> listaLocalidades = new CN_Localidad().Listar();
 
-            int provinciaId = Convert.ToInt32(((OpcionesCombo)comboProvincia.SelectedItem).Valor);//asigna el id de la provincia seleccionada
+            if (cargandoDatos) return;
 
-            var localidadesFiltradas = listaLocalidades
-            .Where(l => l.oProvincia != null && l.oProvincia.Id_Provincia == provinciaId)
-            .Select(l => new OpcionesCombo {Valor = l.Id_Localidad, Texto = l.localidad})
-            .ToList();
+            if (comboProvincia.SelectedItem is OpcionesCombo opcionSeleccionada)
+            {
+                CargarLocalidades(opcionSeleccionada.Valor);
+            }
+        }
 
-            // Asignar al combo de localidad
-            comboLocalidad.DataSource = localidadesFiltradas;
-            comboLocalidad.DisplayMember = "Texto";
-            comboLocalidad.ValueMember = "Valor";
+        private void txtDomicilio_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

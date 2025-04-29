@@ -52,17 +52,19 @@ namespace TestGit
                     Pago oPago = new CN_Pago().Listar().Where(p => p.Id_Pago == oReserva.oPago.Id_Pago).FirstOrDefault();
 
                     this.txtAño.Texts = oAuto.Año.ToString();
-                    this.txtModelo.Texts = oAuto.Modelo.ToString();
-                    this.txtConsumo.Texts = oAuto.Consumo.ToString();
+
+                    ///////////////////// VER MODELO, CONSUMO y MARCA //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    this.txtModelo.Texts = oAuto.oModelo.modelo.ToString();
+                    this.txtConsumo.Texts = oAuto.oModelo.Consumo.ToString();
                     this.txtMatricula.Texts = oAuto.Matricula.ToString();
                     this.txtKilometros.Texts = oAuto.Kilometros.ToString();
-                    this.txtMarca.Texts = oAuto.Marca.ToString();
+                    this.txtMarca.Texts = oAuto.oModelo.Consumo.ToString();
 
-                    this.txtDocumento.Texts = oCliente.Dni.ToString();
-                    this.txtNombre.Texts = oCliente.Nombre.ToString();
-                    this.txtTelefono.Texts = oCliente.Telefono.ToString();
-                    this.txtLicencia.Texts = oCliente.Mail.ToString();
-                    this.txtDomicilio.Texts = oCliente.domicilio.oLocalidad.oProvincia.provincia + " " + oCliente.domicilio.oLocalidad.localidad + " " + oCliente.domicilio.Calle + " " + oCliente.domicilio.Numero.ToString();
+                    this.txtDocumento.Texts = oCliente.oPersona.DNI.ToString();
+                    this.txtNombre.Texts = oCliente.oPersona.Nombre.ToString();
+                    this.txtTelefono.Texts = oCliente.oPersona.Telefono.ToString();
+                    this.txtLicencia.Texts = oCliente.oPersona.Mail.ToString();
+                    this.txtDomicilio.Texts = oCliente.oPersona.oDomicilio.oLocalidad.oProvincia.provincia + " " + oCliente.oPersona.oDomicilio.oLocalidad.localidad + " " + oCliente.oPersona.oDomicilio.Calle + " " + oCliente.oPersona.oDomicilio.Numero.ToString();
 
                     this.dtpFechaI.Value = oReserva.Fecha_Inicio;
                     this.dtpFechaF.Value = oReserva.Fecha_Fin;

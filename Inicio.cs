@@ -236,13 +236,13 @@ namespace TestGit
             }
 
 
-            if(user.oPerfil.Descripcion == "Encargado")
-            {
-                this.menuMantenimiento.Visible = false;
-                this.menuUsuarios.Visible = false;
-                this.menuGraficos.Visible = false;
+            //if(user.oPerfil.Descripcion == "Encargado")
+            //{
+            //    this.menuMantenimiento.Visible = false;
+            //    this.menuUsuarios.Visible = false;
+            //    this.menuGraficos.Visible = false;
 
-            }
+            //}
 
 
         }

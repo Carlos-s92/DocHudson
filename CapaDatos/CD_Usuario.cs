@@ -19,8 +19,9 @@ namespace CapaDatos
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT u.Id_Usuario, u.Usuario, u.Contraseña,u.DNI, u.Estado, p.Id_Perfil, p.Descripcion");
+                    query.AppendLine("SELECT u.Id_Usuario, u.Usuario, u.Contraseña, per.DNI, u.Estado, p.Id_Perfil, p.Descripcion");
                     query.AppendLine("FROM Usuarios u");
+                    query.AppendLine("INNER JOIN Persona per ON per.Id_Persona = u.Id_Persona");
                     query.AppendLine("INNER JOIN Perfiles p ON p.Id_Perfil = u.Id_Perfil");
 
                     using (SqlCommand cmd = new SqlCommand(query.ToString(), oconexion))
@@ -48,6 +49,7 @@ namespace CapaDatos
                                 });
                             }
                         }
+                        oconexion.Close();
                     }
                 }
                 catch (Exception ex)
@@ -86,7 +88,7 @@ namespace CapaDatos
 
                     IdUsuarioGenerado = Convert.ToInt32(cmd.Parameters["IdUsuarioResultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-
+                    oconexion.Close();
                 }
 
             }
@@ -126,7 +128,7 @@ namespace CapaDatos
 
                     Respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-
+                    oconexion.Close();
                 }
 
             }
@@ -163,7 +165,7 @@ namespace CapaDatos
 
                     Respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-
+                    oconexion.Close();
                 }
 
             }

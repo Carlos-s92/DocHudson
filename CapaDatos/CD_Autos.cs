@@ -3,11 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
-using System.Reflection;
 
 namespace CapaDatos
 {
@@ -23,9 +19,11 @@ namespace CapaDatos
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT a.Id_Auto, a.Modelo, a.Marca, a.Matricula, a.Kilometros, a.Año, a.Consumo, a.Puertas, a.Asientos, a.Imagen, a.Estado, a.Reservado FROM Autos a");
+                    query.AppendLine("SELECT a.Id_Auto, mod.modelo, mar.Id_Marca, mar.marca, a.Matricula, a.Kilometros, a.Año, mod.Consumo, mod.Puertas, mod.Asientos, a.Imagen, a.Estado, a.Reservado FROM Autos a");
+                    query.AppendLine("inner join Modelo mod on mod.Id_Modelo = a.Id_Modelo");
+                    query.AppendLine("inner join Marca mar on mar.Id_Marca = mod.Id_Marca");
 
-                
+
 
                     using (SqlCommand cmd = new SqlCommand(query.ToString(), oconexion))
                     {
@@ -40,14 +38,30 @@ namespace CapaDatos
                                 lista.Add(new Autos()
                                 {
                                     Id_Auto = Convert.ToInt32(dr["Id_Auto"]),
-                                    Modelo = dr["Modelo"].ToString(),
-                                    Marca = dr["Marca"].ToString(),
+                                    //Modelo = dr["Modelo"].ToString(),
+                                    //Marca = dr["Marca"].ToString(),
+                                    //////////////////////////////////////////////////
+                                    oModelo = new Modelo()
+                                    {
+                                        //Id_Modelo = Convert.ToInt32(dr["Id_Modelo"]),
+                                        modelo = dr["Modelo"].ToString(),
+                                        Consumo = Convert.ToInt32(dr["Consumo"]),
+                                        Puertas = Convert.ToInt32(dr["Puertas"]),
+                                        Asientos = Convert.ToInt32(dr["Asientos"]),
+                                        oMarca = new Marca()
+                                        {
+                                            Id_Marca = Convert.ToInt32(dr["Id_Marca"]),
+                                            marca = dr["Marca"].ToString(),
+                                        }
+                                    },
+                                    
+                                    //////////////////////////////////////////////////
                                     Matricula = dr["Matricula"].ToString(),
                                     Kilometros = Convert.ToDecimal(dr["Kilometros"]),
                                     Año = Convert.ToInt32(dr["Año"]),
-                                    Consumo = Convert.ToDecimal(dr["Consumo"]),
+                                    /*Consumo = Convert.ToDecimal(dr["Consumo"]),
                                     Puertas = Convert.ToInt32(dr["Puertas"]),
-                                    Asientos = Convert.ToInt32(dr["Asientos"]),
+                                    Asientos = Convert.ToInt32(dr["Asientos"]),*/
                                     Imagen = dr["Imagen"].ToString(),
                                     Estado = Convert.ToBoolean(dr["Estado"]),
                                     Reservado = Convert.ToBoolean(dr["Reservado"])
@@ -55,6 +69,7 @@ namespace CapaDatos
                                 });
                             }
                         }
+                        oconexion.Close();
                     }
                 }
                 catch (Exception ex)
@@ -79,16 +94,13 @@ namespace CapaDatos
 
 
                     SqlCommand cmd = new SqlCommand("InsertarAuto", oconexion);
+                    
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
-                    cmd.Parameters.AddWithValue("Modelo", obj.Modelo);
+                    cmd.Parameters.AddWithValue("Id_Modelo", obj.oModelo.Id_Modelo);
                     cmd.Parameters.AddWithValue("Matricula", obj.Matricula);
                     cmd.Parameters.AddWithValue("Kilometros", obj.Kilometros);
                     cmd.Parameters.AddWithValue("Año", obj.Año);
-                    cmd.Parameters.AddWithValue("Consumo", obj.Consumo);
                     cmd.Parameters.AddWithValue("Imagen", obj.Imagen);
-                    cmd.Parameters.AddWithValue("Puerta", obj.Puertas);
-                    cmd.Parameters.AddWithValue("Marca", obj.Marca);
-                    cmd.Parameters.AddWithValue("Asientos", obj.Asientos);
                     cmd.Parameters.Add("IdAutoResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -99,7 +111,7 @@ namespace CapaDatos
 
                     IdAutoGenerado = Convert.ToInt32(cmd.Parameters["IdAutoResultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-
+                    oconexion.Close();
                 }
 
             }
@@ -126,15 +138,15 @@ namespace CapaDatos
                     SqlCommand cmd = new SqlCommand("ActualizarAuto", oconexion);
                     cmd.Parameters.AddWithValue("Id_Auto", obj.Id_Auto);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
-                    cmd.Parameters.AddWithValue("Modelo", obj.Modelo);
+                    cmd.Parameters.AddWithValue("Modelo", obj.oModelo.Id_Modelo);
                     cmd.Parameters.AddWithValue("Matricula", obj.Matricula);
                     cmd.Parameters.AddWithValue("Kilometros", obj.Kilometros);
                     cmd.Parameters.AddWithValue("Año", obj.Año);
-                    cmd.Parameters.AddWithValue("Consumo", obj.Consumo);
+                    cmd.Parameters.AddWithValue("Consumo", obj.oModelo.Consumo);
                     cmd.Parameters.AddWithValue("Imagen", obj.Imagen);
-                    cmd.Parameters.AddWithValue("Puerta", obj.Puertas);
-                    cmd.Parameters.AddWithValue("Marca", obj.Marca);
-                    cmd.Parameters.AddWithValue("Asientos", obj.Asientos);
+                    cmd.Parameters.AddWithValue("Puerta", obj.oModelo.Puertas);
+                    cmd.Parameters.AddWithValue("Marca", obj.oModelo.oMarca.Id_Marca);
+                    cmd.Parameters.AddWithValue("Asientos", obj.oModelo.Asientos);
                     cmd.Parameters.AddWithValue("Reservado", obj.Reservado);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
@@ -146,7 +158,7 @@ namespace CapaDatos
 
                     Respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-
+                    oconexion.Close();
                 }
 
             }
@@ -183,7 +195,7 @@ namespace CapaDatos
 
                     Respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-
+                    oconexion.Close();
                 }
 
             }

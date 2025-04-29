@@ -20,6 +20,7 @@ namespace TestGit
 {
     public partial class FrmAutos : Form
     {
+
         private string nombreImagen = "";
         public FrmAutos()
         {
@@ -32,20 +33,20 @@ namespace TestGit
     
 
             // Verifica que el campo de Documento no esté vacío.
-            if (txtModelo.Texts == "")
+            /*if (txtModelo.Texts == "")
             {
                 confirmacion = false;
-            }
+            }*/
             // Verifica que el campo de Dirección no esté vacío.
             if (txtMatricula.Texts == "")
             {
                 confirmacion = false;
             }
             // Verifica que el correo tenga formato válido.
-            if (txtMarca.Texts == "")
+            /*if (txtMarca.Texts == "")
             {
                 confirmacion = false;
-            }
+            }*/
             // Verifica que el campo de Nombre no esté vacío.
             if (txtAño.Texts == "")
             {
@@ -79,8 +80,9 @@ namespace TestGit
 
         private void LimpiarCampos()
         {
-            this.txtModelo.Texts = "";
-            this.txtMarca.Texts = "";
+            //this.txtModelo.Texts = "";
+            //this.txtMarca.Texts = "";
+            
             this.txtMatricula.Texts = "";
             this.txtAño.Texts = "";
             this.txtAsientos.Texts = "";
@@ -88,7 +90,8 @@ namespace TestGit
             this.txtConsumo.Texts = "";
             this.txtKilometros.Texts = "";
             this.txtid.Text = "0";
-      
+            comboMarca.SelectedIndex = 0;
+            comboModelo.SelectedIndex = 0;
             comboEstado.SelectedIndex = 0;
        
         }
@@ -110,22 +113,40 @@ namespace TestGit
                 if (confirmacion.DialogResult == DialogResult.Yes)
                 {
                     confirmacion.Close();
-                    Autos objAuto = new Autos()
+
+                    Marca marca = new Marca()
                     {
-                        //Id_Auto = Convert.ToInt32(txtid.Text),
-                        Modelo = txtModelo.Texts,
-                        Marca = txtMarca.Texts,
-                        Matricula = txtMatricula.Texts,
-                        Kilometros = Convert.ToDecimal(txtKilometros.Texts),
+                        Id_Marca = Convert.ToInt32(((OpcionesCombo)comboMarca.SelectedItem).Valor),
+                    };
+
+                    Modelo modelo = new Modelo()
+                    {
+                        Id_Modelo = Convert.ToInt32(((OpcionesCombo)comboModelo.SelectedItem).Valor),
+                        oMarca = marca,
+                        modelo = ((OpcionesCombo)comboModelo.SelectedItem).Texto,
                         Consumo = Convert.ToDecimal(txtConsumo.Texts),
                         Puertas = Convert.ToInt32(txtPuertas.Texts),
                         Asientos = Convert.ToInt32(txtAsientos.Texts),
+                    };
+
+                    Autos objAuto = new Autos()
+                    {
+
+                        Id_Auto = Convert.ToInt32(txtid.Text),
+                        oModelo = modelo,
+                        /*Modelo = txtModelo.Texts,
+                        Marca = txtMarca.Texts,*/
+                        Matricula = txtMatricula.Texts,
+                        Kilometros = Convert.ToDecimal(txtKilometros.Texts),
+                        /*Consumo = Convert.ToDecimal(txtConsumo.Texts),
+                        Puertas = Convert.ToInt32(txtPuertas.Texts),
+                        Asientos = Convert.ToInt32(txtAsientos.Texts),*/
                         Año = Convert.ToInt32(txtAño.Texts),
                         Imagen = nombreImagen,
                         Estado = Convert.ToInt32(((OpcionesCombo)comboEstado.SelectedItem).Valor) == 1 ? true : false
                     };
 
-                        int idAutoGenerado = new CN_Auto().Registrar(objAuto, out mensaje);
+                    int idAutoGenerado = new CN_Auto().Registrar(objAuto, out mensaje);
                         if (idAutoGenerado != 0)
                         {
                             LimpiarCampos(); // Limpia los campos del formulario.
@@ -202,6 +223,18 @@ namespace TestGit
             comboEstado.DisplayMember = "Texto";
             comboEstado.ValueMember = "Valor";
             comboEstado.SelectedIndex = 0;
+
+            /////////// Muestra las Marcas en el comboMarca//////////////////////////////////////////////////
+            List<Marca> listaMarcas = new CN_Marca().Listar();
+
+            foreach (Marca item in listaMarcas)
+            {
+                comboMarca.Items.Add(new OpcionesCombo() { Valor = item.Id_Marca, Texto = item.marca });
+            }
+            //comboMarca.DataSource = listaMarcas;
+            comboMarca.DisplayMember = "Texto";
+            comboMarca.ValueMember = "Valor";
+            comboMarca.SelectedIndex = 0;
         }
 
 
@@ -254,5 +287,27 @@ namespace TestGit
                 e.Handled = true;
             }
         }
+
+        private void comboMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Modelo> listaModelos = new CN_Modelo().Listar();
+
+            string idMarca = ((OpcionesCombo)comboMarca.SelectedItem).Valor.ToString();
+
+            var modelosFiltrados = listaModelos
+                .Where(l => l.oMarca != null && l.oMarca.Id_Marca == Convert.ToInt32(idMarca))
+                .Select(l => new OpcionesCombo
+                {
+                    Valor = l.Id_Modelo,
+                    Texto = l.modelo
+                })
+                .ToList();
+            
+            comboModelo.DataSource = modelosFiltrados;
+            comboModelo.DisplayMember = "Texto";
+            comboModelo.ValueMember = "Valor";
+        }
+
+
     }
 }
