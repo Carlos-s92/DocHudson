@@ -453,12 +453,21 @@
     <None Include="Resources\Fondo1.gif" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\VentaImg.png" />
+    <None Include="Resources\UsuarioImg.png" />
+    <None Include="Resources\ProveedorImg.png" />
+    <None Include="Resources\ProductoImg.png" />
     <None Include="Resources\reiniciar.png" />
     <None Include="Resources\calendarDark.png" />
     <None Include="Resources\calendarWhite.png" />
     <None Include="Resources\ArrowLeft.png" />
     <None Include="Resources\ArrowRight.png" />
     <None Include="Resources\actualizar %281%29.png" />
+    <None Include="Resources\entrega-gratis %282%29.png" />
+    <None Include="Resources\ClienteImg.png" />
+    <None Include="Resources\CompraImg.png" />
+    <Content Include="Resources\IconoExitoVE.png" />
+    <None Include="Resources\PDF.png" />
     <Content Include="Resources\PlantillaReserva.html" />
     <None Include="Resources\Vicente1.jpg" />
     <None Include="Resources\More21.png" />

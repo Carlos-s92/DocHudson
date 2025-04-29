@@ -77,6 +77,7 @@
             this.rjButton1.Name = "rjButton1";
             this.rjButton1.Size = new System.Drawing.Size(393, 54);
             this.rjButton1.TabIndex = 101;
+            this.rjButton1.Text = "Guardar Cambios";
             this.rjButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.rjButton1.UseVisualStyleBackColor = false;
             this.rjButton1.Click += new System.EventHandler(this.rjButton1_Click);
@@ -98,6 +99,7 @@
             this.rjButton2.Name = "rjButton2";
             this.rjButton2.Size = new System.Drawing.Size(361, 56);
             this.rjButton2.TabIndex = 102;
+            this.rjButton2.Text = "Seleccionar Imagen";
             this.rjButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.rjButton2.UseVisualStyleBackColor = false;
             this.rjButton2.Click += new System.EventHandler(this.rjButton2_Click);

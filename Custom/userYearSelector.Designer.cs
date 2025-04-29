@@ -76,7 +76,7 @@
             this.TLPYearCalendar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.TLPYearCalendar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.TLPYearCalendar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.TLPYearCalendar.Size = new System.Drawing.Size(284, 141);
+            this.TLPYearCalendar.Size = new System.Drawing.Size(284, 150);
             this.TLPYearCalendar.TabIndex = 8;
             // 
             // BYear2x3
@@ -89,10 +89,10 @@
             this.BYear2x3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BYear2x3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BYear2x3.ForeColor = System.Drawing.Color.White;
-            this.BYear2x3.Location = new System.Drawing.Point(71, 94);
+            this.BYear2x3.Location = new System.Drawing.Point(71, 100);
             this.BYear2x3.Margin = new System.Windows.Forms.Padding(0);
             this.BYear2x3.Name = "BYear2x3";
-            this.BYear2x3.Size = new System.Drawing.Size(71, 47);
+            this.BYear2x3.Size = new System.Drawing.Size(71, 50);
             this.BYear2x3.TabIndex = 18;
             this.BYear2x3.Text = "Year6";
             this.BYear2x3.UseVisualStyleBackColor = true;
@@ -108,10 +108,10 @@
             this.BYear3x3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BYear3x3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BYear3x3.ForeColor = System.Drawing.Color.White;
-            this.BYear3x3.Location = new System.Drawing.Point(142, 94);
+            this.BYear3x3.Location = new System.Drawing.Point(142, 100);
             this.BYear3x3.Margin = new System.Windows.Forms.Padding(0);
             this.BYear3x3.Name = "BYear3x3";
-            this.BYear3x3.Size = new System.Drawing.Size(71, 47);
+            this.BYear3x3.Size = new System.Drawing.Size(71, 50);
             this.BYear3x3.TabIndex = 19;
             this.BYear3x3.Text = "Year9";
             this.BYear3x3.UseVisualStyleBackColor = true;
@@ -127,10 +127,10 @@
             this.BYear4x3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BYear4x3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BYear4x3.ForeColor = System.Drawing.Color.White;
-            this.BYear4x3.Location = new System.Drawing.Point(213, 94);
+            this.BYear4x3.Location = new System.Drawing.Point(213, 100);
             this.BYear4x3.Margin = new System.Windows.Forms.Padding(0);
             this.BYear4x3.Name = "BYear4x3";
-            this.BYear4x3.Size = new System.Drawing.Size(71, 47);
+            this.BYear4x3.Size = new System.Drawing.Size(71, 50);
             this.BYear4x3.TabIndex = 20;
             this.BYear4x3.Text = "Year12";
             this.BYear4x3.UseVisualStyleBackColor = true;
@@ -146,10 +146,10 @@
             this.BYear2x2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BYear2x2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BYear2x2.ForeColor = System.Drawing.Color.White;
-            this.BYear2x2.Location = new System.Drawing.Point(71, 47);
+            this.BYear2x2.Location = new System.Drawing.Point(71, 50);
             this.BYear2x2.Margin = new System.Windows.Forms.Padding(0);
             this.BYear2x2.Name = "BYear2x2";
-            this.BYear2x2.Size = new System.Drawing.Size(71, 47);
+            this.BYear2x2.Size = new System.Drawing.Size(71, 50);
             this.BYear2x2.TabIndex = 12;
             this.BYear2x2.Text = "Year5";
             this.BYear2x2.UseVisualStyleBackColor = true;
@@ -165,10 +165,10 @@
             this.BYear3x2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BYear3x2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BYear3x2.ForeColor = System.Drawing.Color.White;
-            this.BYear3x2.Location = new System.Drawing.Point(142, 47);
+            this.BYear3x2.Location = new System.Drawing.Point(142, 50);
             this.BYear3x2.Margin = new System.Windows.Forms.Padding(0);
             this.BYear3x2.Name = "BYear3x2";
-            this.BYear3x2.Size = new System.Drawing.Size(71, 47);
+            this.BYear3x2.Size = new System.Drawing.Size(71, 50);
             this.BYear3x2.TabIndex = 13;
             this.BYear3x2.Text = "Year8";
             this.BYear3x2.UseVisualStyleBackColor = true;
@@ -184,10 +184,10 @@
             this.BYear4x2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BYear4x2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BYear4x2.ForeColor = System.Drawing.Color.White;
-            this.BYear4x2.Location = new System.Drawing.Point(213, 47);
+            this.BYear4x2.Location = new System.Drawing.Point(213, 50);
             this.BYear4x2.Margin = new System.Windows.Forms.Padding(0);
             this.BYear4x2.Name = "BYear4x2";
-            this.BYear4x2.Size = new System.Drawing.Size(71, 47);
+            this.BYear4x2.Size = new System.Drawing.Size(71, 50);
             this.BYear4x2.TabIndex = 14;
             this.BYear4x2.Text = "Year11";
             this.BYear4x2.UseVisualStyleBackColor = true;
@@ -206,7 +206,7 @@
             this.BYear2x1.Location = new System.Drawing.Point(71, 0);
             this.BYear2x1.Margin = new System.Windows.Forms.Padding(0);
             this.BYear2x1.Name = "BYear2x1";
-            this.BYear2x1.Size = new System.Drawing.Size(71, 47);
+            this.BYear2x1.Size = new System.Drawing.Size(71, 50);
             this.BYear2x1.TabIndex = 6;
             this.BYear2x1.Text = "Year4";
             this.BYear2x1.UseVisualStyleBackColor = true;
@@ -225,7 +225,7 @@
             this.BYear3x1.Location = new System.Drawing.Point(142, 0);
             this.BYear3x1.Margin = new System.Windows.Forms.Padding(0);
             this.BYear3x1.Name = "BYear3x1";
-            this.BYear3x1.Size = new System.Drawing.Size(71, 47);
+            this.BYear3x1.Size = new System.Drawing.Size(71, 50);
             this.BYear3x1.TabIndex = 7;
             this.BYear3x1.Text = "Year7";
             this.BYear3x1.UseVisualStyleBackColor = true;
@@ -244,7 +244,7 @@
             this.BYear1x1.Location = new System.Drawing.Point(0, 0);
             this.BYear1x1.Margin = new System.Windows.Forms.Padding(0);
             this.BYear1x1.Name = "BYear1x1";
-            this.BYear1x1.Size = new System.Drawing.Size(71, 47);
+            this.BYear1x1.Size = new System.Drawing.Size(71, 50);
             this.BYear1x1.TabIndex = 0;
             this.BYear1x1.Text = "Year1";
             this.BYear1x1.UseVisualStyleBackColor = true;
@@ -260,10 +260,10 @@
             this.BYear1x2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BYear1x2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BYear1x2.ForeColor = System.Drawing.Color.White;
-            this.BYear1x2.Location = new System.Drawing.Point(0, 47);
+            this.BYear1x2.Location = new System.Drawing.Point(0, 50);
             this.BYear1x2.Margin = new System.Windows.Forms.Padding(0);
             this.BYear1x2.Name = "BYear1x2";
-            this.BYear1x2.Size = new System.Drawing.Size(71, 47);
+            this.BYear1x2.Size = new System.Drawing.Size(71, 50);
             this.BYear1x2.TabIndex = 1;
             this.BYear1x2.Text = "Year2";
             this.BYear1x2.UseVisualStyleBackColor = true;
@@ -279,10 +279,10 @@
             this.BYear1x3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BYear1x3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BYear1x3.ForeColor = System.Drawing.Color.White;
-            this.BYear1x3.Location = new System.Drawing.Point(0, 94);
+            this.BYear1x3.Location = new System.Drawing.Point(0, 100);
             this.BYear1x3.Margin = new System.Windows.Forms.Padding(0);
             this.BYear1x3.Name = "BYear1x3";
-            this.BYear1x3.Size = new System.Drawing.Size(71, 47);
+            this.BYear1x3.Size = new System.Drawing.Size(71, 50);
             this.BYear1x3.TabIndex = 2;
             this.BYear1x3.Text = "Year3";
             this.BYear1x3.UseVisualStyleBackColor = true;
@@ -301,7 +301,7 @@
             this.BYear4x1.Location = new System.Drawing.Point(213, 0);
             this.BYear4x1.Margin = new System.Windows.Forms.Padding(0);
             this.BYear4x1.Name = "BYear4x1";
-            this.BYear4x1.Size = new System.Drawing.Size(71, 47);
+            this.BYear4x1.Size = new System.Drawing.Size(71, 50);
             this.BYear4x1.TabIndex = 8;
             this.BYear4x1.Text = "Year10";
             this.BYear4x1.UseVisualStyleBackColor = true;
@@ -314,7 +314,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Controls.Add(this.TLPYearCalendar);
             this.Name = "userYearSelector";
-            this.Size = new System.Drawing.Size(284, 141);
+            this.Size = new System.Drawing.Size(284, 150);
             this.TLPYearCalendar.ResumeLayout(false);
             this.TLPYearCalendar.PerformLayout();
             this.ResumeLayout(false);

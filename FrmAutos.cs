@@ -150,7 +150,9 @@ namespace TestGit
                         if (idAutoGenerado != 0)
                         {
                             LimpiarCampos(); // Limpia los campos del formulario.
-                        }
+                            VentanaEmergente MsgError = new VentanaEmergente("Registro exitoso", "Auto registrado exitosamente", "Exito");
+                            MsgError.ShowDialog();
+                    }
                         else
                         {
                             VentanaEmergente MsgError = new VentanaEmergente("Error", mensaje, "Error");

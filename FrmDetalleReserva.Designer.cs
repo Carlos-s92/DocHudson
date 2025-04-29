@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtpFechaF = new System.Windows.Forms.DateTimePicker();
-            this.dtpFechaI = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtpFechaF = new CustomControls.RJControls.RJDatePicker();
+            this.dtpFechaI = new CustomControls.RJControls.RJDatePicker();
             this.txtTotal = new CustomControls.RJControls.RJTextBox();
             this.txtMarca = new CustomControls.RJControls.RJTextBox();
-            this.rjButton4 = new CustomControls.RJControls.RJButton();
+            this.BGenPDF = new CustomControls.RJControls.RJButton();
             this.rjButton3 = new CustomControls.RJControls.RJButton();
             this.rjButton1 = new CustomControls.RJControls.RJButton();
             this.rjButton2 = new CustomControls.RJControls.RJButton();
@@ -49,31 +52,78 @@
             this.txtNombre = new CustomControls.RJControls.RJTextBox();
             this.SuspendLayout();
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(44, 512);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 25);
+            this.label1.TabIndex = 176;
+            this.label1.Text = "Fecha Ini.";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(478, 512);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 25);
+            this.label2.TabIndex = 177;
+            this.label2.Text = "Fecha Fin";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(721, 633);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(101, 25);
+            this.label3.TabIndex = 178;
+            this.label3.Text = "Descargar";
+            // 
             // dtpFechaF
             // 
-            this.dtpFechaF.CalendarForeColor = System.Drawing.Color.White;
-            this.dtpFechaF.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.dtpFechaF.CalendarTitleForeColor = System.Drawing.Color.White;
-            this.dtpFechaF.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaF.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaF.Location = new System.Drawing.Point(483, 532);
-            this.dtpFechaF.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaF.BorderColor = System.Drawing.Color.DimGray;
+            this.dtpFechaF.BorderSize = 2;
+            this.dtpFechaF.CalendarFont = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaF.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.dtpFechaF.CalendarMonthBackground = System.Drawing.Color.Blue;
+            this.dtpFechaF.CalendarTitleBackColor = System.Drawing.Color.Yellow;
+            this.dtpFechaF.CalendarTitleForeColor = System.Drawing.Color.Red;
+            this.dtpFechaF.CalendarTrailingForeColor = System.Drawing.Color.Lime;
+            this.dtpFechaF.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaF.Location = new System.Drawing.Point(648, 507);
+            this.dtpFechaF.MinimumSize = new System.Drawing.Size(4, 35);
             this.dtpFechaF.Name = "dtpFechaF";
-            this.dtpFechaF.Size = new System.Drawing.Size(446, 33);
-            this.dtpFechaF.TabIndex = 161;
+            this.dtpFechaF.Size = new System.Drawing.Size(281, 35);
+            this.dtpFechaF.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.dtpFechaF.TabIndex = 175;
+            this.dtpFechaF.TextColor = System.Drawing.Color.White;
+            this.dtpFechaF.Value = new System.DateTime(2025, 4, 20, 3, 45, 43, 130);
             // 
             // dtpFechaI
             // 
-            this.dtpFechaI.CalendarForeColor = System.Drawing.Color.White;
-            this.dtpFechaI.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.dtpFechaI.CalendarTitleForeColor = System.Drawing.Color.White;
-            this.dtpFechaI.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaI.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaI.Location = new System.Drawing.Point(38, 532);
-            this.dtpFechaI.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaI.BorderColor = System.Drawing.Color.DimGray;
+            this.dtpFechaI.BorderSize = 2;
+            this.dtpFechaI.CalendarFont = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaI.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.dtpFechaI.CalendarMonthBackground = System.Drawing.Color.Blue;
+            this.dtpFechaI.CalendarTitleBackColor = System.Drawing.Color.Yellow;
+            this.dtpFechaI.CalendarTitleForeColor = System.Drawing.Color.Red;
+            this.dtpFechaI.CalendarTrailingForeColor = System.Drawing.Color.Lime;
+            this.dtpFechaI.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaI.Location = new System.Drawing.Point(153, 507);
+            this.dtpFechaI.MinimumSize = new System.Drawing.Size(4, 35);
             this.dtpFechaI.Name = "dtpFechaI";
-            this.dtpFechaI.Size = new System.Drawing.Size(396, 33);
-            this.dtpFechaI.TabIndex = 160;
+            this.dtpFechaI.Size = new System.Drawing.Size(281, 35);
+            this.dtpFechaI.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.dtpFechaI.TabIndex = 174;
+            this.dtpFechaI.TextColor = System.Drawing.Color.White;
+            this.dtpFechaI.Value = new System.DateTime(2025, 4, 20, 3, 45, 43, 130);
             // 
             // txtTotal
             // 
@@ -125,26 +175,28 @@
             this.txtMarca.Texts = "";
             this.txtMarca.UnderlinedStyle = true;
             // 
-            // rjButton4
+            // BGenPDF
             // 
-            this.rjButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton4.BorderColor = System.Drawing.Color.DimGray;
-            this.rjButton4.BorderRadius = 20;
-            this.rjButton4.BorderSize = 2;
-            this.rjButton4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton4.FlatAppearance.BorderSize = 0;
-            this.rjButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton4.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton4.Location = new System.Drawing.Point(840, 620);
-            this.rjButton4.Margin = new System.Windows.Forms.Padding(2);
-            this.rjButton4.Name = "rjButton4";
-            this.rjButton4.Size = new System.Drawing.Size(89, 48);
-            this.rjButton4.TabIndex = 171;
-            this.rjButton4.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton4.UseVisualStyleBackColor = false;
-            this.rjButton4.Click += new System.EventHandler(this.rjButton4_Click);
+            this.BGenPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.BGenPDF.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.BGenPDF.BackgroundImage = global::TestGit.Properties.Resources.PDF;
+            this.BGenPDF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BGenPDF.BorderColor = System.Drawing.Color.Gray;
+            this.BGenPDF.BorderRadius = 12;
+            this.BGenPDF.BorderSize = 2;
+            this.BGenPDF.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BGenPDF.FlatAppearance.BorderSize = 0;
+            this.BGenPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BGenPDF.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BGenPDF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.BGenPDF.Location = new System.Drawing.Point(827, 608);
+            this.BGenPDF.Margin = new System.Windows.Forms.Padding(2);
+            this.BGenPDF.Name = "BGenPDF";
+            this.BGenPDF.Size = new System.Drawing.Size(72, 72);
+            this.BGenPDF.TabIndex = 171;
+            this.BGenPDF.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.BGenPDF.UseVisualStyleBackColor = false;
+            this.BGenPDF.Click += new System.EventHandler(this.BGenPDF_Click);
             // 
             // rjButton3
             // 
@@ -158,7 +210,7 @@
             this.rjButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjButton3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton3.Location = new System.Drawing.Point(543, 620);
+            this.rjButton3.Location = new System.Drawing.Point(483, 620);
             this.rjButton3.Margin = new System.Windows.Forms.Padding(2);
             this.rjButton3.Name = "rjButton3";
             this.rjButton3.Size = new System.Drawing.Size(196, 48);
@@ -177,13 +229,14 @@
             this.rjButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rjButton1.FlatAppearance.BorderSize = 0;
             this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.rjButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.rjButton1.Location = new System.Drawing.Point(111, 620);
             this.rjButton1.Margin = new System.Windows.Forms.Padding(2);
             this.rjButton1.Name = "rjButton1";
             this.rjButton1.Size = new System.Drawing.Size(196, 48);
             this.rjButton1.TabIndex = 169;
+            this.rjButton1.Text = "Limpiar Campos";
             this.rjButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.rjButton1.UseVisualStyleBackColor = false;
             this.rjButton1.Click += new System.EventHandler(this.rjButton1_Click);
@@ -198,13 +251,14 @@
             this.rjButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rjButton2.FlatAppearance.BorderSize = 0;
             this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.rjButton2.Location = new System.Drawing.Point(568, 24);
             this.rjButton2.Margin = new System.Windows.Forms.Padding(2);
             this.rjButton2.Name = "rjButton2";
             this.rjButton2.Size = new System.Drawing.Size(196, 48);
             this.rjButton2.TabIndex = 168;
+            this.rjButton2.Text = "Buscar Reserva";
             this.rjButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.rjButton2.UseVisualStyleBackColor = false;
             this.rjButton2.Click += new System.EventHandler(this.rjButton2_Click);
@@ -481,9 +535,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(19)))));
             this.ClientSize = new System.Drawing.Size(982, 726);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dtpFechaF);
+            this.Controls.Add(this.dtpFechaI);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.txtMarca);
-            this.Controls.Add(this.rjButton4);
+            this.Controls.Add(this.BGenPDF);
             this.Controls.Add(this.rjButton3);
             this.Controls.Add(this.rjButton1);
             this.Controls.Add(this.rjButton2);
@@ -493,8 +552,6 @@
             this.Controls.Add(this.txtKilometros);
             this.Controls.Add(this.txtMatricula);
             this.Controls.Add(this.txtAño);
-            this.Controls.Add(this.dtpFechaF);
-            this.Controls.Add(this.dtpFechaI);
             this.Controls.Add(this.txtDomicilio);
             this.Controls.Add(this.txtLicencia);
             this.Controls.Add(this.txtTelefono);
@@ -503,7 +560,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmDetalleReserva";
             this.Text = "FrmDetalleReserva";
+            this.Load += new System.EventHandler(this.FrmDetalleReserva_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -514,8 +573,6 @@
         private CustomControls.RJControls.RJTextBox txtKilometros;
         private CustomControls.RJControls.RJTextBox txtMatricula;
         private CustomControls.RJControls.RJTextBox txtAño;
-        private System.Windows.Forms.DateTimePicker dtpFechaF;
-        private System.Windows.Forms.DateTimePicker dtpFechaI;
         private CustomControls.RJControls.RJTextBox txtDomicilio;
         private CustomControls.RJControls.RJTextBox txtLicencia;
         private CustomControls.RJControls.RJTextBox txtTelefono;
@@ -525,8 +582,13 @@
         private CustomControls.RJControls.RJTextBox txtBusqueda;
         private CustomControls.RJControls.RJButton rjButton1;
         private CustomControls.RJControls.RJButton rjButton3;
-        private CustomControls.RJControls.RJButton rjButton4;
+        private CustomControls.RJControls.RJButton BGenPDF;
         private CustomControls.RJControls.RJTextBox txtMarca;
         private CustomControls.RJControls.RJTextBox txtTotal;
+        private CustomControls.RJControls.RJDatePicker dtpFechaI;
+        private CustomControls.RJControls.RJDatePicker dtpFechaF;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

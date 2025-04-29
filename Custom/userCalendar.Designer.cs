@@ -1088,7 +1088,7 @@
             // 
             this.PFontCalendar.Location = new System.Drawing.Point(3, 26);
             this.PFontCalendar.Name = "PFontCalendar";
-            this.PFontCalendar.Size = new System.Drawing.Size(284, 141);
+            this.PFontCalendar.Size = new System.Drawing.Size(284, 150);
             this.PFontCalendar.TabIndex = 7;
             // 
             // label1

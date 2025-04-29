@@ -75,7 +75,7 @@
             this.TLPMonthCalendar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.TLPMonthCalendar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.TLPMonthCalendar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.TLPMonthCalendar.Size = new System.Drawing.Size(284, 141);
+            this.TLPMonthCalendar.Size = new System.Drawing.Size(284, 150);
             this.TLPMonthCalendar.TabIndex = 7;
             // 
             // BOct
@@ -88,10 +88,10 @@
             this.BOct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BOct.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BOct.ForeColor = System.Drawing.Color.White;
-            this.BOct.Location = new System.Drawing.Point(71, 94);
+            this.BOct.Location = new System.Drawing.Point(71, 100);
             this.BOct.Margin = new System.Windows.Forms.Padding(0);
             this.BOct.Name = "BOct";
-            this.BOct.Size = new System.Drawing.Size(71, 47);
+            this.BOct.Size = new System.Drawing.Size(71, 50);
             this.BOct.TabIndex = 18;
             this.BOct.Text = "Oct.";
             this.BOct.UseVisualStyleBackColor = true;
@@ -107,10 +107,10 @@
             this.BNov.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BNov.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BNov.ForeColor = System.Drawing.Color.White;
-            this.BNov.Location = new System.Drawing.Point(142, 94);
+            this.BNov.Location = new System.Drawing.Point(142, 100);
             this.BNov.Margin = new System.Windows.Forms.Padding(0);
             this.BNov.Name = "BNov";
-            this.BNov.Size = new System.Drawing.Size(71, 47);
+            this.BNov.Size = new System.Drawing.Size(71, 50);
             this.BNov.TabIndex = 19;
             this.BNov.Text = "Nov.";
             this.BNov.UseVisualStyleBackColor = true;
@@ -126,10 +126,10 @@
             this.BDic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BDic.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BDic.ForeColor = System.Drawing.Color.White;
-            this.BDic.Location = new System.Drawing.Point(213, 94);
+            this.BDic.Location = new System.Drawing.Point(213, 100);
             this.BDic.Margin = new System.Windows.Forms.Padding(0);
             this.BDic.Name = "BDic";
-            this.BDic.Size = new System.Drawing.Size(71, 47);
+            this.BDic.Size = new System.Drawing.Size(71, 50);
             this.BDic.TabIndex = 20;
             this.BDic.Text = "Dic.";
             this.BDic.UseVisualStyleBackColor = true;
@@ -145,10 +145,10 @@
             this.BJun.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BJun.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BJun.ForeColor = System.Drawing.Color.White;
-            this.BJun.Location = new System.Drawing.Point(71, 47);
+            this.BJun.Location = new System.Drawing.Point(71, 50);
             this.BJun.Margin = new System.Windows.Forms.Padding(0);
             this.BJun.Name = "BJun";
-            this.BJun.Size = new System.Drawing.Size(71, 47);
+            this.BJun.Size = new System.Drawing.Size(71, 50);
             this.BJun.TabIndex = 12;
             this.BJun.Text = "Jun.";
             this.BJun.UseVisualStyleBackColor = true;
@@ -164,10 +164,10 @@
             this.BJul.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BJul.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BJul.ForeColor = System.Drawing.Color.White;
-            this.BJul.Location = new System.Drawing.Point(142, 47);
+            this.BJul.Location = new System.Drawing.Point(142, 50);
             this.BJul.Margin = new System.Windows.Forms.Padding(0);
             this.BJul.Name = "BJul";
-            this.BJul.Size = new System.Drawing.Size(71, 47);
+            this.BJul.Size = new System.Drawing.Size(71, 50);
             this.BJul.TabIndex = 13;
             this.BJul.Text = "Jul.";
             this.BJul.UseVisualStyleBackColor = true;
@@ -183,10 +183,10 @@
             this.BAgo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BAgo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BAgo.ForeColor = System.Drawing.Color.White;
-            this.BAgo.Location = new System.Drawing.Point(213, 47);
+            this.BAgo.Location = new System.Drawing.Point(213, 50);
             this.BAgo.Margin = new System.Windows.Forms.Padding(0);
             this.BAgo.Name = "BAgo";
-            this.BAgo.Size = new System.Drawing.Size(71, 47);
+            this.BAgo.Size = new System.Drawing.Size(71, 50);
             this.BAgo.TabIndex = 14;
             this.BAgo.Text = "Ago.";
             this.BAgo.UseVisualStyleBackColor = true;
@@ -205,7 +205,7 @@
             this.BFeb.Location = new System.Drawing.Point(71, 0);
             this.BFeb.Margin = new System.Windows.Forms.Padding(0);
             this.BFeb.Name = "BFeb";
-            this.BFeb.Size = new System.Drawing.Size(71, 47);
+            this.BFeb.Size = new System.Drawing.Size(71, 50);
             this.BFeb.TabIndex = 6;
             this.BFeb.Text = "Feb.";
             this.BFeb.UseVisualStyleBackColor = true;
@@ -224,7 +224,7 @@
             this.BMar.Location = new System.Drawing.Point(142, 0);
             this.BMar.Margin = new System.Windows.Forms.Padding(0);
             this.BMar.Name = "BMar";
-            this.BMar.Size = new System.Drawing.Size(71, 47);
+            this.BMar.Size = new System.Drawing.Size(71, 50);
             this.BMar.TabIndex = 7;
             this.BMar.Text = "Mar.";
             this.BMar.UseVisualStyleBackColor = true;
@@ -243,7 +243,7 @@
             this.BEne.Location = new System.Drawing.Point(0, 0);
             this.BEne.Margin = new System.Windows.Forms.Padding(0);
             this.BEne.Name = "BEne";
-            this.BEne.Size = new System.Drawing.Size(71, 47);
+            this.BEne.Size = new System.Drawing.Size(71, 50);
             this.BEne.TabIndex = 0;
             this.BEne.Text = "Ene.";
             this.BEne.UseVisualStyleBackColor = true;
@@ -259,10 +259,10 @@
             this.BMay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BMay.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BMay.ForeColor = System.Drawing.Color.White;
-            this.BMay.Location = new System.Drawing.Point(0, 47);
+            this.BMay.Location = new System.Drawing.Point(0, 50);
             this.BMay.Margin = new System.Windows.Forms.Padding(0);
             this.BMay.Name = "BMay";
-            this.BMay.Size = new System.Drawing.Size(71, 47);
+            this.BMay.Size = new System.Drawing.Size(71, 50);
             this.BMay.TabIndex = 1;
             this.BMay.Text = "May.";
             this.BMay.UseVisualStyleBackColor = true;
@@ -278,10 +278,10 @@
             this.BSep.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BSep.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BSep.ForeColor = System.Drawing.Color.White;
-            this.BSep.Location = new System.Drawing.Point(0, 94);
+            this.BSep.Location = new System.Drawing.Point(0, 100);
             this.BSep.Margin = new System.Windows.Forms.Padding(0);
             this.BSep.Name = "BSep";
-            this.BSep.Size = new System.Drawing.Size(71, 47);
+            this.BSep.Size = new System.Drawing.Size(71, 50);
             this.BSep.TabIndex = 2;
             this.BSep.Text = "Sep.";
             this.BSep.UseVisualStyleBackColor = true;
@@ -300,7 +300,7 @@
             this.BAbr.Location = new System.Drawing.Point(213, 0);
             this.BAbr.Margin = new System.Windows.Forms.Padding(0);
             this.BAbr.Name = "BAbr";
-            this.BAbr.Size = new System.Drawing.Size(71, 47);
+            this.BAbr.Size = new System.Drawing.Size(71, 50);
             this.BAbr.TabIndex = 8;
             this.BAbr.Text = "Abr.";
             this.BAbr.UseVisualStyleBackColor = true;
@@ -313,7 +313,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
             this.Controls.Add(this.TLPMonthCalendar);
             this.Name = "userMonthSelector";
-            this.Size = new System.Drawing.Size(284, 141);
+            this.Size = new System.Drawing.Size(284, 150);
             this.TLPMonthCalendar.ResumeLayout(false);
             this.TLPMonthCalendar.PerformLayout();
             this.ResumeLayout(false);

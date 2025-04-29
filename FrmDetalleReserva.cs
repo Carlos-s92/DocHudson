@@ -17,6 +17,8 @@ using TestGit.Modales;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
+using System.Drawing.Drawing2D;
+using CustomControls.RJControls;
 
 namespace TestGit
 {
@@ -111,7 +113,7 @@ namespace TestGit
             this.dtpFechaF.Value = System.DateTime.Now;
         }
 
-        private void rjButton4_Click(object sender, EventArgs e)
+        private void BGenPDF_Click(object sender, EventArgs e)
         {
             // Verifica si hay una compra seleccionada antes de intentar generar el PDF
             if (txtDocumento.Texts == "")
@@ -175,10 +177,17 @@ namespace TestGit
                     // Cerrar el documento y el stream
                     pdfDoc.Close();
                     stream.Close();
-                    VentanaEmergente mensaje = new VentanaEmergente("Mensaje", "Pdf Generado", "Informacion");
+                    VentanaEmergente mensaje = new VentanaEmergente("Mensaje", "Pdf Generado", "Exito");
                     mensaje.ShowDialog();
                 }
             }
+        }
+
+        private void FrmDetalleReserva_Load(object sender, EventArgs e)
+        {
+            //Establecer las fechas actuales al entrar.
+            this.dtpFechaI.Value = System.DateTime.Now;
+            this.dtpFechaF.Value = System.DateTime.Now;
         }
     }
 }

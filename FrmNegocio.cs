@@ -112,7 +112,7 @@ namespace TestGit
                     // Mostrar mensajes según el resultado de la operación
                     if (respuesta)
                     {
-                        VentanaEmergente msg = new VentanaEmergente("Mensaje", "Los cambios fueron guardados", "Informacion");
+                        VentanaEmergente msg = new VentanaEmergente("Mensaje", "Los cambios fueron guardados", "Exito");
                         msg.ShowDialog();
                     }
                     else
