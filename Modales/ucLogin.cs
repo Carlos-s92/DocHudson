@@ -80,8 +80,8 @@ namespace TestGit.Modales
         //Función para ingresar automaticamente el usuario y contraseña único de momento.
         private void UcLogin_Load(object sender, EventArgs e)
         {
-            CampoUsuario.Texts = "Josesito234";
-            CampoContraseña.Texts = "admin";
+            CampoUsuario.Texts = "admin";
+            CampoContraseña.Texts = "123";
         }
     }
 }

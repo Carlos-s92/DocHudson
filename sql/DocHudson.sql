@@ -423,7 +423,7 @@ BEGIN
         SET @Mensaje = ERROR_MESSAGE();
     END CATCH
 END;
-
+GO
 
 CREATE OR ALTER PROCEDURE ActualizarUsuario
     @Id_Usuario INT,
@@ -1167,7 +1167,7 @@ BEGIN
         SET @Mensaje = ERROR_MESSAGE();
     END CATCH
 END;
-
+GO
 
 
 CREATE OR ALTER   PROCEDURE InsertarDomicilio(
@@ -1206,7 +1206,7 @@ END;
 
 
 --Inserciones basicas para el sistema
-
+GO
 CREATE OR ALTER PROCEDURE AgregarProvinciasArgentinas
 AS
 BEGIN
@@ -1252,30 +1252,30 @@ Go
 
 EXEC AgregarProvinciasArgentinas;
 INSERT INTO Localidad(Id_Provincia, Localidad) VALUES
-	('1', 'VILLA SANTOS TESEI '),	('1', 'HURLINGHAM '),	('1', 'WILLIAM C. MORRIS '),
-	('2', 'LA FALDA DE SAN ANTONIO '),	('2', 'EL HUECO '),	('2', 'LA TERCENA '),
-	('3', 'EL QUEBRACHO BALEADO '),	('3', 'SAN LORENZO '),	('3', 'RESISTENCIA'),
-	('4', 'BARRIO CALETA CORDOVA '),	('4', 'BARRIO CIUDADELA '),	('4', 'COMODORO RIVADAVIA '),
-	('5', 'BELL VILLE '),	('5', 'COLONIA COMPIANI '),	('5', 'CORDOBA'),
-	('6', 'BELLA VISTA'),	('6', 'CORRIENTES'),	('6', 'GOYA'),
-	('7', 'MOLINO PUBLICO '),	('7', 'LA SELVA '),	('7', 'ESTAQUITAS '),
-	('8', 'LA COLONIA '),	('8', 'FORMOSA '),	('8', 'POSTA CAMBIO ZALAZAR '),
-	('9', 'TUSAQUILLAS '),	('9', 'SANTA ANA '),	('9', 'TRANCAS '),
-	('10', 'TORTUGAS '),	('10', 'LIHUEL CALEL '),	('10', 'PUELCHES '),
-	('11', 'LA CORTADA '),	('11', 'LA SERENA '),	('11', 'SAN RAFAEL '),
-	('12', 'LAS LEÑAS '),	('12', 'EL CHACAY '),	('12', 'AGUA ESCONDIDA '),
-	('13', 'EL SALTO '),	('13', '1 DE MAYO '),	('13', 'POSADAS '),
-	('14', 'NAHUEL HUAPI '),	('14', 'LA LIPELA '),	('14', 'HUEMUL '),
-	('15', 'VIEDMA '),	('15', 'EL JUNCAL '),	('15', 'EL PASO '),
-	('16', 'CHASICO '),	('16', 'MOJOTORO '),	('16', 'ISLAS DE VAQUEROS '),
-	('17', 'CHASICO '),	('17', 'MOJOTORO '),	('17', 'ISLAS DE VAQUEROS '),
-	('18', 'RAWSON '),	('18', 'BALCARCE '),	('18', 'CORTADERAS '),	
-	('19', 'EL CHALTEN '),	('19', 'PERITO MORENO '),	('19', 'RIO GALLEGOS '),
-	('20', 'ARRUFO '),	('20', 'SAN RAFAEL '),	('20', 'LA VANGUARDIA '),
-	('21', 'LA FLORIDA '),	('21', 'LA RIVERA '),	('21', 'SAN RAMON '),
-	('22', 'USHUAIA '),	('22', 'PUERTO DARWIN '),	('22', 'PUERTO ARGENTINO '),
-	('23', 'EL FORTIN '),	('23', 'LA FLORIDA '),	('23', 'EL TALAR '),
-	('24', 'BOCA '),	('24', 'NUñEZ '),	('24', 'RECOLETA ')
+	(1, 'VILLA SANTOS TESEI '),	(1, 'HURLINGHAM '),	(1, 'WILLIAM C. MORRIS '),
+	(2, 'LA FALDA DE SAN ANTONIO '),	(2, 'EL HUECO '),	(2, 'LA TERCENA '),
+	(3, 'EL QUEBRACHO BALEADO '),	(3, 'SAN LORENZO '),	(3, 'RESISTENCIA'),
+	(4, 'BARRIO CALETA CORDOVA '),	(4, 'BARRIO CIUDADELA '),	(4, 'COMODORO RIVADAVIA '),
+	(5, 'BELL VILLE '),	(5, 'COLONIA COMPIANI '),	(5, 'CORDOBA'),
+	(6, 'BELLA VISTA'),	(6, 'CORRIENTES'),	(6, 'GOYA'),
+	(7, 'MOLINO PUBLICO '),	(7, 'LA SELVA '),	(7, 'ESTAQUITAS '),
+	(8, 'LA COLONIA '),	(8, 'FORMOSA '),	(8, 'POSTA CAMBIO ZALAZAR '),
+	(9, 'TUSAQUILLAS '),	(9, 'SANTA ANA '),	(9, 'TRANCAS '),
+	(10, 'TORTUGAS '),	(10, 'LIHUEL CALEL '),	(10, 'PUELCHES '),
+	(11, 'LA CORTADA '),	(11, 'LA SERENA '),	(11, 'SAN RAFAEL '),
+	(12, 'LAS LEÑAS '),	(12, 'EL CHACAY '),	(12, 'AGUA ESCONDIDA '),
+	(13, 'EL SALTO '),	(13, '1 DE MAYO '),	(13, 'POSADAS '),
+	(14, 'NAHUEL HUAPI '),	(14, 'LA LIPELA '),	(14, 'HUEMUL '),
+	(15, 'VIEDMA '),	(15, 'EL JUNCAL '),	(15, 'EL PASO '),
+	(16, 'CHASICO '),	(16, 'MOJOTORO '),	(16, 'ISLAS DE VAQUEROS '),
+	(17, 'CHASICO '),	(17, 'MOJOTORO '),	(17, 'ISLAS DE VAQUEROS '),
+	(18, 'RAWSON '),	(18, 'BALCARCE '),	(18, 'CORTADERAS '),	
+	(19, 'EL CHALTEN '),	(19, 'PERITO MORENO '),	(19, 'RIO GALLEGOS '),
+	(20, 'ARRUFO '),	(20, 'SAN RAFAEL '),	(20, 'LA VANGUARDIA '),
+	(21, 'LA FLORIDA '),	(21, 'LA RIVERA '),	(21, 'SAN RAMON '),
+	(22, 'USHUAIA '),	(22, 'PUERTO DARWIN '),	(22, 'PUERTO ARGENTINO '),
+	(23, 'EL FORTIN '),	(23, 'LA FLORIDA '),	(23, 'EL TALAR '),
+	(24, 'BOCA '),	(24, 'NUñEZ '),	(24, 'RECOLETA ')
 go
 
 
