@@ -147,9 +147,9 @@
             // 
             this.btnReserva.BackColor = System.Drawing.Color.Green;
             this.btnReserva.BackgroundColor = System.Drawing.Color.Green;
-            this.btnReserva.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnReserva.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnReserva.BorderRadius = 20;
-            this.btnReserva.BorderSize = 0;
+            this.btnReserva.BorderSize = 2;
             this.btnReserva.FlatAppearance.BorderSize = 0;
             this.btnReserva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReserva.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -174,6 +174,7 @@
             // 
             // iconButton1
             // 
+            this.iconButton1.FlatAppearance.BorderSize = 0;
             this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Wrench;
             this.iconButton1.IconColor = System.Drawing.Color.White;

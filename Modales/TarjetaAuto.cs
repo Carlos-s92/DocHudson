@@ -104,6 +104,7 @@ namespace TestGit.Modales
             else
             {
                 this.btnReserva.BackColor = Color.Red;
+                this.btnReserva.BorderColor = Color.FromArgb(255, 192, 192);
                 this.btnReserva.Text = "Reservado";
             }
 
