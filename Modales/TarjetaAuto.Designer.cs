@@ -349,7 +349,6 @@
         private System.Windows.Forms.Label lblFechaI;
         private CustomControls.RJControls.RJButton btnReserva;
         private FontAwesome.Sharp.IconButton iconButton1;
-        private System.Windows.Forms.Label lbl1;
         private System.Windows.Forms.Label lbl3;
         private System.Windows.Forms.Label lbl5;
         private System.Windows.Forms.Label lbl7;
@@ -359,5 +358,6 @@
         private System.Windows.Forms.Label lbl8;
         private FontAwesome.Sharp.IconButton iconButton2;
         private System.Windows.Forms.Label txtId;
+        private System.Windows.Forms.Label lbl1;
     }
 }

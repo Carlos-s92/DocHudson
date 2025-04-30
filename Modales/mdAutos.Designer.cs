@@ -172,13 +172,15 @@
             this.BtnLimpiar2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnLimpiar2.FlatAppearance.BorderSize = 0;
             this.BtnLimpiar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnLimpiar2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnLimpiar2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.BtnLimpiar2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnLimpiar2.Location = new System.Drawing.Point(692, 11);
             this.BtnLimpiar2.Margin = new System.Windows.Forms.Padding(2);
             this.BtnLimpiar2.Name = "BtnLimpiar2";
             this.BtnLimpiar2.Size = new System.Drawing.Size(42, 41);
             this.BtnLimpiar2.TabIndex = 157;
+            this.BtnLimpiar2.Text = "X";
+            this.BtnLimpiar2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnLimpiar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnLimpiar2.UseVisualStyleBackColor = false;
             this.BtnLimpiar2.Click += new System.EventHandler(this.BtnLimpiar2_Click);
@@ -200,7 +202,7 @@
             this.BtnGuardar2.Name = "BtnGuardar2";
             this.BtnGuardar2.Size = new System.Drawing.Size(396, 41);
             this.BtnGuardar2.TabIndex = 156;
-            this.BtnGuardar2.Text = "+";
+            this.BtnGuardar2.Text = "Guardar Cambios";
             this.BtnGuardar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnGuardar2.UseVisualStyleBackColor = false;
             this.BtnGuardar2.Click += new System.EventHandler(this.BtnGuardar2_Click);

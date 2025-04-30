@@ -24,6 +24,49 @@ namespace TestGit.Modales
         {
             InitializeComponent();
         }
+
+        //Inicio Methots
+        public string Modelo
+        {
+            get { return lbl1.Text; } // Solo lectura
+        }
+
+        public string Marca
+        {
+            get { return lbl2.Text; } // Solo lectura
+        }
+
+        public string Consumo
+        {
+            get { return lbl3.Text; } // Solo lectura
+        }
+
+        public string KM
+        {
+            get { return lbl4.Text; } // Solo lectura
+        }
+
+        public string Asientos
+        {
+            get { return lbl5.Text; } // Solo lectura
+        }
+
+        public string Puertas
+        {
+            get { return lbl6.Text; } // Solo lectura
+        }
+
+        public string FechaInicio
+        {
+            get { return lbl7.Text; } // Solo lectura
+        }
+
+        public string FechaFin
+        {
+            get { return lbl8.Text; } // Solo lectura
+        }
+        //Fin Methots
+
         public TarjetaAuto(int id,string modelo, string marca, decimal consumo, int puertas, int asientos, decimal kilometros, bool reservado, bool estado, string matricula, int año, string imagen)
         {
             //oAuto.oModelo = new Modelo();

@@ -30,9 +30,10 @@
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.comboBusqueda = new System.Windows.Forms.ComboBox();
-            this.rjButton3 = new CustomControls.RJControls.RJButton();
             this.txtBusqueda = new CustomControls.RJControls.RJTextBox();
             this.btnSalir = new CustomControls.RJControls.RJButton();
+            this.BLimpiarCampos = new CustomControls.RJControls.RJButton();
+            this.lblMarca = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -53,32 +54,19 @@
             this.comboBusqueda.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBusqueda.ForeColor = System.Drawing.Color.White;
             this.comboBusqueda.FormattingEnabled = true;
-            this.comboBusqueda.Location = new System.Drawing.Point(521, 30);
+            this.comboBusqueda.Items.AddRange(new object[] {
+            "Ninguno",
+            "Modelo",
+            "Marca",
+            "Consumo",
+            "KM",
+            "Asientos",
+            "Puertas"});
+            this.comboBusqueda.Location = new System.Drawing.Point(679, 27);
             this.comboBusqueda.Name = "comboBusqueda";
             this.comboBusqueda.Size = new System.Drawing.Size(209, 38);
             this.comboBusqueda.TabIndex = 138;
             this.comboBusqueda.SelectedIndexChanged += new System.EventHandler(this.comboBusqueda_SelectedIndexChanged);
-            // 
-            // rjButton3
-            // 
-            this.rjButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton3.BorderColor = System.Drawing.Color.DimGray;
-            this.rjButton3.BorderRadius = 20;
-            this.rjButton3.BorderSize = 2;
-            this.rjButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton3.FlatAppearance.BorderSize = 0;
-            this.rjButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.rjButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton3.Location = new System.Drawing.Point(735, 29);
-            this.rjButton3.Margin = new System.Windows.Forms.Padding(2);
-            this.rjButton3.Name = "rjButton3";
-            this.rjButton3.Size = new System.Drawing.Size(101, 37);
-            this.rjButton3.TabIndex = 141;
-            this.rjButton3.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton3.UseVisualStyleBackColor = false;
-            this.rjButton3.Click += new System.EventHandler(this.rjButton3_Click);
             // 
             // txtBusqueda
             // 
@@ -116,7 +104,7 @@
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalir.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.btnSalir.Location = new System.Drawing.Point(852, 29);
+            this.btnSalir.Location = new System.Drawing.Point(912, 27);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(47, 37);
@@ -127,15 +115,50 @@
             this.btnSalir.Visible = false;
             this.btnSalir.Click += new System.EventHandler(this.rjButton1_Click);
             // 
+            // BLimpiarCampos
+            // 
+            this.BLimpiarCampos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.BLimpiarCampos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.BLimpiarCampos.BackgroundImage = global::TestGit.Properties.Resources.actualizar__1_;
+            this.BLimpiarCampos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BLimpiarCampos.BorderColor = System.Drawing.Color.DimGray;
+            this.BLimpiarCampos.BorderRadius = 18;
+            this.BLimpiarCampos.BorderSize = 2;
+            this.BLimpiarCampos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BLimpiarCampos.FlatAppearance.BorderSize = 0;
+            this.BLimpiarCampos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BLimpiarCampos.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BLimpiarCampos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.BLimpiarCampos.Location = new System.Drawing.Point(405, 25);
+            this.BLimpiarCampos.Margin = new System.Windows.Forms.Padding(2);
+            this.BLimpiarCampos.Name = "BLimpiarCampos";
+            this.BLimpiarCampos.Size = new System.Drawing.Size(69, 40);
+            this.BLimpiarCampos.TabIndex = 142;
+            this.BLimpiarCampos.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.BLimpiarCampos.UseVisualStyleBackColor = false;
+            this.BLimpiarCampos.Click += new System.EventHandler(this.BLimpiarCampos_Click);
+            // 
+            // lblMarca
+            // 
+            this.lblMarca.AutoSize = true;
+            this.lblMarca.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMarca.ForeColor = System.Drawing.Color.White;
+            this.lblMarca.Location = new System.Drawing.Point(490, 30);
+            this.lblMarca.Name = "lblMarca";
+            this.lblMarca.Size = new System.Drawing.Size(183, 30);
+            this.lblMarca.TabIndex = 143;
+            this.lblMarca.Text = "Filtrar por campo";
+            // 
             // FrmCatalogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(19)))));
             this.ClientSize = new System.Drawing.Size(982, 719);
+            this.Controls.Add(this.lblMarca);
+            this.Controls.Add(this.BLimpiarCampos);
             this.Controls.Add(this.comboBusqueda);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.rjButton3);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.btnSalir);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -144,6 +167,7 @@
             this.Text = "FrmCatalogo";
             this.Load += new System.EventHandler(this.FrmCatalogo_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -151,8 +175,9 @@
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.ComboBox comboBusqueda;
-        private CustomControls.RJControls.RJButton rjButton3;
         private CustomControls.RJControls.RJButton btnSalir;
         private CustomControls.RJControls.RJTextBox txtBusqueda;
+        private CustomControls.RJControls.RJButton BLimpiarCampos;
+        private System.Windows.Forms.Label lblMarca;
     }
 }
