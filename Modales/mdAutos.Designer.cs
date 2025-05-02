@@ -43,6 +43,8 @@
             this.txtAño = new CustomControls.RJControls.RJTextBox();
             this.txtImagen = new CustomControls.RJControls.RJTextBox();
             this.txtId = new System.Windows.Forms.Label();
+            this.lblMarca = new System.Windows.Forms.Label();
+            this.BFondoPBAuto = new CustomControls.RJControls.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -157,9 +159,9 @@
             this.comboEstado.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboEstado.ForeColor = System.Drawing.Color.White;
             this.comboEstado.FormattingEnabled = true;
-            this.comboEstado.Location = new System.Drawing.Point(383, 244);
+            this.comboEstado.Location = new System.Drawing.Point(549, 244);
             this.comboEstado.Name = "comboEstado";
-            this.comboEstado.Size = new System.Drawing.Size(297, 38);
+            this.comboEstado.Size = new System.Drawing.Size(131, 38);
             this.comboEstado.TabIndex = 158;
             // 
             // BtnLimpiar2
@@ -361,12 +363,42 @@
             this.txtId.TabIndex = 165;
             this.txtId.Visible = false;
             // 
+            // lblMarca
+            // 
+            this.lblMarca.AutoSize = true;
+            this.lblMarca.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMarca.ForeColor = System.Drawing.Color.White;
+            this.lblMarca.Location = new System.Drawing.Point(378, 248);
+            this.lblMarca.Name = "lblMarca";
+            this.lblMarca.Size = new System.Drawing.Size(165, 30);
+            this.lblMarca.TabIndex = 166;
+            this.lblMarca.Text = "Estado del auto";
+            // 
+            // BFondoPBAuto
+            // 
+            this.BFondoPBAuto.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.BFondoPBAuto.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.BFondoPBAuto.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.BFondoPBAuto.BorderRadius = 4;
+            this.BFondoPBAuto.BorderSize = 0;
+            this.BFondoPBAuto.Enabled = false;
+            this.BFondoPBAuto.FlatAppearance.BorderSize = 0;
+            this.BFondoPBAuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BFondoPBAuto.ForeColor = System.Drawing.Color.White;
+            this.BFondoPBAuto.Location = new System.Drawing.Point(54, 304);
+            this.BFondoPBAuto.Name = "BFondoPBAuto";
+            this.BFondoPBAuto.Size = new System.Drawing.Size(290, 134);
+            this.BFondoPBAuto.TabIndex = 167;
+            this.BFondoPBAuto.TextColor = System.Drawing.Color.White;
+            this.BFondoPBAuto.UseVisualStyleBackColor = false;
+            // 
             // mdAutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(19)))));
             this.ClientSize = new System.Drawing.Size(757, 569);
+            this.Controls.Add(this.lblMarca);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtImagen);
             this.Controls.Add(this.txtAsientos);
@@ -382,6 +414,7 @@
             this.Controls.Add(this.txtKilometros);
             this.Controls.Add(this.txtMatricula);
             this.Controls.Add(this.txtAño);
+            this.Controls.Add(this.BFondoPBAuto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "mdAutos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -410,5 +443,7 @@
         private CustomControls.RJControls.RJTextBox txtAño;
         private CustomControls.RJControls.RJTextBox txtImagen;
         private System.Windows.Forms.Label txtId;
+        private System.Windows.Forms.Label lblMarca;
+        private CustomControls.RJControls.RJButton BFondoPBAuto;
     }
 }

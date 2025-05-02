@@ -1,10 +1,12 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
+using CustomControls.RJControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -88,6 +90,7 @@ namespace TestGit.Modales
             oAuto.Año = Convert.ToInt32(año);
             oAuto.Imagen = imagen;
 
+            BFondoPBAuto.Paint += BFondoPBAuto_Paint;
 
             if (oAuto.Estado != true){
                 this.BackColor = Color.Red;
@@ -209,6 +212,21 @@ namespace TestGit.Modales
             {
 
                 mainForm.Envio(pAuto); // Llamamos a un método en el formulario principal
+            }
+        }
+
+        private void BFondoPBAuto_Paint(object sender, PaintEventArgs e)
+        {
+            RJButton butt = sender as RJButton;
+            if (butt != null)
+            {
+                using (LinearGradientBrush brush = new LinearGradientBrush(butt.ClientRectangle,
+                Color.Blue,
+                Color.Purple,
+                LinearGradientMode.Horizontal))
+                {
+                    e.Graphics.FillRectangle(brush, butt.ClientRectangle);
+                }
             }
         }
     }

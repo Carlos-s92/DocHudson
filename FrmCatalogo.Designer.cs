@@ -61,7 +61,9 @@
             "Consumo",
             "KM",
             "Asientos",
-            "Puertas"});
+            "Puertas",
+            "FechaInicio",
+            "FechaFin"});
             this.comboBusqueda.Location = new System.Drawing.Point(679, 27);
             this.comboBusqueda.Name = "comboBusqueda";
             this.comboBusqueda.Size = new System.Drawing.Size(209, 38);
