@@ -103,17 +103,15 @@ namespace TestGit
                         
                             int id = new CN_Reserva().Registrar(oReserva,out Mensaje);
 
-                            if(id != 0)
+                            if(id > 0)
                             {
                                 VentanaEmergente msg = new VentanaEmergente("Exito", "Reserva Generada con Exito:" + " " + id, "Informacion");
                                 msg.ShowDialog();
                             }
                             else
                             {
-                                VentanaEmergente msg = new VentanaEmergente("Error", "La Reserva no pudo ser Generada", "Error");
-                                msg.ShowDialog();
+                                new VentanaEmergente("Error", Mensaje, "Error").ShowDialog();
                             }
-
                         }
                         else
                         {
