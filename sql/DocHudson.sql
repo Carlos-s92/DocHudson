@@ -635,8 +635,45 @@ END;
 GO
 
 
+	
+CREATE OR ALTER PROCEDURE BuscarClientes
+  @Texto VARCHAR(200)
+AS
+BEGIN
+  SET NOCOUNT ON;
+
+  SELECT 
+    c.Id_Cliente,
+	c.Licencia,
+	p.Id_Persona,
+    p.DNI,
+    p.Nombre,
+    p.Apellido,
+    p.Mail,
+    p.Telefono,
+    p.Fecha_Nacimiento,
+	p.Id_Domicilio AS Id_Domicilio, 
+    d.Calle,
+    d.Numero,
+    l.Id_Localidad,
+    l.Localidad AS localidad,
+    pr.Id_Provincia,
+    pr.Provincia AS provincia,
+    c.Estado
+  FROM Cliente c
+  INNER JOIN Persona p      ON p.Id_Persona  = c.Id_Persona
+  INNER JOIN Domicilio d    ON d.Id_Domicilio = p.Id_Domicilio
+  INNER JOIN Localidad l    ON l.Id_Localidad = d.Id_Localidad
+  INNER JOIN Provincia pr   ON pr.Id_Provincia= l.Id_Provincia
+  WHERE  
+    p.Nombre   LIKE '%' + @Texto + '%'
+    OR p.Apellido LIKE '%' + @Texto + '%'
+    OR p.DNI      LIKE '%' + @Texto + '%';
+END;
+GO
 
 
+	
 -- Procedimientos para la tabla Autos
 CREATE OR ALTER PROCEDURE InsertarAuto
     @Estado bit,
