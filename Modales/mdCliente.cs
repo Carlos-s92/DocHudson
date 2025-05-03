@@ -1,25 +1,39 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
-using CapaPresentacion.Utilidades;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TestGit.Modales
 {
     public partial class mdCliente : Form
     {
+        // Constantes WinAPI
+        private const int WM_NCLBUTTONDOWN = 0xA1;
+        private const int HTCAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool ReleaseCapture();
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
         public Cliente _Cliente = new Cliente();
 
         public mdCliente()
         {
             InitializeComponent();
+
+            // Suscribe el evento al formulario o a tu panel superior
+            this.MouseDown += Form_MouseDown;
+        }
+        private void Form_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+            }
         }
 
         private void mdCliente_Load(object sender, EventArgs e)
