@@ -3,11 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Net;
-using System.Reflection;
 
 namespace CapaDatos
 {
@@ -95,7 +91,6 @@ namespace CapaDatos
         }
 
         // Metodo para conectarse con la base de datos y registrar un cliente
-
         public int Registrar(Cliente obj, out string Mensaje)
         {
             // Genere una variable local de id y mensaje
@@ -241,6 +236,61 @@ namespace CapaDatos
 
         }
 
+        // Metodo para bsucar un cliente
+        public List<Cliente> Buscar(string texto)
+        {
+            var lista = new List<Cliente>();
+            using (var cn = new SqlConnection(Conexion.cadena))
+            using (var cmd = new SqlCommand("BuscarClientes", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Texto", texto);
+
+                cn.Open();
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        lista.Add(new Cliente
+                        {
+                            Id_Cliente = Convert.ToInt32(dr["Id_Cliente"]),
+                            Licencia = dr["Licencia"].ToString(),       // si el SP devuelve la columna Licencia
+                            Estado = Convert.ToBoolean(dr["Estado"]),
+
+                            oPersona = new Persona
+                            {
+                                Id_Persona = Convert.ToInt32(dr["Id_Persona"]),
+                                DNI = dr["DNI"].ToString(),
+                                Nombre = dr["Nombre"].ToString(),
+                                Apellido = dr["Apellido"].ToString(),
+                                Mail = dr["Mail"].ToString(),
+                                Telefono = dr["Telefono"].ToString(),
+                                Fecha_Nacimiento = Convert.ToDateTime(dr["Fecha_Nacimiento"]),
+
+                                oDomicilio = new Domicilio
+                                {
+                                    Id_Domicilio = Convert.ToInt32(dr["Id_Domicilio"]),
+                                    Calle = dr["Calle"].ToString(),
+                                    Numero = Convert.ToInt32(dr["Id_Domicilio"]),
+                                    oLocalidad = new Localidad
+                                    {
+                                        Id_Localidad = Convert.ToInt32(dr["Id_Localidad"]),
+                                        localidad = dr["localidad"].ToString(),
+                                        oProvincia = new Provincia
+                                        {
+                                            Id_Provincia = Convert.ToInt32(dr["Id_Provincia"]),
+                                            provincia = dr["provincia"].ToString()
+                                        }
+                                    }
+                                }
+                            }
+                        });
+
+                    }
+                }
+            }
+            return lista;
+        }
 
 
     }
