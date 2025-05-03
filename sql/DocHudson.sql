@@ -669,7 +669,8 @@ BEGIN
   WHERE  
     p.Nombre   LIKE '%' + @Texto + '%'
     OR p.Apellido LIKE '%' + @Texto + '%'
-    OR p.DNI      LIKE '%' + @Texto + '%';
+    OR p.DNI      LIKE '%' + @Texto + '%'
+    OR p.Mail      LIKE '%' + @Texto + '%';
 END;
 GO
 
