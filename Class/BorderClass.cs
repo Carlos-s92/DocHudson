@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Drawing2D;
+﻿using System.Drawing.Drawing2D;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TestGit.Class
@@ -13,8 +8,6 @@ namespace TestGit.Class
     {
         //Fields
         private int borderRadius = 20;
-        private int borderSize = 2;
-        private Color borderColor = Color.FromArgb(128, 128, 255);
 
         // Crea un camino gráfico que representa un rectángulo con bordes redondeados.
         public GraphicsPath GetRoundedPath(Rectangle rect, float radius)

@@ -1193,6 +1193,75 @@ BEGIN
 END
 GO
 
+CREATE OR ALTER PROCEDURE BuscarReserva
+  @Id_Reserva INT
+AS
+BEGIN
+  SET NOCOUNT ON;
+  SELECT
+    r.Id_Reserva,
+    r.Fecha_Inicio,
+    r.Fecha_Fin,
+
+    -- Auto
+    a.Id_Auto,
+    a.Matricula,
+    a.Kilometros,
+    a.Año,
+    a.Imagen,
+    a.Reservado,
+    a.Estado       AS EstadoAuto,
+    m.Id_Modelo,
+    m.Modelo       AS NombreModelo,
+    m.Consumo,
+    m.Puertas,
+    m.Asientos,
+    ma.Id_Marca,
+    ma.Marca       AS NombreMarca,
+
+    -- Cliente / Persona / Domicilio / Localidad / Provincia
+    c.Id_Cliente,
+    c.Licencia,
+    c.Estado       AS EstadoCliente,
+    p.Id_Persona,
+    p.DNI,
+    p.Nombre      AS NombrePersona,
+    p.Apellido,
+    p.Fecha_Nacimiento,
+    p.Mail,
+    p.Telefono,
+    d.Id_Domicilio,
+    d.Calle,
+    d.Numero,
+    l.Id_Localidad,
+    l.Localidad,
+    pr.Id_Provincia,
+    pr.Provincia,
+
+    -- Pago
+    pay.Id_Pago,
+    pay.Total,
+    pay.Fecha_Pago,
+    pay.Estado   AS EstadoPago
+
+  FROM Reserva r
+  INNER JOIN Autos     a   ON a.Id_Auto      = r.Id_Auto
+  INNER JOIN Modelo    m   ON m.Id_Modelo    = a.Id_Modelo
+  INNER JOIN Marca     ma  ON ma.Id_Marca    = m.Id_Marca
+
+  INNER JOIN Cliente   c   ON c.Id_Cliente   = r.Id_Cliente
+  INNER JOIN Persona   p   ON p.Id_Persona   = c.Id_Persona
+  INNER JOIN Domicilio d   ON d.Id_Domicilio = p.Id_Domicilio
+  INNER JOIN Localidad l   ON l.Id_Localidad = d.Id_Localidad
+  INNER JOIN Provincia pr  ON pr.Id_Provincia= l.Id_Provincia
+
+  INNER JOIN Pago      pay ON pay.Id_Pago     = r.Id_Pago
+
+  WHERE r.Id_Reserva = @Id_Reserva;
+END;
+GO
+
+
 
 CREATE OR ALTER PROCEDURE EliminarReserva
     @Id_Reserva INT,

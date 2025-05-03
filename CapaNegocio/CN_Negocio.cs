@@ -29,9 +29,9 @@ namespace CapaNegocio
             {
                 Mensaje += "Es Necesario una Imagen de Negocio\n";
             }
-            if (obj.Direccion == "")
+            if (obj.Domicilio == "")
             {
-                Mensaje += "Es Necesario la direccion del Negocio\n";
+                Mensaje += "Es Necesario el domicilio del Negocio\n";
             }
 
             if (Mensaje != string.Empty)

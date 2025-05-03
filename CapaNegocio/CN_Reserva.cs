@@ -86,5 +86,7 @@ namespace CapaNegocio
         {
             return objcd_Reserva.Eliminar(obj, out Mensaje);
         }
+
+        public Reserva BuscarReserva(int id) => new CD_Reserva().Buscar(id);
     }
 }

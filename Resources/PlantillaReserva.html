@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Factura de Reserva - Veh�culo de Alquiler</title>
+    <meta charset="UTF-8"/>
+    <title>Factura de Reserva - Vehiculo de Alquiler</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -26,15 +26,20 @@
             margin-top: 20px;
         }
 
-            .info td, .detalle th, .detalle td {
-                padding: 8px;
-                border: 1px solid #ccc;
-            }
-
-        .detalle {
-            width: 100%;
-            border-collapse: collapse;
+        .info td, .detalle th, .detalle td {
+            padding: 8px;
+            border: 1px solid #ccc;
         }
+
+        .detalle th, .detalle td {
+            padding: 8px;
+            border: 1px solid #ccc;
+            text-align: left;
+            /* Para que las palabras largas hagan wrap dentro de la celda */
+            word-wrap: break-word;
+            hyphens: auto;
+        }
+
 
         .total {
             text-align: right;
@@ -57,26 +62,27 @@
             <table>
                 <tr>
                     <td><strong>Cliente:</strong> @Cliente</td>
-                    <td><strong>Fecha de Emisi�n:</strong> @FechaActual</td>
+                    <td><strong>Fecha de Emision:</strong> @FechaActual</td>
                 </tr>
                 <tr>
-                    <td><strong>Tel�fono:</strong> @Telefono</td>
-                    <td><strong>N�mero de Reserva:</strong> @NumeroReserva</td>
+                    <td><strong>Telefono:</strong> @Telefono</td>
+                    <td><strong>Numero de Reserva:</strong> @NumeroReserva</td>
                 </tr>
             </table>
         </div>
 
-        <table class="detalle">
+        <!-- PRIMERA TABLA: DATOS DEL AUTO -->
+        <table class="detalle" style="width: 100%; border-collapse: collapse; table-layout: fixed;">
+            <colgroup>
+                <col style="width: 33%;" />
+                <col style="width: 33%;" />
+                <col style="width: 34%;" />
+            </colgroup>
             <thead>
                 <tr>
-                    <th>Veh�culo</th>
+                    <th>Vehículo</th>
                     <th>Modelo</th>
                     <th>Placa</th>
-                    <th>Fecha Inicio</th>
-                    <th>Fecha Fin</th>
-                    <th>D�as</th>
-                    <th>Precio x D�a</th>
-                    <th>Subtotal</th>
                 </tr>
             </thead>
             <tbody>
@@ -84,6 +90,30 @@
                     <td>@Marca</td>
                     <td>@Modelo</td>
                     <td>@Matricula</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- SEGUNDA TABLA: DETALLE DE RESERVA -->
+        <table class="detalle" style="width: 100%; border-collapse: collapse; table-layout: fixed; margin-top: 10px;">
+            <colgroup>
+                <col style="width: 20%;" />
+                <col style="width: 20%;" />
+                <col style="width: 20%;" />
+                <col style="width: 20%;" />
+                <col style="width: 20%;" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th>Días</th>
+                    <th>Precio x Día</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
                     <td>@FechaInicio</td>
                     <td>@FechaFin</td>
                     <td>@Dias</td>
@@ -92,6 +122,7 @@
                 </tr>
             </tbody>
         </table>
+
 
         <div class="total">
             <p><strong>Total a Pagar:</strong> @Total2</p>
