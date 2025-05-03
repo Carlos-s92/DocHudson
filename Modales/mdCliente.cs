@@ -26,6 +26,7 @@ namespace TestGit.Modales
 
             // Suscribe el evento al formulario o a tu panel superior
             this.MouseDown += Form_MouseDown;
+            this.AcceptButton = btnBuscar;
         }
         private void Form_MouseDown(object sender, MouseEventArgs e)
         {
@@ -79,7 +80,7 @@ namespace TestGit.Modales
             }
         }
 
-        private void rjButton3_Click(object sender, EventArgs e)
+        private void btnLimpiar_Click(object sender, EventArgs e)
         {
             // Limpia el campo de búsqueda y muestra todas las filas del DataGridView.
             txtBusqueda.Texts = "";
@@ -89,31 +90,18 @@ namespace TestGit.Modales
             }
         }
 
-        //private void txtBusqueda_KeyDown(object sender, KeyEventArgs e)
-        //{
-        //    if (e.KeyData == Keys.Enter) // Si el usuario presiona la tecla Enter.
-        //    {
-        //        // Obtiene el nombre de la columna seleccionada para la búsqueda.
-        //        string columnaFiltro = ((OpcionesCombo)comboBusqueda.SelectedItem).Valor.ToString();
+        private void txtBusqueda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Evita el “ding” del sistema
+                e.Handled = true;
+                e.SuppressKeyPress = true;
 
-        //        // Verifica si hay filas en el DataGridView.
-        //        if (dgvData.Rows.Count > 0)
-        //        {
-        //            // Filtra las filas del DataGridView según el texto de búsqueda.
-        //            foreach (DataGridViewRow row in dgvData.Rows)
-        //            {
-        //                if (row.Cells[columnaFiltro].Value.ToString().Trim().ToUpper().Contains(txtBusqueda.Texts.Trim().ToUpper()))
-        //                {
-        //                    row.Visible = true; // Muestra la fila si coincide.
-        //                }
-        //                else
-        //                {
-        //                    row.Visible = false; // Oculta la fila si no coincide.
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
+                // Llama al método de búsqueda (igual que btnBuscar_Click)
+                btnBuscar.PerformClick();
+            }
+        }
 
         private void dgvData_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

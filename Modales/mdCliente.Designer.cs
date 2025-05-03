@@ -31,7 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.rjButton3 = new CustomControls.RJControls.RJButton();
+            this.btnLimpiar = new CustomControls.RJControls.RJButton();
             this.txtBusqueda = new CustomControls.RJControls.RJTextBox();
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.btnseleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -54,27 +54,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
-            // rjButton3
+            // btnLimpiar
             // 
-            this.rjButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton3.BorderColor = System.Drawing.Color.DimGray;
-            this.rjButton3.BorderRadius = 20;
-            this.rjButton3.BorderSize = 2;
-            this.rjButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton3.FlatAppearance.BorderSize = 0;
-            this.rjButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton3.Location = new System.Drawing.Point(620, 13);
-            this.rjButton3.Margin = new System.Windows.Forms.Padding(2);
-            this.rjButton3.Name = "rjButton3";
-            this.rjButton3.Size = new System.Drawing.Size(110, 37);
-            this.rjButton3.TabIndex = 141;
-            this.rjButton3.Text = "Limpiar";
-            this.rjButton3.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton3.UseVisualStyleBackColor = false;
-            this.rjButton3.Click += new System.EventHandler(this.rjButton3_Click);
+            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.btnLimpiar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.btnLimpiar.BorderColor = System.Drawing.Color.DimGray;
+            this.btnLimpiar.BorderRadius = 20;
+            this.btnLimpiar.BorderSize = 2;
+            this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpiar.FlatAppearance.BorderSize = 0;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnLimpiar.Location = new System.Drawing.Point(620, 13);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(110, 37);
+            this.btnLimpiar.TabIndex = 141;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // txtBusqueda
             // 
@@ -341,7 +341,7 @@
             this.ClientSize = new System.Drawing.Size(800, 389);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.rjButton1);
-            this.Controls.Add(this.rjButton3);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.dgvData);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -355,7 +355,7 @@
         }
 
         #endregion
-        private CustomControls.RJControls.RJButton rjButton3;
+        private CustomControls.RJControls.RJButton btnLimpiar;
         private CustomControls.RJControls.RJTextBox txtBusqueda;
         private System.Windows.Forms.DataGridView dgvData;
         private CustomControls.RJControls.RJButton rjButton1;
