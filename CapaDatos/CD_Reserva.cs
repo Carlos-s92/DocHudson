@@ -154,7 +154,7 @@ namespace CapaDatos
 
         }
 
-        public bool Eliminar(Reserva obj, out string Mensaje)
+        public bool Eliminar(int id_reserva, out string Mensaje)
         {
             bool Respuesta = false;
             Mensaje = string.Empty;
@@ -166,7 +166,7 @@ namespace CapaDatos
 
 
                     SqlCommand cmd = new SqlCommand("EliminarReserva", oconexion);
-                    cmd.Parameters.AddWithValue("Id_Reserva", obj.Id_Reserva);
+                    cmd.Parameters.AddWithValue("Id_Reserva", id_reserva);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
