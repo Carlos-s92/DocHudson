@@ -423,6 +423,7 @@ BEGIN
         SET @Mensaje = ERROR_MESSAGE();
     END CATCH
 END;
+GO
 
 
 CREATE OR ALTER PROCEDURE ActualizarUsuario
@@ -798,6 +799,66 @@ BEGIN
         SET @Mensaje = 'No se pudo eliminar el auto';
         ROLLBACK;
     END CATCH;
+END;
+GO
+
+
+CREATE OR ALTER PROCEDURE BuscarAutos
+  @Texto VARCHAR(100)
+AS
+BEGIN
+  SET NOCOUNT ON;
+
+  SELECT
+    a.Id_Auto,
+    a.Matricula,
+    a.Kilometros,
+    a.Año,
+    a.Imagen,
+    a.Reservado,
+    a.Estado,
+    a.Id_Modelo,
+    m.Modelo   AS NombreModelo,
+    m.Consumo,
+    m.Puertas,
+    m.Asientos,
+    m.Id_Marca,
+    ma.Marca   AS NombreMarca
+  FROM Autos a
+  INNER JOIN Modelo m ON m.Id_Modelo = a.Id_Modelo
+  INNER JOIN Marca  ma ON ma.Id_Marca   = m.Id_Marca
+  WHERE
+    a.Matricula LIKE '%' + @Texto + '%'
+    OR m.Modelo   LIKE '%' + @Texto + '%'
+    OR ma.Marca   LIKE '%' + @Texto + '%';
+END;
+GO
+
+CREATE OR ALTER PROCEDURE ListarAutosDisponibles
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        a.Id_Auto,
+        a.Matricula,
+        a.Kilometros,
+        a.Año,
+        a.Imagen,
+        a.Reservado,
+        a.Estado,
+        a.Id_Modelo,
+        m.Modelo       AS NombreModelo,
+        m.Consumo,
+        m.Puertas,
+        m.Asientos,
+        m.Id_Marca,
+        ma.Marca       AS NombreMarca
+    FROM Autos a
+    INNER JOIN Modelo m ON m.Id_Modelo = a.Id_Modelo
+    INNER JOIN Marca  ma ON ma.Id_Marca   = m.Id_Marca
+    WHERE a.Reservado = 'False'
+    ORDER BY a.Id_Auto;
 END;
 GO
 
@@ -1204,8 +1265,7 @@ BEGIN
         SET @Mensaje = ERROR_MESSAGE();
     END CATCH
 END;
-
-
+GO
 
 CREATE OR ALTER   PROCEDURE InsertarDomicilio(
     @Calle VARCHAR(100),
@@ -1240,7 +1300,7 @@ BEGIN
         SET @Mensaje = ERROR_MESSAGE();
     END CATCH
 END;
-
+GO
 
 --Inserciones basicas para el sistema
 

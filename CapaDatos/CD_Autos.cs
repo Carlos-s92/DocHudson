@@ -9,74 +9,47 @@ namespace CapaDatos
 {
     public class CD_Autos
     {
-
         public List<Autos> Listar()
         {
-            List<Autos> lista = new List<Autos>();
+            var lista = new List<Autos>();
 
-            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            using (var cn = new SqlConnection(Conexion.cadena))
+            using (var cmd = new SqlCommand("ListarAutosDisponibles", cn))
             {
-                try
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+
+                using (var dr = cmd.ExecuteReader())
                 {
-                    StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT a.Id_Auto, mod.modelo, mar.Id_Marca, mar.marca, a.Matricula, a.Kilometros, a.Año, mod.Consumo, mod.Puertas, mod.Asientos, a.Imagen, a.Estado, a.Reservado FROM Autos a");
-                    query.AppendLine("inner join Modelo mod on mod.Id_Modelo = a.Id_Modelo");
-                    query.AppendLine("inner join Marca mar on mar.Id_Marca = mod.Id_Marca");
-
-
-
-                    using (SqlCommand cmd = new SqlCommand(query.ToString(), oconexion))
+                    while (dr.Read())
                     {
-                        cmd.CommandType = CommandType.Text;
-
-                        oconexion.Open();
-
-                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        lista.Add(new Autos
                         {
-                            while (dr.Read())
+                            Id_Auto = Convert.ToInt32(dr["Id_Auto"]),
+                            Matricula = dr["Matricula"].ToString(),
+                            Kilometros = Convert.ToDecimal(dr["Kilometros"]),
+                            Año = Convert.ToInt32(dr["Año"]),
+                            Imagen = dr["Imagen"].ToString(),
+                            Reservado = Convert.ToBoolean(dr["Reservado"]),
+                            Estado = Convert.ToBoolean(dr["Estado"]),
+                            oModelo = new Modelo
                             {
-                                lista.Add(new Autos()
+                                Id_Modelo = Convert.ToInt32(dr["Id_Modelo"]),
+                                modelo = dr["NombreModelo"].ToString(),
+                                Consumo = Convert.ToDecimal(dr["Consumo"]),
+                                Puertas = Convert.ToInt32(dr["Puertas"]),
+                                Asientos = Convert.ToInt32(dr["Asientos"]),
+                                oMarca = new Marca
                                 {
-                                    Id_Auto = Convert.ToInt32(dr["Id_Auto"]),
-                                    //Modelo = dr["Modelo"].ToString(),
-                                    //Marca = dr["Marca"].ToString(),
-                                    //////////////////////////////////////////////////
-                                    oModelo = new Modelo()
-                                    {
-                                        //Id_Modelo = Convert.ToInt32(dr["Id_Modelo"]),
-                                        modelo = dr["Modelo"].ToString(),
-                                        Consumo = Convert.ToInt32(dr["Consumo"]),
-                                        Puertas = Convert.ToInt32(dr["Puertas"]),
-                                        Asientos = Convert.ToInt32(dr["Asientos"]),
-                                        oMarca = new Marca()
-                                        {
-                                            Id_Marca = Convert.ToInt32(dr["Id_Marca"]),
-                                            marca = dr["Marca"].ToString(),
-                                        }
-                                    },
-                                    
-                                    //////////////////////////////////////////////////
-                                    Matricula = dr["Matricula"].ToString(),
-                                    Kilometros = Convert.ToDecimal(dr["Kilometros"]),
-                                    Año = Convert.ToInt32(dr["Año"]),
-                                    /*Consumo = Convert.ToDecimal(dr["Consumo"]),
-                                    Puertas = Convert.ToInt32(dr["Puertas"]),
-                                    Asientos = Convert.ToInt32(dr["Asientos"]),*/
-                                    Imagen = dr["Imagen"].ToString(),
-                                    Estado = Convert.ToBoolean(dr["Estado"]),
-                                    Reservado = Convert.ToBoolean(dr["Reservado"])
-
-                                });
+                                    Id_Marca = Convert.ToInt32(dr["Id_Marca"]),
+                                    marca = dr["NombreMarca"].ToString()
+                                }
                             }
-                        }
-                        oconexion.Close();
+                        });
                     }
                 }
-                catch (Exception ex)
-                {
-                    lista = new List<Autos>(); // Asegura que no se retorne null
-                }
             }
+
             return lista;
         }
 
@@ -90,9 +63,6 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-
-
-
                     SqlCommand cmd = new SqlCommand("InsertarAuto", oconexion);
                     
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
@@ -120,9 +90,7 @@ namespace CapaDatos
                 IdAutoGenerado = 0;
                 Mensaje = ex.Message;
             }
-
             return IdAutoGenerado;
-
         }
 
         public bool Editar(Autos obj, out string Mensaje)
@@ -134,7 +102,6 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-
                     SqlCommand cmd = new SqlCommand("ActualizarAuto", oconexion);
                     cmd.Parameters.AddWithValue("Id_Auto", obj.Id_Auto);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
@@ -167,9 +134,7 @@ namespace CapaDatos
                 Respuesta = false;
                 Mensaje = ex.Message;
             }
-
             return Respuesta;
-
         }
 
         public bool Eliminar(Autos obj, out string Mensaje)
@@ -181,8 +146,6 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-
-
                     SqlCommand cmd = new SqlCommand("EliminarAuto", oconexion);
                     cmd.Parameters.AddWithValue("Id_Auto", obj.Id_Auto);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -209,7 +172,46 @@ namespace CapaDatos
 
         }
 
-
-
+        public List<Autos> Buscar(string texto)
+        {
+            var lista = new List<Autos>();
+            using (var cn = new SqlConnection(Conexion.cadena))
+            using (var cmd = new SqlCommand("BuscarAutos", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Texto", texto);
+                cn.Open();
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        lista.Add(new Autos
+                        {
+                            Id_Auto = Convert.ToInt32(dr["Id_Auto"]),
+                            Matricula = dr["Matricula"].ToString(),
+                            Kilometros = Convert.ToDecimal(dr["Kilometros"]),
+                            Año = Convert.ToInt32(dr["Año"]),
+                            Imagen = dr["Imagen"].ToString(),
+                            Reservado = Convert.ToBoolean(dr["Reservado"]),
+                            Estado = Convert.ToBoolean(dr["Estado"]),
+                            oModelo = new Modelo
+                            {
+                                Id_Modelo = Convert.ToInt32(dr["Id_Modelo"]),
+                                modelo = dr["NombreModelo"].ToString(),
+                                Consumo = Convert.ToDecimal(dr["Consumo"]),
+                                Puertas = Convert.ToInt32(dr["Puertas"]),
+                                Asientos = Convert.ToInt32(dr["Asientos"]),
+                                oMarca = new Marca
+                                {
+                                    Id_Marca = Convert.ToInt32(dr["Id_Marca"]),
+                                    marca = dr["NombreMarca"].ToString()
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+            return lista;
+        }
     }
 }

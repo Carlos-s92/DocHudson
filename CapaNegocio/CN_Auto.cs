@@ -1,11 +1,6 @@
 ﻿using CapaDatos;
 using CapaEntidad;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.RegularExpressions;
 
 namespace CapaNegocio
 {
@@ -68,8 +63,6 @@ namespace CapaNegocio
 
         }
 
-
-
         public bool Editar(Autos obj, out string Mensaje)
         {
             Mensaje = string.Empty;
@@ -119,11 +112,14 @@ namespace CapaNegocio
             }
         }
 
-
         public bool Eliminar(Autos obj, out string Mensaje)
         {
             return objcd_Autos.Eliminar(obj, out Mensaje);
         }
 
+        public List<Autos> BuscarAuto(string texto)
+        {
+            return new CD_Autos().Buscar(texto);
+        }
     }
 }

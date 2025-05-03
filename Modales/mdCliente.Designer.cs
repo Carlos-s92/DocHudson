@@ -346,6 +346,7 @@
             this.Controls.Add(this.dgvData);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "mdCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "mdCliente";
             this.Load += new System.EventHandler(this.mdCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
