@@ -1,11 +1,13 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
+using CustomControls.RJControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,8 @@ namespace TestGit
         public FrmNegocio()
         {
             InitializeComponent();
+
+            BFondoPBAuto.Paint += BFondoPBAuto_Paint;
         }
 
 
@@ -157,7 +161,21 @@ namespace TestGit
                     msg.ShowDialog();
                 }
             }
+        }
 
+        private void BFondoPBAuto_Paint(object sender, PaintEventArgs e)
+        {
+            RJButton butt = sender as RJButton;
+            if (butt != null)
+            {
+                using (LinearGradientBrush brush = new LinearGradientBrush(butt.ClientRectangle,
+                Color.Blue,
+                Color.Purple,
+                LinearGradientMode.Horizontal))
+                {
+                    e.Graphics.FillRectangle(brush, butt.ClientRectangle);
+                }
+            }
         }
     }
 }

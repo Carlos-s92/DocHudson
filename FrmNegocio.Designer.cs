@@ -35,6 +35,7 @@
             this.txtDireccion = new CustomControls.RJControls.RJTextBox();
             this.txtNombre = new CustomControls.RJControls.RJTextBox();
             this.txtImagen = new CustomControls.RJControls.RJTextBox();
+            this.BFondoPBAuto = new CustomControls.RJControls.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,6 +178,24 @@
             this.txtImagen.UnderlinedStyle = true;
             this.txtImagen.Visible = false;
             // 
+            // BFondoPBAuto
+            // 
+            this.BFondoPBAuto.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.BFondoPBAuto.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.BFondoPBAuto.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.BFondoPBAuto.BorderRadius = 3;
+            this.BFondoPBAuto.BorderSize = 0;
+            this.BFondoPBAuto.Enabled = false;
+            this.BFondoPBAuto.FlatAppearance.BorderSize = 0;
+            this.BFondoPBAuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BFondoPBAuto.ForeColor = System.Drawing.Color.White;
+            this.BFondoPBAuto.Location = new System.Drawing.Point(82, 109);
+            this.BFondoPBAuto.Name = "BFondoPBAuto";
+            this.BFondoPBAuto.Size = new System.Drawing.Size(366, 303);
+            this.BFondoPBAuto.TabIndex = 156;
+            this.BFondoPBAuto.TextColor = System.Drawing.Color.White;
+            this.BFondoPBAuto.UseVisualStyleBackColor = false;
+            // 
             // FrmNegocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,6 +209,7 @@
             this.Controls.Add(this.rjButton2);
             this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.BFondoPBAuto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmNegocio";
             this.Text = "FrmNegocio";
@@ -209,5 +229,6 @@
         private CustomControls.RJControls.RJTextBox txtDireccion;
         private CustomControls.RJControls.RJTextBox txtNombre;
         private CustomControls.RJControls.RJTextBox txtImagen;
+        private CustomControls.RJControls.RJButton BFondoPBAuto;
     }
 }
