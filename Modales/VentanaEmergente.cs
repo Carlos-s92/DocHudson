@@ -72,6 +72,9 @@ namespace TestGit.Modales
                 case "Informacion":
                     IPBVE.ImageLocation = basePath + "IconoAlertaVE.png";
                     break;
+                case "Exito":
+                    IPBVE.ImageLocation = basePath + "IconoSuccessVE.png";
+                    break;
             }
             IPBVE.SizeMode = PictureBoxSizeMode.StretchImage;
         }
@@ -88,6 +91,10 @@ namespace TestGit.Modales
                     BAceptarVE.Visible = false;
                     break;
                 case "Informacion":
+                    BNoVE.Visible = false;
+                    BSIVE.Visible = false;
+                    break;
+                case "Exito":
                     BNoVE.Visible = false;
                     BSIVE.Visible = false;
                     break;

@@ -85,11 +85,10 @@ namespace TestGit
             Texto_Html = Texto_Html.Replace("@Dias", dias.ToString());
             Texto_Html = Texto_Html.Replace("@PrecioDia", precioDia.ToString("0.##"));
             Texto_Html = Texto_Html.Replace("@Total", total.ToString("0.##"));
-            Texto_Html = Texto_Html.Replace("@Total2", total.ToString("0.##"));
 
             // Mostrar un cuadro de diálogo para seleccionar la ubicación donde guardar el PDF
             SaveFileDialog savefile = new SaveFileDialog();
-            savefile.FileName = string.Format("Reserva_{0}.pdf", txtDocumento.Texts);
+            savefile.FileName = string.Format("Reserva_{0}.pdf", txtDocumento.Texts + DateTime.Today.ToString("ddMMyyyy"));
             savefile.Filter = "Pdf Files | *.pdf";
 
             // Si el usuario confirma la descarga
@@ -102,14 +101,11 @@ namespace TestGit
 
                     PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
                     pdfDoc.Open();
-
-
                     // Leer el HTML y agregarlo al documento PDF
                     using (StringReader sr = new StringReader(Texto_Html))
                     {
                         XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
                     }
-
                     // Cerrar el documento y el stream
                     pdfDoc.Close();
                     stream.Close();
