@@ -1,9 +1,7 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
 using System;
-using System.Data;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 using TestGit.Modales;
 using iTextSharp.text;
@@ -24,8 +22,38 @@ namespace TestGit
 
         private void btnLiberar_Click(object sender, EventArgs e)
         {
+            if (!int.TryParse(txtBusqueda.Texts, out int id)) return;
 
+            // 1) Confirmar que la reserva existe
+            var reserva = new CN_Reserva().BuscarReserva(id);
+            if (reserva == null)
+            {
+                new VentanaEmergente("Error", "No existe esa reserva", "Error").ShowDialog();
+                return;
+            }
+
+            // 2) Pedir confirmación al usuario
+            var confirm = MessageBox.Show(
+                "¿Seguro que desea liberar esta reserva?",
+                "Confirmar",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Question);
+            if (confirm != DialogResult.OK) return;
+
+            // 3) Llamar al negocio para liberar
+            string mensaje;
+            bool ok = new CN_Reserva().LiberarReserva(id, out mensaje);
+            if (ok)
+            {
+                MessageBox.Show("Reserva liberada exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimpiarCampos();   // tu método para resetear la UI
+            }
+            else
+            {
+                MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {

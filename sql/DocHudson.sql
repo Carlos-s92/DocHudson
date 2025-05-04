@@ -1269,26 +1269,39 @@ CREATE OR ALTER PROCEDURE EliminarReserva
 	@Mensaje varchar(500) output
 AS
 BEGIN
-	Set @Resultado = 0;
-	Set @Mensaje = ''
+    SET @Resultado = 0;
+    SET @Mensaje   = '';
 
+    -- Validar que exista la reserva
     IF NOT EXISTS (SELECT 1 FROM Reserva WHERE Id_Reserva = @Id_Reserva)
     BEGIN
-        Set @Mensaje ='La reserva no existe.';
+        SET @Mensaje = 'La reserva no existe.';
         RETURN;
     END
+
     BEGIN TRANSACTION;
     BEGIN TRY
-        Update Reserva Set Estado = 0 WHERE Id_Reserva = @Id_Reserva;
+        -- 1) Marcar la reserva como inactiva
+        UPDATE Reserva
+           SET Estado = 0
+         WHERE Id_Reserva = @Id_Reserva;
+
+        -- 2) Liberar el auto asociado
+        UPDATE A
+          SET Reservado = 0
+        FROM Autos A
+        INNER JOIN Reserva R ON R.Id_Auto = A.Id_Auto
+        WHERE R.Id_Reserva = @Id_Reserva;
+
         COMMIT TRANSACTION;
-		Set @Resultado = 1;
+        SET @Resultado = 1;
     END TRY
     BEGIN CATCH
         ROLLBACK TRANSACTION;
-		Set @Mensaje = ERROR_MESSAGE();
+        SET @Mensaje = ERROR_MESSAGE();
         THROW;
     END CATCH;
-END
+END;
 GO
 
 	CREATE OR ALTER   PROCEDURE EditarDomicilio(

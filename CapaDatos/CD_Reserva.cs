@@ -3,9 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaDatos
 {
@@ -250,41 +248,24 @@ namespace CapaDatos
 
         }
 
-        public bool Eliminar(Reserva obj, out string Mensaje)
+        public bool Eliminar(int idReserva, out string mensaje)
         {
-            bool Respuesta = false;
-            Mensaje = string.Empty;
-
-            try
+            bool respuesta = false;
+            mensaje = string.Empty;
+            using (var cn = new SqlConnection(Conexion.cadena))
+            using (var cmd = new SqlCommand("EliminarReserva", cn))
             {
-                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
-                {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id_Reserva", idReserva);
+                cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
 
-
-                    SqlCommand cmd = new SqlCommand("EliminarReserva", oconexion);
-                    cmd.Parameters.AddWithValue("Id_Reserva", obj.Id_Reserva);
-                    cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    oconexion.Open();
-
-                    cmd.ExecuteNonQuery();
-
-                    Respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
-                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-                    oconexion.Close();
-                }
-
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
+                mensaje = cmd.Parameters["Mensaje"].Value.ToString();
             }
-            catch (Exception ex)
-            {
-                Respuesta = false;
-                Mensaje = ex.Message;
-            }
-
-            return Respuesta;
-
+            return respuesta;
         }
 
 
