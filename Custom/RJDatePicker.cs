@@ -2,8 +2,6 @@
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Windows;
-using System.util;
 using TestGit.Custom;
 
 namespace CustomControls.RJControls
@@ -217,19 +215,6 @@ namespace CustomControls.RJControls
             }
 
             base.WndProc(ref m);
-        }
-
-        private DateTime _selectedDate = DateTime.Now.Date;
-
-
-        public new DateTime Value
-        {
-            get => _selectedDate;
-            set
-            {
-                _selectedDate = value;
-                this.Text = value.ToString("dd/MM/yyyy");
-            }
         }
     }
 }

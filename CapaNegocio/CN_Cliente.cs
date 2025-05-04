@@ -2,10 +2,7 @@
 using CapaEntidad;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace CapaNegocio
 {
@@ -19,7 +16,6 @@ namespace CapaNegocio
             return objcd_cliente.Listar();
         }
 
-
         // Metodo para buscar un domicilio segun una persona
 
         public int BusquedaDomicilio(int persona)
@@ -30,10 +26,8 @@ namespace CapaNegocio
 
             return id;
         }
- 
 
         // Metodo para registrar un cliente
-
         public int Registrar(Cliente obj, out string Mensaje)
         {
             Mensaje = string.Empty;
@@ -109,7 +103,6 @@ namespace CapaNegocio
             }
 
         }
-
 
         // Metodo para traer un id de persona segun un documento
         public int BusquedaDni(string dni)
@@ -210,6 +203,10 @@ namespace CapaNegocio
             return Regex.IsMatch(email, regex, RegexOptions.IgnoreCase);
         }
 
+        public List<Cliente> BuscarCliente(string texto)
+        {
+            return objcd_cliente.Buscar(texto);
+        }
 
     }
 }

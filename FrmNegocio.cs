@@ -103,7 +103,7 @@ namespace TestGit
                     {
                         Nombre = txtNombre.Texts,
                         Imagen = txtImagen.Texts,
-                        Direccion = txtDireccion.Texts
+                        Domicilio = txtDireccion.Texts
                     };
 
                     // Intentar guardar los datos en la base de datos a través de la capa de negocio
@@ -138,7 +138,7 @@ namespace TestGit
         {
             Negocio obj = new CN_Negocio().obtenerDatos();
             txtNombre.Texts = obj.Nombre;
-            txtDireccion.Texts = obj.Direccion;
+            txtDireccion.Texts = obj.Domicilio;
 
             if(obj.Imagen != null)
             {

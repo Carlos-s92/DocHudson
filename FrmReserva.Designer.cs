@@ -32,6 +32,10 @@
             this.txtIdAuto = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpFechaF = new CustomControls.RJControls.RJDatePicker();
+            this.dtpFechaI = new CustomControls.RJControls.RJDatePicker();
             this.btnAuto = new CustomControls.RJControls.RJButton();
             this.btnCliente = new CustomControls.RJControls.RJButton();
             this.txtConsumo = new CustomControls.RJControls.RJTextBox();
@@ -46,10 +50,6 @@
             this.txtTelefono = new CustomControls.RJControls.RJTextBox();
             this.txtDocumento = new CustomControls.RJControls.RJTextBox();
             this.txtNombre = new CustomControls.RJControls.RJTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtpFechaI = new CustomControls.RJControls.RJDatePicker();
-            this.dtpFechaF = new CustomControls.RJControls.RJDatePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -91,6 +91,68 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 144;
             this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(40, 510);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(115, 25);
+            this.label1.TabIndex = 157;
+            this.label1.Text = "Fecha inicio";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(485, 510);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 25);
+            this.label2.TabIndex = 158;
+            this.label2.Text = "Fecha fin";
+            // 
+            // dtpFechaF
+            // 
+            this.dtpFechaF.BorderColor = System.Drawing.Color.DimGray;
+            this.dtpFechaF.BorderSize = 2;
+            this.dtpFechaF.CalendarFont = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaF.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.dtpFechaF.CalendarMonthBackground = System.Drawing.Color.Blue;
+            this.dtpFechaF.CalendarTitleBackColor = System.Drawing.Color.Yellow;
+            this.dtpFechaF.CalendarTitleForeColor = System.Drawing.Color.Red;
+            this.dtpFechaF.CalendarTrailingForeColor = System.Drawing.Color.Lime;
+            this.dtpFechaF.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaF.Location = new System.Drawing.Point(582, 505);
+            this.dtpFechaF.MinDate = new System.DateTime(2025, 5, 3, 0, 0, 0, 0);
+            this.dtpFechaF.MinimumSize = new System.Drawing.Size(4, 35);
+            this.dtpFechaF.Name = "dtpFechaF";
+            this.dtpFechaF.Size = new System.Drawing.Size(281, 35);
+            this.dtpFechaF.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.dtpFechaF.TabIndex = 160;
+            this.dtpFechaF.TextColor = System.Drawing.Color.White;
+            // 
+            // dtpFechaI
+            // 
+            this.dtpFechaI.BorderColor = System.Drawing.Color.DimGray;
+            this.dtpFechaI.BorderSize = 2;
+            this.dtpFechaI.CalendarFont = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaI.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.dtpFechaI.CalendarMonthBackground = System.Drawing.Color.Blue;
+            this.dtpFechaI.CalendarTitleBackColor = System.Drawing.Color.Yellow;
+            this.dtpFechaI.CalendarTitleForeColor = System.Drawing.Color.Red;
+            this.dtpFechaI.CalendarTrailingForeColor = System.Drawing.Color.Lime;
+            this.dtpFechaI.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaI.Location = new System.Drawing.Point(160, 505);
+            this.dtpFechaI.MinDate = new System.DateTime(2025, 5, 3, 0, 0, 0, 0);
+            this.dtpFechaI.MinimumSize = new System.Drawing.Size(4, 35);
+            this.dtpFechaI.Name = "dtpFechaI";
+            this.dtpFechaI.Size = new System.Drawing.Size(281, 35);
+            this.dtpFechaI.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.dtpFechaI.TabIndex = 159;
+            this.dtpFechaI.TextColor = System.Drawing.Color.White;
             // 
             // btnAuto
             // 
@@ -422,68 +484,6 @@
             this.txtNombre.Texts = "";
             this.txtNombre.UnderlinedStyle = true;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(40, 510);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 25);
-            this.label1.TabIndex = 157;
-            this.label1.Text = "Fecha inicio";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(485, 510);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 25);
-            this.label2.TabIndex = 158;
-            this.label2.Text = "Fecha fin";
-            // 
-            // dtpFechaI
-            // 
-            this.dtpFechaI.BorderColor = System.Drawing.Color.DimGray;
-            this.dtpFechaI.BorderSize = 2;
-            this.dtpFechaI.CalendarFont = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaI.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.dtpFechaI.CalendarMonthBackground = System.Drawing.Color.Blue;
-            this.dtpFechaI.CalendarTitleBackColor = System.Drawing.Color.Yellow;
-            this.dtpFechaI.CalendarTitleForeColor = System.Drawing.Color.Red;
-            this.dtpFechaI.CalendarTrailingForeColor = System.Drawing.Color.Lime;
-            this.dtpFechaI.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaI.Location = new System.Drawing.Point(160, 505);
-            this.dtpFechaI.MinimumSize = new System.Drawing.Size(4, 35);
-            this.dtpFechaI.Name = "dtpFechaI";
-            this.dtpFechaI.Size = new System.Drawing.Size(281, 35);
-            this.dtpFechaI.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.dtpFechaI.TabIndex = 159;
-            this.dtpFechaI.TextColor = System.Drawing.Color.White;
-            this.dtpFechaI.Value = new System.DateTime(2025, 4, 20, 3, 45, 43, 130);
-            // 
-            // dtpFechaF
-            // 
-            this.dtpFechaF.BorderColor = System.Drawing.Color.DimGray;
-            this.dtpFechaF.BorderSize = 2;
-            this.dtpFechaF.CalendarFont = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaF.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.dtpFechaF.CalendarMonthBackground = System.Drawing.Color.Blue;
-            this.dtpFechaF.CalendarTitleBackColor = System.Drawing.Color.Yellow;
-            this.dtpFechaF.CalendarTitleForeColor = System.Drawing.Color.Red;
-            this.dtpFechaF.CalendarTrailingForeColor = System.Drawing.Color.Lime;
-            this.dtpFechaF.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaF.Location = new System.Drawing.Point(582, 505);
-            this.dtpFechaF.MinimumSize = new System.Drawing.Size(4, 35);
-            this.dtpFechaF.Name = "dtpFechaF";
-            this.dtpFechaF.Size = new System.Drawing.Size(281, 35);
-            this.dtpFechaF.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.dtpFechaF.TabIndex = 160;
-            this.dtpFechaF.TextColor = System.Drawing.Color.White;
-            this.dtpFechaF.Value = new System.DateTime(2025, 4, 20, 3, 45, 43, 130);
             // 
             // FrmReserva
             // 

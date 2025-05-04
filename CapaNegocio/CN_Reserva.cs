@@ -1,10 +1,6 @@
 ﻿using CapaDatos;
 using CapaEntidad;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaNegocio
 {
@@ -25,7 +21,7 @@ namespace CapaNegocio
             {
                 Mensaje += "La fecha de fin no puede ser menor que la de inicio\n";
             }
-            if (obj.Fecha_Inicio < System.DateTime.Now || obj.Fecha_Fin < System.DateTime.Now)
+            if (obj.Fecha_Inicio < System.DateTime.Today || obj.Fecha_Fin < System.DateTime.Today)
             {
                 Mensaje += "La fecha de inicio/fin no puede ser menor que actual\n";
             }
@@ -41,9 +37,6 @@ namespace CapaNegocio
             {
                 Mensaje += "Es Necesario un Pago para Reservar\n";
             }
-  
-
-
 
             if (Mensaje != string.Empty)
             {
@@ -53,10 +46,7 @@ namespace CapaNegocio
             {
                 return objcd_Reserva.Registrar(obj, out Mensaje);
             }
-
         }
-
-
 
         public bool Editar(Reserva obj, out string Mensaje)
         {
@@ -92,10 +82,11 @@ namespace CapaNegocio
             }
         }
 
-
-        public bool Eliminar(Reserva obj, out string Mensaje)
+        public bool LiberarReserva(int idReserva, out string mensaje)
         {
-            return objcd_Reserva.Eliminar(obj, out Mensaje);
+            return new CD_Reserva().Eliminar(idReserva, out mensaje);
         }
+
+        public Reserva BuscarReserva(int id) => new CD_Reserva().Buscar(id);
     }
 }
