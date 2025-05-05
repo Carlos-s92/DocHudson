@@ -169,11 +169,10 @@ Go
 CREATE TABLE Negocio(
 Id_Negocio int primary key identity(1,1),
 Nombre varchar(60),
-RUC varchar(60),
-Domicilio varchar(60),
 Imagen Varchar(200) default ''
 )
 go
+
 
 --Comienzo de los procedimientos--
 
@@ -423,6 +422,7 @@ BEGIN
         SET @Mensaje = ERROR_MESSAGE();
     END CATCH
 END;
+GO
 
 
 CREATE OR ALTER PROCEDURE ActualizarUsuario
@@ -635,8 +635,46 @@ END;
 GO
 
 
+	
+CREATE OR ALTER PROCEDURE BuscarClientes
+  @Texto VARCHAR(200)
+AS
+BEGIN
+  SET NOCOUNT ON;
+
+  SELECT 
+    c.Id_Cliente,
+	c.Licencia,
+	p.Id_Persona,
+    p.DNI,
+    p.Nombre,
+    p.Apellido,
+    p.Mail,
+    p.Telefono,
+    p.Fecha_Nacimiento,
+	p.Id_Domicilio AS Id_Domicilio, 
+    d.Calle,
+    d.Numero,
+    l.Id_Localidad,
+    l.Localidad AS localidad,
+    pr.Id_Provincia,
+    pr.Provincia AS provincia,
+    c.Estado
+  FROM Cliente c
+  INNER JOIN Persona p      ON p.Id_Persona  = c.Id_Persona
+  INNER JOIN Domicilio d    ON d.Id_Domicilio = p.Id_Domicilio
+  INNER JOIN Localidad l    ON l.Id_Localidad = d.Id_Localidad
+  INNER JOIN Provincia pr   ON pr.Id_Provincia= l.Id_Provincia
+  WHERE  
+    p.Nombre   LIKE '%' + @Texto + '%'
+    OR p.Apellido LIKE '%' + @Texto + '%'
+    OR p.DNI      LIKE '%' + @Texto + '%'
+    OR p.Mail      LIKE '%' + @Texto + '%';
+END;
+GO
 
 
+	
 -- Procedimientos para la tabla Autos
 CREATE OR ALTER PROCEDURE InsertarAuto
     @Estado bit,
@@ -761,6 +799,66 @@ BEGIN
         SET @Mensaje = 'No se pudo eliminar el auto';
         ROLLBACK;
     END CATCH;
+END;
+GO
+
+
+CREATE OR ALTER PROCEDURE BuscarAutos
+  @Texto VARCHAR(100)
+AS
+BEGIN
+  SET NOCOUNT ON;
+
+  SELECT
+    a.Id_Auto,
+    a.Matricula,
+    a.Kilometros,
+    a.Año,
+    a.Imagen,
+    a.Reservado,
+    a.Estado,
+    a.Id_Modelo,
+    m.Modelo   AS NombreModelo,
+    m.Consumo,
+    m.Puertas,
+    m.Asientos,
+    m.Id_Marca,
+    ma.Marca   AS NombreMarca
+  FROM Autos a
+  INNER JOIN Modelo m ON m.Id_Modelo = a.Id_Modelo
+  INNER JOIN Marca  ma ON ma.Id_Marca   = m.Id_Marca
+  WHERE
+    a.Matricula LIKE '%' + @Texto + '%'
+    OR m.Modelo   LIKE '%' + @Texto + '%'
+    OR ma.Marca   LIKE '%' + @Texto + '%';
+END;
+GO
+
+CREATE OR ALTER PROCEDURE ListarAutosDisponibles
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        a.Id_Auto,
+        a.Matricula,
+        a.Kilometros,
+        a.Año,
+        a.Imagen,
+        a.Reservado,
+        a.Estado,
+        a.Id_Modelo,
+        m.Modelo       AS NombreModelo,
+        m.Consumo,
+        m.Puertas,
+        m.Asientos,
+        m.Id_Marca,
+        ma.Marca       AS NombreMarca
+    FROM Autos a
+    INNER JOIN Modelo m ON m.Id_Modelo = a.Id_Modelo
+    INNER JOIN Marca  ma ON ma.Id_Marca   = m.Id_Marca
+    WHERE a.Reservado = 'False'
+    ORDER BY a.Id_Auto;
 END;
 GO
 
@@ -1094,6 +1192,75 @@ BEGIN
 END
 GO
 
+CREATE OR ALTER PROCEDURE BuscarReserva
+  @Id_Reserva INT
+AS
+BEGIN
+  SET NOCOUNT ON;
+  SELECT
+    r.Id_Reserva,
+    r.Fecha_Inicio,
+    r.Fecha_Fin,
+
+    -- Auto
+    a.Id_Auto,
+    a.Matricula,
+    a.Kilometros,
+    a.Año,
+    a.Imagen,
+    a.Reservado,
+    a.Estado       AS EstadoAuto,
+    m.Id_Modelo,
+    m.Modelo       AS NombreModelo,
+    m.Consumo,
+    m.Puertas,
+    m.Asientos,
+    ma.Id_Marca,
+    ma.Marca       AS NombreMarca,
+
+    -- Cliente / Persona / Domicilio / Localidad / Provincia
+    c.Id_Cliente,
+    c.Licencia,
+    c.Estado       AS EstadoCliente,
+    p.Id_Persona,
+    p.DNI,
+    p.Nombre      AS NombrePersona,
+    p.Apellido,
+    p.Fecha_Nacimiento,
+    p.Mail,
+    p.Telefono,
+    d.Id_Domicilio,
+    d.Calle,
+    d.Numero,
+    l.Id_Localidad,
+    l.Localidad,
+    pr.Id_Provincia,
+    pr.Provincia,
+
+    -- Pago
+    pay.Id_Pago,
+    pay.Total,
+    pay.Fecha_Pago,
+    pay.Estado   AS EstadoPago
+
+  FROM Reserva r
+  INNER JOIN Autos     a   ON a.Id_Auto      = r.Id_Auto
+  INNER JOIN Modelo    m   ON m.Id_Modelo    = a.Id_Modelo
+  INNER JOIN Marca     ma  ON ma.Id_Marca    = m.Id_Marca
+
+  INNER JOIN Cliente   c   ON c.Id_Cliente   = r.Id_Cliente
+  INNER JOIN Persona   p   ON p.Id_Persona   = c.Id_Persona
+  INNER JOIN Domicilio d   ON d.Id_Domicilio = p.Id_Domicilio
+  INNER JOIN Localidad l   ON l.Id_Localidad = d.Id_Localidad
+  INNER JOIN Provincia pr  ON pr.Id_Provincia= l.Id_Provincia
+
+  INNER JOIN Pago      pay ON pay.Id_Pago     = r.Id_Pago
+
+  WHERE r.Id_Reserva = @Id_Reserva;
+END;
+GO
+
+
 
 CREATE OR ALTER PROCEDURE EliminarReserva
     @Id_Reserva INT,
@@ -1101,26 +1268,39 @@ CREATE OR ALTER PROCEDURE EliminarReserva
 	@Mensaje varchar(500) output
 AS
 BEGIN
-	Set @Resultado = 0;
-	Set @Mensaje = ''
+    SET @Resultado = 0;
+    SET @Mensaje   = '';
 
+    -- Validar que exista la reserva
     IF NOT EXISTS (SELECT 1 FROM Reserva WHERE Id_Reserva = @Id_Reserva)
     BEGIN
-        Set @Mensaje ='La reserva no existe.';
+        SET @Mensaje = 'La reserva no existe.';
         RETURN;
     END
+
     BEGIN TRANSACTION;
     BEGIN TRY
-        Update Reserva Set Estado = 0 WHERE Id_Reserva = @Id_Reserva;
+        -- 1) Marcar la reserva como inactiva
+        UPDATE Reserva
+           SET Estado = 0
+         WHERE Id_Reserva = @Id_Reserva;
+
+        -- 2) Liberar el auto asociado
+        UPDATE A
+          SET Reservado = 0
+        FROM Autos A
+        INNER JOIN Reserva R ON R.Id_Auto = A.Id_Auto
+        WHERE R.Id_Reserva = @Id_Reserva;
+
         COMMIT TRANSACTION;
-		Set @Resultado = 1;
+        SET @Resultado = 1;
     END TRY
     BEGIN CATCH
         ROLLBACK TRANSACTION;
-		Set @Mensaje = ERROR_MESSAGE();
+        SET @Mensaje = ERROR_MESSAGE();
         THROW;
     END CATCH;
-END
+END;
 GO
 
 	CREATE OR ALTER   PROCEDURE EditarDomicilio(
@@ -1167,8 +1347,7 @@ BEGIN
         SET @Mensaje = ERROR_MESSAGE();
     END CATCH
 END;
-
-
+GO
 
 CREATE OR ALTER   PROCEDURE InsertarDomicilio(
     @Calle VARCHAR(100),
@@ -1203,7 +1382,7 @@ BEGIN
         SET @Mensaje = ERROR_MESSAGE();
     END CATCH
 END;
-
+GO
 
 --Inserciones basicas para el sistema
 
@@ -1297,3 +1476,4 @@ Insert into Usuarios (Id_Perfil,Usuario,Contraseña,Estado,Id_Persona) values (1
 INSERT into Tipo_Pago (Descripcion, estado) values ('Tarjeta', 1), ('Efectivo', 1);
 
 
+Insert into Negocio (Nombre) Values ('Doc Hudson')

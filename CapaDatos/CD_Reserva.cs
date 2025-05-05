@@ -3,9 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaDatos
 {
@@ -67,6 +65,102 @@ namespace CapaDatos
             }
             return lista;
         }
+
+        public Reserva Buscar(int id)
+        {
+            Reserva r = null;
+            using (var cn = new SqlConnection(Conexion.cadena))
+            using (var cmd = new SqlCommand("BuscarReserva", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id_Reserva", id);
+                cn.Open();
+                using (var dr = cmd.ExecuteReader())
+                {
+                    if (dr.Read())
+                    {
+                        // Construyo Reserva
+                        r = new Reserva
+                        {
+                            Id_Reserva = dr.GetInt32(dr.GetOrdinal("Id_Reserva")),
+                            Fecha_Inicio = dr.GetDateTime(dr.GetOrdinal("Fecha_Inicio")),
+                            Fecha_Fin = dr.GetDateTime(dr.GetOrdinal("Fecha_Fin")),
+
+                            // Auto
+                            oAuto = new Autos
+                            {
+                                Id_Auto = dr.GetInt32(dr.GetOrdinal("Id_Auto")),
+                                Matricula = dr["Matricula"].ToString(),
+                                Kilometros = dr.GetDecimal(dr.GetOrdinal("Kilometros")),
+                                Año = dr.GetInt32(dr.GetOrdinal("Año")),
+                                Imagen = dr["Imagen"].ToString(),
+                                Reservado = dr.GetBoolean(dr.GetOrdinal("Reservado")),
+                                Estado = dr.GetBoolean(dr.GetOrdinal("EstadoAuto")),
+                                oModelo = new Modelo
+                                {
+                                    Id_Modelo = dr.GetInt32(dr.GetOrdinal("Id_Modelo")),
+                                    modelo = dr["NombreModelo"].ToString(),
+                                    Consumo = dr.GetDecimal(dr.GetOrdinal("Consumo")),
+                                    Puertas = dr.GetInt32(dr.GetOrdinal("Puertas")),
+                                    Asientos = dr.GetInt32(dr.GetOrdinal("Asientos")),
+                                    oMarca = new Marca
+                                    {
+                                        Id_Marca = dr.GetInt32(dr.GetOrdinal("Id_Marca")),
+                                        marca = dr["NombreMarca"].ToString()
+                                    }
+                                }
+                            },
+
+                            // Cliente
+                            oCliente = new Cliente
+                            {
+                                Id_Cliente = dr.GetInt32(dr.GetOrdinal("Id_Cliente")),
+                                Licencia = dr["Licencia"].ToString(),
+                                Estado = dr.GetBoolean(dr.GetOrdinal("EstadoCliente")),
+                                oPersona = new Persona
+                                {
+                                    Id_Persona = dr.GetInt32(dr.GetOrdinal("Id_Persona")),
+                                    DNI = dr["DNI"].ToString(),
+                                    Nombre = dr["NombrePersona"].ToString(),
+                                    Apellido = dr["Apellido"].ToString(),
+                                    Fecha_Nacimiento = dr.GetDateTime(dr.GetOrdinal("Fecha_Nacimiento")),
+                                    Mail = dr["Mail"].ToString(),
+                                    Telefono = dr["Telefono"].ToString(),
+                                    oDomicilio = new Domicilio
+                                    {
+                                        Id_Domicilio = dr.GetInt32(dr.GetOrdinal("Id_Domicilio")),
+                                        Calle = dr["Calle"].ToString(),
+                                        Numero = dr.GetInt32(dr.GetOrdinal("Numero")),
+                                        oLocalidad = new Localidad
+                                        {
+                                            Id_Localidad = dr.GetInt32(dr.GetOrdinal("Id_Localidad")),
+                                            localidad = dr["Localidad"].ToString(),
+                                            oProvincia = new Provincia
+                                            {
+                                                Id_Provincia = dr.GetInt32(dr.GetOrdinal("Id_Provincia")),
+                                                provincia = dr["Provincia"].ToString()
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+
+                            // Pago
+                            oPago = new Pago
+                            {
+                                Id_Pago = dr.GetInt32(dr.GetOrdinal("Id_Pago")),
+                                Total = Convert.ToDecimal(dr["Total"]),
+                                Fecha_Pago = dr.GetDateTime(dr.GetOrdinal("Fecha_Pago")),
+                                Estado = dr.GetBoolean(dr.GetOrdinal("EstadoPago"))
+                            }
+                        };
+                    }
+                }
+            }
+
+            return r;
+        }
+
 
         public int Registrar(Reserva obj, out string Mensaje)
         {
@@ -154,13 +248,13 @@ namespace CapaDatos
 
         }
 
-        public bool Eliminar(int id_reserva, out string Mensaje)
-        {
-            bool Respuesta = false;
-            Mensaje = string.Empty;
 
-            try
-            {
+        public bool Eliminar(int id_reserva, out string Mensaje)
+
+        {
+            bool respuesta = false;
+            mensaje = string.Empty;
+
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
 
@@ -186,9 +280,7 @@ namespace CapaDatos
                 Respuesta = false;
                 Mensaje = ex.Message;
             }
-
-            return Respuesta;
-
+            return respuesta;
         }
 
 
