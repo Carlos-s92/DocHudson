@@ -7,7 +7,6 @@ namespace CapaEntidad
 
         public string Nombre { get; set; }
 
-        public string Domicilio { get; set; }
 
         public string Imagen { get; set; }
     }

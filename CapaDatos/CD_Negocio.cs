@@ -18,7 +18,7 @@ namespace CapaDatos
                 {
                     conexion.Open();
 
-                    string query = "select Id_Negocio,Nombre,Imagen,Domicilio from Negocio where Id_Negocio = 1";
+                    string query = "select Id_Negocio,Nombre,Imagen from Negocio where Id_Negocio = 1";
                     SqlCommand cmd = new SqlCommand(query, conexion);
 
                     cmd.CommandType = CommandType.Text;
@@ -31,7 +31,6 @@ namespace CapaDatos
                             {
                                 Id_Negocio = int.Parse(dr["Id_Negocio"].ToString()),
                                 Nombre = dr["Nombre"].ToString(),
-                                Domicilio = dr["Domicilio"].ToString(),
                                 Imagen = dr["Imagen"].ToString()
                             };
                         }
@@ -62,13 +61,12 @@ namespace CapaDatos
                     StringBuilder query = new StringBuilder();
                     query.AppendLine("update Negocio set Nombre = @Nombre,");
                     query.AppendLine("Imagen = @Imagen,");
-                    query.AppendLine("Direccion = @Direccion");
                     query.AppendLine("where Id_Negocio = 1");
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), conexion);
                     cmd.Parameters.AddWithValue("@Nombre", obj.Nombre);
                     cmd.Parameters.AddWithValue("@Imagen", obj.Imagen);
-                    cmd.Parameters.AddWithValue("@Domicilio", obj.Domicilio);
+
 
                     cmd.CommandType = CommandType.Text;
 
