@@ -74,7 +74,7 @@ namespace TestGit
 
                     // Procedo a liberar la reserva mediante la funcionalidad en la capa de negocio.
                     // Y almaceno el resultado de la operacion.
-                    bool resultado = new CN_Reserva().Eliminar(Convert.ToInt32(txtBusqueda.Text), out mensaje);
+                    bool resultado = new CN_Reserva().LiberarReserva(Convert.ToInt32(txtBusqueda.Text), out mensaje);
 
                     // Si se ejecuto la operacion
                     if (resultado == true)

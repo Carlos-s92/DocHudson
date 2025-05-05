@@ -253,8 +253,8 @@ namespace CapaDatos
 
         {
             bool respuesta = false;
-            mensaje = string.Empty;
-
+            Mensaje = string.Empty;
+            try { 
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
 
@@ -269,7 +269,7 @@ namespace CapaDatos
 
                     cmd.ExecuteNonQuery();
 
-                    Respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
+                    respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
                     oconexion.Close();
                 }
@@ -277,7 +277,7 @@ namespace CapaDatos
             }
             catch (Exception ex)
             {
-                Respuesta = false;
+                respuesta = false;
                 Mensaje = ex.Message;
             }
             return respuesta;
