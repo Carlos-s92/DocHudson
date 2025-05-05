@@ -169,11 +169,10 @@ Go
 CREATE TABLE Negocio(
 Id_Negocio int primary key identity(1,1),
 Nombre varchar(60),
-RUC varchar(60),
-Domicilio varchar(60),
 Imagen Varchar(200) default ''
 )
 go
+
 
 --Comienzo de los procedimientos--
 
@@ -1477,3 +1476,4 @@ Insert into Usuarios (Id_Perfil,Usuario,Contraseña,Estado,Id_Persona) values (1
 INSERT into Tipo_Pago (Descripcion, estado) values ('Tarjeta', 1), ('Efectivo', 1);
 
 
+Insert into Negocio (Nombre) Values ('Doc Hudson')
