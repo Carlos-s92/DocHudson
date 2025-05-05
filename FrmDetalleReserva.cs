@@ -54,6 +54,50 @@ namespace TestGit
             }
         }
 
+        private void rjButton3_Click(object sender, EventArgs e)
+        {
+
+            // Si el text box busqueda es distinto de vacio.
+            if (txtBusqueda.Texts != "")
+            {
+
+                // Creo y muestro una ventana de confirmacion
+                VentanaEmergente confirmacion = new VentanaEmergente("Informacion", "Desea liberar esta reserva?", "Interrogacion");
+                confirmacion.ShowDialog();
+
+
+                string mensaje = string.Empty;
+
+                // Si la respuesta a la ventana emergente es un Si.
+                if (confirmacion.DialogResult == DialogResult.Yes)
+                {
+
+                    // Procedo a liberar la reserva mediante la funcionalidad en la capa de negocio.
+                    // Y almaceno el resultado de la operacion.
+                    bool resultado = new CN_Reserva().Eliminar(Convert.ToInt32(txtBusqueda.Text), out mensaje);
+
+                    // Si se ejecuto la operacion
+                    if (resultado == true)
+                    {
+                        VentanaEmergente msg = new VentanaEmergente("Informacion", "Reserva Liberada con Éxito", "Informacion");
+                        msg.ShowDialog();
+                    }
+                    else
+                    {
+                        VentanaEmergente msg = new VentanaEmergente("Error", "No se pudo liberar la reserva", "Error");
+                        msg.ShowDialog();
+                    }
+
+                }
+            }
+            else
+            {
+                VentanaEmergente error = new VentanaEmergente("Error", "No selecciono ninguna reserva", "Error");
+                error.ShowDialog();
+            }
+
+        }
+
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {

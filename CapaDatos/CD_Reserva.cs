@@ -248,22 +248,37 @@ namespace CapaDatos
 
         }
 
-        public bool Eliminar(int idReserva, out string mensaje)
+
+        public bool Eliminar(int id_reserva, out string Mensaje)
+
         {
             bool respuesta = false;
             mensaje = string.Empty;
-            using (var cn = new SqlConnection(Conexion.cadena))
-            using (var cmd = new SqlCommand("EliminarReserva", cn))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Id_Reserva", idReserva);
-                cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
-                cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
 
-                cn.Open();
-                cmd.ExecuteNonQuery();
-                respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
-                mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+
+
+                    SqlCommand cmd = new SqlCommand("EliminarReserva", oconexion);
+                    cmd.Parameters.AddWithValue("Id_Reserva", id_reserva);
+                    cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    oconexion.Open();
+
+                    cmd.ExecuteNonQuery();
+
+                    Respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
+                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+                    oconexion.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Respuesta = false;
+                Mensaje = ex.Message;
             }
             return respuesta;
         }
