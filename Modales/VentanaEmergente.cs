@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -73,7 +74,7 @@ namespace TestGit.Modales
                     IPBVE.ImageLocation = basePath + "IconoAlertaVE.png";
                     break;
                 case "Exito":
-                    IPBVE.ImageLocation = basePath + "IconoSuccessVE.png";
+                    IPBVE.ImageLocation = basePath + "IconoExitoVE.png";
                     break;
             }
             IPBVE.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -105,6 +106,19 @@ namespace TestGit.Modales
         {
             BorderClass rounded = new BorderClass();
             rounded.AplicarBordeRedondeado(this, 1, e.Graphics, Color.Cyan, 1);
+        }
+
+        private void VentanaEmergente_Load(object sender, EventArgs e)
+        {
+            aplicarEfectoZoom();
+        }
+
+        private void aplicarEfectoZoom()
+        {
+            HoverZoomEffect.Apply(BNoVE, 3, true, 3, 10);
+            HoverZoomEffect.Apply(BSIVE, 3, true, 3, 10);
+            HoverZoomEffect.Apply(BAceptarVE, 3, true, 3, 10);
+            HoverZoomEffect.Apply(BCloseVE, 3, true, 3, 10);
         }
     }
 }

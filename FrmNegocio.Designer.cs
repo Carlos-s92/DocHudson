@@ -34,6 +34,7 @@
             this.rjButton2 = new CustomControls.RJControls.RJButton();
             this.txtNombre = new CustomControls.RJControls.RJTextBox();
             this.txtImagen = new CustomControls.RJControls.RJTextBox();
+            this.BFondoPBAuto = new CustomControls.RJControls.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,6 +77,7 @@
             this.rjButton1.Name = "rjButton1";
             this.rjButton1.Size = new System.Drawing.Size(393, 54);
             this.rjButton1.TabIndex = 101;
+            this.rjButton1.Text = "Guardar Cambios";
             this.rjButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.rjButton1.UseVisualStyleBackColor = false;
             this.rjButton1.Click += new System.EventHandler(this.rjButton1_Click);
@@ -97,6 +99,7 @@
             this.rjButton2.Name = "rjButton2";
             this.rjButton2.Size = new System.Drawing.Size(361, 56);
             this.rjButton2.TabIndex = 102;
+            this.rjButton2.Text = "Seleccionar Imagen";
             this.rjButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.rjButton2.UseVisualStyleBackColor = false;
             this.rjButton2.Click += new System.EventHandler(this.rjButton2_Click);
@@ -150,6 +153,24 @@
             this.txtImagen.UnderlinedStyle = true;
             this.txtImagen.Visible = false;
             // 
+            // BFondoPBAuto
+            // 
+            this.BFondoPBAuto.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.BFondoPBAuto.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.BFondoPBAuto.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.BFondoPBAuto.BorderRadius = 3;
+            this.BFondoPBAuto.BorderSize = 0;
+            this.BFondoPBAuto.Enabled = false;
+            this.BFondoPBAuto.FlatAppearance.BorderSize = 0;
+            this.BFondoPBAuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BFondoPBAuto.ForeColor = System.Drawing.Color.White;
+            this.BFondoPBAuto.Location = new System.Drawing.Point(82, 109);
+            this.BFondoPBAuto.Name = "BFondoPBAuto";
+            this.BFondoPBAuto.Size = new System.Drawing.Size(366, 303);
+            this.BFondoPBAuto.TabIndex = 156;
+            this.BFondoPBAuto.TextColor = System.Drawing.Color.White;
+            this.BFondoPBAuto.UseVisualStyleBackColor = false;
+            // 
             // FrmNegocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -162,6 +183,7 @@
             this.Controls.Add(this.rjButton1);
             this.Controls.Add(this.rjButton2);
             this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.BFondoPBAuto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmNegocio";
             this.Text = "FrmNegocio";
@@ -180,5 +202,6 @@
         private CustomControls.RJControls.RJButton rjButton2;
         private CustomControls.RJControls.RJTextBox txtNombre;
         private CustomControls.RJControls.RJTextBox txtImagen;
+        private CustomControls.RJControls.RJButton BFondoPBAuto;
     }
 }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestGit.Class;
 
 namespace TestGit.Modales
 {
@@ -23,6 +24,16 @@ namespace TestGit.Modales
         private void mdPagos_Load(object sender, EventArgs e)
         {
             this.btnTarjeta.Checked = true;
+
+            aplicarEfectoZoom();
+        }
+
+        private void aplicarEfectoZoom()
+        {
+            HoverZoomEffect.Apply(btnCancelar);
+            HoverZoomEffect.Apply(btnConfirmar);
+            HoverZoomEffect.Apply(btnEfectivo);
+            HoverZoomEffect.Apply(btnTarjeta);
         }
 
         private void btnTarjeta_CheckedChanged(object sender, EventArgs e)

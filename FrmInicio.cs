@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestGit.Class;
 using TestGit.Modales;
 
 namespace TestGit
@@ -26,6 +27,21 @@ namespace TestGit
                 var result = modal.ShowDialog(); // Muestra el diálogo modal.
 
             }
+        }
+
+        private void FrmInicio_Load(object sender, EventArgs e)
+        {
+            aplicarEfectoZoom();
+        }
+
+        private void aplicarEfectoZoom()
+        {
+            HoverZoomEffect.Apply(Btn1);
+            HoverZoomEffect.Apply(Btn2);
+            HoverZoomEffect.Apply(Btn3);
+            HoverZoomEffect.Apply(Btn4);
+            HoverZoomEffect.Apply(Btn5);
+            HoverZoomEffect.Apply(Btn6);
         }
     }
 }

@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mdAutos));
             this.txtAsientos = new CustomControls.RJControls.RJTextBox();
             this.txtPuertas = new CustomControls.RJControls.RJTextBox();
             this.txtMarca = new CustomControls.RJControls.RJTextBox();
             this.rjButton1 = new CustomControls.RJControls.RJButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboEstado = new System.Windows.Forms.ComboBox();
-            this.BtnLimpiar2 = new CustomControls.RJControls.RJButton();
             this.BtnGuardar2 = new CustomControls.RJControls.RJButton();
             this.txtConsumo = new CustomControls.RJControls.RJTextBox();
             this.txtModelo = new CustomControls.RJControls.RJTextBox();
@@ -43,6 +43,9 @@
             this.txtAño = new CustomControls.RJControls.RJTextBox();
             this.txtImagen = new CustomControls.RJControls.RJTextBox();
             this.txtId = new System.Windows.Forms.Label();
+            this.lblMarca = new System.Windows.Forms.Label();
+            this.BFondoPBAuto = new CustomControls.RJControls.RJButton();
+            this.BtnLimpiar2 = new CustomControls.RJControls.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -157,31 +160,10 @@
             this.comboEstado.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboEstado.ForeColor = System.Drawing.Color.White;
             this.comboEstado.FormattingEnabled = true;
-            this.comboEstado.Location = new System.Drawing.Point(383, 244);
+            this.comboEstado.Location = new System.Drawing.Point(549, 244);
             this.comboEstado.Name = "comboEstado";
-            this.comboEstado.Size = new System.Drawing.Size(297, 38);
+            this.comboEstado.Size = new System.Drawing.Size(131, 38);
             this.comboEstado.TabIndex = 158;
-            // 
-            // BtnLimpiar2
-            // 
-            this.BtnLimpiar2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.BtnLimpiar2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.BtnLimpiar2.BorderColor = System.Drawing.Color.DimGray;
-            this.BtnLimpiar2.BorderRadius = 20;
-            this.BtnLimpiar2.BorderSize = 2;
-            this.BtnLimpiar2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnLimpiar2.FlatAppearance.BorderSize = 0;
-            this.BtnLimpiar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnLimpiar2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnLimpiar2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.BtnLimpiar2.Location = new System.Drawing.Point(692, 11);
-            this.BtnLimpiar2.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnLimpiar2.Name = "BtnLimpiar2";
-            this.BtnLimpiar2.Size = new System.Drawing.Size(42, 41);
-            this.BtnLimpiar2.TabIndex = 157;
-            this.BtnLimpiar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.BtnLimpiar2.UseVisualStyleBackColor = false;
-            this.BtnLimpiar2.Click += new System.EventHandler(this.BtnLimpiar2_Click);
             // 
             // BtnGuardar2
             // 
@@ -200,7 +182,7 @@
             this.BtnGuardar2.Name = "BtnGuardar2";
             this.BtnGuardar2.Size = new System.Drawing.Size(396, 41);
             this.BtnGuardar2.TabIndex = 156;
-            this.BtnGuardar2.Text = "+";
+            this.BtnGuardar2.Text = "Guardar Cambios";
             this.BtnGuardar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnGuardar2.UseVisualStyleBackColor = false;
             this.BtnGuardar2.Click += new System.EventHandler(this.BtnGuardar2_Click);
@@ -359,12 +341,67 @@
             this.txtId.TabIndex = 165;
             this.txtId.Visible = false;
             // 
+            // lblMarca
+            // 
+            this.lblMarca.AutoSize = true;
+            this.lblMarca.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMarca.ForeColor = System.Drawing.Color.White;
+            this.lblMarca.Location = new System.Drawing.Point(378, 248);
+            this.lblMarca.Name = "lblMarca";
+            this.lblMarca.Size = new System.Drawing.Size(165, 30);
+            this.lblMarca.TabIndex = 166;
+            this.lblMarca.Text = "Estado del auto";
+            // 
+            // BFondoPBAuto
+            // 
+            this.BFondoPBAuto.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.BFondoPBAuto.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.BFondoPBAuto.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.BFondoPBAuto.BorderRadius = 4;
+            this.BFondoPBAuto.BorderSize = 0;
+            this.BFondoPBAuto.Enabled = false;
+            this.BFondoPBAuto.FlatAppearance.BorderSize = 0;
+            this.BFondoPBAuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BFondoPBAuto.ForeColor = System.Drawing.Color.White;
+            this.BFondoPBAuto.Location = new System.Drawing.Point(54, 304);
+            this.BFondoPBAuto.Name = "BFondoPBAuto";
+            this.BFondoPBAuto.Size = new System.Drawing.Size(290, 134);
+            this.BFondoPBAuto.TabIndex = 167;
+            this.BFondoPBAuto.TextColor = System.Drawing.Color.White;
+            this.BFondoPBAuto.UseVisualStyleBackColor = false;
+            // 
+            // BtnLimpiar2
+            // 
+            this.BtnLimpiar2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.BtnLimpiar2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.BtnLimpiar2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnLimpiar2.BackgroundImage")));
+            this.BtnLimpiar2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnLimpiar2.BorderColor = System.Drawing.Color.DimGray;
+            this.BtnLimpiar2.BorderRadius = 20;
+            this.BtnLimpiar2.BorderSize = 2;
+            this.BtnLimpiar2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnLimpiar2.FlatAppearance.BorderSize = 0;
+            this.BtnLimpiar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnLimpiar2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.BtnLimpiar2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.BtnLimpiar2.Location = new System.Drawing.Point(696, 9);
+            this.BtnLimpiar2.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnLimpiar2.Name = "BtnLimpiar2";
+            this.BtnLimpiar2.Size = new System.Drawing.Size(40, 40);
+            this.BtnLimpiar2.TabIndex = 168;
+            this.BtnLimpiar2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnLimpiar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.BtnLimpiar2.UseVisualStyleBackColor = false;
+            this.BtnLimpiar2.Click += new System.EventHandler(this.BtnLimpiar2_Click);
+            // 
             // mdAutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(19)))));
             this.ClientSize = new System.Drawing.Size(757, 569);
+            this.Controls.Add(this.BtnLimpiar2);
+            this.Controls.Add(this.lblMarca);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtImagen);
             this.Controls.Add(this.txtAsientos);
@@ -373,13 +410,13 @@
             this.Controls.Add(this.rjButton1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.comboEstado);
-            this.Controls.Add(this.BtnLimpiar2);
             this.Controls.Add(this.BtnGuardar2);
             this.Controls.Add(this.txtConsumo);
             this.Controls.Add(this.txtModelo);
             this.Controls.Add(this.txtKilometros);
             this.Controls.Add(this.txtMatricula);
             this.Controls.Add(this.txtAño);
+            this.Controls.Add(this.BFondoPBAuto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "mdAutos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -399,7 +436,6 @@
         private CustomControls.RJControls.RJButton rjButton1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox comboEstado;
-        private CustomControls.RJControls.RJButton BtnLimpiar2;
         private CustomControls.RJControls.RJButton BtnGuardar2;
         private CustomControls.RJControls.RJTextBox txtConsumo;
         private CustomControls.RJControls.RJTextBox txtModelo;
@@ -408,5 +444,8 @@
         private CustomControls.RJControls.RJTextBox txtAño;
         private CustomControls.RJControls.RJTextBox txtImagen;
         private System.Windows.Forms.Label txtId;
+        private System.Windows.Forms.Label lblMarca;
+        private CustomControls.RJControls.RJButton BFondoPBAuto;
+        private CustomControls.RJControls.RJButton BtnLimpiar2;
     }
 }

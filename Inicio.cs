@@ -245,10 +245,6 @@ namespace TestGit
 
             //}
 
-            AplicarEfectosAdds();
-        }
-        private void AplicarEfectosAdds()
-        {
             HoverZoomEffect.Apply(BtnSalir);
         }
     }

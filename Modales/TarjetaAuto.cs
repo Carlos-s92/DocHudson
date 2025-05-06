@@ -1,15 +1,19 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
+using CustomControls.RJControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestGit.Class;
 
 namespace TestGit.Modales
 {
@@ -24,6 +28,49 @@ namespace TestGit.Modales
         {
             InitializeComponent();
         }
+
+        //Inicio Methots
+        public string Modelo
+        {
+            get { return lbl1.Text; } // Solo lectura
+        }
+
+        public string Marca
+        {
+            get { return lbl2.Text; } // Solo lectura
+        }
+
+        public string Consumo
+        {
+            get { return lbl3.Text; } // Solo lectura
+        }
+
+        public string KM
+        {
+            get { return lbl4.Text; } // Solo lectura
+        }
+
+        public string Asientos
+        {
+            get { return lbl5.Text; } // Solo lectura
+        }
+
+        public string Puertas
+        {
+            get { return lbl6.Text; } // Solo lectura
+        }
+
+        public string FechaInicio
+        {
+            get { return lbl7.Text; } // Solo lectura
+        }
+
+        public string FechaFin
+        {
+            get { return lbl8.Text; } // Solo lectura
+        }
+        //Fin Methots
+
         public TarjetaAuto(int id,string modelo, string marca, decimal consumo, int puertas, int asientos, decimal kilometros, bool reservado, bool estado, string matricula, int año, string imagen)
         {
             //oAuto.oModelo = new Modelo();
@@ -45,6 +92,7 @@ namespace TestGit.Modales
             oAuto.Año = Convert.ToInt32(año);
             oAuto.Imagen = imagen;
 
+            BFondoPBAuto.Paint += BFondoPBAuto_Paint;
 
             if (oAuto.Estado != true){
                 this.BackColor = Color.Red;
@@ -61,6 +109,7 @@ namespace TestGit.Modales
             else
             {
                 this.btnReserva.BackColor = Color.Red;
+                this.btnReserva.BorderColor = Color.FromArgb(255, 192, 192);
                 this.btnReserva.Text = "Reservado";
             }
 
@@ -166,6 +215,33 @@ namespace TestGit.Modales
 
                 mainForm.Envio(pAuto); // Llamamos a un método en el formulario principal
             }
+        }
+
+        private void BFondoPBAuto_Paint(object sender, PaintEventArgs e)
+        {
+            RJButton butt = sender as RJButton;
+            if (butt != null)
+            {
+                using (LinearGradientBrush brush = new LinearGradientBrush(butt.ClientRectangle,
+                Color.Blue,
+                Color.Purple,
+                LinearGradientMode.Horizontal))
+                {
+                    e.Graphics.FillRectangle(brush, butt.ClientRectangle);
+                }
+            }
+        }
+
+        private void TarjetaAuto_Load(object sender, EventArgs e)
+        {
+            aplicarEfectoZoom();
+        }
+
+        private void aplicarEfectoZoom()
+        {
+            HoverZoomEffect.Apply(btnReserva);
+            HoverZoomEffect.Apply(iconButton1);
+            HoverZoomEffect.Apply(iconButton2);
         }
     }
 }

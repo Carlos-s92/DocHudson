@@ -106,6 +106,7 @@ namespace TestGit
         {
             HoverZoomEffect.Apply(BtnGuardar2);
             HoverZoomEffect.Apply(BtnLimpiar2);
+            HoverZoomEffect.Apply(rjButton3);
         }
 
         //Metodo para limpiar los campos del formulario
@@ -250,7 +251,7 @@ namespace TestGit
                             LimpiarCampos(); // Limpia los campos del formulario.
 
                             // Se muestra la ventana emergente que indica que el cliente se registro con exito
-                            VentanaEmergente Succeso = new VentanaEmergente("Exito", "Cliente registrado exitosamente", "Informacion");
+                            VentanaEmergente Succeso = new VentanaEmergente("Exito", "Cliente registrado exitosamente", "Exito");
                             Succeso.ShowDialog();
                         }
                         else
@@ -290,7 +291,7 @@ namespace TestGit
                             LimpiarCampos(); // Limpia los campos del formulario.
 
                             // Se muestra la ventana emergente que indica que el cliente se modificó con exito
-                            VentanaEmergente Succeso = new VentanaEmergente("Exito", "Cliente modificado exitosamente", "Informacion");
+                            VentanaEmergente Succeso = new VentanaEmergente("Exito", "Cliente modificado exitosamente", "Exito");
                             Succeso.ShowDialog();
                         }
                         else
@@ -400,7 +401,7 @@ namespace TestGit
                         LimpiarCampos(); // Limpia los campos del formulario.
 
                         // Se muestra la ventana emergente que indica que el cliente se elimino con exito
-                        VentanaEmergente Succeso = new VentanaEmergente("Exito", "Cliente eliminado exitosamente", "Informacion");
+                        VentanaEmergente Succeso = new VentanaEmergente("Exito", "Cliente eliminado exitosamente", "Exito");
                         Succeso.ShowDialog();
                     }
                     else

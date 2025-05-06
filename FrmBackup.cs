@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestGit.Class;
 using TestGit.Modales;
 
 namespace TestGit
@@ -22,9 +24,16 @@ namespace TestGit
         private void BtnGuardar2_Click(object sender, EventArgs e)
         {
             string mensaje = new CN_Backup().Backup();
-            VentanaEmergente respuesta = new VentanaEmergente("Aviso",mensaje,"Informacion");
-            respuesta.ShowDialog();
-
+            if (mensaje.Contains("Copia"))
+            {
+                VentanaEmergente respuesta = new VentanaEmergente("Aviso", mensaje, "Exito");
+                respuesta.ShowDialog();
+            }
+            else
+            {
+                VentanaEmergente respuesta = new VentanaEmergente("Aviso", mensaje, "Informacion");
+                respuesta.ShowDialog();
+            }
         }
 
         private void BtnLimpiar2_Click(object sender, EventArgs e)
@@ -43,6 +52,17 @@ namespace TestGit
                 respuesta.ShowDialog();
 
             }
+        }
+
+        private void FrmBackup_Load(object sender, EventArgs e)
+        {
+            aplicarEfectoZoom();
+        }
+
+        private void aplicarEfectoZoom()
+        {
+            HoverZoomEffect.Apply(BtnGuardar2);
+            HoverZoomEffect.Apply(BtnLimpiar2);
         }
     }
 }

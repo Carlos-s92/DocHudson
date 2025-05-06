@@ -49,7 +49,7 @@
             this.PTituloVE.Controls.Add(this.IPBVE);
             this.PTituloVE.ForeColor = System.Drawing.Color.White;
             this.PTituloVE.Location = new System.Drawing.Point(2, 2);
-            this.PTituloVE.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PTituloVE.Margin = new System.Windows.Forms.Padding(2);
             this.PTituloVE.Name = "PTituloVE";
             this.PTituloVE.Size = new System.Drawing.Size(397, 38);
             this.PTituloVE.TabIndex = 0;
@@ -64,7 +64,7 @@
             this.BCloseVE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.BCloseVE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BCloseVE.Location = new System.Drawing.Point(370, 8);
-            this.BCloseVE.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BCloseVE.Margin = new System.Windows.Forms.Padding(2);
             this.BCloseVE.Name = "BCloseVE";
             this.BCloseVE.Size = new System.Drawing.Size(20, 20);
             this.BCloseVE.TabIndex = 2;
@@ -92,7 +92,7 @@
             this.IPBVE.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.IPBVE.IconSize = 26;
             this.IPBVE.Location = new System.Drawing.Point(8, 6);
-            this.IPBVE.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.IPBVE.Margin = new System.Windows.Forms.Padding(2);
             this.IPBVE.Name = "IPBVE";
             this.IPBVE.Size = new System.Drawing.Size(27, 26);
             this.IPBVE.TabIndex = 1;
@@ -125,7 +125,7 @@
             this.BNoVE.Font = new System.Drawing.Font("Bahnschrift", 11F);
             this.BNoVE.ForeColor = System.Drawing.Color.White;
             this.BNoVE.Location = new System.Drawing.Point(65, 135);
-            this.BNoVE.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BNoVE.Margin = new System.Windows.Forms.Padding(2);
             this.BNoVE.Name = "BNoVE";
             this.BNoVE.Size = new System.Drawing.Size(41, 31);
             this.BNoVE.TabIndex = 8;
@@ -148,7 +148,7 @@
             this.BSIVE.Font = new System.Drawing.Font("Bahnschrift", 11F);
             this.BSIVE.ForeColor = System.Drawing.Color.White;
             this.BSIVE.Location = new System.Drawing.Point(17, 134);
-            this.BSIVE.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BSIVE.Margin = new System.Windows.Forms.Padding(2);
             this.BSIVE.Name = "BSIVE";
             this.BSIVE.Size = new System.Drawing.Size(36, 31);
             this.BSIVE.TabIndex = 7;
@@ -171,7 +171,7 @@
             this.BAceptarVE.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BAceptarVE.ForeColor = System.Drawing.Color.White;
             this.BAceptarVE.Location = new System.Drawing.Point(317, 133);
-            this.BAceptarVE.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BAceptarVE.Margin = new System.Windows.Forms.Padding(2);
             this.BAceptarVE.Name = "BAceptarVE";
             this.BAceptarVE.Size = new System.Drawing.Size(76, 30);
             this.BAceptarVE.TabIndex = 9;
@@ -192,11 +192,12 @@
             this.Controls.Add(this.BAceptarVE);
             this.Controls.Add(this.PTituloVE);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "VentanaEmergente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.VentanaEmergente_Load);
             this.PTituloVE.ResumeLayout(false);
             this.PTituloVE.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IPBVE)).EndInit();

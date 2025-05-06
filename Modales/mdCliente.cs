@@ -3,6 +3,7 @@ using CapaNegocio;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using TestGit.Class;
 
 namespace TestGit.Modales
 {
@@ -78,6 +79,8 @@ namespace TestGit.Modales
             item.oPersona.oDomicilio.Numero
                 });
             }
+
+            aplicarEfectos();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -195,6 +198,13 @@ namespace TestGit.Modales
             item.oPersona.oDomicilio.Numero
                 });
             }
+        }
+
+        private void aplicarEfectos()
+        {
+            HoverZoomEffect.Apply(btnBuscar);
+            HoverZoomEffect.Apply(btnLimpiar);
+            HoverZoomEffect.Apply(rjButton1);
         }
     }
 }

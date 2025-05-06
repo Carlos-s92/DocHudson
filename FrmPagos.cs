@@ -6,10 +6,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestGit.Class;
 
 namespace TestGit
 {
@@ -48,9 +50,11 @@ namespace TestGit
             //                    cliente.oPersona.Nombre,
             //                    item.Estado == true ? 1 : 0, // Estado como valor
             //                    item.Estado == true ? "Activo" : "No Activo", // Estado como texto
-                   
+
             //    });
             //}
+
+            HoverZoomEffect.Apply(rjButton1);
         }
 
         private void rjButton1_Click(object sender, EventArgs e)

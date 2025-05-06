@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using TestGit.Class;
 using TestGit.Modales;
 
 namespace TestGit
@@ -202,9 +203,11 @@ namespace TestGit
                 }
 
 
-
-                if (MessageBox.Show("¿Desea eliminar el usuario?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                VentanaEmergente message = new VentanaEmergente("Eliminar", "¿Desea eliminar el usuario?", "Interrogacion");
+                message.ShowDialog();
+                if (message.DialogResult == DialogResult.Yes)
                 {
+                    message.Close();
                     string mensaje = string.Empty; // Variable para almacenar mensajes de error
                     Usuarios objUsuario = new Usuarios()
                     {
@@ -222,6 +225,7 @@ namespace TestGit
                     }
                     else
                     {
+                        message.Close();
                         VentanaEmergente msg = new VentanaEmergente("Error", mensaje, "Error");
                         msg.ShowDialog();
                     }
@@ -320,9 +324,18 @@ namespace TestGit
             comboRol.DisplayMember = "Texto"; // Establece el texto visible
             comboRol.ValueMember = "Valor"; // Establece el valor asociado
             comboRol.SelectedIndex = 0; // Selecciona el primer ítem
+
+            aplicarEfectoZoom();
         }
 
-        private void rjButton1_Click(object sender, EventArgs e)
+        private void aplicarEfectoZoom()
+        {
+            HoverZoomEffect.Apply(BtnEliminar2);
+            HoverZoomEffect.Apply(btnLimpiar);
+            HoverZoomEffect.Apply(BtnGuardar2);
+        }
+
+        private void rjBtnLimpiar_Click(object sender, EventArgs e)
         {
             txtBusqueda.Texts = ""; // Limpia el campo de búsqueda
             foreach (DataGridViewRow row in dgvData.Rows)

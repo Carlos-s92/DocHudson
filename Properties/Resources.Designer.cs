@@ -123,9 +123,39 @@ namespace TestGit.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cerrar__8_ {
+            get {
+                object obj = ResourceManager.GetObject("cerrar__8_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ClienteImg {
+            get {
+                object obj = ResourceManager.GetObject("ClienteImg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Comp_1_11 {
             get {
                 object obj = ResourceManager.GetObject("Comp 1_11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CompraImg {
+            get {
+                object obj = ResourceManager.GetObject("CompraImg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -171,11 +201,21 @@ namespace TestGit.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PDF {
+            get {
+                object obj = ResourceManager.GetObject("PDF", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
         ///&lt;html lang=&quot;es&quot;&gt;
         ///&lt;head&gt;
-        ///    &lt;meta charset=&quot;UTF-8&quot;&gt;
-        ///    &lt;title&gt;Factura de Reserva - Veh�culo de Alquiler&lt;/title&gt;
+        ///    &lt;meta charset=&quot;UTF-8&quot;/&gt;
+        ///    &lt;title&gt;Factura de Reserva - Vehiculo de Alquiler&lt;/title&gt;
         ///    &lt;style&gt;
         ///        body {
         ///            font-family: Arial, sans-serif;
@@ -193,7 +233,7 @@ namespace TestGit.Properties {
         ///        h1, h2 {
         ///            text-align: center;
         ///            color: #2c3e50;
-        ///    [resto de la cadena truncado]&quot;;.
+        ///   [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string PlantillaReserva {
             get {
@@ -204,9 +244,49 @@ namespace TestGit.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ProductoImg {
+            get {
+                object obj = ResourceManager.GetObject("ProductoImg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ProveedorImg {
+            get {
+                object obj = ResourceManager.GetObject("ProveedorImg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap reiniciar {
             get {
                 object obj = ResourceManager.GetObject("reiniciar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UsuarioImg {
+            get {
+                object obj = ResourceManager.GetObject("UsuarioImg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VentaImg {
+            get {
+                object obj = ResourceManager.GetObject("VentaImg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

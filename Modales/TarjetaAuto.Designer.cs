@@ -36,7 +36,6 @@
             this.lblMarca = new System.Windows.Forms.Label();
             this.lblFechaF = new System.Windows.Forms.Label();
             this.lblFechaI = new System.Windows.Forms.Label();
-            this.btnReserva = new CustomControls.RJControls.RJButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.lbl1 = new System.Windows.Forms.Label();
@@ -49,6 +48,8 @@
             this.lbl8 = new System.Windows.Forms.Label();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.txtId = new System.Windows.Forms.Label();
+            this.btnReserva = new CustomControls.RJControls.RJButton();
+            this.BFondoPBAuto = new CustomControls.RJControls.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,26 +144,6 @@
             this.lblFechaI.Text = "Fecha Reserva:";
             this.lblFechaI.Click += new System.EventHandler(this.label9_Click);
             // 
-            // btnReserva
-            // 
-            this.btnReserva.BackColor = System.Drawing.Color.Green;
-            this.btnReserva.BackgroundColor = System.Drawing.Color.Green;
-            this.btnReserva.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnReserva.BorderRadius = 20;
-            this.btnReserva.BorderSize = 0;
-            this.btnReserva.FlatAppearance.BorderSize = 0;
-            this.btnReserva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReserva.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReserva.ForeColor = System.Drawing.Color.White;
-            this.btnReserva.Location = new System.Drawing.Point(85, 480);
-            this.btnReserva.Name = "btnReserva";
-            this.btnReserva.Size = new System.Drawing.Size(275, 64);
-            this.btnReserva.TabIndex = 10;
-            this.btnReserva.Text = "Reservar";
-            this.btnReserva.TextColor = System.Drawing.Color.White;
-            this.btnReserva.UseVisualStyleBackColor = false;
-            this.btnReserva.Click += new System.EventHandler(this.btnReserva_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
@@ -174,6 +155,7 @@
             // 
             // iconButton1
             // 
+            this.iconButton1.FlatAppearance.BorderSize = 0;
             this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Wrench;
             this.iconButton1.IconColor = System.Drawing.Color.White;
@@ -300,6 +282,44 @@
             this.txtId.TabIndex = 21;
             this.txtId.Visible = false;
             // 
+            // btnReserva
+            // 
+            this.btnReserva.BackColor = System.Drawing.Color.Green;
+            this.btnReserva.BackgroundColor = System.Drawing.Color.Green;
+            this.btnReserva.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnReserva.BorderRadius = 20;
+            this.btnReserva.BorderSize = 2;
+            this.btnReserva.FlatAppearance.BorderSize = 0;
+            this.btnReserva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReserva.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReserva.ForeColor = System.Drawing.Color.White;
+            this.btnReserva.Location = new System.Drawing.Point(85, 480);
+            this.btnReserva.Name = "btnReserva";
+            this.btnReserva.Size = new System.Drawing.Size(275, 64);
+            this.btnReserva.TabIndex = 10;
+            this.btnReserva.Text = "Reservar";
+            this.btnReserva.TextColor = System.Drawing.Color.White;
+            this.btnReserva.UseVisualStyleBackColor = false;
+            this.btnReserva.Click += new System.EventHandler(this.btnReserva_Click);
+            // 
+            // BFondoPBAuto
+            // 
+            this.BFondoPBAuto.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.BFondoPBAuto.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.BFondoPBAuto.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.BFondoPBAuto.BorderRadius = 3;
+            this.BFondoPBAuto.BorderSize = 0;
+            this.BFondoPBAuto.Enabled = false;
+            this.BFondoPBAuto.FlatAppearance.BorderSize = 0;
+            this.BFondoPBAuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BFondoPBAuto.ForeColor = System.Drawing.Color.White;
+            this.BFondoPBAuto.Location = new System.Drawing.Point(20, 14);
+            this.BFondoPBAuto.Name = "BFondoPBAuto";
+            this.BFondoPBAuto.Size = new System.Drawing.Size(408, 218);
+            this.BFondoPBAuto.TabIndex = 156;
+            this.BFondoPBAuto.TextColor = System.Drawing.Color.White;
+            this.BFondoPBAuto.UseVisualStyleBackColor = false;
+            // 
             // TarjetaAuto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,9 +347,11 @@
             this.Controls.Add(this.lblConsumo);
             this.Controls.Add(this.lblModelo);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.BFondoPBAuto);
             this.Margin = new System.Windows.Forms.Padding(5, 3, 5, 13);
             this.Name = "TarjetaAuto";
             this.Size = new System.Drawing.Size(445, 582);
+            this.Load += new System.EventHandler(this.TarjetaAuto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -349,7 +371,6 @@
         private System.Windows.Forms.Label lblFechaI;
         private CustomControls.RJControls.RJButton btnReserva;
         private FontAwesome.Sharp.IconButton iconButton1;
-        private System.Windows.Forms.Label lbl1;
         private System.Windows.Forms.Label lbl3;
         private System.Windows.Forms.Label lbl5;
         private System.Windows.Forms.Label lbl7;
@@ -359,5 +380,7 @@
         private System.Windows.Forms.Label lbl8;
         private FontAwesome.Sharp.IconButton iconButton2;
         private System.Windows.Forms.Label txtId;
+        private System.Windows.Forms.Label lbl1;
+        private CustomControls.RJControls.RJButton BFondoPBAuto;
     }
 }

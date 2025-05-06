@@ -7,6 +7,7 @@ using TestGit.Modales;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
+using TestGit.Class;
 
 namespace TestGit
 {
@@ -230,6 +231,19 @@ namespace TestGit
 
             // Pago
             txtTotal.Texts = oReserva.oPago.Total.ToString("F2");
+        }
+
+        private void FrmDetalleReserva_Load_1(object sender, EventArgs e)
+        {
+            aplicarEfectoZoom();
+        }
+
+        private void aplicarEfectoZoom()
+        {
+            HoverZoomEffect.Apply(btnBuscar);
+            HoverZoomEffect.Apply(btnLiberar);
+            HoverZoomEffect.Apply(btnLimpiar);
+            HoverZoomEffect.Apply(BGenPDF);
         }
     }
 }

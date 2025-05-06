@@ -1,6 +1,7 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
 using CapaPresentacion.Utilidades;
+using CustomControls.RJControls;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestGit.Class;
 
 namespace TestGit.Modales
 {
@@ -23,6 +26,8 @@ namespace TestGit.Modales
         public mdAutos()
         {
             InitializeComponent();
+
+
         }
         public mdAutos(int id, Autos pAuto)
         {
@@ -39,6 +44,8 @@ namespace TestGit.Modales
             this.txtAño.Texts = pAuto.Año.ToString();
             this.estado = pAuto.Estado;
             this.nombreImagen = pAuto.Imagen;
+
+            BFondoPBAuto.Paint += BFondoPBAuto_Paint;
 
             string uploadsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "uploads");
             string imagePath = Path.Combine(uploadsPath, nombreImagen);
@@ -197,6 +204,15 @@ namespace TestGit.Modales
             {
                 this.comboEstado.SelectedIndex = 1;
             }
+
+            aplicarEfectoZoom();
+        }
+
+        private void aplicarEfectoZoom()
+        {
+            HoverZoomEffect.Apply(BtnGuardar2);
+            HoverZoomEffect.Apply(BtnLimpiar2);
+            HoverZoomEffect.Apply(rjButton1);
         }
 
         private void rjButton1_Click(object sender, EventArgs e)
@@ -235,6 +251,21 @@ namespace TestGit.Modales
                 }
             }
 
+        }
+
+        private void BFondoPBAuto_Paint(object sender, PaintEventArgs e)
+        {
+            RJButton butt = sender as RJButton;
+            if (butt != null)
+            {
+                using (LinearGradientBrush brush = new LinearGradientBrush(butt.ClientRectangle,
+                Color.Blue,
+                Color.Purple,
+                LinearGradientMode.Horizontal))
+                {
+                    e.Graphics.FillRectangle(brush, butt.ClientRectangle);
+                }
+            }
         }
     }
 }

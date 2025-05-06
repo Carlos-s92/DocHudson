@@ -85,7 +85,7 @@
             this.Btn5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.Btn5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.Btn5.Image = ((System.Drawing.Image)(resources.GetObject("Btn5.Image")));
+            this.Btn5.Image = global::TestGit.Properties.Resources.CompraImg;
             this.Btn5.Location = new System.Drawing.Point(531, 477);
             this.Btn5.Margin = new System.Windows.Forms.Padding(2);
             this.Btn5.Name = "Btn5";
@@ -108,7 +108,7 @@
             this.Btn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.Btn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.Btn1.Image = ((System.Drawing.Image)(resources.GetObject("Btn1.Image")));
+            this.Btn1.Image = global::TestGit.Properties.Resources.VentaImg;
             this.Btn1.Location = new System.Drawing.Point(159, 477);
             this.Btn1.Margin = new System.Windows.Forms.Padding(2);
             this.Btn1.Name = "Btn1";
@@ -131,6 +131,7 @@
             this.Btn4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.Btn4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.Btn4.Image = global::TestGit.Properties.Resources.ClienteImg;
             this.Btn4.Location = new System.Drawing.Point(531, 292);
             this.Btn4.Margin = new System.Windows.Forms.Padding(2);
             this.Btn4.Name = "Btn4";
@@ -153,6 +154,7 @@
             this.Btn3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.Btn3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.Btn3.Image = global::TestGit.Properties.Resources.UsuarioImg;
             this.Btn3.Location = new System.Drawing.Point(159, 292);
             this.Btn3.Margin = new System.Windows.Forms.Padding(2);
             this.Btn3.Name = "Btn3";
@@ -175,6 +177,7 @@
             this.Btn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.Btn2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.Btn2.Image = global::TestGit.Properties.Resources.ProductoImg;
             this.Btn2.Location = new System.Drawing.Point(159, 107);
             this.Btn2.Margin = new System.Windows.Forms.Padding(2);
             this.Btn2.Name = "Btn2";
@@ -201,6 +204,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmInicio";
             this.Text = "FrmInicio";
+            this.Load += new System.EventHandler(this.FrmInicio_Load);
             this.ResumeLayout(false);
 
         }

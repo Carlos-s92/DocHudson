@@ -8,12 +8,14 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestGit.Class;
 using TestGit.Modales;
 
 namespace TestGit
@@ -25,6 +27,8 @@ namespace TestGit
         public FrmAutos()
         {
             InitializeComponent();
+
+            BFondoPBAuto.Paint += BFondoPBAuto_Paint;
         }
 
         private bool Validaciones()
@@ -150,7 +154,9 @@ namespace TestGit
                         if (idAutoGenerado != 0)
                         {
                             LimpiarCampos(); // Limpia los campos del formulario.
-                        }
+                            VentanaEmergente MsgError = new VentanaEmergente("Registro exitoso", "Auto registrado exitosamente", "Exito");
+                            MsgError.ShowDialog();
+                    }
                         else
                         {
                             VentanaEmergente MsgError = new VentanaEmergente("Error", mensaje, "Error");
@@ -235,6 +241,14 @@ namespace TestGit
             comboMarca.DisplayMember = "Texto";
             comboMarca.ValueMember = "Valor";
             comboMarca.SelectedIndex = 0;
+
+            aplicarEfectoZoom();
+        }
+
+        private void aplicarEfectoZoom()
+        {
+            HoverZoomEffect.Apply(BtnGuardar2);
+            HoverZoomEffect.Apply(rjButton1);
         }
 
 
@@ -308,6 +322,19 @@ namespace TestGit
             comboModelo.ValueMember = "Valor";
         }
 
-
+        private void BFondoPBAuto_Paint(object sender, PaintEventArgs e)
+        {
+            RJButton butt = sender as RJButton;
+            if (butt != null)
+            {
+                using (LinearGradientBrush brush = new LinearGradientBrush(butt.ClientRectangle,
+                Color.Blue,
+                Color.Purple,
+                LinearGradientMode.Horizontal))
+                {
+                    e.Graphics.FillRectangle(brush, butt.ClientRectangle);
+                }
+            }
+        }
     }
 }

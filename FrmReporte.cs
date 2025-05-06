@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestGit.Class;
 
 namespace TestGit
 {
@@ -15,6 +16,22 @@ namespace TestGit
         public FrmReporte()
         {
             InitializeComponent();
+        }
+
+        private void rjButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmReporte_Load(object sender, EventArgs e)
+        {
+            aplicarEfectoZoom();
+        }
+
+        private void aplicarEfectoZoom()
+        {
+            HoverZoomEffect.Apply(BtnGuardar2);
+            HoverZoomEffect.Apply(BLimpiar);
         }
     }
 }

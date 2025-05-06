@@ -1,11 +1,14 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
+using CustomControls.RJControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,6 +16,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Interop;
 using System.Windows.Media.TextFormatting;
+using TestGit.Class;
 using TestGit.Modales;
 
 namespace TestGit
@@ -23,6 +27,8 @@ namespace TestGit
         public FrmNegocio()
         {
             InitializeComponent();
+
+            BFondoPBAuto.Paint += BFondoPBAuto_Paint;
         }
 
 
@@ -109,7 +115,7 @@ namespace TestGit
                     // Mostrar mensajes según el resultado de la operación
                     if (respuesta)
                     {
-                        VentanaEmergente msg = new VentanaEmergente("Mensaje", "Los cambios fueron guardados", "Informacion");
+                        VentanaEmergente msg = new VentanaEmergente("Mensaje", "Los cambios fueron guardados", "Exito");
                         msg.ShowDialog();
                     }
                     else
@@ -155,6 +161,28 @@ namespace TestGit
                 }
             }
 
+            aplicarEfectoZoom();
+        }
+
+        private void aplicarEfectoZoom()
+        {
+            HoverZoomEffect.Apply(rjButton1);
+            HoverZoomEffect.Apply(rjButton2);
+        }
+
+        private void BFondoPBAuto_Paint(object sender, PaintEventArgs e)
+        {
+            RJButton butt = sender as RJButton;
+            if (butt != null)
+            {
+                using (LinearGradientBrush brush = new LinearGradientBrush(butt.ClientRectangle,
+                Color.Blue,
+                Color.Purple,
+                LinearGradientMode.Horizontal))
+                {
+                    e.Graphics.FillRectangle(brush, butt.ClientRectangle);
+                }
+            }
         }
     }
 }

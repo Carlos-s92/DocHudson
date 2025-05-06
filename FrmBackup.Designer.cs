@@ -47,14 +47,14 @@
             this.BtnLimpiar2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnLimpiar2.FlatAppearance.BorderSize = 0;
             this.BtnLimpiar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnLimpiar2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnLimpiar2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.BtnLimpiar2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnLimpiar2.Location = new System.Drawing.Point(575, 415);
             this.BtnLimpiar2.Margin = new System.Windows.Forms.Padding(2);
             this.BtnLimpiar2.Name = "BtnLimpiar2";
             this.BtnLimpiar2.Size = new System.Drawing.Size(365, 41);
             this.BtnLimpiar2.TabIndex = 136;
-            this.BtnLimpiar2.Text = "+";
+            this.BtnLimpiar2.Text = "Elegir Ruta";
             this.BtnLimpiar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnLimpiar2.UseVisualStyleBackColor = false;
             this.BtnLimpiar2.Click += new System.EventHandler(this.BtnLimpiar2_Click);
@@ -76,7 +76,7 @@
             this.BtnGuardar2.Name = "BtnGuardar2";
             this.BtnGuardar2.Size = new System.Drawing.Size(365, 41);
             this.BtnGuardar2.TabIndex = 135;
-            this.BtnGuardar2.Text = "+";
+            this.BtnGuardar2.Text = "Realizar Backup";
             this.BtnGuardar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnGuardar2.UseVisualStyleBackColor = false;
             this.BtnGuardar2.Click += new System.EventHandler(this.BtnGuardar2_Click);
@@ -154,6 +154,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmBackup";
             this.Text = "FrmBackup";
+            this.Load += new System.EventHandler(this.FrmBackup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

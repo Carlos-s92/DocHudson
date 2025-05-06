@@ -1,4 +1,4 @@
-Create Database DocHudson
+﻿Create Database DocHudson
 Go
 
 Use DocHudson
