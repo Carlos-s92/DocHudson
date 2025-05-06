@@ -109,6 +109,8 @@
             this.BtnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(28)))));
             this.BtnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.BtnSalir.FlatAppearance.BorderSize = 0;
+            this.BtnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.BtnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.BtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalir.IconChar = FontAwesome.Sharp.IconChar.RightFromBracket;
             this.BtnSalir.IconColor = System.Drawing.Color.White;
@@ -233,6 +235,7 @@
             this.menuLateral.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.menuLateral.Location = new System.Drawing.Point(0, -2);
             this.menuLateral.Name = "menuLateral";
+            this.menuLateral.Padding = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuLateral.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.menuLateral.Size = new System.Drawing.Size(253, 665);
             this.menuLateral.TabIndex = 10;
@@ -502,7 +505,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1230, 804);
+            this.ClientSize = new System.Drawing.Size(1230, 788);
             this.Controls.Add(this.BarraTop);
             this.Controls.Add(this.panelLateral);
             this.Controls.Add(this.Contenedor);

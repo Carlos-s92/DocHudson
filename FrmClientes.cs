@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using TestGit.Class;
 using TestGit.Modales;
 
 namespace TestGit
@@ -96,7 +97,15 @@ namespace TestGit
                                 item.oPersona.Id_Persona,
                                 item.oPersona.oDomicilio.Id_Domicilio
                             });
+
+                AplicarEfectosAdds();
             }
+        }
+
+        private void AplicarEfectosAdds()
+        {
+            HoverZoomEffect.Apply(BtnGuardar2);
+            HoverZoomEffect.Apply(BtnLimpiar2);
         }
 
         //Metodo para limpiar los campos del formulario

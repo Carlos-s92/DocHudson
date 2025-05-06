@@ -191,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\BorderClass.cs" />
+    <Compile Include="Class\HoverZoomEffect.cs" />
     <Compile Include="Custom\RJButton.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -3,6 +3,7 @@ using CapaNegocio;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using TestGit.Class;
 using TestGit.Modales;
 
 namespace TestGit
@@ -237,6 +238,17 @@ namespace TestGit
             }
         }
 
+        private void FrmReserva_Load(object sender, EventArgs e)
+        {
+            AplicarEfectosAdds();
+        }
 
+        private void AplicarEfectosAdds()
+        {
+            HoverZoomEffect.Apply(btnCliente);
+            HoverZoomEffect.Apply(BtnLimpiar2);
+            HoverZoomEffect.Apply(BtnGuardar2);
+            HoverZoomEffect.Apply(btnAuto);
+        }
     }
 }

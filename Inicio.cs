@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestGit.Class;
 using TestGit.Modales;
 
 namespace TestGit
@@ -244,7 +245,11 @@ namespace TestGit
 
             //}
 
-
+            AplicarEfectosAdds();
+        }
+        private void AplicarEfectosAdds()
+        {
+            HoverZoomEffect.Apply(BtnSalir);
         }
     }
 }
