@@ -1,10 +1,12 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
+using CustomControls.RJControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -129,6 +131,21 @@ namespace TestGit.Modales
             else
             {
                 MessageBox.Show("Debe completar todos los campos","Alerta",MessageBoxButtons.OK);
+            }
+        }
+
+        private void BBordeMDPago_Paint(object sender, PaintEventArgs e)
+        {
+            RJButton butt = sender as RJButton;
+            if (butt != null)
+            {
+                using (LinearGradientBrush brush = new LinearGradientBrush(butt.ClientRectangle,
+                Color.Blue,
+                Color.Purple,
+                LinearGradientMode.Horizontal))
+                {
+                    e.Graphics.FillRectangle(brush, butt.ClientRectangle);
+                }
             }
         }
     }

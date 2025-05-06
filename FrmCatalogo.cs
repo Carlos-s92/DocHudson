@@ -1,7 +1,10 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
+using CustomControls.RJControls;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using TestGit.Modales;
 
@@ -112,6 +115,21 @@ namespace TestGit
         private void btnBuscar_Click(object sender, DragEventArgs e)
         {
 
+        }
+
+        private void BBordeFormCatalogo_Paint(object sender, PaintEventArgs e)
+        {
+            RJButton butt = sender as RJButton;
+            if (butt != null)
+            {
+                using (LinearGradientBrush brush = new LinearGradientBrush(butt.ClientRectangle,
+                Color.Blue,
+                Color.Purple,
+                LinearGradientMode.Horizontal))
+                {
+                    e.Graphics.FillRectangle(brush, butt.ClientRectangle);
+                }
+            }
         }
     }
 }

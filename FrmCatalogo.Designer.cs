@@ -32,6 +32,8 @@
             this.btnBuscar = new CustomControls.RJControls.RJButton();
             this.txtBusqueda = new CustomControls.RJControls.RJTextBox();
             this.btnSalir = new CustomControls.RJControls.RJButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.rjButton2 = new CustomControls.RJControls.RJButton();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -41,7 +43,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 87);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(13);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(958, 627);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(958, 620);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // btnBuscar
@@ -113,6 +115,31 @@
             this.btnSalir.Visible = false;
             this.btnSalir.Click += new System.EventHandler(this.rjButton1_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(976, 713);
+            this.panel1.TabIndex = 145;
+            // 
+            // rjButton2
+            // 
+            this.rjButton2.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton2.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton2.BorderRadius = 10;
+            this.rjButton2.BorderSize = 0;
+            this.rjButton2.FlatAppearance.BorderSize = 0;
+            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton2.ForeColor = System.Drawing.Color.White;
+            this.rjButton2.Location = new System.Drawing.Point(-5, -2);
+            this.rjButton2.Name = "rjButton2";
+            this.rjButton2.Size = new System.Drawing.Size(996, 729);
+            this.rjButton2.TabIndex = 1;
+            this.rjButton2.Text = "rjButton2";
+            this.rjButton2.TextColor = System.Drawing.Color.White;
+            this.rjButton2.UseVisualStyleBackColor = false;
+            // 
             // FrmCatalogo
             // 
             this.AcceptButton = this.btnBuscar;
@@ -124,6 +151,8 @@
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.rjButton2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmCatalogo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -139,5 +168,7 @@
         private CustomControls.RJControls.RJButton btnBuscar;
         private CustomControls.RJControls.RJButton btnSalir;
         private CustomControls.RJControls.RJTextBox txtBusqueda;
+        private System.Windows.Forms.Panel panel1;
+        private CustomControls.RJControls.RJButton rjButton2;
     }
 }
