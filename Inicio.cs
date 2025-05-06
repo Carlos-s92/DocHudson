@@ -243,8 +243,6 @@ namespace TestGit
             //    this.menuGraficos.Visible = false;
 
             //}
-
-
         }
     }
 }

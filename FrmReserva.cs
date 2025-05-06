@@ -237,7 +237,5 @@ namespace TestGit
                 e.Handled = true;
             }
         }
-
-
     }
 }
