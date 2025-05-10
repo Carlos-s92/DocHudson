@@ -83,9 +83,9 @@ namespace CapaNegocio
         }
 
 
-        public bool Eliminar(int id_reserva, out string Mensaje)
+        public bool LiberarReserva(int id_reserva, out string Mensaje)
         {
-            return objcd_Reserva.Eliminar(id_reserva, out Mensaje);
+            return objcd_Reserva.LiberarReserva(id_reserva, out Mensaje);
 
         }
 

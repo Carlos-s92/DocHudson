@@ -43,16 +43,16 @@ namespace TestGit
 
             // 3) Llamar al negocio para liberar
             string mensaje;
-            //bool ok = new CN_Reserva().LiberarReserva(id, out mensaje);
-            //if (ok)
-            //{
-            //    MessageBox.Show("Reserva liberada exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    LimpiarCampos();   // tu método para resetear la UI
-            //}
-            //else
-            //{
-            //    MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            bool ok = new CN_Reserva().LiberarReserva(id, out mensaje);
+            if (ok)
+            {
+                MessageBox.Show("Reserva liberada exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimpiarCampos();   // tu método para resetear la UI
+            }
+            else
+            {
+                MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void rjButton3_Click(object sender, EventArgs e)
@@ -73,22 +73,21 @@ namespace TestGit
                 if (confirmacion.DialogResult == DialogResult.Yes)
                 {
 
-                    // Procedo a liberar la reserva mediante la funcionalidad en la capa de negocio.
-                    // Y almaceno el resultado de la operacion.
-                    //bool resultado = new CN_Reserva().LiberarReserva(Convert.ToInt32(txtBusqueda.Text), out mensaje);
+                    //Procedo a liberar la reserva mediante la funcionalidad en la capa de negocio.
+                    //Y almaceno el resultado de la operacion.
+                    bool resultado = new CN_Reserva().LiberarReserva(Convert.ToInt32(txtBusqueda.Text), out mensaje);
 
-                    //// Si se ejecuto la operacion
-                    //if (resultado == true)
-                    //{
-                    //    VentanaEmergente msg = new VentanaEmergente("Informacion", "Reserva Liberada con Éxito", "Informacion");
-                    //    msg.ShowDialog();
-                    //}
-                    //else
-                    //{
-                    //    VentanaEmergente msg = new VentanaEmergente("Error", "No se pudo liberar la reserva", "Error");
-                    //    msg.ShowDialog();
-                    //}
-
+                    // Si se ejecuto la operacion
+                    if (resultado == true)
+                    {
+                        VentanaEmergente msg = new VentanaEmergente("Informacion", "Reserva Liberada con Éxito", "Informacion");
+                        msg.ShowDialog();
+                    }
+                    else
+                    {
+                        VentanaEmergente msg = new VentanaEmergente("Error", "No se pudo liberar la reserva", "Error");
+                        msg.ShowDialog();
+                    }
                 }
             }
             else

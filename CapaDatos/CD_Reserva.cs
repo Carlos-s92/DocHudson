@@ -249,7 +249,7 @@ namespace CapaDatos
         }
 
 
-        public bool Eliminar(int id_reserva, out string Mensaje)
+        public bool LiberarReserva(int id_reserva, out string Mensaje)
 
         {
             bool respuesta = false;

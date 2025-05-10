@@ -490,7 +490,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(19)))));
-            this.ClientSize = new System.Drawing.Size(982, 661);
+            this.ClientSize = new System.Drawing.Size(982, 691);
             this.Controls.Add(this.dtpFechaF);
             this.Controls.Add(this.dtpFechaI);
             this.Controls.Add(this.label2);
