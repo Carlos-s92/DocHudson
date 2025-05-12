@@ -97,7 +97,8 @@ namespace TestGit
             comboMarca.SelectedIndex = 0;
             comboModelo.SelectedIndex = 0;
             comboEstado.SelectedIndex = 0;
-       
+            this.pictureBox1.Controls.Clear();
+            this.txtImagen.Texts = "";
         }
 
 

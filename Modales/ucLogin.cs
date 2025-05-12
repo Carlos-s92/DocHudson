@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 using TestGit.Class;
 
 namespace TestGit.Modales
@@ -80,6 +81,33 @@ namespace TestGit.Modales
         //Función para ingresar automaticamente el usuario y contraseña único de momento.
         private void UcLogin_Load(object sender, EventArgs e)
         {
+        }
+
+        private void CampoContraseña_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void CampoContraseña_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter) // Si el usuario presiona la tecla Enter.
+            {
+                if (CampoUsuario.Texts != "" && CampoContraseña.Texts != "")
+                {
+                    btnLogin_Click(sender, e);
+                }
+            }
+        }
+
+        private void CampoUsuario_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter) // Si el usuario presiona la tecla Enter.
+            {
+                if (CampoContraseña.Texts != "" && CampoUsuario.Texts != "")
+                {
+                    btnLogin_Click(sender, e);
+                }
+            }
         }
     }
 }

@@ -103,6 +103,7 @@
             this.CampoUsuario.TabIndex = 9;
             this.CampoUsuario.Texts = "";
             this.CampoUsuario.UnderlinedStyle = true;
+            this.CampoUsuario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CampoUsuario_KeyDown);
             // 
             // CampoContraseña
             // 
@@ -127,6 +128,8 @@
             this.CampoContraseña.TabIndex = 10;
             this.CampoContraseña.Texts = "";
             this.CampoContraseña.UnderlinedStyle = true;
+            this.CampoContraseña.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CampoContraseña_KeyDown);
+            this.CampoContraseña.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CampoContraseña_KeyPress);
             // 
             // ucLogin
             // 
