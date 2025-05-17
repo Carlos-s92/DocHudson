@@ -1121,9 +1121,6 @@ BEGIN
     BEGIN TRY
         INSERT INTO Reserva (Id_Auto, Id_Pago, Id_Cliente,Id_Usuario, Fecha_Inicio, Fecha_Fin, Estado)
         VALUES (@Id_Auto, @Id_Pago, @Id_Cliente,@Id_Usuario, @Fecha_Inicio, @Fecha_Fin, @Estado);
-
-		Update Autos Set Reservado = 1 where Id_Auto = @Id_Auto
-
         COMMIT TRANSACTION;
 		Set @Resultado = SCOPE_IDENTITY();
     END TRY
