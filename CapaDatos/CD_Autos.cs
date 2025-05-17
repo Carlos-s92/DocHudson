@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Text;
 
 namespace CapaDatos
 {
@@ -49,10 +48,8 @@ namespace CapaDatos
                     }
                 }
             }
-
             return lista;
         }
-
 
         public int Registrar(Autos obj, out string Mensaje)
         {
@@ -170,6 +167,30 @@ namespace CapaDatos
 
             return Respuesta;
 
+        }
+
+        public bool CambiarEstado(int idAuto, bool reservado, out string mensaje)
+        {
+            bool exito = false;
+            mensaje = string.Empty;
+
+            using (var cn = new SqlConnection(Conexion.cadena))
+            using (var cmd = new SqlCommand("CambiarEstadoAuto", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id_Auto", idAuto);
+                cmd.Parameters.AddWithValue("@Reservado", reservado);
+                cmd.Parameters.Add("@Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
+
+                cn.Open();
+                cmd.ExecuteNonQuery();
+
+                exito = Convert.ToBoolean(cmd.Parameters["@Resultado"].Value);
+                mensaje = cmd.Parameters["@Mensaje"].Value.ToString();
+            }
+
+            return exito;
         }
 
         public List<Autos> Buscar(string texto)

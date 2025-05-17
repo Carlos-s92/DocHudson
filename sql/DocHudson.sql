@@ -1285,13 +1285,6 @@ BEGIN
            SET Estado = 0
          WHERE Id_Reserva = @Id_Reserva;
 
-        -- 2) Liberar el auto asociado
-        UPDATE A
-          SET Reservado = 0
-        FROM Autos A
-        INNER JOIN Reserva R ON R.Id_Auto = A.Id_Auto
-        WHERE R.Id_Reserva = @Id_Reserva;
-
         COMMIT TRANSACTION;
         SET @Resultado = 1;
     END TRY
@@ -1301,6 +1294,40 @@ BEGIN
         THROW;
     END CATCH;
 END;
+GO
+
+--//true=ocupado, false=disponible
+CREATE OR ALTER PROCEDURE CambiarEstadoAuto
+    @Id_Auto    INT,
+    @Reservado  BIT,
+    @Resultado  BIT OUTPUT,
+    @Mensaje    VARCHAR(500) OUTPUT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SET @Resultado = 0;
+    SET @Mensaje   = '';
+
+    IF NOT EXISTS (SELECT 1 FROM Autos WHERE Id_Auto = @Id_Auto)
+    BEGIN
+        SET @Mensaje = 'Auto no encontrado.';
+        RETURN;
+    END
+
+    BEGIN TRANSACTION;
+    BEGIN TRY
+        UPDATE Autos
+           SET Reservado = @Reservado
+         WHERE Id_Auto = @Id_Auto;
+
+        COMMIT;
+        SET @Resultado = 1;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        SET @Mensaje = ERROR_MESSAGE();
+    END CATCH;
+END
 GO
 
 	CREATE OR ALTER   PROCEDURE EditarDomicilio(

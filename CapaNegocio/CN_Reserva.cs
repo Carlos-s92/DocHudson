@@ -7,6 +7,7 @@ namespace CapaNegocio
     public class CN_Reserva
     {
         private CD_Reserva objcd_Reserva = new CD_Reserva();
+        private readonly CD_Autos objcd_Autos = new CD_Autos();
 
         public List<Reserva> Listar()
         {
@@ -82,11 +83,36 @@ namespace CapaNegocio
             }
         }
 
-
         public bool Eliminar(int id_reserva, out string Mensaje)
         {
-            return objcd_Reserva.Eliminar(id_reserva, out Mensaje);
+            Mensaje = string.Empty;
 
+            // 1) Desactivar la reserva
+            bool okRes = objcd_Reserva.Eliminar(id_reserva, out Mensaje);
+            if (!okRes)
+            {
+                Mensaje = "Reserva: " + Mensaje;
+                return false;
+            }
+
+            // 2) Recuperar el Id_Auto de esa reserva
+            var reserva = BuscarReserva(id_reserva);
+            if (reserva == null)
+            {
+                Mensaje = "Reserva eliminada, pero no se encontró detalle de auto.";
+                return false;
+            }
+
+            // 3) Cambiar estado del auto a 'no reservado'
+            bool okAuto = objcd_Autos.CambiarEstado(reserva.oAuto.Id_Auto, false, out string msgAuto);
+            if (!okAuto)
+            {
+                Mensaje = "Reserva cancelada, pero error liberando auto: " + msgAuto;
+                return false;
+            }
+
+            // Todo OK
+            return true;
         }
 
         public Reserva BuscarReserva(int id) => new CD_Reserva().Buscar(id);
