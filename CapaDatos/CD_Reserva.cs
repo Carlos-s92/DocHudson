@@ -155,6 +155,7 @@ namespace CapaDatos
                         };
                     }
                 }
+                cn.Close();
             }
             return r;
         }
@@ -186,6 +187,7 @@ namespace CapaDatos
 
                 idRes = Convert.ToInt32(cmd.Parameters["@Resultado"].Value);
                 mensaje = cmd.Parameters["@Mensaje"].Value.ToString();
+                cn.Close();
             }
             return idRes;
         }
@@ -227,7 +229,7 @@ namespace CapaDatos
             return Respuesta;
         }
 
-        public bool Eliminar(int id_reserva, out string Mensaje)
+        public bool LiberarReserva(int id_reserva, out string Mensaje)
 
         {
             bool respuesta = false;
@@ -235,7 +237,7 @@ namespace CapaDatos
             try { 
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-                    SqlCommand cmd = new SqlCommand("EliminarReserva", oconexion);
+                    SqlCommand cmd = new SqlCommand("LiberarReserva", oconexion);
                     cmd.Parameters.AddWithValue("Id_Reserva", id_reserva);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;

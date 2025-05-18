@@ -65,7 +65,7 @@ namespace CapaNegocio
             if (!okAuto)
             {
                 // Si no pudimos reservar el auto, revertimos la inserción de la reserva
-                objcd_Reserva.Eliminar(idReserva, out _);
+                objcd_Reserva.LiberarReserva(idReserva, out _);
                 mensaje = $"Reserva creada (ID={idReserva}), pero no se pudo marcar el auto: {msgAuto}";
                 return 0;
             }
@@ -109,12 +109,12 @@ namespace CapaNegocio
             }
         }
 
-        public bool Eliminar(int id_reserva, out string Mensaje)
+        public bool LiberarReserva(int id_reserva, out string Mensaje)
         {
             Mensaje = string.Empty;
 
             // 1) Desactivar la reserva
-            bool okRes = objcd_Reserva.Eliminar(id_reserva, out Mensaje);
+            bool okRes = objcd_Reserva.LiberarReserva(id_reserva, out Mensaje);
             if (!okRes)
             {
                 Mensaje = "Reserva: " + Mensaje;

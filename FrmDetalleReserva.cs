@@ -42,7 +42,7 @@ namespace TestGit
 
             // 3) Llamar al negocio para liberar
             string mensaje;
-            bool ok = new CN_Reserva().Eliminar(id, out mensaje);
+            bool ok = new CN_Reserva().LiberarReserva(id, out mensaje);
             if (ok)
             {
                 MessageBox.Show("Reserva y auto liberados exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -188,6 +188,7 @@ namespace CapaDatos
 
                 exito = Convert.ToBoolean(cmd.Parameters["@Resultado"].Value);
                 mensaje = cmd.Parameters["@Mensaje"].Value.ToString();
+                cn.Close();
             }
 
             return exito;
@@ -231,6 +232,7 @@ namespace CapaDatos
                         });
                     }
                 }
+                cn.Close();
             }
             return lista;
         }

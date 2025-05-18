@@ -1259,7 +1259,7 @@ GO
 
 
 
-CREATE OR ALTER PROCEDURE EliminarReserva
+CREATE OR ALTER PROCEDURE LiberarReserva
     @Id_Reserva INT,
 	@Resultado int output,
 	@Mensaje varchar(500) output
