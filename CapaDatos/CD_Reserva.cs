@@ -9,7 +9,6 @@ namespace CapaDatos
 {
     public class CD_Reserva
     {
-
         public List<Reserva> Listar()
         {
             List<Reserva> lista = new List<Reserva>();
@@ -156,66 +155,51 @@ namespace CapaDatos
                         };
                     }
                 }
+                cn.Close();
             }
-
             return r;
         }
 
 
-        public int Registrar(Reserva obj, out string Mensaje)
+        public int Registrar(int idAuto, int idPago, int idCliente, int idUsuario,
+                        DateTime fechaInicio, DateTime fechaFin, bool estado,
+                        out string mensaje)
         {
-            int IdReservaGenerado = 0;
-            Mensaje = string.Empty;
+            int idRes = 0;
+            mensaje = string.Empty;
 
-            try
+            using (var cn = new SqlConnection(Conexion.cadena))
+            using (var cmd = new SqlCommand("InsertarReserva", cn))
             {
-                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
-                {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id_Auto", idAuto);
+                cmd.Parameters.AddWithValue("@Id_Pago", idPago);
+                cmd.Parameters.AddWithValue("@Id_Cliente", idCliente);
+                cmd.Parameters.AddWithValue("@Id_Usuario", idUsuario);
+                cmd.Parameters.AddWithValue("@Fecha_Inicio", fechaInicio);
+                cmd.Parameters.AddWithValue("@Fecha_Fin", fechaFin);
+                cmd.Parameters.AddWithValue("@Estado", estado);
+                cmd.Parameters.Add("@Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
 
+                cn.Open();
+                cmd.ExecuteNonQuery();
 
-                    SqlCommand cmd = new SqlCommand("InsertarReserva", oconexion);
-                    cmd.Parameters.AddWithValue("Id_Auto", obj.oAuto.Id_Auto);
-                    cmd.Parameters.AddWithValue("Id_Pago", obj.oPago.Id_Pago);
-                    cmd.Parameters.AddWithValue("Id_Usuario", obj.oUsuario.Id_Usuario);
-                    cmd.Parameters.AddWithValue("Id_Cliente", obj.oCliente.Id_Cliente);
-                    cmd.Parameters.AddWithValue("Fecha_Inicio", obj.Fecha_Inicio);
-                    cmd.Parameters.AddWithValue("Fecha_Fin", obj.Fecha_Fin);
-                    cmd.Parameters.AddWithValue("Estado", obj.Estado);
-                    cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    oconexion.Open();
-
-                    cmd.ExecuteNonQuery();
-
-                    IdReservaGenerado = Convert.ToInt32(cmd.Parameters["Resultado"].Value);
-                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-                    oconexion.Close();
-                }
-
+                idRes = Convert.ToInt32(cmd.Parameters["@Resultado"].Value);
+                mensaje = cmd.Parameters["@Mensaje"].Value.ToString();
+                cn.Close();
             }
-            catch (Exception ex)
-            {
-                IdReservaGenerado = 0;
-                Mensaje = ex.Message;
-            }
-
-            return IdReservaGenerado;
-
+            return idRes;
         }
 
         public bool Editar(Reserva obj, out string Mensaje)
         {
             bool Respuesta = false;
             Mensaje = string.Empty;
-
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-       
-
                     SqlCommand cmd = new SqlCommand("ActualizarReserva", oconexion);
                     cmd.Parameters.AddWithValue("Id_Reserva", obj.Id_Reserva);
                     cmd.Parameters.AddWithValue("Id_Auto", obj.oAuto.Id_Auto);
@@ -236,20 +220,16 @@ namespace CapaDatos
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
                     oconexion.Close();
                 }
-
             }
             catch (Exception ex)
             {
                 Respuesta = false;
                 Mensaje = ex.Message;
             }
-
             return Respuesta;
-
         }
 
-
-        public bool Eliminar(int id_reserva, out string Mensaje)
+        public bool LiberarReserva(int id_reserva, out string Mensaje)
 
         {
             bool respuesta = false;
@@ -257,9 +237,7 @@ namespace CapaDatos
             try { 
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-
-
-                    SqlCommand cmd = new SqlCommand("EliminarReserva", oconexion);
+                    SqlCommand cmd = new SqlCommand("LiberarReserva", oconexion);
                     cmd.Parameters.AddWithValue("Id_Reserva", id_reserva);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
@@ -282,7 +260,5 @@ namespace CapaDatos
             }
             return respuesta;
         }
-
-
     }
 }
