@@ -1547,3 +1547,122 @@ INSERT into Tipo_Pago (Descripcion, estado) values ('Tarjeta', 1), ('Efectivo', 
 
 
 Insert into Negocio (Nombre) Values ('Doc Hudson')
+
+
+CREATE OR ALTER PROCEDURE ListarClientes
+AS
+BEGIN
+    Select Id_Cliente, Licencia, pe.DNI, pe.Id_Persona, pe.Nombre, pe.Apellido, p.Id_Provincia, p.Provincia, l.Id_Localidad,l.Localidad, d.Calle,d.Id_Domicilio, d.Numero, pe.Fecha_Nacimiento, pe.Mail, pe.Telefono, Estado from Cliente c
+    inner join Persona pe on pe.Id_Persona = c.Id_Persona
+    inner join Domicilio d on d.Id_Domicilio = pe.Id_Domicilio
+    inner join Localidad l on d.Id_Localidad = l.Id_Localidad
+    inner join Provincia p on l.Id_Provincia = p.Id_Provincia
+END;
+GO
+
+CREATE OR ALTER PROCEDURE ListarLocalidades
+AS
+BEGIN
+    SELECT Id_Localidad, Id_Provincia, localidad 
+    FROM Localidad
+END;
+GO
+
+CREATE OR ALTER PROCEDURE ListarModelos
+AS
+BEGIN
+    SELECT Id_Modelo, Id_Marca, modelo, Consumo, Puertas, Asientos
+    FROM Modelo
+END;
+GO
+
+CREATE OR ALTER PROCEDURE ListarMarcas
+AS
+BEGIN
+    SELECT Id_Marca, marca 
+    FROM Marca
+END;
+GO
+
+CREATE OR ALTER PROCEDURE ListarNegocios
+AS
+BEGIN
+    SELECT Id_Negocio,Nombre,Imagen 
+    FROM Negocio WHERE Id_Negocio = 1
+END;
+GO
+
+
+CREATE OR ALTER PROCEDURE ListarPerfiles
+AS
+BEGIN
+    SELECT p.Id_Perfil, p.Descripcion
+    FROM Perfiles p
+END;
+GO
+
+CREATE OR ALTER PROCEDURE ListarPagos
+AS
+BEGIN
+    SELECT p.Id_Pago, p.Id_Tipopago, tp.Descripcion, p.Total, p.Fecha_Pago, p.Estado
+    FROM Pago p
+    Inner join Tipo_Pago tp on tp.Id_Tipopago = p.Id_Tipopago
+END;
+GO
+
+--Procedimiento para listar Personas
+CREATE OR ALTER PROCEDURE ListarPersonas
+AS 
+BEGIN
+	SELECT p.Id_Persona, p.DNI, p.Nombre, p.Apellido, p.Mail, p.Telefono,
+           p.Id_Domicilio, p.Fecha_Nacimiento,
+           d.Calle, d.Numero, d.Id_Localidad,
+           l.Localidad, l.Id_Provincia,
+           pr.Provincia
+           FROM Persona p
+           INNER JOIN Domicilio d ON d.Id_Domicilio = p.Id_Domicilio
+           INNER JOIN Localidad l ON l.Id_Localidad = d.Id_Localidad
+           INNER JOIN Provincia pr ON pr.Id_Provincia = l.Id_Provincia
+END;
+GO
+-- Procedimiento para listar usuarios.
+CREATE OR AlTER PROCEDURE ListarUsuarios
+AS
+BEGIN
+	SELECT u.Id_Usuario, u.Usuario, u.Contraseña, per.DNI, u.Estado, p.Id_Perfil, p.Descripcion
+	FROM Usuarios u
+	INNER JOIN Persona per ON per.Id_Persona = u.Id_Persona
+	INNER JOIN Perfiles p ON p.Id_Perfil = u.Id_Perfil
+END;
+GO
+	
+
+-- Procedimiento para listar tipo pagosMore actions
+CREATE OR ALTER PROCEDURE ListarTipoPagos
+AS
+BEGIN
+	SELECT tp.Id_Tipopago, tp.Descripcion, tp.Estado
+	FROM Tipo_Pago tp
+END;
+GO
+
+
+--Procedimiento para listar reservasMore actions
+CREATE OR ALTER PROCEDURE ListarReservas
+AS 
+BEGIN
+	SELECT r.Id_Reserva, r.Id_Auto, r.Id_Pago, r.Id_Cliente, r.Fecha_Inicio, r.Fecha_Fin, r.Estado
+    FROM Reserva r
+END;
+GO
+
+
+GO
+
+--Procedimiento para listar Provincias
+CREATE OR ALTER PROCEDURE ListarProvincias
+AS 
+BEGIN
+	SELECT Id_Provincia, Provincia FROM Provincia
+END;
+GO
