@@ -44,9 +44,7 @@ Primary Key (Id_Domicilio),
 Foreign Key (Id_Localidad) References Localidad(Id_Localidad)
 )
 Go
-
 ------------------------------------------------------
-
 Create Table Persona(
 Id_Persona Int Identity(1,1),
 Nombre Varchar(150),
@@ -85,8 +83,6 @@ Foreign Key (Id_Persona) References Persona(Id_Persona)
 )
 Go
 
-
-
 --Creacion de la tabla Modelo y Marca para la normalizacion
 Create Table Marca(
 Id_Marca Int Identity(1,1),
@@ -106,11 +102,7 @@ Primary Key (Id_Modelo),
 Foreign Key (Id_Marca) References Marca(Id_Marca)
 )
 Go
-
-
-
 ------------------------------------------------------
-
 Create Table Autos(
 Id_Auto Int Identity(1,1),
 Matricula Varchar(11),
@@ -124,9 +116,6 @@ Primary Key (Id_Auto),
 Foreign Key (Id_Modelo) References Modelo(Id_Modelo)
 )
 Go
-
-
-
 
 Create Table Tipo_Pago(
 Id_Tipopago Int identity(1,1),
@@ -164,18 +153,13 @@ Foreign Key (Id_Usuario) References Usuarios(Id_Usuario) --Referencia al Usuario
 )
 Go
 
-
-
 CREATE TABLE Negocio(
 Id_Negocio int primary key identity(1,1),
 Nombre varchar(60),
 Imagen Varchar(200) default ''
 )
 go
-
-
 --Comienzo de los procedimientos--
-
 -- Procedimientos para la tabla Perfiles
 -- Procedimiento para insertar perfiles con manejo de errores
 
@@ -336,8 +320,6 @@ AS
 BEGIN
     SET @IdResultado = 0;
     SET @Mensaje = '';
-
-
 		 -- Validar que el mail no esta en otra persona
             IF EXISTS (SELECT 1 FROM Persona WHERE Mail = @Mail AND Id_Persona <> @Id_Persona)
             BEGIN
@@ -426,10 +408,6 @@ BEGIN
             ROLLBACK;
             RETURN;
         END
-
-		
-
-
         -- Insertar usuario vinculado a persona
         INSERT INTO Usuarios (Id_Perfil, Usuario, Contraseña, Id_Persona, Estado)
         VALUES (@Id_Perfil, @Usuario, @Contraseña, @Id_Persona, @Estado);
@@ -444,7 +422,6 @@ BEGIN
 END;
 GO
 
-
 CREATE OR ALTER PROCEDURE ActualizarUsuario
     @Id_Usuario INT,
     @Id_Perfil INT,
@@ -458,7 +435,6 @@ AS
 BEGIN
     SET @Resultado = 0;
     SET @Mensaje = '';
-
 
     IF EXISTS (SELECT 1 FROM Usuarios WHERE Id_Usuario = @Id_Usuario)
     BEGIN
@@ -551,7 +527,6 @@ BEGIN
     SET @IdUsuarioResultado = 0;
     SET @Mensaje = '';
 
-
     BEGIN TRANSACTION;
     BEGIN TRY
 
@@ -583,8 +558,7 @@ BEGIN
     END CATCH
 END;
 GO
-
-
+	
 -- Procedimientos para la tabla Cliente
 CREATE OR ALTER PROCEDURE ActualizarCliente
     @Id_Cliente INT,
@@ -600,8 +574,6 @@ BEGIN
     SET @Resultado = 0;
     SET @Mensaje = '';
 
-
-
     IF NOT EXISTS (SELECT 1 FROM Cliente WHERE Id_Cliente = @Id_Cliente)
     BEGIN
         SET @Mensaje = 'El cliente no existe';
@@ -612,7 +584,6 @@ BEGIN
         SET @Mensaje = 'Ya existe un cliente con esa licencia';
         RETURN;
     END
-
 
     BEGIN TRANSACTION;
     BEGIN TRY
@@ -633,8 +604,6 @@ BEGIN
     END CATCH
 END;
 GO
-
-
 
 CREATE OR ALTER PROCEDURE EliminarCliente
     @Id_Cliente INT,
@@ -665,8 +634,6 @@ BEGIN
 END;
 GO
 
-
-	
 CREATE OR ALTER PROCEDURE BuscarClientes
   @Texto VARCHAR(200)
 AS
@@ -843,7 +810,6 @@ BEGIN
 END;
 GO
 
-
 CREATE OR ALTER PROCEDURE BuscarAutos
   @Texto VARCHAR(100)
 AS
@@ -903,7 +869,6 @@ BEGIN
 END;
 GO
 
-
 -- Procedimientos CRUD para Tipo_Pago con Transacciones y Validaciones
 CREATE OR ALTER PROCEDURE InsertarTipoPago
     @Descripcion VARCHAR(80),
@@ -933,7 +898,6 @@ BEGIN
     END CATCH;
 END
 GO
-
 
 CREATE OR ALTER PROCEDURE ActualizarTipoPago
     @Id_Tipopago INT,
@@ -1066,7 +1030,6 @@ BEGIN
     END CATCH;
 END
 GO
-
 
 CREATE OR ALTER PROCEDURE ActualizarPago
     @Id_Pago INT,
@@ -1588,7 +1551,6 @@ insert into Marca (Marca) values ('Nissan'), ('Audi');
 insert into Modelo (Id_Marca, Modelo, Consumo, Puertas, Asientos) values 
 ('1', 'Skyline GT-R R34', '200', '3', '4'), ('2', 'TT', '150' , '5' , '4'), ('1', '350z', '300', '2', '2');
 
-
 Insert into Perfiles (Descripcion) values ('Gerente')
 Insert into Perfiles (Descripcion) values ('Encargado')
 
@@ -1600,9 +1562,4 @@ Insert into Usuarios (Id_Perfil,Usuario,Contraseña,Estado,Id_Persona) values (1
 
 INSERT into Tipo_Pago (Descripcion, estado) values ('Tarjeta', 1), ('Efectivo', 1);
 
-
 Insert into Negocio (Nombre) Values ('Doc Hudson')
-
-
-
-
