@@ -370,10 +370,22 @@ BEGIN
 END
 GO
 
-
-
-
-
+--Procedimiento para listar Personas
+CREATE OR ALTER PROCEDURE ListarPersonas
+AS 
+BEGIN
+	SELECT p.Id_Persona, p.DNI, p.Nombre, p.Apellido, p.Mail, p.Telefono,
+           p.Id_Domicilio, p.Fecha_Nacimiento,
+           d.Calle, d.Numero, d.Id_Localidad,
+           l.Localidad, l.Id_Provincia,
+           pr.Provincia
+           FROM Persona p
+           INNER JOIN Domicilio d ON d.Id_Domicilio = p.Id_Domicilio
+           INNER JOIN Localidad l ON l.Id_Localidad = d.Id_Localidad
+           INNER JOIN Provincia pr ON pr.Id_Provincia = l.Id_Provincia
+END;
+GO
+	    
 -- Procedimientos para la tabla Usuarios
 CREATE OR ALTER PROCEDURE InsertarUsuario
 	--Datos del Usuario--
@@ -505,6 +517,17 @@ BEGIN
 END;
 GO
 
+-- Procedimiento para listar usuarios.
+CREATE OR AlTER PROCEDURE ListarUsuarios
+AS
+BEGIN
+	SELECT u.Id_Usuario, u.Usuario, u.Contraseña, per.DNI, u.Estado, p.Id_Perfil, p.Descripcion
+	FROM Usuarios u
+	INNER JOIN Persona per ON per.Id_Persona = u.Id_Persona
+	INNER JOIN Perfiles p ON p.Id_Perfil = u.Id_Perfil
+END;
+GO
+	
 -- Procedimientos para la tabla Cliente
 CREATE OR ALTER PROCEDURE InsertarCliente
 	--Datos de la Persona--
@@ -979,6 +1002,15 @@ BEGIN
 END
 GO
 
+-- Procedimiento para listar tipo pagos
+CREATE OR ALTER PROCEDURE ListarTipoPagos
+AS
+BEGIN
+	SELECT tp.Id_Tipopago, tp.Descripcion, tp.Estado
+	FROM Tipo_Pago tp
+END;
+GO
+	
 -- Procedimientos CRUD para Pago con Transacciones
 CREATE OR ALTER PROCEDURE InsertarPago
     @Id_Tipopago INT,
@@ -1257,8 +1289,6 @@ BEGIN
 END;
 GO
 
-
-
 CREATE OR ALTER PROCEDURE LiberarReserva
     @Id_Reserva INT,
 	@Resultado int output,
@@ -1290,6 +1320,15 @@ BEGIN
         SET @Mensaje = ERROR_MESSAGE();
         THROW;
     END CATCH;
+END;
+GO
+
+--Procedimiento para listar reservas
+CREATE OR ALTER PROCEDURE ListarReservas
+AS 
+BEGIN
+	SELECT r.Id_Reserva, r.Id_Auto, r.Id_Pago, r.Id_Cliente, r.Fecha_Inicio, r.Fecha_Fin, r.Estado
+    FROM Reserva r
 END;
 GO
 
@@ -1479,8 +1518,15 @@ INSERT INTO Localidad(Id_Provincia, Localidad) VALUES
 	('22', 'USHUAIA '),	('22', 'PUERTO DARWIN '),	('22', 'PUERTO ARGENTINO '),
 	('23', 'EL FORTIN '),	('23', 'LA FLORIDA '),	('23', 'EL TALAR '),
 	('24', 'BOCA '),	('24', 'NUñEZ '),	('24', 'RECOLETA ')
-go
+GO
 
+--Procedimiento para listar Provincias
+CREATE OR ALTER PROCEDURE ListarProvincias
+AS 
+BEGIN
+	SELECT Id_Provincia, Provincia FROM Provincia
+END;
+GO
 
 insert into Marca (Marca) values ('Nissan'), ('Audi');
 
