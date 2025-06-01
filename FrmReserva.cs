@@ -90,8 +90,7 @@ namespace TestGit
                                 Id_Usuario = this.user.Id_Usuario
                             };
 
-                            //oReserva.oCliente.Id_Cliente= Convert.ToInt32(txtIdCliente.Text);
-                            //oReserva.oAuto.Id_Auto = Convert.ToInt32(txtIdAuto.Text);
+             
                             oReserva.Estado = true;
                             oReserva.Fecha_Inicio = dtpFechaI.Value;
                             oReserva.Fecha_Fin = dtpFechaF.Value;

@@ -53,6 +53,7 @@
     <Compile Include="CD_Perfiles.cs" />
     <Compile Include="CD_Persona.cs" />
     <Compile Include="CD_Reserva.cs" />
+    <Compile Include="CD_TemplateM.cs" />
     <Compile Include="CD_Tipopago.cs" />
     <Compile Include="CD_Usuario.cs" />
     <Compile Include="CD_Provincia.cs" />
