@@ -121,6 +121,11 @@ namespace TestGit
                     }
                 }
             }
+            else
+            {
+                VentanaEmergente msg = new VentanaEmergente("Error", "Debe seleccionar los elementos necesarios para la reserva", "Error");
+                msg.ShowDialog();
+            }
 
 
 
