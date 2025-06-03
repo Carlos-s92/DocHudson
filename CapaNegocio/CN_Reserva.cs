@@ -37,16 +37,7 @@ namespace CapaNegocio
             }
 
             // 2) Insertar la reserva en la BD (SP InsertarReserva)
-            int idReserva = objcd_Reserva.Registrar(
-                obj.oAuto.Id_Auto,
-                obj.oPago.Id_Pago,
-                obj.oCliente.Id_Cliente,
-                obj.oUsuario.Id_Usuario,
-                obj.Fecha_Inicio,
-                obj.Fecha_Fin,
-                obj.Estado,    // suele ir = true
-                out string msgRes
-            );
+            int idReserva = objcd_Reserva.Registrar(obj,out string msgRes);
 
             if (idReserva == 0)
             {
@@ -75,7 +66,7 @@ namespace CapaNegocio
             return idReserva;
         }
 
-        public bool Editar(Reserva obj, out string Mensaje)
+        public int Editar(Reserva obj, out string Mensaje)
         {
             Mensaje = string.Empty;
 
@@ -101,7 +92,7 @@ namespace CapaNegocio
             }
             if (Mensaje != string.Empty)
             {
-                return false;
+                return 0;
             }
             else
             {
@@ -114,8 +105,8 @@ namespace CapaNegocio
             Mensaje = string.Empty;
 
             // 1) Desactivar la reserva
-            bool okRes = objcd_Reserva.LiberarReserva(id_reserva, out Mensaje);
-            if (!okRes)
+            int okRes = objcd_Reserva.LiberarReserva(id_reserva, out Mensaje);
+            if (okRes != 0)
             {
                 Mensaje = "Reserva: " + Mensaje;
                 return false;
@@ -141,6 +132,6 @@ namespace CapaNegocio
             return true;
         }
 
-        public Reserva BuscarReserva(int id) => new CD_Reserva().Buscar(id);
+        public Reserva BuscarReserva(int id) => new CD_Reserva().BuscarReserva(id);
     }
 }

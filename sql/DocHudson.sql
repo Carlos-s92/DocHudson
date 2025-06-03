@@ -44,9 +44,7 @@ Primary Key (Id_Domicilio),
 Foreign Key (Id_Localidad) References Localidad(Id_Localidad)
 )
 Go
-
 ------------------------------------------------------
-
 Create Table Persona(
 Id_Persona Int Identity(1,1),
 Nombre Varchar(150),
@@ -85,8 +83,6 @@ Foreign Key (Id_Persona) References Persona(Id_Persona)
 )
 Go
 
-
-
 --Creacion de la tabla Modelo y Marca para la normalizacion
 Create Table Marca(
 Id_Marca Int Identity(1,1),
@@ -106,11 +102,7 @@ Primary Key (Id_Modelo),
 Foreign Key (Id_Marca) References Marca(Id_Marca)
 )
 Go
-
-
-
 ------------------------------------------------------
-
 Create Table Autos(
 Id_Auto Int Identity(1,1),
 Matricula Varchar(11),
@@ -124,9 +116,6 @@ Primary Key (Id_Auto),
 Foreign Key (Id_Modelo) References Modelo(Id_Modelo)
 )
 Go
-
-
-
 
 Create Table Tipo_Pago(
 Id_Tipopago Int identity(1,1),
@@ -164,18 +153,13 @@ Foreign Key (Id_Usuario) References Usuarios(Id_Usuario) --Referencia al Usuario
 )
 Go
 
-
-
 CREATE TABLE Negocio(
 Id_Negocio int primary key identity(1,1),
 Nombre varchar(60),
 Imagen Varchar(200) default ''
 )
 go
-
-
 --Comienzo de los procedimientos--
-
 -- Procedimientos para la tabla Perfiles
 -- Procedimiento para insertar perfiles con manejo de errores
 
@@ -266,6 +250,14 @@ BEGIN
 END;
 GO
 
+--Procedimiento para listar perfiles
+CREATE OR ALTER PROCEDURE ListarPerfiles
+AS
+BEGIN
+    SELECT p.Id_Perfil, p.Descripcion
+    FROM Perfiles p
+END;
+GO
 
 --Procedimientos de la tabla persona
 CREATE OR ALTER PROCEDURE InsertarPersona
@@ -328,8 +320,6 @@ AS
 BEGIN
     SET @IdResultado = 0;
     SET @Mensaje = '';
-
-
 		 -- Validar que el mail no esta en otra persona
             IF EXISTS (SELECT 1 FROM Persona WHERE Mail = @Mail AND Id_Persona <> @Id_Persona)
             BEGIN
@@ -370,9 +360,21 @@ BEGIN
 END
 GO
 
-
-
-
+--Procedimiento para listar Personas
+CREATE OR ALTER PROCEDURE ListarPersonas
+AS 
+BEGIN
+	SELECT p.Id_Persona, p.DNI, p.Nombre, p.Apellido, p.Mail, p.Telefono,
+           p.Id_Domicilio, p.Fecha_Nacimiento,
+           d.Calle, d.Numero, d.Id_Localidad,
+           l.Localidad, l.Id_Provincia,
+           pr.Provincia
+           FROM Persona p
+           INNER JOIN Domicilio d ON d.Id_Domicilio = p.Id_Domicilio
+           INNER JOIN Localidad l ON l.Id_Localidad = d.Id_Localidad
+           INNER JOIN Provincia pr ON pr.Id_Provincia = l.Id_Provincia
+END;
+GO
 
 -- Procedimientos para la tabla Usuarios
 CREATE OR ALTER PROCEDURE InsertarUsuario
@@ -406,10 +408,6 @@ BEGIN
             ROLLBACK;
             RETURN;
         END
-
-		
-
-
         -- Insertar usuario vinculado a persona
         INSERT INTO Usuarios (Id_Perfil, Usuario, Contraseña, Id_Persona, Estado)
         VALUES (@Id_Perfil, @Usuario, @Contraseña, @Id_Persona, @Estado);
@@ -424,7 +422,6 @@ BEGIN
 END;
 GO
 
-
 CREATE OR ALTER PROCEDURE ActualizarUsuario
     @Id_Usuario INT,
     @Id_Perfil INT,
@@ -438,7 +435,6 @@ AS
 BEGIN
     SET @Resultado = 0;
     SET @Mensaje = '';
-
 
     IF EXISTS (SELECT 1 FROM Usuarios WHERE Id_Usuario = @Id_Usuario)
     BEGIN
@@ -505,6 +501,17 @@ BEGIN
 END;
 GO
 
+-- Procedimiento para listar usuarios.
+CREATE OR AlTER PROCEDURE ListarUsuarios
+AS
+BEGIN
+	SELECT u.Id_Usuario, u.Usuario, u.Contraseña, per.DNI, u.Estado, p.Id_Perfil, p.Descripcion
+	FROM Usuarios u
+	INNER JOIN Persona per ON per.Id_Persona = u.Id_Persona
+	INNER JOIN Perfiles p ON p.Id_Perfil = u.Id_Perfil
+END;
+GO
+	
 -- Procedimientos para la tabla Cliente
 CREATE OR ALTER PROCEDURE InsertarCliente
 	--Datos de la Persona--
@@ -519,7 +526,6 @@ BEGIN
 
     SET @IdUsuarioResultado = 0;
     SET @Mensaje = '';
-
 
     BEGIN TRANSACTION;
     BEGIN TRY
@@ -552,8 +558,7 @@ BEGIN
     END CATCH
 END;
 GO
-
-
+	
 -- Procedimientos para la tabla Cliente
 CREATE OR ALTER PROCEDURE ActualizarCliente
     @Id_Cliente INT,
@@ -569,8 +574,6 @@ BEGIN
     SET @Resultado = 0;
     SET @Mensaje = '';
 
-
-
     IF NOT EXISTS (SELECT 1 FROM Cliente WHERE Id_Cliente = @Id_Cliente)
     BEGIN
         SET @Mensaje = 'El cliente no existe';
@@ -581,7 +584,6 @@ BEGIN
         SET @Mensaje = 'Ya existe un cliente con esa licencia';
         RETURN;
     END
-
 
     BEGIN TRANSACTION;
     BEGIN TRY
@@ -602,8 +604,6 @@ BEGIN
     END CATCH
 END;
 GO
-
-
 
 CREATE OR ALTER PROCEDURE EliminarCliente
     @Id_Cliente INT,
@@ -634,8 +634,6 @@ BEGIN
 END;
 GO
 
-
-	
 CREATE OR ALTER PROCEDURE BuscarClientes
   @Texto VARCHAR(200)
 AS
@@ -673,7 +671,17 @@ BEGIN
 END;
 GO
 
-
+-- Procedimiento para listar clientes
+CREATE OR ALTER PROCEDURE ListarClientes
+AS
+BEGIN
+    Select Id_Cliente, Licencia, pe.DNI, pe.Id_Persona, pe.Nombre, pe.Apellido, p.Id_Provincia, p.Provincia, l.Id_Localidad,l.Localidad, d.Calle,d.Id_Domicilio, d.Numero, pe.Fecha_Nacimiento, pe.Mail, pe.Telefono, Estado from Cliente c
+    inner join Persona pe on pe.Id_Persona = c.Id_Persona
+    inner join Domicilio d on d.Id_Domicilio = pe.Id_Domicilio
+    inner join Localidad l on d.Id_Localidad = l.Id_Localidad
+    inner join Provincia p on l.Id_Provincia = p.Id_Provincia
+END;
+GO
 	
 -- Procedimientos para la tabla Autos
 CREATE OR ALTER PROCEDURE InsertarAuto
@@ -802,7 +810,6 @@ BEGIN
 END;
 GO
 
-
 CREATE OR ALTER PROCEDURE BuscarAutos
   @Texto VARCHAR(100)
 AS
@@ -862,7 +869,6 @@ BEGIN
 END;
 GO
 
-
 -- Procedimientos CRUD para Tipo_Pago con Transacciones y Validaciones
 CREATE OR ALTER PROCEDURE InsertarTipoPago
     @Descripcion VARCHAR(80),
@@ -892,7 +898,6 @@ BEGIN
     END CATCH;
 END
 GO
-
 
 CREATE OR ALTER PROCEDURE ActualizarTipoPago
     @Id_Tipopago INT,
@@ -979,6 +984,15 @@ BEGIN
 END
 GO
 
+-- Procedimiento para listar tipo pagos
+CREATE OR ALTER PROCEDURE ListarTipoPagos
+AS
+BEGIN
+	SELECT tp.Id_Tipopago, tp.Descripcion, tp.Estado
+	FROM Tipo_Pago tp
+END;
+GO
+	
 -- Procedimientos CRUD para Pago con Transacciones
 CREATE OR ALTER PROCEDURE InsertarPago
     @Id_Tipopago INT,
@@ -1016,7 +1030,6 @@ BEGIN
     END CATCH;
 END
 GO
-
 
 CREATE OR ALTER PROCEDURE ActualizarPago
     @Id_Pago INT,
@@ -1081,6 +1094,16 @@ BEGIN
 END
 GO
 
+--Procedimiento para listar pagos
+CREATE OR ALTER PROCEDURE ListarPagos
+AS
+BEGIN
+    SELECT p.Id_Pago, p.Id_Tipopago, tp.Descripcion, p.Total, p.Fecha_Pago, p.Estado
+    FROM Pago p
+    Inner join Tipo_Pago tp on tp.Id_Tipopago = p.Id_Tipopago
+END;
+GO
+	
 -- Procedimientos CRUD para Reserva con Transacciones
 CREATE OR ALTER PROCEDURE InsertarReserva
     @Id_Auto INT,
@@ -1257,8 +1280,6 @@ BEGIN
 END;
 GO
 
-
-
 CREATE OR ALTER PROCEDURE LiberarReserva
     @Id_Reserva INT,
 	@Resultado int output,
@@ -1290,6 +1311,15 @@ BEGIN
         SET @Mensaje = ERROR_MESSAGE();
         THROW;
     END CATCH;
+END;
+GO
+
+--Procedimiento para listar reservas
+CREATE OR ALTER PROCEDURE ListarReservas
+AS 
+BEGIN
+	SELECT r.Id_Reserva, r.Id_Auto, r.Id_Pago, r.Id_Cliente, r.Fecha_Inicio, r.Fecha_Fin, r.Estado
+    FROM Reserva r
 END;
 GO
 
@@ -1479,14 +1509,47 @@ INSERT INTO Localidad(Id_Provincia, Localidad) VALUES
 	('22', 'USHUAIA '),	('22', 'PUERTO DARWIN '),	('22', 'PUERTO ARGENTINO '),
 	('23', 'EL FORTIN '),	('23', 'LA FLORIDA '),	('23', 'EL TALAR '),
 	('24', 'BOCA '),	('24', 'NUñEZ '),	('24', 'RECOLETA ')
-go
+GO
 
+--Procedimiento para listar Provincias
+CREATE OR ALTER PROCEDURE ListarProvincias
+AS 
+BEGIN
+	SELECT Id_Provincia, Provincia FROM Provincia
+END;
+GO
+
+--Procedimiento para listar negocios
+CREATE OR ALTER PROCEDURE ListarNegocios
+AS
+BEGIN
+    SELECT Id_Negocio,Nombre,Imagen 
+    FROM Negocio WHERE Id_Negocio = 1
+END;
+GO
+
+--Procedimiento para listar Marcas
+CREATE OR ALTER PROCEDURE ListarMarcas
+AS
+BEGIN
+    SELECT Id_Marca, marca 
+    FROM Marca
+END;
+GO
+
+--Procedimiento para listar localidades
+CREATE OR ALTER PROCEDURE ListarLocalidades
+AS
+BEGIN
+    SELECT Id_Localidad, Id_Provincia, localidad 
+    FROM Localidad
+END;
+GO
 
 insert into Marca (Marca) values ('Nissan'), ('Audi');
 
 insert into Modelo (Id_Marca, Modelo, Consumo, Puertas, Asientos) values 
 ('1', 'Skyline GT-R R34', '200', '3', '4'), ('2', 'TT', '150' , '5' , '4'), ('1', '350z', '300', '2', '2');
-
 
 Insert into Perfiles (Descripcion) values ('Gerente')
 Insert into Perfiles (Descripcion) values ('Encargado')
@@ -1498,6 +1561,5 @@ Insert into Persona(DNI,Nombre,Apellido,Fecha_Nacimiento,Mail,Telefono,Id_Domici
 Insert into Usuarios (Id_Perfil,Usuario,Contraseña,Estado,Id_Persona) values (1,'Josesito234','admin',1,1)
 
 INSERT into Tipo_Pago (Descripcion, estado) values ('Tarjeta', 1), ('Efectivo', 1);
-
 
 Insert into Negocio (Nombre) Values ('Doc Hudson')

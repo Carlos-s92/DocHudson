@@ -1,182 +1,63 @@
 ﻿using CapaEntidad;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
-
 
 namespace CapaDatos
 {
-    public class CD_Usuario
+    public class CD_Usuario : CD_TemplateM<Usuarios>
     {
-        public List<Usuarios> Listar()
+        protected override string NombreSPRegistrar() => "InsertarUsuario";
+        protected override string NombreSPEditar() => "ActualizarUsuario";
+        protected override string NombreSPEliminar() => "EliminarUsuario";
+        protected override string NombreSPListar() => "ListarUsuarios";
+        protected override string NombreSPBuscar() => "BuscarUsuarios";
+        protected override void AgregarParametrosRegistrar(SqlCommand cmd, Usuarios obj)
         {
-            List<Usuarios> lista = new List<Usuarios>();
-
-            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
-            {
-                try
-                {
-                    StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT u.Id_Usuario, u.Usuario, u.Contraseña, per.DNI, u.Estado, p.Id_Perfil, p.Descripcion");
-                    query.AppendLine("FROM Usuarios u");
-                    query.AppendLine("INNER JOIN Persona per ON per.Id_Persona = u.Id_Persona");
-                    query.AppendLine("INNER JOIN Perfiles p ON p.Id_Perfil = u.Id_Perfil");
-
-                    using (SqlCommand cmd = new SqlCommand(query.ToString(), oconexion))
-                    {
-                        cmd.CommandType = CommandType.Text;
-
-                        oconexion.Open();
-
-                        using (SqlDataReader dr = cmd.ExecuteReader())
-                        {
-                            while (dr.Read())
-                            {
-                                lista.Add(new Usuarios()
-                                {
-                                    Id_Usuario = Convert.ToInt32(dr["Id_Usuario"]),
-                                    Usuario = dr["Usuario"].ToString(),
-                                    Contraseña = dr["Contraseña"].ToString(),
-                                    Dni = dr["DNI"].ToString(),
-                                    Estado = Convert.ToBoolean(dr["Estado"]),
-                                    oPerfil = new Perfiles()
-                                    {
-                                        Id_Perfil = Convert.ToInt32(dr["Id_Perfil"]),
-                                        Descripcion = dr["Descripcion"].ToString()
-                                    }
-                                });
-                            }
-                        }
-                        oconexion.Close();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    lista = new List<Usuarios>(); // Asegura que no se retorne null
-                }
-            }
-            return lista;
+            cmd.Parameters.AddWithValue("Usuario", obj.Usuario);
+            cmd.Parameters.AddWithValue("Contraseña", obj.Contraseña);
+            cmd.Parameters.AddWithValue("DNI", obj.Dni);
+            cmd.Parameters.AddWithValue("Id_Perfil", obj.oPerfil.Id_Perfil);
+            cmd.Parameters.AddWithValue("Estado", obj.Estado);
+            cmd.Parameters.Add("IdUsuarioResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+            cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
         }
-
-       
-
-
-        public int Registrar(Usuarios obj, out string Mensaje)
+        protected override void AgregarParametrosEditar(SqlCommand cmd, Usuarios obj)
         {
-            int IdUsuarioGenerado = 0;
-            Mensaje = string.Empty;
-
-            try
-            {
-                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
-                {
-                    SqlCommand cmd = new SqlCommand("InsertarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Usuario);
-                    cmd.Parameters.AddWithValue("Contraseña", obj.Contraseña);
-                    cmd.Parameters.AddWithValue("DNI", obj.Dni);
-                    cmd.Parameters.AddWithValue("Id_Perfil", obj.oPerfil.Id_Perfil);
-                    cmd.Parameters.AddWithValue("Estado", obj.Estado);
-                    cmd.Parameters.Add("IdUsuarioResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    oconexion.Open();
-
-                    cmd.ExecuteNonQuery();
-
-                    IdUsuarioGenerado = Convert.ToInt32(cmd.Parameters["IdUsuarioResultado"].Value);
-                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-                    oconexion.Close();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                IdUsuarioGenerado = 0;
-                Mensaje = ex.Message;
-            }
-
-            return IdUsuarioGenerado;
-
+            cmd.Parameters.AddWithValue("IdUsuario", obj.Id_Usuario);
+            cmd.Parameters.AddWithValue("Usuario", obj.Usuario);
+            cmd.Parameters.AddWithValue("Contraseña", obj.Contraseña);
+            cmd.Parameters.AddWithValue("DNI", obj.Dni);
+            cmd.Parameters.AddWithValue("Id_Perfil", obj.oPerfil.Id_Perfil);
+            cmd.Parameters.AddWithValue("Estado", obj.Estado);
+            cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+            cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
         }
-
-        public bool Editar(Usuarios obj, out string Mensaje)
+        protected override void AgregarParametrosEliminar(SqlCommand cmd, Usuarios obj)
         {
-            bool Respuesta = false;
-            Mensaje = string.Empty;
-
-            try
-            {
-                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
-                {
-                    SqlCommand cmd = new SqlCommand("ActualizarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("IdUsuario", obj.Id_Usuario);
-                    cmd.Parameters.AddWithValue("Usuario", obj.Usuario);
-                    cmd.Parameters.AddWithValue("Contraseña", obj.Contraseña);
-                    cmd.Parameters.AddWithValue("DNI", obj.Dni);
-                    cmd.Parameters.AddWithValue("Id_Perfil", obj.oPerfil.Id_Perfil);
-                    cmd.Parameters.AddWithValue("Estado", obj.Estado);
-                    cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    oconexion.Open();
-
-                    cmd.ExecuteNonQuery();
-
-                    Respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
-                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-                    oconexion.Close();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Respuesta = false;
-                Mensaje = ex.Message;
-            }
-
-            return Respuesta;
-
+            cmd.Parameters.AddWithValue("Id_Usuario", obj.Id_Usuario);
+            cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+            cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
         }
-
-        public bool Eliminar(Usuarios obj, out string Mensaje)
+        protected override void AgregarParametrosBuscar(SqlCommand cmd, string obj)
         {
-            bool Respuesta = false;
-            Mensaje = string.Empty;
-
-            try
+            cmd.Parameters.AddWithValue("@Texto", obj);
+        }
+        protected override Usuarios Mapear(SqlDataReader reader)
+        {
+            return new Usuarios
             {
-                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                Id_Usuario = Convert.ToInt32(reader["Id_Usuario"]),
+                Usuario = reader["Usuario"].ToString(),
+                Contraseña = reader["Contraseña"].ToString(),
+                Dni = reader["DNI"].ToString(),
+                Estado = Convert.ToBoolean(reader["Estado"]),
+                oPerfil = new Perfiles()
                 {
-
-
-                    SqlCommand cmd = new SqlCommand("EliminarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("Id_Usuario", obj.Id_Usuario);
-                    cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    oconexion.Open();
-
-                    cmd.ExecuteNonQuery();
-
-                    Respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
-                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-                    oconexion.Close();
+                    Id_Perfil = Convert.ToInt32(reader["Id_Perfil"]),
+                    Descripcion = reader["Descripcion"].ToString()
                 }
-
-            }
-            catch (Exception ex)
-            {
-                Respuesta = false;
-                Mensaje = ex.Message;
-            }
-
-            return Respuesta;
-
+            };
         }
     }
 }

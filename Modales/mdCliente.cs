@@ -84,10 +84,7 @@ namespace TestGit.Modales
         {
             // Limpia el campo de búsqueda y muestra todas las filas del DataGridView.
             txtBusqueda.Texts = "";
-            foreach (DataGridViewRow row in dgvData.Rows)
-            {
-                row.Visible = true; // Muestra todas las filas.
-            }
+            btnBuscar_Click(sender, e);
         }
 
         private void txtBusqueda_KeyDown(object sender, KeyEventArgs e)

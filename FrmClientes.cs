@@ -254,8 +254,8 @@ namespace TestGit
                     else
                     {
                         // Si se está editando, actualiza la información del cliente.
-                        bool resultado = new CN_Cliente().Editar(objCliente, out mensaje);
-                        if (resultado == true)
+                        int resultado = new CN_Cliente().Editar(objCliente, out mensaje);
+                        if (resultado != 0)
                         {
                             //Se modifican las columnas de ese cliente
                             DataGridViewRow row = dgvData.Rows[Convert.ToInt32(txtindice.Text)];
@@ -382,8 +382,8 @@ namespace TestGit
                     };
 
                     // Llama al método de eliminación en la base de datos.
-                    bool respuesta = new CN_Cliente().Eliminar(objCliente, out mensaje);
-                    if (respuesta)
+                    int respuesta = new CN_Cliente().Eliminar(objCliente, out mensaje);
+                    if (respuesta != 0)
                     {
                         // Cambia el estado del cliente en el DataGridView a "No Activo".
                         dgvData.Rows[Convert.ToInt32(txtindice.Text)].Cells["EstadoValor"].Value = 0;
