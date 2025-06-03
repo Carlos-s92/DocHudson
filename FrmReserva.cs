@@ -23,6 +23,10 @@ namespace TestGit
             InitializeComponent();
 
             // Inicialización común a ambos escenarios
+            dtpFechaI.MinDate = new DateTime(1753, 1, 1);
+            dtpFechaI.MaxDate = new DateTime(9998, 12, 31);
+            dtpFechaF.MinDate = new DateTime(1753, 1, 1);
+            dtpFechaF.MaxDate = new DateTime(9998, 12, 31);
             dtpFechaI.Value = DateTime.Today;
             dtpFechaF.Value = DateTime.Today.AddDays(1);
 
