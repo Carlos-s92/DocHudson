@@ -106,7 +106,7 @@ namespace CapaNegocio
 
             // 1) Desactivar la reserva
             int okRes = objcd_Reserva.LiberarReserva(id_reserva, out Mensaje);
-            if (okRes != 0)
+            if (okRes == 0)
             {
                 Mensaje = "Reserva: " + Mensaje;
                 return false;
