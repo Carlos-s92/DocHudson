@@ -53,21 +53,23 @@ DNI Varchar(50) Unique,
 Fecha_Nacimiento Date,
 Id_Domicilio Int,
 Mail Varchar(150) Unique,
-Telefono Varchar(50)
-Primary Key (Id_Persona)
+Telefono Varchar(50),
+Licencia Varchar(100) Unique,
+Estado Bit,
+Primary Key (Id_Persona),
 Foreign Key (Id_Domicilio) References Domicilio(Id_Domicilio)
 )
 Go
 
-Create Table Cliente(
-Id_Cliente Int identity (1,1),
-Id_Persona Int,
-Licencia Varchar(100) Unique,
-Estado Bit,
-Primary Key (Id_Cliente),
-Foreign Key (Id_Persona) References Persona(Id_Persona)
-)
-Go
+--Create Table Cliente(
+--Id_Cliente Int identity (1,1),
+--Id_Persona Int,
+--Licencia Varchar(100) Unique,
+--Estado Bit,
+--Primary Key (Id_Cliente),
+--Foreign Key (Id_Persona) References Persona(Id_Persona)
+--)
+--Go
 
 
 Create Table Usuarios(
@@ -140,7 +142,7 @@ Create Table Reserva(
 Id_Reserva Int Identity(1,1),
 Id_Auto Int,
 Id_Pago Int,
-Id_Cliente Int,
+Id_Persona Int,
 Id_Usuario Int,
 Fecha_Inicio Date,
 Fecha_Fin Date,
@@ -148,7 +150,7 @@ Estado Bit
 Primary Key (Id_Reserva),
 Foreign Key (Id_Auto) References Autos(Id_Auto),
 Foreign Key (Id_Pago) References Pago(Id_Pago),
-Foreign Key (Id_Cliente) References Cliente(Id_Cliente),
+Foreign Key (Id_Persona) References Persona(Id_Persona),
 Foreign Key (Id_Usuario) References Usuarios(Id_Usuario) --Referencia al Usuario
 )
 Go
@@ -259,6 +261,20 @@ BEGIN
 END;
 GO
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 --Procedimientos de la tabla persona
 CREATE OR ALTER PROCEDURE InsertarPersona
     @Nombre Varchar(150),
@@ -268,6 +284,8 @@ CREATE OR ALTER PROCEDURE InsertarPersona
     @Id_Domicilio Int,
     @Mail Varchar(150),
     @Telefono Varchar(50),
+	@Licencia Varchar(100),
+	@Estado Bit,
     @IdResultado Int OUTPUT,
     @Mensaje Varchar(500) OUTPUT
 AS
@@ -280,7 +298,7 @@ BEGIN
 
     SELECT @IdExistente = Id_Persona
     FROM Persona
-    WHERE DNI = @DNI OR Mail = @Mail;
+    WHERE DNI = @DNI OR Mail = @Mail OR Licencia = @Licencia;
 
     IF @IdExistente IS NOT NULL
     BEGIN
@@ -291,8 +309,8 @@ BEGIN
     -- Si no existe, se inserta
     BEGIN TRANSACTION;
     BEGIN TRY
-        INSERT INTO Persona (Nombre, Apellido, DNI, Fecha_Nacimiento, Id_Domicilio, Mail, Telefono)
-        VALUES (@Nombre, @Apellido, @DNI, @Fecha_Nacimiento, @Id_Domicilio, @Mail, @Telefono);
+        INSERT INTO Persona (Nombre, Apellido, DNI, Fecha_Nacimiento, Id_Domicilio, Mail, Telefono, Licencia, Estado)
+        VALUES (@Nombre, @Apellido, @DNI, @Fecha_Nacimiento, @Id_Domicilio, @Mail, @Telefono, @Licencia, @Estado);
 
         SET @IdResultado = SCOPE_IDENTITY();
         COMMIT;
@@ -313,6 +331,8 @@ CREATE OR ALTER PROCEDURE ActualizarPersona(
     @Id_Domicilio INT,
     @Mail VARCHAR(150),
     @Telefono VARCHAR(50),
+	@Licencia VARCHAR(100),
+	@Estado Bit,
     @IdResultado INT OUTPUT,
     @Mensaje VARCHAR(500) OUTPUT
 )
@@ -342,7 +362,9 @@ BEGIN
                 Fecha_Nacimiento = @Fecha_Nacimiento,
                 Id_Domicilio = @Id_Domicilio,
                 Mail = @Mail,
-                Telefono = @Telefono
+                Telefono = @Telefono,
+				Licencia = @Licencia,
+				Estado = @Estado
             WHERE Id_Persona = @Id_Persona;
 
             SET @IdResultado = @Id_Persona;
@@ -360,12 +382,40 @@ BEGIN
 END
 GO
 
+CREATE OR ALTER PROCEDURE EliminarPersona
+    @Id_Persona INT,
+    @Resultado BIT OUTPUT,
+    @Mensaje VARCHAR(500) OUTPUT
+AS
+BEGIN
+    SET @Resultado = 0;
+    SET @Mensaje = '';
+
+    IF NOT EXISTS (SELECT 1 FROM Persona WHERE Id_Persona = @Id_Persona)
+    BEGIN
+        SET @Mensaje = 'El cliente no existe';
+        RETURN;
+    END;
+
+    BEGIN TRANSACTION;
+    BEGIN TRY
+        UPDATE Persona SET Estado = 0 WHERE Id_Persona = @Id_Persona;
+        
+        COMMIT;
+        SET @Resultado = 1;
+    END TRY
+    BEGIN CATCH
+        SET @Mensaje = 'No se pudo eliminar el cliente';
+        ROLLBACK;
+    END CATCH;
+END;
+GO
 --Procedimiento para listar Personas
 CREATE OR ALTER PROCEDURE ListarPersonas
 AS 
 BEGIN
 	SELECT p.Id_Persona, p.DNI, p.Nombre, p.Apellido, p.Mail, p.Telefono,
-           p.Id_Domicilio, p.Fecha_Nacimiento,
+           p.Id_Domicilio, p.Fecha_Nacimiento, p.Estado, p.Licencia,
            d.Calle, d.Numero, d.Id_Localidad,
            l.Localidad, l.Id_Provincia,
            pr.Provincia
@@ -375,6 +425,69 @@ BEGIN
            INNER JOIN Provincia pr ON pr.Id_Provincia = l.Id_Provincia
 END;
 GO
+
+CREATE OR ALTER PROCEDURE BuscarClientes
+  @Texto VARCHAR(200)
+AS
+BEGIN
+  SET NOCOUNT ON;
+
+  SELECT 
+    p.Estado,
+	p.Licencia,
+	p.Id_Persona,
+    p.DNI,
+    p.Nombre,
+    p.Apellido,
+    p.Mail,
+    p.Telefono,
+    p.Fecha_Nacimiento,
+	p.Id_Domicilio AS Id_Domicilio, 
+    d.Calle,
+    d.Numero,
+    l.Id_Localidad,
+    l.Localidad AS localidad,
+    pr.Id_Provincia,
+    pr.Provincia AS provincia
+  
+  FROM Persona p
+  INNER JOIN Domicilio d    ON d.Id_Domicilio = p.Id_Domicilio
+  INNER JOIN Localidad l    ON l.Id_Localidad = d.Id_Localidad
+  INNER JOIN Provincia pr   ON pr.Id_Provincia= l.Id_Provincia
+  WHERE  
+    p.Nombre   LIKE '%' + @Texto + '%'
+    OR p.Apellido LIKE '%' + @Texto + '%'
+    OR p.DNI      LIKE '%' + @Texto + '%'
+    OR p.Mail      LIKE '%' + @Texto + '%';
+END;
+GO
+
+Create or Alter Procedure BuscarDomicilio(
+@Id_Persona INT
+)As
+Begin
+	SELECT d.Id_Domicilio FROM Persona p 
+	inner join Domicilio d on d.Id_Domicilio = p.Id_Domicilio 
+	where p.Id_Persona = @Id_Persona
+End
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 -- Procedimientos para la tabla Usuarios
 CREATE OR ALTER PROCEDURE InsertarUsuario
@@ -512,176 +625,8 @@ BEGIN
 END;
 GO
 	
--- Procedimientos para la tabla Cliente
-CREATE OR ALTER PROCEDURE InsertarCliente
-	--Datos de la Persona--
-	@Id_Persona Int,
-	--Datos del Cliente--
-	@Licencia Varchar(100),
-    @Estado BIT,
-	@IdUsuarioResultado INT OUTPUT,
-    @Mensaje VARCHAR(500) OUTPUT
-AS
-BEGIN
 
-    SET @IdUsuarioResultado = 0;
-    SET @Mensaje = '';
 
-    BEGIN TRANSACTION;
-    BEGIN TRY
-
-        -- Verificamos que la persona no esta ya registrada como cliente
-        IF EXISTS (SELECT 1 FROM Cliente WHERE Id_Persona = @Id_Persona)
-        BEGIN
-            SET @Mensaje = 'La persona ya esta registrada como cliente.';
-            ROLLBACK;
-            RETURN;
-        END
-		        -- Verificamos que la persona no esta ya registrada como usuario
-        IF EXISTS (SELECT 1 FROM Cliente WHERE Licencia = @Licencia)
-        BEGIN
-            SET @Mensaje = 'Ya existe un cliente con esa licencia';
-            ROLLBACK;
-            RETURN;
-        END
-
-        -- Insertar cliente vinculado a persona
-        INSERT INTO Cliente (Id_Persona,Licencia, Estado)
-        VALUES (@Id_Persona,@Licencia ,@Estado);
-
-        SET @IdUsuarioResultado = SCOPE_IDENTITY();
-        COMMIT;
-    END TRY
-    BEGIN CATCH
-        ROLLBACK;
-        SET @Mensaje = ERROR_MESSAGE();
-    END CATCH
-END;
-GO
-	
--- Procedimientos para la tabla Cliente
-CREATE OR ALTER PROCEDURE ActualizarCliente
-    @Id_Cliente INT,
-	--Datos de la Persona--
-	@Id_Persona Int,
-	--Datos del Cliente--
-	@Licencia Varchar(100),
-    @Estado BIT,
-    @Resultado BIT OUTPUT,
-    @Mensaje VARCHAR(500) OUTPUT
-AS
-BEGIN
-    SET @Resultado = 0;
-    SET @Mensaje = '';
-
-    IF NOT EXISTS (SELECT 1 FROM Cliente WHERE Id_Cliente = @Id_Cliente)
-    BEGIN
-        SET @Mensaje = 'El cliente no existe';
-        RETURN;
-    END
-	    IF EXISTS (SELECT 1 FROM Cliente WHERE Licencia = @Licencia and Id_Cliente <> @Id_Cliente)
-    BEGIN
-        SET @Mensaje = 'Ya existe un cliente con esa licencia';
-        RETURN;
-    END
-
-    BEGIN TRANSACTION;
-    BEGIN TRY
-      
-        -- Actualizar cliente (solo campos propios)
-        UPDATE Cliente
-        SET Estado = @Estado,
-		Licencia = @Licencia,
-		Id_Persona = @Id_Persona
-        WHERE Id_Cliente = @Id_Cliente;
-
-        COMMIT;
-        SET @Resultado = 1;
-    END TRY
-    BEGIN CATCH
-        ROLLBACK;
-        SET @Mensaje = ERROR_MESSAGE();
-    END CATCH
-END;
-GO
-
-CREATE OR ALTER PROCEDURE EliminarCliente
-    @Id_Cliente INT,
-    @Resultado BIT OUTPUT,
-    @Mensaje VARCHAR(500) OUTPUT
-AS
-BEGIN
-    SET @Resultado = 0;
-    SET @Mensaje = '';
-
-    IF NOT EXISTS (SELECT 1 FROM Cliente WHERE Id_Cliente = @Id_Cliente)
-    BEGIN
-        SET @Mensaje = 'El cliente no existe';
-        RETURN;
-    END;
-
-    BEGIN TRANSACTION;
-    BEGIN TRY
-        UPDATE Cliente SET Estado = 0 WHERE Id_Cliente = @Id_Cliente;
-        
-        COMMIT;
-        SET @Resultado = 1;
-    END TRY
-    BEGIN CATCH
-        SET @Mensaje = 'No se pudo eliminar el cliente';
-        ROLLBACK;
-    END CATCH;
-END;
-GO
-
-CREATE OR ALTER PROCEDURE BuscarClientes
-  @Texto VARCHAR(200)
-AS
-BEGIN
-  SET NOCOUNT ON;
-
-  SELECT 
-    c.Id_Cliente,
-	c.Licencia,
-	p.Id_Persona,
-    p.DNI,
-    p.Nombre,
-    p.Apellido,
-    p.Mail,
-    p.Telefono,
-    p.Fecha_Nacimiento,
-	p.Id_Domicilio AS Id_Domicilio, 
-    d.Calle,
-    d.Numero,
-    l.Id_Localidad,
-    l.Localidad AS localidad,
-    pr.Id_Provincia,
-    pr.Provincia AS provincia,
-    c.Estado
-  FROM Cliente c
-  INNER JOIN Persona p      ON p.Id_Persona  = c.Id_Persona
-  INNER JOIN Domicilio d    ON d.Id_Domicilio = p.Id_Domicilio
-  INNER JOIN Localidad l    ON l.Id_Localidad = d.Id_Localidad
-  INNER JOIN Provincia pr   ON pr.Id_Provincia= l.Id_Provincia
-  WHERE  
-    p.Nombre   LIKE '%' + @Texto + '%'
-    OR p.Apellido LIKE '%' + @Texto + '%'
-    OR p.DNI      LIKE '%' + @Texto + '%'
-    OR p.Mail      LIKE '%' + @Texto + '%';
-END;
-GO
-
--- Procedimiento para listar clientes
-CREATE OR ALTER PROCEDURE ListarClientes
-AS
-BEGIN
-    Select Id_Cliente, Licencia, pe.DNI, pe.Id_Persona, pe.Nombre, pe.Apellido, p.Id_Provincia, p.Provincia, l.Id_Localidad,l.Localidad, d.Calle,d.Id_Domicilio, d.Numero, pe.Fecha_Nacimiento, pe.Mail, pe.Telefono, Estado from Cliente c
-    inner join Persona pe on pe.Id_Persona = c.Id_Persona
-    inner join Domicilio d on d.Id_Domicilio = pe.Id_Domicilio
-    inner join Localidad l on d.Id_Localidad = l.Id_Localidad
-    inner join Provincia p on l.Id_Provincia = p.Id_Provincia
-END;
-GO
 	
 -- Procedimientos para la tabla Autos
 CREATE OR ALTER PROCEDURE InsertarAuto
@@ -1108,7 +1053,7 @@ GO
 CREATE OR ALTER PROCEDURE InsertarReserva
     @Id_Auto INT,
     @Id_Pago INT,
-    @Id_Cliente INT,
+    @Id_Persona INT,
 	@Id_Usuario INT,
     @Fecha_Inicio DATE,
     @Fecha_Fin DATE,
@@ -1135,15 +1080,15 @@ BEGIN
         Set @Mensaje = 'El pago no existe.';
         RETURN;
     END
-    IF NOT EXISTS (SELECT 1 FROM Cliente WHERE Id_Cliente = @Id_Cliente)
+    IF NOT EXISTS (SELECT 1 FROM Persona WHERE Id_Persona = @Id_Persona)
     BEGIN
         Set @Mensaje ='El cliente no existe.';
         RETURN;
     END
     BEGIN TRANSACTION;
     BEGIN TRY
-        INSERT INTO Reserva (Id_Auto, Id_Pago, Id_Cliente,Id_Usuario, Fecha_Inicio, Fecha_Fin, Estado)
-        VALUES (@Id_Auto, @Id_Pago, @Id_Cliente,@Id_Usuario, @Fecha_Inicio, @Fecha_Fin, @Estado);
+        INSERT INTO Reserva (Id_Auto, Id_Pago, Id_Persona,Id_Usuario, Fecha_Inicio, Fecha_Fin, Estado)
+        VALUES (@Id_Auto, @Id_Pago, @Id_Persona,@Id_Usuario, @Fecha_Inicio, @Fecha_Fin, @Estado);
         COMMIT TRANSACTION;
 		Set @Resultado = SCOPE_IDENTITY();
     END TRY
@@ -1159,7 +1104,7 @@ CREATE OR ALTER PROCEDURE ModificarReserva
     @Id_Reserva INT,
     @Id_Auto INT,
     @Id_Pago INT,
-    @Id_Cliente INT,
+    @Id_Persona INT,
     @Fecha_Inicio DATE,
     @Fecha_Fin DATE,
     @Estado BIT,
@@ -1181,7 +1126,7 @@ BEGIN
         Set @Mensaje = 'El pago no existe.';
         RETURN;
     END
-    IF NOT EXISTS (SELECT 1 FROM Cliente WHERE Id_Cliente = @Id_Cliente)
+    IF NOT EXISTS (SELECT 1 FROM Persona WHERE Id_Persona = @Id_Persona)
     BEGIN
         Set @Mensaje ='El cliente no existe.';
         RETURN;
@@ -1199,7 +1144,7 @@ BEGIN
     BEGIN TRANSACTION;
     BEGIN TRY
         UPDATE Reserva
-        SET Id_Auto = @Id_Auto, Id_Pago = @Id_Pago, Id_Cliente = @Id_Cliente, Fecha_Inicio = @Fecha_Inicio, Fecha_Fin = @Fecha_Fin, Estado = @Estado
+        SET Id_Auto = @Id_Auto, Id_Pago = @Id_Pago, Id_Persona = @Id_Persona, Fecha_Inicio = @Fecha_Inicio, Fecha_Fin = @Fecha_Fin, Estado = @Estado
         WHERE Id_Reserva = @Id_Reserva;
         COMMIT TRANSACTION;
 		Set @Resultado = 1;
@@ -1239,9 +1184,8 @@ BEGIN
     ma.Marca       AS NombreMarca,
 
     -- Cliente / Persona / Domicilio / Localidad / Provincia
-    c.Id_Cliente,
-    c.Licencia,
-    c.Estado       AS EstadoCliente,
+    p.Licencia,
+    p.Estado       AS EstadoPersona,
     p.Id_Persona,
     p.DNI,
     p.Nombre      AS NombrePersona,
@@ -1318,10 +1262,15 @@ GO
 CREATE OR ALTER PROCEDURE ListarReservas
 AS 
 BEGIN
-	SELECT r.Id_Reserva, r.Id_Auto, r.Id_Pago, r.Id_Cliente, r.Fecha_Inicio, r.Fecha_Fin, r.Estado
+	SELECT r.Id_Reserva, r.Id_Auto, r.Id_Pago, r.Id_Persona, r.Fecha_Inicio, r.Fecha_Fin, r.Estado
     FROM Reserva r
 END;
 GO
+
+
+
+
+
 
 --//true=ocupado, false=disponible
 CREATE OR ALTER PROCEDURE CambiarEstadoAuto
