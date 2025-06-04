@@ -10,6 +10,8 @@ namespace CapaEntidad
         public string Apellido { get; set; }
         public string Mail { get; set; }
         public string Telefono { get; set; }
+        public string Licencia { get; set; }
+        public bool Estado { get; set; }
 
         // Relación a Dirección
         public Domicilio oDomicilio { get; set; } = new Domicilio();

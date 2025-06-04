@@ -23,7 +23,7 @@ namespace CapaNegocio
                 mensaje += "La fecha de fin no puede ser menor o igual que la de inicio.\n";
             if (obj.Fecha_Inicio < System.DateTime.Today || obj.Fecha_Fin < System.DateTime.Today)
                 mensaje += "La fecha de inicio/fin no puede ser menor que la fecha actual.\n";
-            if (obj.oCliente.Id_Cliente == 0)
+            if (obj.oPersona.Id_Persona == 0)
                 mensaje += "Es necesario un Cliente para reservar.\n";
             if (obj.oAuto.Id_Auto == 0)
                 mensaje += "Es necesario un Auto para reservar.\n";
@@ -78,7 +78,7 @@ namespace CapaNegocio
             {
                 Mensaje += "La fecha de inicio/fin no puede ser menor que actual\n";
             }
-            if (obj.oCliente.Id_Cliente == 0)
+            if (obj.oPersona.Id_Persona == 0)
             {
                 Mensaje += "Es Necesario un Cliente para Reservar\n";
             }

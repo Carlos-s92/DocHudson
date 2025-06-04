@@ -18,7 +18,7 @@ namespace TestGit.Modales
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern IntPtr SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
-        public Cliente _Cliente = new Cliente();
+        public Persona _Cliente = new Persona();
 
         public mdCliente()
         {
@@ -40,14 +40,14 @@ namespace TestGit.Modales
         private void mdCliente_Load(object sender, EventArgs e)
         {
             // Muestra los clientes en el DataGridView.
-            List<Cliente> listaClientes = new CN_Cliente().Listar();
+            List<Persona> listaClientes = new CN_Cliente().Listar();
 
-            foreach (Cliente item in listaClientes)
+            foreach (Persona item in listaClientes)
             {
 
                 //Se calcula el valor de la edad
 
-                DateTime fechaNacimiento = item.oPersona.Fecha_Nacimiento;
+                DateTime fechaNacimiento = item.Fecha_Nacimiento;
                 int edad = DateTime.Now.Year - fechaNacimiento.Year;
                 if (fechaNacimiento > DateTime.Now.AddYears(-edad))
                 {
@@ -57,25 +57,25 @@ namespace TestGit.Modales
                 dgvData.Rows.Add(new object[]
                 {
             "",                                      // Columna de selección (icono)
-            item.Id_Cliente,                        // Id
-            item.oPersona.DNI,                      // DNI
-            $"{item.oPersona.Nombre} {item.oPersona.Apellido}",  // Nombre completo
+            item.Id_Persona,                        // Id
+            item.DNI,                      // DNI
+            $"{item.Nombre} {item.Apellido}",  // Nombre completo
             edad,                                   // Edad calculada
-            item.oPersona.Fecha_Nacimiento,         // Fecha de nacimiento
-            item.oPersona.Mail,                     // Email
+            item.Fecha_Nacimiento,         // Fecha de nacimiento
+            item.Mail,                     // Email
             // Dirección concatenada: Provincia, Localidad, Calle y Número
-            $"{item.oPersona.oDomicilio.oLocalidad.oProvincia.provincia} " +
-            $"{item.oPersona.oDomicilio.oLocalidad.localidad} " +
-            $"{item.oPersona.oDomicilio.Calle} " +
-            $"{item.oPersona.oDomicilio.Numero}",
-            item.oPersona.Telefono,                 // Teléfono
+            $"{item.oDomicilio.oLocalidad.oProvincia.provincia} " +
+            $"{item.oDomicilio.oLocalidad.localidad} " +
+            $"{item.oDomicilio.Calle} " +
+            $"{item.oDomicilio.Numero}",
+            item.Telefono,                 // Teléfono
             item.Estado ? 1 : 0,                    // Valor numérico de estado
             item.Estado ? "Activo" : "No Activo",   // Texto de estado
             // Valores ocultos para reprocesar el formulario si editas
-            item.oPersona.oDomicilio.oLocalidad.oProvincia.Id_Provincia,
-            item.oPersona.oDomicilio.oLocalidad.Id_Localidad,
-            item.oPersona.oDomicilio.Calle,
-            item.oPersona.oDomicilio.Numero
+            item.oDomicilio.oLocalidad.oProvincia.Id_Provincia,
+            item.oDomicilio.oLocalidad.Id_Localidad,
+            item.oDomicilio.Calle,
+            item.oDomicilio.Numero
                 });
             }
         }
@@ -107,13 +107,12 @@ namespace TestGit.Modales
 
             if (iRow >= 0 && iColumn > 0)
             {
-                _Cliente = new Cliente()
+                _Cliente = new Persona()
                 {
-                    Id_Cliente = Convert.ToInt32(dgvData.Rows[iRow].Cells["IdCliente"].Value.ToString()),
+                    Id_Persona = Convert.ToInt32(dgvData.Rows[iRow].Cells["IdCliente"].Value.ToString()),
              
 
-                    oPersona = new Persona()
-                    {
+                   
                         DNI = dgvData.Rows[iRow].Cells["Documento"].Value.ToString(),
                         Nombre = dgvData.Rows[iRow].Cells["NombreCompleto"].Value.ToString(),
                         Mail = dgvData.Rows[iRow].Cells["Mail"].Value.ToString(),
@@ -132,7 +131,7 @@ namespace TestGit.Modales
                                 }
                             }
                         }
-                    }
+                    
                     
 
                 };
@@ -162,7 +161,7 @@ namespace TestGit.Modales
             foreach (var item in resultados)
             {
                 // Calcula la edad a partir de la fecha de nacimiento
-                var fechaNacimiento = item.oPersona.Fecha_Nacimiento;
+                var fechaNacimiento = item.Fecha_Nacimiento;
                 int edad = DateTime.Now.Year - fechaNacimiento.Year;
                 if (fechaNacimiento.Date > DateTime.Now.AddYears(-edad))
                     edad--;
@@ -170,26 +169,26 @@ namespace TestGit.Modales
                 // 5) Agrega la fila al grid
                 dgvData.Rows.Add(new object[]
                 {
-            "",                                      // Columna de selección (icono)
-            item.Id_Cliente,                        // Id
-            item.oPersona.DNI,                      // DNI
-            $"{item.oPersona.Nombre} {item.oPersona.Apellido}",  // Nombre completo
-            edad,                                   // Edad calculada
-            item.oPersona.Fecha_Nacimiento,         // Fecha de nacimiento
-            item.oPersona.Mail,                     // Email
-            // Dirección concatenada: Provincia, Localidad, Calle y Número
-            $"{item.oPersona.oDomicilio.oLocalidad.oProvincia.provincia} " +
-            $"{item.oPersona.oDomicilio.oLocalidad.localidad} " +
-            $"{item.oPersona.oDomicilio.Calle} " +
-            $"{item.oPersona.oDomicilio.Numero}",
-            item.oPersona.Telefono,                 // Teléfono
-            item.Estado ? 1 : 0,                    // Valor numérico de estado
-            item.Estado ? "Activo" : "No Activo",   // Texto de estado
-            // Valores ocultos para reprocesar el formulario si editas
-            item.oPersona.oDomicilio.oLocalidad.oProvincia.Id_Provincia,
-            item.oPersona.oDomicilio.oLocalidad.Id_Localidad,
-            item.oPersona.oDomicilio.Calle,
-            item.oPersona.oDomicilio.Numero
+                    "",                                      // Columna de selección (icono)
+                    item.Id_Persona,                        // Id
+                    item.DNI,                      // DNI
+                    $"{item.Nombre} {item.Apellido}",  // Nombre completo
+                    edad,                                   // Edad calculada
+                    item.Fecha_Nacimiento,         // Fecha de nacimiento
+                    item.Mail,                     // Email
+                    // Dirección concatenada: Provincia, Localidad, Calle y Número
+                    $"{item.oDomicilio.oLocalidad.oProvincia.provincia} " +
+                    $"{item.oDomicilio.oLocalidad.localidad} " +
+                    $"{item.oDomicilio.Calle} " +
+                    $"{item.oDomicilio.Numero}",
+                    item.Telefono,                 // Teléfono
+                    item.Estado ? 1 : 0,                    // Valor numérico de estado
+                    item.Estado ? "Activo" : "No Activo",   // Texto de estado
+                    // Valores ocultos para reprocesar el formulario si editas
+                    item.oDomicilio.oLocalidad.oProvincia.Id_Provincia,
+                    item.oDomicilio.oLocalidad.Id_Localidad,
+                    item.oDomicilio.Calle,
+                    item.oDomicilio.Numero
                 });
             }
         }

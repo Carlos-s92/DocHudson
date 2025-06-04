@@ -171,13 +171,13 @@ namespace TestGit
             txtMarca.Texts = oReserva.oAuto.oModelo.oMarca.marca;
 
             // Cliente / Persona
-            txtDocumento.Texts = oReserva.oCliente.oPersona.DNI;
-            txtNombre.Texts = $"{oReserva.oCliente.oPersona.Nombre} {oReserva.oCliente.oPersona.Apellido}";
-            txtTelefono.Texts = oReserva.oCliente.oPersona.Telefono;
-            txtLicencia.Texts = oReserva.oCliente.Licencia;
-            txtDomicilio.Texts = $"{oReserva.oCliente.oPersona.oDomicilio.Calle} {oReserva.oCliente.oPersona.oDomicilio.Numero}, " +
-                                  $"{oReserva.oCliente.oPersona.oDomicilio.oLocalidad.localidad}, " +
-                                  $"{oReserva.oCliente.oPersona.oDomicilio.oLocalidad.oProvincia.provincia}";
+            txtDocumento.Texts = oReserva.oPersona.DNI;
+            txtNombre.Texts = $"{oReserva.oPersona.Nombre} {oReserva.oPersona.Apellido}";
+            txtTelefono.Texts = oReserva.oPersona.Telefono;
+            txtLicencia.Texts = oReserva.oPersona.Licencia;
+            txtDomicilio.Texts = $"{oReserva.oPersona.oDomicilio.Calle} {oReserva.oPersona.oDomicilio.Numero}, " +
+                                  $"{oReserva.oPersona.oDomicilio.oLocalidad.localidad}, " +
+                                  $"{oReserva.oPersona.oDomicilio.oLocalidad.oProvincia.provincia}";
 
             // Fechas Reserva
             dtpFechaI.Value = oReserva.Fecha_Inicio;

@@ -61,14 +61,14 @@ namespace TestGit
 
 
             // Muestra los clientes en el DataGridView.
-            List<Cliente> listaClientes = new CN_Cliente().Listar();
+            List<Persona> listaClientes = new CN_Cliente().Listar();
 
-            foreach (Cliente item in listaClientes)
+            foreach (Persona item in listaClientes)
             {
 
                 //Se calcula el valor de la edad
 
-                DateTime fechaNacimiento = item.oPersona.Fecha_Nacimiento;
+                DateTime fechaNacimiento = item.Fecha_Nacimiento;
                 int edad = DateTime.Now.Year - fechaNacimiento.Year;
                 if (fechaNacimiento > DateTime.Now.AddYears(-edad))
                 {
@@ -77,24 +77,23 @@ namespace TestGit
                 //Añade cada cliente a una fila del datagridview
                 dgvData.Rows.Add(new object[] {
                                 "", // Columna para el icono de selección
-                                item.Id_Cliente,
-                                item.oPersona.DNI,
+                                item.Id_Persona,
+                                item.DNI,
                                 item.Licencia,
-                                item.oPersona.Nombre,
-                                item.oPersona.Apellido,
+                                item.Nombre,
+                                item.Apellido,
                                 edad,
-                                item.oPersona.Fecha_Nacimiento,
-                                item.oPersona.Mail,
-                                item.oPersona.oDomicilio.oLocalidad.oProvincia.provincia + " " + item.oPersona.oDomicilio.oLocalidad.localidad + " " + item.oPersona.oDomicilio.Calle + " " + item.oPersona.oDomicilio.Numero,
-                                item.oPersona.Telefono,
+                                item.Fecha_Nacimiento,
+                                item.Mail,
+                                item.oDomicilio.oLocalidad.oProvincia.provincia + " " + item.oDomicilio.oLocalidad.localidad + " " + item.oDomicilio.Calle + " " + item.oDomicilio.Numero,
+                                item.Telefono,
                                 item.Estado == true ? 1 : 0, // Estado como valor
                                 item.Estado == true ? "Activo" : "No Activo", // Estado como texto
-                                item.oPersona.oDomicilio.oLocalidad.oProvincia.Id_Provincia,
-                                item.oPersona.oDomicilio.oLocalidad.Id_Localidad,
-                                item.oPersona.oDomicilio.Calle,
-                                item.oPersona.oDomicilio.Numero,
-                                item.oPersona.Id_Persona,
-                                item.oPersona.oDomicilio.Id_Domicilio
+                                item.oDomicilio.oLocalidad.oProvincia.Id_Provincia,
+                                item.oDomicilio.oLocalidad.Id_Localidad,
+                                item.oDomicilio.Calle,
+                                item.oDomicilio.Numero,
+                                item.oDomicilio.Id_Domicilio
                             });
             }
         }
@@ -115,7 +114,6 @@ namespace TestGit
             this.txtTelefono.Texts = "";
             this.txtMail.Texts = "";
             this.txtid.Text = "0";
-            this.txtPersona.Text = "0";
             this.txtDomicilio.Text = "0";
             txtindice.Text = "-1";
             comboEstado.SelectedIndex = 0;
@@ -175,7 +173,9 @@ namespace TestGit
 
                     Persona persona = new Persona()
                     {
-                        Id_Persona = Convert.ToInt32(txtPersona.Text),
+                        Id_Persona = Convert.ToInt32(txtid.Text),
+                        Licencia = txtLicencia.Texts,
+                        Estado = Convert.ToInt32(((OpcionesCombo)comboEstado.SelectedItem).Valor) == 1 ? true : false,
                         DNI = txtDocumento.Texts,
                         Nombre = txtNombre.Texts,
                         Apellido = txtApellido.Texts,
@@ -186,14 +186,7 @@ namespace TestGit
                     };
 
 
-                    Cliente objCliente = new Cliente()
-                    {
-                        Id_Cliente = Convert.ToInt32(txtid.Text),
-                        oPersona = persona,
-                        Licencia = txtLicencia.Texts,
-
-                        Estado = Convert.ToInt32(((OpcionesCombo)comboEstado.SelectedItem).Valor) == 1 ? true : false
-                    };
+    
 
                     // Se calcula la edad del cliente
                     DateTime fechaNacimiento = rjdtpFecha.Value;
@@ -204,12 +197,11 @@ namespace TestGit
                     }
 
                     // Si es un nuevo cliente, se registra en la base de datos.
-                    if (objCliente.Id_Cliente == 0)
+                    if (persona.Id_Persona == 0)
                     {
 
-                        int idClienteGenerado = new CN_Cliente().Registrar(objCliente, out mensaje); //Se registra el cliente y retorna el id del mismo
-                        int idPersona = new CN_Cliente().BusquedaDni(txtDocumento.Texts); // Se busca el id de la persona segun el documento
-                        int idDomicilio = new CN_Cliente().BusquedaDomicilio(idPersona); //Se busca el domicilio segun la persona
+                        int idClienteGenerado = new CN_Cliente().Registrar(persona, out mensaje); //Se registra el cliente y retorna el id del mismo
+                        int idDomicilio = new CN_Cliente().BusquedaDomicilio(idClienteGenerado); //Se busca el domicilio segun la persona
 
 
 
@@ -234,7 +226,6 @@ namespace TestGit
                                 ((OpcionesCombo)comboLocalidad.SelectedItem).Valor.ToString(), //
                                 txtCalle.Texts,
                                 txtNumero.Texts,
-                                idPersona,
                                 idDomicilio
                             });
 
@@ -254,7 +245,7 @@ namespace TestGit
                     else
                     {
                         // Si se está editando, actualiza la información del cliente.
-                        int resultado = new CN_Cliente().Editar(objCliente, out mensaje);
+                        int resultado = new CN_Cliente().Editar(persona, out mensaje);
                         if (resultado != 0)
                         {
                             //Se modifican las columnas de ese cliente
@@ -275,7 +266,6 @@ namespace TestGit
                             row.Cells["Localidad"].Value = ((OpcionesCombo)comboLocalidad.SelectedItem).Valor.ToString(); ;
                             row.Cells["Calle"].Value = txtCalle.Texts;
                             row.Cells["Numero"].Value = txtNumero.Texts;
-                            row.Cells["Persona"].Value = txtPersona.Text;
                             row.Cells["IdDomicilio"].Value = txtDomicilio.Text;
 
                             LimpiarCampos(); // Limpia los campos del formulario.
@@ -376,9 +366,9 @@ namespace TestGit
                 {
                     pregunta.Close();
                     string mensaje = string.Empty;
-                    Cliente objCliente = new Cliente()
+                    Persona objCliente = new Persona()
                     {
-                        Id_Cliente = Convert.ToInt32(txtid.Text),
+                        Id_Persona = Convert.ToInt32(txtid.Text),
                     };
 
                     // Llama al método de eliminación en la base de datos.
@@ -481,7 +471,6 @@ namespace TestGit
 
                     txtCalle.Texts = dgvData.Rows[indice].Cells["Calle"].Value.ToString();
                     txtNumero.Texts = dgvData.Rows[indice].Cells["Numero"].Value.ToString();
-                    txtPersona.Text = dgvData.Rows[indice].Cells["Persona"].Value.ToString();
                     txtDomicilio.Text = dgvData.Rows[indice].Cells["IdDomicilio"].Value.ToString();
 
                     txtTelefono.Texts = dgvData.Rows[indice].Cells["Telefono"].Value.ToString();

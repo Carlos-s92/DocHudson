@@ -13,7 +13,7 @@ namespace CapaEntidad
         public DateTime Fecha_Fin { get; set; }
         public Autos oAuto { get; set; }
         public Pago oPago { get; set; }
-        public Cliente oCliente { get; set; }
+        public Persona oPersona { get; set; }
         public Usuarios oUsuario { get; set; }
         public bool Estado { get; set; }
     }

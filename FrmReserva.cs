@@ -78,12 +78,12 @@ namespace TestGit
                     if (result == DialogResult.OK) // Si se selecciona un Cliente, llena los campos de Cliente y precio.
                     {
                         String Mensaje = string.Empty;
-                        if(modal.Id_Pago != 0)
+                        if (modal.Id_Pago != 0)
                         {
                             Reserva oReserva = new Reserva();
-                            oReserva.oCliente = new Cliente()
+                            oReserva.oPersona = new Persona()
                             {
-                                Id_Cliente = Convert.ToInt32(txtIdCliente.Text)
+                                Id_Persona = Convert.ToInt32(txtIdCliente.Text)
                             };
                             oReserva.oAuto = new Autos()
                             {
@@ -166,13 +166,13 @@ namespace TestGit
 
                 if (result == DialogResult.OK) // Si se selecciona un Cliente, llena los campos de Cliente y precio.
                 {
-                    txtIdCliente.Text = modal._Cliente.Id_Cliente.ToString();
-                    txtDocumento.Texts = modal._Cliente.oPersona.DNI.ToString();
-                    txtNombre.Texts = modal._Cliente.oPersona.Nombre.ToString();
-                    txtMail.Texts = modal._Cliente.oPersona.Mail.ToString();
-                    txtTelefono.Texts = modal._Cliente.oPersona.Telefono.ToString();
+                    txtIdCliente.Text = modal._Cliente.Id_Persona.ToString();
+                    txtDocumento.Texts = modal._Cliente.DNI.ToString();
+                    txtNombre.Texts = modal._Cliente.Nombre.ToString();
+                    txtMail.Texts = modal._Cliente.Mail.ToString();
+                    txtTelefono.Texts = modal._Cliente.Telefono.ToString();
 
-                    string domicilio = modal._Cliente.oPersona.oDomicilio.oLocalidad.oProvincia.provincia + " " + modal._Cliente.oPersona.oDomicilio.oLocalidad.localidad + " " + modal._Cliente.oPersona.oDomicilio.Calle + " " + modal._Cliente.oPersona.oDomicilio.Numero.ToString();
+                    string domicilio = modal._Cliente.oDomicilio.oLocalidad.oProvincia.provincia + " " + modal._Cliente.oDomicilio.oLocalidad.localidad + " " + modal._Cliente.oDomicilio.Calle + " " + modal._Cliente.oDomicilio.Numero.ToString();
 
                     txtDomicilio.Texts = domicilio;
                 }

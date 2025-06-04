@@ -20,7 +20,7 @@ namespace CapaDatos
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("Id_Auto", obj.oAuto.Id_Auto);
             cmd.Parameters.AddWithValue("Id_Pago", obj.oPago.Id_Pago);
-            cmd.Parameters.AddWithValue("Id_Cliente", obj.oCliente.Id_Cliente);
+            cmd.Parameters.AddWithValue("Id_Persona", obj.oPersona.Id_Persona);
             cmd.Parameters.AddWithValue("Id_Usuario", obj.oUsuario.Id_Usuario);
             cmd.Parameters.AddWithValue("Fecha_Inicio", obj.Fecha_Inicio);
             cmd.Parameters.AddWithValue("Fecha_Fin", obj.Fecha_Fin);
@@ -33,7 +33,7 @@ namespace CapaDatos
             cmd.Parameters.AddWithValue("Id_Reserva", obj.Id_Reserva);
             cmd.Parameters.AddWithValue("Id_Auto", obj.oAuto.Id_Auto);
             cmd.Parameters.AddWithValue("Id_Pago", obj.oPago.Id_Pago);
-            cmd.Parameters.AddWithValue("Id_Cliente", obj.oCliente.Id_Cliente);
+            cmd.Parameters.AddWithValue("Id_Persona", obj.oPersona.Id_Persona);
             cmd.Parameters.AddWithValue("Fecha_Inicio", obj.Fecha_Inicio);
             cmd.Parameters.AddWithValue("Fecha_Fin", obj.Fecha_Fin);
             cmd.Parameters.AddWithValue("Estado", obj.Estado);
@@ -63,9 +63,9 @@ namespace CapaDatos
                 {
                     Id_Pago = Convert.ToInt32(reader["Id_Pago"])
                 },
-                oCliente = new Cliente()
+                oPersona = new Persona()
                 {
-                    Id_Cliente = Convert.ToInt32(reader["Id_Cliente"])
+                    Id_Persona = Convert.ToInt32(reader["Id_Persona"])
                 },
                 Fecha_Inicio = Convert.ToDateTime(reader["Fecha_Inicio"]),
                 Fecha_Fin = Convert.ToDateTime(reader["Fecha_Fin"]),
@@ -107,39 +107,37 @@ namespace CapaDatos
                     }
                 },
 
-                // Cliente
-                oCliente = new Cliente
+                // Persona
+                oPersona = new Persona
                 {
-                    Id_Cliente = reader.GetInt32(reader.GetOrdinal("Id_Cliente")),
+
                     Licencia = reader["Licencia"].ToString(),
-                    Estado = reader.GetBoolean(reader.GetOrdinal("EstadoCliente")),
-                    oPersona = new Persona
+                    Estado = reader.GetBoolean(reader.GetOrdinal("EstadoPersona")),
+                    Id_Persona = reader.GetInt32(reader.GetOrdinal("Id_Persona")),
+                    DNI = reader["DNI"].ToString(),
+                    Nombre = reader["NombrePersona"].ToString(),
+                    Apellido = reader["Apellido"].ToString(),
+                    Fecha_Nacimiento = reader.GetDateTime(reader.GetOrdinal("Fecha_Nacimiento")),
+                    Mail = reader["Mail"].ToString(),
+                    Telefono = reader["Telefono"].ToString(),
+                    oDomicilio = new Domicilio
                     {
-                        Id_Persona = reader.GetInt32(reader.GetOrdinal("Id_Persona")),
-                        DNI = reader["DNI"].ToString(),
-                        Nombre = reader["NombrePersona"].ToString(),
-                        Apellido = reader["Apellido"].ToString(),
-                        Fecha_Nacimiento = reader.GetDateTime(reader.GetOrdinal("Fecha_Nacimiento")),
-                        Mail = reader["Mail"].ToString(),
-                        Telefono = reader["Telefono"].ToString(),
-                        oDomicilio = new Domicilio
+                        Id_Domicilio = reader.GetInt32(reader.GetOrdinal("Id_Domicilio")),
+                        Calle = reader["Calle"].ToString(),
+                        Numero = reader.GetInt32(reader.GetOrdinal("Numero")),
+                        oLocalidad = new Localidad
                         {
-                            Id_Domicilio = reader.GetInt32(reader.GetOrdinal("Id_Domicilio")),
-                            Calle = reader["Calle"].ToString(),
-                            Numero = reader.GetInt32(reader.GetOrdinal("Numero")),
-                            oLocalidad = new Localidad
+                            Id_Localidad = reader.GetInt32(reader.GetOrdinal("Id_Localidad")),
+                            localidad = reader["Localidad"].ToString(),
+                            oProvincia = new Provincia
                             {
-                                Id_Localidad = reader.GetInt32(reader.GetOrdinal("Id_Localidad")),
-                                localidad = reader["Localidad"].ToString(),
-                                oProvincia = new Provincia
-                                {
-                                    Id_Provincia = reader.GetInt32(reader.GetOrdinal("Id_Provincia")),
-                                    provincia = reader["Provincia"].ToString()
-                                }
+                                Id_Provincia = reader.GetInt32(reader.GetOrdinal("Id_Provincia")),
+                                provincia = reader["Provincia"].ToString()
                             }
                         }
                     }
                 },
+
 
                 // Pago
                 oPago = new Pago

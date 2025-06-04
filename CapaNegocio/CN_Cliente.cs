@@ -11,7 +11,7 @@ namespace CapaNegocio
         private CD_Cliente objcd_cliente = new CD_Cliente();
 
         // Metodo para listar todos los clientes
-        public List<Cliente> Listar()
+        public List<Persona> Listar()
         {
             return objcd_cliente.Listar();
         }
@@ -22,13 +22,13 @@ namespace CapaNegocio
         {
             int id = 0;
 
-            id = new CD_Persona().BusquedaDomicilio(persona);
+            id = new CD_Cliente().BusquedaDomicilio(persona);
 
             return id;
         }
 
         // Metodo para registrar un cliente
-        public int Registrar(Cliente obj, out string Mensaje)
+        public int Registrar(Persona obj, out string Mensaje)
         {
             Mensaje = string.Empty;
 
@@ -36,60 +36,60 @@ namespace CapaNegocio
             {
                 Mensaje += "Es Necesario la licencia del Cliente\n";
             }
-            if (obj.oPersona.Nombre == "")
+            if (obj.Nombre == "")
             {
                 Mensaje += "Es Necesario el Nombre del Cliente\n";
             }
-            if (obj.oPersona.Apellido == "")
+            if (obj.Apellido == "")
             {
                 Mensaje += "Es Necesario el apellido del Cliente\n";
             }
-            if (obj.oPersona.Telefono == "")
+            if (obj.Telefono == "")
             {
                 Mensaje += "Es Necesario el Telefono del Cliente\n";
             }
-            if (obj.oPersona.DNI == "")
+            if (obj.DNI == "")
             {
                 Mensaje += "Es Necesario el DNI del Cliente\n";
             }
-            if (obj.oPersona.oDomicilio.oLocalidad.oProvincia.Id_Provincia == 0)
+            if (obj.oDomicilio.oLocalidad.oProvincia.Id_Provincia == 0)
             {
                 Mensaje += "Es Necesario la Provincia del Cliente\n";
             }
-            if (obj.oPersona.oDomicilio.oLocalidad.localidad == "")
+            if (obj.oDomicilio.oLocalidad.localidad == "")
             {
                 Mensaje += "Es Necesario la Localidad del Cliente\n";
             }
-            if (obj.oPersona.oDomicilio.Calle == "")
+            if (obj.oDomicilio.Calle == "")
             {
                 Mensaje += "Es Necesario la Calle del Cliente\n";
             }
-            if (obj.oPersona.oDomicilio.Numero == 0)
+            if (obj.oDomicilio.Numero == 0)
             {
                 Mensaje += "Es Necesario el Numero de Calle del Cliente\n";
             }
-            if (obj.oPersona.Mail == "")
+            if (obj.Mail == "")
             {
                 Mensaje += "Es Necesario el Mail del Cliente\n";
             }
             ////////////////////////////////////////////////////////////
-            if (!MailValido(obj.oPersona.Mail))//Llamada al método para verificar mail
+            if (!MailValido(obj.Mail))//Llamada al método para verificar mail
             {
                 Mensaje += "Verificar que el Mail sea Correcto\n";
             }
 
-            List<Cliente> list = objcd_cliente.Listar();
+            List<Persona> list = objcd_cliente.Listar();
 
-            foreach (Cliente item in list)
+            foreach (Persona item in list)
             {
-                if (item.oPersona.DNI == obj.oPersona.DNI || item.oPersona.Mail == obj.oPersona.Mail)
+                if (item.DNI == obj.DNI || item.Mail == obj.Mail)
                 {
                     Mensaje += "El cliente ya existe";
                 }
             }
 
 
-            DateTime fechaNacimiento = obj.oPersona.Fecha_Nacimiento;//Cálculo de Edad y Mensaje si es menor de edad
+            DateTime fechaNacimiento = obj.Fecha_Nacimiento;//Cálculo de Edad y Mensaje si es menor de edad
             int edad = DateTime.Now.Year - fechaNacimiento.Year;
 
             if (fechaNacimiento > DateTime.Now.AddYears(-edad))
@@ -110,15 +110,16 @@ namespace CapaNegocio
             {
                 Persona persona = new Persona()
                 {
-                    DNI = obj.oPersona.DNI,
-                    Mail = obj.oPersona.Mail,
-                    Nombre = obj.oPersona.Nombre,
-                    Apellido = obj.oPersona.Apellido,
-                    Telefono = obj.oPersona.Telefono,
-                    oDomicilio = obj.oPersona.oDomicilio,
-                    Fecha_Nacimiento = obj.oPersona.Fecha_Nacimiento
+                    Licencia = obj.Licencia,
+                    Estado = obj.Estado,
+                    DNI = obj.DNI,
+                    Mail = obj.Mail,
+                    Nombre = obj.Nombre,
+                    Apellido = obj.Apellido,
+                    Telefono = obj.Telefono,
+                    oDomicilio = obj.oDomicilio,
+                    Fecha_Nacimiento = obj.Fecha_Nacimiento
                 };
-                obj.oPersona.Id_Persona = new CD_Persona().Registrar(persona, out Mensaje);
                 return objcd_cliente.Registrar(obj, out Mensaje);
             }
 
@@ -135,15 +136,15 @@ namespace CapaNegocio
         }
 
         // Metodo para editar un cliente
-        public int Editar(Cliente obj, out string Mensaje)
+        public int Editar(Persona obj, out string Mensaje)
         {
             Mensaje = string.Empty;
 
-            if (obj.oPersona.Nombre == "")
+            if (obj.Nombre == "")
             {
                 Mensaje += "Es Necesario el Nombre del Cliente\n";
             }
-            if (obj.oPersona.Apellido == "")
+            if (obj.Apellido == "")
             {
                 Mensaje += "Es Necesario el apellido del Cliente\n";
             }
@@ -152,41 +153,41 @@ namespace CapaNegocio
                 Mensaje += "Es Necesario la licencia del Cliente\n";
             }
 
-            if (obj.oPersona.Telefono == "")
+            if (obj.Telefono == "")
             {
                 Mensaje += "Es Necesario el Telefono del Cliente\n";
             }
-            if (obj.oPersona.DNI == "")
+            if (obj.DNI == "")
             {
                 Mensaje += "Es Necesario el DNI del Cliente\n";
             }
-            if (obj.oPersona.oDomicilio.oLocalidad.oProvincia.Id_Provincia == 0)
+            if (obj.oDomicilio.oLocalidad.oProvincia.Id_Provincia == 0)
             {
                 Mensaje += "Es Necesario la Provincia del Cliente\n";
             }
-            if (obj.oPersona.oDomicilio.oLocalidad.localidad == "")
+            if (obj.oDomicilio.oLocalidad.localidad == "")
             {
                 Mensaje += "Es Necesario la Localidad del Cliente\n";
             }
-            if (obj.oPersona.oDomicilio.Calle == "")
+            if (obj.oDomicilio.Calle == "")
             {
                 Mensaje += "Es Necesario la Calle del Cliente\n";
             }
-            if (obj.oPersona.oDomicilio.Numero == 0)
+            if (obj.oDomicilio.Numero == 0)
             {
                 Mensaje += "Es Necesario el Numero de Calle del Cliente\n";
             }
-            if (obj.oPersona.Mail == "")
+            if (obj.Mail == "")
             {
                 Mensaje += "Es Necesario el Mail del Cliente\n";
             }
             ///////////////////////////////////////////////////////////
-            if (!MailValido(obj.oPersona.Mail))//Llamada al método para verificar mail
+            if (!MailValido(obj.Mail))//Llamada al método para verificar mail
             {
                 Mensaje += "Verificar que el Mail sea Correcto\n";
             }
 
-            DateTime fechaNacimiento = obj.oPersona.Fecha_Nacimiento;//Cálculo de Edad y Mensaje si es menor de edad
+            DateTime fechaNacimiento = obj.Fecha_Nacimiento;//Cálculo de Edad y Mensaje si es menor de edad
             int edad = DateTime.Now.Year - fechaNacimiento.Year;
 
             if (fechaNacimiento > DateTime.Now.AddYears(-edad))
@@ -207,22 +208,24 @@ namespace CapaNegocio
             {
                 Persona persona = new Persona()
                 {
-                    Id_Persona = obj.oPersona.Id_Persona,
-                    DNI = obj.oPersona.DNI,
-                    Mail = obj.oPersona.Mail,
-                    Nombre = obj.oPersona.Nombre,
-                    Apellido = obj.oPersona.Apellido,
-                    Telefono = obj.oPersona.Telefono,
-                    oDomicilio = obj.oPersona.oDomicilio,
-                    Fecha_Nacimiento = obj.oPersona.Fecha_Nacimiento
+                    Id_Persona = obj.Id_Persona,
+                    Licencia = obj.Licencia,
+                    Estado = obj.Estado,
+                    DNI = obj.DNI,
+                    Mail = obj.Mail,
+                    Nombre = obj.Nombre,
+                    Apellido = obj.Apellido,
+                    Telefono = obj.Telefono,
+                    oDomicilio = obj.oDomicilio,
+                    Fecha_Nacimiento = obj.Fecha_Nacimiento
                 };
-                obj.oPersona.Id_Persona = new CD_Persona().Editar(persona, out Mensaje);
+           
                 return objcd_cliente.Editar(obj, out Mensaje);
             }
         }
 
         // Metodo para eliminar un cliente
-        public int Eliminar(Cliente obj, out string Mensaje)
+        public int Eliminar(Persona obj, out string Mensaje)
         {
             return objcd_cliente.Eliminar(obj, out Mensaje);
         }
@@ -235,7 +238,7 @@ namespace CapaNegocio
             return Regex.IsMatch(email, regex, RegexOptions.IgnoreCase);
         }
 
-        public List<Cliente> BuscarCliente(string texto)
+        public List<Persona> BuscarCliente(string texto)
         {
             return objcd_cliente.Buscar(texto);
         }
