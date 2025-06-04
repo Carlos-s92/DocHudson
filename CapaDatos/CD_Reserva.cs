@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Text;
 using System.Linq;
 
 namespace CapaDatos
@@ -11,7 +10,7 @@ namespace CapaDatos
     public class CD_Reserva : CD_TemplateM<Reserva>
     {
         protected override string NombreSPRegistrar() => "InsertarReserva";
-        protected override string NombreSPEditar() => "ActualizarReserva";
+        protected override string NombreSPEditar() => "ModificarReserva";
         protected override string NombreSPEliminar() => "LiberarReserva";
         protected override string NombreSPListar() => "ListarReservas";
         protected override string NombreSPBuscar() => "BuscarReserva";
@@ -20,8 +19,10 @@ namespace CapaDatos
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("Id_Auto", obj.oAuto.Id_Auto);
             cmd.Parameters.AddWithValue("Id_Pago", obj.oPago.Id_Pago);
-            cmd.Parameters.AddWithValue("Id_Cliente", obj.oCliente.Id_Cliente);
-            cmd.Parameters.AddWithValue("Id_Usuario", obj.oUsuario.Id_Usuario);
+            int idPersonaCliente = obj.oCliente?.oPersona?.Id_Persona ?? ObtenerIdPersonaDeCliente(obj.oCliente.Id_Cliente);
+            int idPersonaUsuario = obj.oUsuario?.oPersona?.Id_Persona ?? ObtenerIdPersonaDeUsuario(obj.oUsuario.Id_Usuario);
+            cmd.Parameters.AddWithValue("IdPersonaCliente", idPersonaCliente);
+            cmd.Parameters.AddWithValue("IdPersonaUsuario", idPersonaUsuario);
             cmd.Parameters.AddWithValue("Fecha_Inicio", obj.Fecha_Inicio);
             cmd.Parameters.AddWithValue("Fecha_Fin", obj.Fecha_Fin);
             cmd.Parameters.AddWithValue("Estado", obj.Estado);
@@ -33,7 +34,10 @@ namespace CapaDatos
             cmd.Parameters.AddWithValue("Id_Reserva", obj.Id_Reserva);
             cmd.Parameters.AddWithValue("Id_Auto", obj.oAuto.Id_Auto);
             cmd.Parameters.AddWithValue("Id_Pago", obj.oPago.Id_Pago);
-            cmd.Parameters.AddWithValue("Id_Cliente", obj.oCliente.Id_Cliente);
+            int idPersonaCliente = obj.oCliente?.oPersona?.Id_Persona ?? ObtenerIdPersonaDeCliente(obj.oCliente.Id_Cliente);
+            int idPersonaUsuario = obj.oUsuario?.oPersona?.Id_Persona ?? ObtenerIdPersonaDeUsuario(obj.oUsuario.Id_Usuario);
+            cmd.Parameters.AddWithValue("IdPersonaCliente", idPersonaCliente);
+            cmd.Parameters.AddWithValue("IdPersonaUsuario", idPersonaUsuario);
             cmd.Parameters.AddWithValue("Fecha_Inicio", obj.Fecha_Inicio);
             cmd.Parameters.AddWithValue("Fecha_Fin", obj.Fecha_Fin);
             cmd.Parameters.AddWithValue("Estado", obj.Estado);
@@ -150,6 +154,30 @@ namespace CapaDatos
                     Estado = reader.GetBoolean(reader.GetOrdinal("EstadoPago"))
                 }
             };
+        }
+
+        private int ObtenerIdPersonaDeCliente(int idCliente)
+        {
+            using (var cn = new SqlConnection(Conexion.cadena))
+            using (var cmd = new SqlCommand("SELECT Id_Persona FROM Cliente WHERE Id_Cliente = @Id", cn))
+            {
+                cmd.Parameters.AddWithValue("Id", idCliente);
+                cn.Open();
+                object result = cmd.ExecuteScalar();
+                return result == null ? 0 : Convert.ToInt32(result);
+            }
+        }
+
+        private int ObtenerIdPersonaDeUsuario(int idUsuario)
+        {
+            using (var cn = new SqlConnection(Conexion.cadena))
+            using (var cmd = new SqlCommand("SELECT Id_Persona FROM Usuarios WHERE Id_Usuario = @Id", cn))
+            {
+                cmd.Parameters.AddWithValue("Id", idUsuario);
+                cn.Open();
+                object result = cmd.ExecuteScalar();
+                return result == null ? 0 : Convert.ToInt32(result);
+            }
         }
 
         public int LiberarReserva(int id_reserva, out string Mensaje)

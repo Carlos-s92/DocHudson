@@ -140,16 +140,16 @@ Create Table Reserva(
 Id_Reserva Int Identity(1,1),
 Id_Auto Int,
 Id_Pago Int,
-Id_Cliente Int,
-Id_Usuario Int,
+IdPersonaCliente Int,
+IdPersonaUsuario Int,
 Fecha_Inicio Date,
 Fecha_Fin Date,
-Estado Bit
+Estado Bit,
 Primary Key (Id_Reserva),
 Foreign Key (Id_Auto) References Autos(Id_Auto),
 Foreign Key (Id_Pago) References Pago(Id_Pago),
-Foreign Key (Id_Cliente) References Cliente(Id_Cliente),
-Foreign Key (Id_Usuario) References Usuarios(Id_Usuario) --Referencia al Usuario
+Foreign Key (IdPersonaCliente) References Persona(Id_Persona),
+Foreign Key (IdPersonaUsuario) References Persona(Id_Persona)
 )
 Go
 
@@ -1108,8 +1108,8 @@ GO
 CREATE OR ALTER PROCEDURE InsertarReserva
     @Id_Auto INT,
     @Id_Pago INT,
-    @Id_Cliente INT,
-	@Id_Usuario INT,
+    @IdPersonaCliente INT,
+    @IdPersonaUsuario INT,
     @Fecha_Inicio DATE,
     @Fecha_Fin DATE,
     @Estado BIT,
@@ -1135,15 +1135,20 @@ BEGIN
         Set @Mensaje = 'El pago no existe.';
         RETURN;
     END
-    IF NOT EXISTS (SELECT 1 FROM Cliente WHERE Id_Cliente = @Id_Cliente)
+    IF NOT EXISTS (SELECT 1 FROM Persona WHERE Id_Persona = @IdPersonaCliente)
     BEGIN
         Set @Mensaje ='El cliente no existe.';
         RETURN;
     END
+    IF NOT EXISTS (SELECT 1 FROM Persona WHERE Id_Persona = @IdPersonaUsuario)
+    BEGIN
+        Set @Mensaje ='El usuario no existe.';
+        RETURN;
+    END
     BEGIN TRANSACTION;
     BEGIN TRY
-        INSERT INTO Reserva (Id_Auto, Id_Pago, Id_Cliente,Id_Usuario, Fecha_Inicio, Fecha_Fin, Estado)
-        VALUES (@Id_Auto, @Id_Pago, @Id_Cliente,@Id_Usuario, @Fecha_Inicio, @Fecha_Fin, @Estado);
+        INSERT INTO Reserva (Id_Auto, Id_Pago, IdPersonaCliente, IdPersonaUsuario, Fecha_Inicio, Fecha_Fin, Estado)
+        VALUES (@Id_Auto, @Id_Pago, @IdPersonaCliente, @IdPersonaUsuario, @Fecha_Inicio, @Fecha_Fin, @Estado);
         COMMIT TRANSACTION;
 		Set @Resultado = SCOPE_IDENTITY();
     END TRY
@@ -1159,7 +1164,8 @@ CREATE OR ALTER PROCEDURE ModificarReserva
     @Id_Reserva INT,
     @Id_Auto INT,
     @Id_Pago INT,
-    @Id_Cliente INT,
+    @IdPersonaCliente INT,
+    @IdPersonaUsuario INT,
     @Fecha_Inicio DATE,
     @Fecha_Fin DATE,
     @Estado BIT,
@@ -1181,9 +1187,14 @@ BEGIN
         Set @Mensaje = 'El pago no existe.';
         RETURN;
     END
-    IF NOT EXISTS (SELECT 1 FROM Cliente WHERE Id_Cliente = @Id_Cliente)
+    IF NOT EXISTS (SELECT 1 FROM Persona WHERE Id_Persona = @IdPersonaCliente)
     BEGIN
         Set @Mensaje ='El cliente no existe.';
+        RETURN;
+    END
+    IF NOT EXISTS (SELECT 1 FROM Persona WHERE Id_Persona = @IdPersonaUsuario)
+    BEGIN
+        Set @Mensaje ='El usuario no existe.';
         RETURN;
     END
 	IF NOT EXISTS (SELECT 1 FROM Autos WHERE Id_Auto = @Id_Auto)
@@ -1199,7 +1210,7 @@ BEGIN
     BEGIN TRANSACTION;
     BEGIN TRY
         UPDATE Reserva
-        SET Id_Auto = @Id_Auto, Id_Pago = @Id_Pago, Id_Cliente = @Id_Cliente, Fecha_Inicio = @Fecha_Inicio, Fecha_Fin = @Fecha_Fin, Estado = @Estado
+        SET Id_Auto = @Id_Auto, Id_Pago = @Id_Pago, IdPersonaCliente = @IdPersonaCliente, IdPersonaUsuario = @IdPersonaUsuario, Fecha_Inicio = @Fecha_Inicio, Fecha_Fin = @Fecha_Fin, Estado = @Estado
         WHERE Id_Reserva = @Id_Reserva;
         COMMIT TRANSACTION;
 		Set @Resultado = 1;
@@ -1268,7 +1279,7 @@ BEGIN
   INNER JOIN Modelo    m   ON m.Id_Modelo    = a.Id_Modelo
   INNER JOIN Marca     ma  ON ma.Id_Marca    = m.Id_Marca
 
-  INNER JOIN Cliente   c   ON c.Id_Cliente   = r.Id_Cliente
+  INNER JOIN Cliente   c   ON c.Id_Persona   = r.IdPersonaCliente
   INNER JOIN Persona   p   ON p.Id_Persona   = c.Id_Persona
   INNER JOIN Domicilio d   ON d.Id_Domicilio = p.Id_Domicilio
   INNER JOIN Localidad l   ON l.Id_Localidad = d.Id_Localidad
@@ -1316,10 +1327,11 @@ GO
 
 --Procedimiento para listar reservas
 CREATE OR ALTER PROCEDURE ListarReservas
-AS 
+AS
 BEGIN
-	SELECT r.Id_Reserva, r.Id_Auto, r.Id_Pago, r.Id_Cliente, r.Fecha_Inicio, r.Fecha_Fin, r.Estado
+	SELECT r.Id_Reserva, r.Id_Auto, r.Id_Pago, c.Id_Cliente, r.Fecha_Inicio, r.Fecha_Fin, r.Estado
     FROM Reserva r
+    INNER JOIN Cliente c ON c.Id_Persona = r.IdPersonaCliente
 END;
 GO
 
