@@ -2,10 +2,7 @@
 using CapaEntidad;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace CapaNegocio
 {
@@ -19,7 +16,6 @@ namespace CapaNegocio
             return objcd_cliente.Listar();
         }
 
-
         // Metodo para buscar un domicilio segun una persona
 
         public int BusquedaDomicilio(int persona)
@@ -30,10 +26,8 @@ namespace CapaNegocio
 
             return id;
         }
- 
 
         // Metodo para registrar un cliente
-
         public int Registrar(Cliente obj, out string Mensaje)
         {
             Mensaje = string.Empty;
@@ -84,6 +78,17 @@ namespace CapaNegocio
                 Mensaje += "Verificar que el Mail sea Correcto\n";
             }
 
+            List<Cliente> list = objcd_cliente.Listar();
+
+            foreach (Cliente item in list)
+            {
+                if (item.oPersona.DNI == obj.oPersona.DNI || item.oPersona.Mail == obj.oPersona.Mail)
+                {
+                    Mensaje += "El cliente ya existe";
+                }
+            }
+
+
             DateTime fechaNacimiento = obj.oPersona.Fecha_Nacimiento;//Cálculo de Edad y Mensaje si es menor de edad
             int edad = DateTime.Now.Year - fechaNacimiento.Year;
 
@@ -99,17 +104,25 @@ namespace CapaNegocio
             /////////////////////////////////////////////////////////////
             if (Mensaje != string.Empty)
             {
-                Console.WriteLine("devuelve 0");
                 return 0;
             }
             else
             {
-                Console.WriteLine("devuelve OBJETO CD_CLIENTE");
+                Persona persona = new Persona()
+                {
+                    DNI = obj.oPersona.DNI,
+                    Mail = obj.oPersona.Mail,
+                    Nombre = obj.oPersona.Nombre,
+                    Apellido = obj.oPersona.Apellido,
+                    Telefono = obj.oPersona.Telefono,
+                    oDomicilio = obj.oPersona.oDomicilio,
+                    Fecha_Nacimiento = obj.oPersona.Fecha_Nacimiento
+                };
+                obj.oPersona.Id_Persona = new CD_Persona().Registrar(persona, out Mensaje);
                 return objcd_cliente.Registrar(obj, out Mensaje);
             }
 
         }
-
 
         // Metodo para traer un id de persona segun un documento
         public int BusquedaDni(string dni)
@@ -122,7 +135,7 @@ namespace CapaNegocio
         }
 
         // Metodo para editar un cliente
-        public bool Editar(Cliente obj, out string Mensaje)
+        public int Editar(Cliente obj, out string Mensaje)
         {
             Mensaje = string.Empty;
 
@@ -188,16 +201,28 @@ namespace CapaNegocio
             ///////////////////////////////////////////////////////////
             if (Mensaje != string.Empty)
             {
-                return false;
+                return 0;
             }
             else
             {
+                Persona persona = new Persona()
+                {
+                    Id_Persona = obj.oPersona.Id_Persona,
+                    DNI = obj.oPersona.DNI,
+                    Mail = obj.oPersona.Mail,
+                    Nombre = obj.oPersona.Nombre,
+                    Apellido = obj.oPersona.Apellido,
+                    Telefono = obj.oPersona.Telefono,
+                    oDomicilio = obj.oPersona.oDomicilio,
+                    Fecha_Nacimiento = obj.oPersona.Fecha_Nacimiento
+                };
+                obj.oPersona.Id_Persona = new CD_Persona().Editar(persona, out Mensaje);
                 return objcd_cliente.Editar(obj, out Mensaje);
             }
         }
 
         // Metodo para eliminar un cliente
-        public bool Eliminar(Cliente obj, out string Mensaje)
+        public int Eliminar(Cliente obj, out string Mensaje)
         {
             return objcd_cliente.Eliminar(obj, out Mensaje);
         }
@@ -210,6 +235,10 @@ namespace CapaNegocio
             return Regex.IsMatch(email, regex, RegexOptions.IgnoreCase);
         }
 
+        public List<Cliente> BuscarCliente(string texto)
+        {
+            return objcd_cliente.Buscar(texto);
+        }
 
     }
 }

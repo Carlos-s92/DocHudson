@@ -1,15 +1,7 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
-using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestGit.Modales;
 
@@ -17,22 +9,32 @@ namespace TestGit
 {
     public partial class FrmCatalogo : Form
     {
+        // Constantes WinAPI
+        private const int WM_NCLBUTTONDOWN = 0xA1;
+        private const int HTCAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool ReleaseCapture();
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
         public Autos _Auto = new Autos();
         public FrmCatalogo()
         {
             InitializeComponent();
 
+            // Suscribe el evento al formulario o a tu panel superior
+            this.MouseDown += Form_MouseDown;
         }
 
-        private void comboBusqueda_SelectedIndexChanged(object sender, EventArgs e)
+        private void Form_MouseDown(object sender, MouseEventArgs e)
         {
-
-        }
-
-        private void rjButton3_Click(object sender, EventArgs e)
-        {
-
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+            }
         }
 
         private void rjButton1_Click(object sender, EventArgs e)
@@ -42,18 +44,15 @@ namespace TestGit
 
         private void FrmCatalogo_Load(object sender, EventArgs e)//////////////////REVISAR MODELO Y MARCA//////////////////////////////////
         {
-            List<Autos> autos = new CN_Auto().Listar();
+            flowLayoutPanel1.Controls.Clear();
 
+            List<Autos> autos = new CN_Auto().Listar();
 
             foreach (Autos item in autos)
             {
-
                 TarjetaAuto auto = new TarjetaAuto(item.Id_Auto,item.oModelo.modelo, item.oModelo.oMarca.marca, item.oModelo.Consumo, item.oModelo.Puertas, item.oModelo.Asientos, item.Kilometros, item.Reservado, item.Estado, item.Matricula, item.Año, item.Imagen);
                 flowLayoutPanel1 .Controls.Add(auto);
-                
-
             }
-           
 
             if (this.Owner is Inicio)
             {
@@ -78,8 +77,6 @@ namespace TestGit
             }
         }
 
-
-
         public void Envio(Autos pAuto)
         {
             if(this.ParentForm is Inicio mainform)
@@ -93,6 +90,27 @@ namespace TestGit
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            // 1) Obtiene el texto de búsqueda
+            string criterio = txtBusqueda.Texts.Trim();
+
+            // 2) Llama a la capa de negocio que a su vez invoca al SP BuscarClientes
+            var resultados = new CN_Auto().BuscarAuto(criterio);
+
+            foreach (Autos item in resultados)
+            {
+                TarjetaAuto auto = new TarjetaAuto(item.Id_Auto, item.oModelo.modelo, item.oModelo.oMarca.marca, item.oModelo.Consumo, item.oModelo.Puertas, item.oModelo.Asientos, item.Kilometros, item.Reservado, item.Estado, item.Matricula, item.Año, item.Imagen);
+                flowLayoutPanel1.Controls.Add(auto);
+            }
+        }
+
+        private void btnBuscar_Click(object sender, DragEventArgs e)
+        {
 
         }
     }

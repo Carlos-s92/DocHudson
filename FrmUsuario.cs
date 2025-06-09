@@ -159,8 +159,8 @@ namespace TestGit
                     else // Si es un usuario existente
                     {
                         // Intenta editar el usuario existente
-                        bool resultado = new CN_Usuario().Editar(objUsuario, out mensaje);
-                        if (resultado == true) // Verifica si la edición fue exitosa
+                        int resultado = new CN_Usuario().Editar(objUsuario, out mensaje);
+                        if (resultado != 0) // Verifica si la edición fue exitosa
                         {
                             // Actualiza la fila correspondiente en el DataGridView
                             DataGridViewRow row = dgvData.Rows[Convert.ToInt32(txtindice.Text)];
@@ -212,8 +212,8 @@ namespace TestGit
                     };
 
                     // Intenta eliminar el usuario
-                    bool respuesta = new CN_Usuario().Eliminar(objUsuario, out mensaje);
-                    if (respuesta)
+                    int respuesta = new CN_Usuario().Eliminar(objUsuario, out mensaje);
+                    if (respuesta != 0)
                     {
                         // Actualiza el estado del usuario en el DataGridView
                         dgvData.Rows[Convert.ToInt32(txtindice.Text)].Cells["EstadoValor"].Value = 0;

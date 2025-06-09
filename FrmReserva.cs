@@ -1,15 +1,7 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestGit.Modales;
 
@@ -19,26 +11,39 @@ namespace TestGit
     {
         Usuarios user = new Usuarios();
         Autos oAuto = new Autos();
+        // Constructor mínimo: sólo usuario
         public FrmReserva(Usuarios user)
+            : this(null, user)   // llama al otro constructor
         {
-            InitializeComponent();
-            this.user = user;
+            // Aquí no hace falta nada; todo lo hace el otro ctor
         }
+        // Constructor “completo”: puede venir oAuto = null
         public FrmReserva(Autos oAuto, Usuarios user)
         {
             InitializeComponent();
-            this.oAuto = oAuto;
+
+            // Inicialización común a ambos escenarios
+            dtpFechaI.MinDate = new DateTime(1753, 1, 1);
+            dtpFechaI.MaxDate = new DateTime(9998, 12, 31);
+            dtpFechaF.MinDate = new DateTime(1753, 1, 1);
+            dtpFechaF.MaxDate = new DateTime(9998, 12, 31);
+            dtpFechaI.Value = DateTime.Today;
+            dtpFechaF.Value = DateTime.Today.AddDays(1);
+
+            // Guarda referencias
             this.user = user;
-            this.txtAño.Texts = oAuto.Año.ToString();
-            ///////////////VER CONSUMO//////////////////////////////////////////////////////////
-            this.txtConsumo.Texts = oAuto.oModelo.Consumo.ToString();
-            this.txtIdAuto.Text = oAuto.Id_Auto.ToString();
-            this.txtKilometros.Texts = oAuto.Kilometros.ToString();
-            this.txtMatricula.Texts = oAuto.Matricula;
-            ///////////////VER MODELO//////////////////////////////////////////////////////////
-            this.txtModelo.Texts = oAuto.oModelo.modelo.ToString();
+            this.oAuto = oAuto;
 
-
+            // Si me pasaron un auto, precargo sus datos en los controles
+            if (oAuto != null)
+            {
+                txtMatricula.Texts = oAuto.Matricula;
+                txtAño.Texts = oAuto.Año.ToString();
+                txtKilometros.Texts = oAuto.Kilometros.ToString();
+                txtConsumo.Texts = oAuto.oModelo.Consumo.ToString();
+                txtModelo.Texts = oAuto.oModelo.modelo;
+                txtIdAuto.Text = oAuto.Id_Auto.ToString();
+            }
         }
 
         public bool Validaciones()
@@ -89,8 +94,7 @@ namespace TestGit
                                 Id_Usuario = this.user.Id_Usuario
                             };
 
-                            //oReserva.oCliente.Id_Cliente= Convert.ToInt32(txtIdCliente.Text);
-                            //oReserva.oAuto.Id_Auto = Convert.ToInt32(txtIdAuto.Text);
+             
                             oReserva.Estado = true;
                             oReserva.Fecha_Inicio = dtpFechaI.Value;
                             oReserva.Fecha_Fin = dtpFechaF.Value;
@@ -102,17 +106,15 @@ namespace TestGit
                         
                             int id = new CN_Reserva().Registrar(oReserva,out Mensaje);
 
-                            if(id != 0)
+                            if(id > 0)
                             {
                                 VentanaEmergente msg = new VentanaEmergente("Exito", "Reserva Generada con Exito:" + " " + id, "Informacion");
                                 msg.ShowDialog();
                             }
                             else
                             {
-                                VentanaEmergente msg = new VentanaEmergente("Error", "La Reserva no pudo ser Generada", "Error");
-                                msg.ShowDialog();
+                                new VentanaEmergente("Error", Mensaje, "Error").ShowDialog();
                             }
-
                         }
                         else
                         {
@@ -121,6 +123,11 @@ namespace TestGit
                         }
                     }
                 }
+            }
+            else
+            {
+                VentanaEmergente msg = new VentanaEmergente("Error", "Debe seleccionar los elementos necesarios para la reserva", "Error");
+                msg.ShowDialog();
             }
 
 

@@ -78,10 +78,7 @@ namespace TestGit
                 validacion = false;
             }
             // Validar que el campo de dirección no esté vacío
-            if (txtDireccion.Texts == "")
-            {
-                validacion = false;
-            }
+
 
             return validacion;  // Retornar true si todos los campos están completos, false en caso contrario
         }
@@ -103,7 +100,7 @@ namespace TestGit
                     {
                         Nombre = txtNombre.Texts,
                         Imagen = txtImagen.Texts,
-                        Direccion = txtDireccion.Texts
+                     
                     };
 
                     // Intentar guardar los datos en la base de datos a través de la capa de negocio
@@ -138,7 +135,7 @@ namespace TestGit
         {
             Negocio obj = new CN_Negocio().obtenerDatos();
             txtNombre.Texts = obj.Nombre;
-            txtDireccion.Texts = obj.Direccion;
+          
 
             if(obj.Imagen != null)
             {

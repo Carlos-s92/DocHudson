@@ -32,7 +32,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.rjButton1 = new CustomControls.RJControls.RJButton();
             this.rjButton2 = new CustomControls.RJControls.RJButton();
-            this.txtDireccion = new CustomControls.RJControls.RJTextBox();
             this.txtNombre = new CustomControls.RJControls.RJTextBox();
             this.txtImagen = new CustomControls.RJControls.RJTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -102,30 +101,6 @@
             this.rjButton2.UseVisualStyleBackColor = false;
             this.rjButton2.Click += new System.EventHandler(this.rjButton2_Click);
             // 
-            // txtDireccion
-            // 
-            this.txtDireccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.txtDireccion.BorderColor = System.Drawing.Color.DimGray;
-            this.txtDireccion.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(225)))), ((int)(((byte)(241)))));
-            this.txtDireccion.BorderRadius = 10;
-            this.txtDireccion.BorderSize = 2;
-            this.txtDireccion.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDireccion.ForeColor = System.Drawing.Color.White;
-            this.txtDireccion.IsReadOnly = false;
-            this.txtDireccion.Location = new System.Drawing.Point(502, 259);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDireccion.Multiline = false;
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtDireccion.PasswordChar = false;
-            this.txtDireccion.PlaceholderColor = System.Drawing.Color.White;
-            this.txtDireccion.PlaceholderText = "Direccion ";
-            this.txtDireccion.ShortcutsEnabled = false;
-            this.txtDireccion.Size = new System.Drawing.Size(404, 45);
-            this.txtDireccion.TabIndex = 105;
-            this.txtDireccion.Texts = "";
-            this.txtDireccion.UnderlinedStyle = true;
-            // 
             // txtNombre
             // 
             this.txtNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
@@ -186,7 +161,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.rjButton1);
             this.Controls.Add(this.rjButton2);
-            this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.txtNombre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmNegocio";
@@ -204,7 +178,6 @@
         private System.Windows.Forms.Label label3;
         private CustomControls.RJControls.RJButton rjButton1;
         private CustomControls.RJControls.RJButton rjButton2;
-        private CustomControls.RJControls.RJTextBox txtDireccion;
         private CustomControls.RJControls.RJTextBox txtNombre;
         private CustomControls.RJControls.RJTextBox txtImagen;
     }

@@ -32,10 +32,10 @@
             this.dtpFechaI = new System.Windows.Forms.DateTimePicker();
             this.txtTotal = new CustomControls.RJControls.RJTextBox();
             this.txtMarca = new CustomControls.RJControls.RJTextBox();
-            this.rjButton4 = new CustomControls.RJControls.RJButton();
-            this.rjButton3 = new CustomControls.RJControls.RJButton();
-            this.rjButton1 = new CustomControls.RJControls.RJButton();
-            this.rjButton2 = new CustomControls.RJControls.RJButton();
+            this.BGenPDF = new CustomControls.RJControls.RJButton();
+            this.btnLiberar = new CustomControls.RJControls.RJButton();
+            this.btnLimpiar = new CustomControls.RJControls.RJButton();
+            this.btnBuscar = new CustomControls.RJControls.RJButton();
             this.txtBusqueda = new CustomControls.RJControls.RJTextBox();
             this.txtConsumo = new CustomControls.RJControls.RJTextBox();
             this.txtModelo = new CustomControls.RJControls.RJTextBox();
@@ -125,89 +125,93 @@
             this.txtMarca.Texts = "";
             this.txtMarca.UnderlinedStyle = true;
             // 
-            // rjButton4
+            // BGenPDF
             // 
-            this.rjButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton4.BorderColor = System.Drawing.Color.DimGray;
-            this.rjButton4.BorderRadius = 20;
-            this.rjButton4.BorderSize = 2;
-            this.rjButton4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton4.FlatAppearance.BorderSize = 0;
-            this.rjButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton4.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton4.Location = new System.Drawing.Point(840, 620);
-            this.rjButton4.Margin = new System.Windows.Forms.Padding(2);
-            this.rjButton4.Name = "rjButton4";
-            this.rjButton4.Size = new System.Drawing.Size(89, 48);
-            this.rjButton4.TabIndex = 171;
-            this.rjButton4.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton4.UseVisualStyleBackColor = false;
-            this.rjButton4.Click += new System.EventHandler(this.rjButton4_Click);
+            this.BGenPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.BGenPDF.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.BGenPDF.BorderColor = System.Drawing.Color.DimGray;
+            this.BGenPDF.BorderRadius = 20;
+            this.BGenPDF.BorderSize = 2;
+            this.BGenPDF.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BGenPDF.FlatAppearance.BorderSize = 0;
+            this.BGenPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BGenPDF.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BGenPDF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.BGenPDF.Location = new System.Drawing.Point(840, 620);
+            this.BGenPDF.Margin = new System.Windows.Forms.Padding(2);
+            this.BGenPDF.Name = "BGenPDF";
+            this.BGenPDF.Size = new System.Drawing.Size(89, 48);
+            this.BGenPDF.TabIndex = 171;
+            this.BGenPDF.Text = "PDF";
+            this.BGenPDF.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.BGenPDF.UseVisualStyleBackColor = false;
+            this.BGenPDF.Click += new System.EventHandler(this.BGenPDF_Click);
             // 
-            // rjButton3
+            // btnLiberar
             // 
-            this.rjButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton3.BorderColor = System.Drawing.Color.DimGray;
-            this.rjButton3.BorderRadius = 20;
-            this.rjButton3.BorderSize = 2;
-            this.rjButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton3.FlatAppearance.BorderSize = 0;
-            this.rjButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton3.Location = new System.Drawing.Point(543, 620);
-            this.rjButton3.Margin = new System.Windows.Forms.Padding(2);
-            this.rjButton3.Name = "rjButton3";
-            this.rjButton3.Size = new System.Drawing.Size(196, 48);
-            this.rjButton3.TabIndex = 170;
-            this.rjButton3.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton3.UseVisualStyleBackColor = false;
-            this.rjButton3.Click += new System.EventHandler(this.rjButton3_Click);
+            this.btnLiberar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.btnLiberar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.btnLiberar.BorderColor = System.Drawing.Color.DimGray;
+            this.btnLiberar.BorderRadius = 20;
+            this.btnLiberar.BorderSize = 2;
+            this.btnLiberar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLiberar.FlatAppearance.BorderSize = 0;
+            this.btnLiberar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLiberar.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLiberar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnLiberar.Location = new System.Drawing.Point(543, 620);
+            this.btnLiberar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLiberar.Name = "btnLiberar";
+            this.btnLiberar.Size = new System.Drawing.Size(196, 48);
+            this.btnLiberar.TabIndex = 170;
+            this.btnLiberar.Text = "Liberar reserva";
+            this.btnLiberar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnLiberar.UseVisualStyleBackColor = false;
+            this.btnLiberar.Click += new System.EventHandler(this.btnLiberar_Click);
             // 
-            // rjButton1
+            // btnLimpiar
             // 
-            this.rjButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton1.BorderColor = System.Drawing.Color.DimGray;
-            this.rjButton1.BorderRadius = 20;
-            this.rjButton1.BorderSize = 2;
-            this.rjButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton1.FlatAppearance.BorderSize = 0;
-            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton1.Location = new System.Drawing.Point(111, 620);
-            this.rjButton1.Margin = new System.Windows.Forms.Padding(2);
-            this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(196, 48);
-            this.rjButton1.TabIndex = 169;
-            this.rjButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton1.UseVisualStyleBackColor = false;
-            this.rjButton1.Click += new System.EventHandler(this.rjButton1_Click);
+            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.btnLimpiar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.btnLimpiar.BorderColor = System.Drawing.Color.DimGray;
+            this.btnLimpiar.BorderRadius = 20;
+            this.btnLimpiar.BorderSize = 2;
+            this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpiar.FlatAppearance.BorderSize = 0;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnLimpiar.Location = new System.Drawing.Point(111, 620);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(196, 48);
+            this.btnLimpiar.TabIndex = 169;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
-            // rjButton2
+            // btnBuscar
             // 
-            this.rjButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.rjButton2.BorderColor = System.Drawing.Color.DimGray;
-            this.rjButton2.BorderRadius = 20;
-            this.rjButton2.BorderSize = 2;
-            this.rjButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton2.FlatAppearance.BorderSize = 0;
-            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton2.Location = new System.Drawing.Point(568, 24);
-            this.rjButton2.Margin = new System.Windows.Forms.Padding(2);
-            this.rjButton2.Name = "rjButton2";
-            this.rjButton2.Size = new System.Drawing.Size(196, 48);
-            this.rjButton2.TabIndex = 168;
-            this.rjButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.rjButton2.UseVisualStyleBackColor = false;
-            this.rjButton2.Click += new System.EventHandler(this.rjButton2_Click);
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.btnBuscar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.btnBuscar.BorderColor = System.Drawing.Color.DimGray;
+            this.btnBuscar.BorderRadius = 20;
+            this.btnBuscar.BorderSize = 2;
+            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnBuscar.Location = new System.Drawing.Point(568, 24);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(196, 48);
+            this.btnBuscar.TabIndex = 168;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBusqueda
             // 
@@ -232,8 +236,6 @@
             this.txtBusqueda.TabIndex = 167;
             this.txtBusqueda.Texts = "";
             this.txtBusqueda.UnderlinedStyle = true;
-            this.txtBusqueda._TextChanged += new System.EventHandler(this.txtBusqueda__TextChanged);
-            this.txtBusqueda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBusqueda_KeyDown);
             // 
             // txtConsumo
             // 
@@ -483,10 +485,10 @@
             this.ClientSize = new System.Drawing.Size(982, 726);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.txtMarca);
-            this.Controls.Add(this.rjButton4);
-            this.Controls.Add(this.rjButton3);
-            this.Controls.Add(this.rjButton1);
-            this.Controls.Add(this.rjButton2);
+            this.Controls.Add(this.BGenPDF);
+            this.Controls.Add(this.btnLiberar);
+            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.txtConsumo);
             this.Controls.Add(this.txtModelo);
@@ -521,11 +523,11 @@
         private CustomControls.RJControls.RJTextBox txtTelefono;
         private CustomControls.RJControls.RJTextBox txtDocumento;
         private CustomControls.RJControls.RJTextBox txtNombre;
-        private CustomControls.RJControls.RJButton rjButton2;
+        private CustomControls.RJControls.RJButton btnBuscar;
         private CustomControls.RJControls.RJTextBox txtBusqueda;
-        private CustomControls.RJControls.RJButton rjButton1;
-        private CustomControls.RJControls.RJButton rjButton3;
-        private CustomControls.RJControls.RJButton rjButton4;
+        private CustomControls.RJControls.RJButton btnLimpiar;
+        private CustomControls.RJControls.RJButton btnLiberar;
+        private CustomControls.RJControls.RJButton BGenPDF;
         private CustomControls.RJControls.RJTextBox txtMarca;
         private CustomControls.RJControls.RJTextBox txtTotal;
     }
