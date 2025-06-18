@@ -6,9 +6,11 @@ namespace CapaNegocio
 {
     public class CN_Reserva
     {
+        //Atributos de la clase reserva
         private CD_Reserva objcd_Reserva = new CD_Reserva();
         private readonly CD_Autos objcd_Autos = new CD_Autos();
 
+        //Metodo para listar reservas
         public List<Reserva> Listar()
         {
             return objcd_Reserva.Listar();
@@ -66,10 +68,11 @@ namespace CapaNegocio
             return idReserva;
         }
 
+        //Metodo para editar una reserva
         public int Editar(Reserva obj, out string Mensaje)
         {
             Mensaje = string.Empty;
-
+            //Se verifican que todos los campos esten correctos
             if (obj.Fecha_Inicio <= obj.Fecha_Fin)
             {
                 Mensaje += "La fecha de fin no puede ser menor que la de inicio\n";
@@ -100,6 +103,7 @@ namespace CapaNegocio
             }
         }
 
+        //Metodo para liberar una reserva
         public bool LiberarReserva(int id_reserva, out string Mensaje)
         {
             Mensaje = string.Empty;
@@ -131,7 +135,7 @@ namespace CapaNegocio
             // Todo OK
             return true;
         }
-
+        //Metodo para buscar una reserva por el id
         public Reserva BuscarReserva(int id) => new CD_Reserva().BuscarReserva(id);
     }
 }

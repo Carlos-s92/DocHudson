@@ -138,7 +138,7 @@ namespace CapaNegocio
         public int Editar(Cliente obj, out string Mensaje)
         {
             Mensaje = string.Empty;
-
+            //Se realizan validaciones necesarias para editar un cliente
             if (obj.oPersona.Nombre == "")
             {
                 Mensaje += "Es Necesario el Nombre del Cliente\n";
@@ -235,6 +235,7 @@ namespace CapaNegocio
             return Regex.IsMatch(email, regex, RegexOptions.IgnoreCase);
         }
 
+        //Metodo para buscar un cliente por un texto
         public List<Cliente> BuscarCliente(string texto)
         {
             return objcd_cliente.Buscar(texto);

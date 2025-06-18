@@ -78,6 +78,7 @@ namespace CapaDatos
             return lista;
         }
 
+        //Metodo para insertar una persona
         public int Registrar(Persona obj, out string Mensaje)
         {
             int idGenerado = 0;
@@ -122,7 +123,7 @@ namespace CapaDatos
             }
             return idGenerado;
         }
-
+        //Metodo para buscar una persona por el dni
         public int BusquedaDni(string dni)
         {
             int obj = 0;
@@ -156,7 +157,7 @@ namespace CapaDatos
             }
             return obj;
         }
-
+        //Metodo para buscar un domicilio segun el id de la persona
         public int BusquedaDomicilio(int persona)
         {
             int obj = 0;
@@ -191,7 +192,7 @@ namespace CapaDatos
             return obj;
         }
 
-
+        //Metodo para editar una persona
         public int Editar(Persona obj, out string Mensaje)
         {
             int id = 0;

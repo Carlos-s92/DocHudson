@@ -7,6 +7,7 @@ namespace CapaDatos
 {
     public class CD_Cliente : CD_TemplateM<Cliente>
     {
+        //Se sobreescriben los metodos heredados de la plantilla
         protected override string NombreSPRegistrar() => "InsertarCliente";
         protected override string NombreSPEditar() => "ActualizarCliente";
         protected override string NombreSPEliminar() => "EliminarCliente";
@@ -14,6 +15,7 @@ namespace CapaDatos
         protected override string NombreSPBuscar() => "BuscarClientes";
         protected override void AgregarParametrosRegistrar(SqlCommand cmd, Cliente obj)
         {
+            //Se agregan los parametros necesarios para registrar un cliente
             cmd.Parameters.AddWithValue("Id_Persona", obj.oPersona.Id_Persona);
             cmd.Parameters.AddWithValue("Licencia", obj.Licencia);
             cmd.Parameters.AddWithValue("Estado", obj.Estado);
@@ -22,6 +24,7 @@ namespace CapaDatos
         }
         protected override void AgregarParametrosEditar(SqlCommand cmd, Cliente obj)
         {
+            //Se agregan los parametros necesarios para editar un cliente
             cmd.Parameters.AddWithValue("Id_Cliente", obj.Id_Cliente);
             cmd.Parameters.AddWithValue("Id_Persona", obj.oPersona.Id_Persona);
             cmd.Parameters.AddWithValue("Licencia", obj.Licencia);
@@ -31,16 +34,19 @@ namespace CapaDatos
         }
         protected override void AgregarParametrosEliminar(SqlCommand cmd, Cliente obj)
         {
+            //Se agregan los parametros necesarios para eliminar un cliente
             cmd.Parameters.AddWithValue("Id_Cliente", obj.Id_Cliente);
             cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
             cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
         }
         protected override void AgregarParametrosBuscar(SqlCommand cmd, string obj)
         {
+            //Se agregan los parametros necesarios para buscar un cliente
             cmd.Parameters.AddWithValue("@Texto", obj);
         }
         protected override Cliente Mapear(SqlDataReader reader)
         {
+            //Se agregan los parametros de lectura necesarios un cliente
             return new Cliente
             {
                 Id_Cliente = Convert.ToInt32(reader["Id_Cliente"]),
