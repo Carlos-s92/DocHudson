@@ -16,7 +16,7 @@ namespace CapaDatos
         {
             conexion = new SqlConnection(Conexion.cadena);
         }
-
+        //Metodo abstracto para registrar
         public virtual int Registrar(T obj, out string Mensaje)
         {
             using (var cmd = new SqlCommand(NombreSPRegistrar(), conexion))
@@ -30,7 +30,7 @@ namespace CapaDatos
                 return result;
             }
         }
-
+        //Metodo abstracto para editar
         public virtual int Editar(T obj, out string Mensaje)
         {
             using (var cmd = new SqlCommand(NombreSPEditar(), conexion))
@@ -44,7 +44,7 @@ namespace CapaDatos
                 return result;
             }
         }
-
+        //Metodo abstracto para eliminar
         public virtual int Eliminar(T obj, out string Mensaje)
         {
             using (var cmd = new SqlCommand(NombreSPEliminar(), conexion))
@@ -58,7 +58,7 @@ namespace CapaDatos
                 return result;
             }
         }
-
+        //Metodo abstracto para listar
         public virtual List<T> Listar()
         {
             var lista = new List<T>();
@@ -78,6 +78,7 @@ namespace CapaDatos
             return lista;
         }
 
+        //Metodo abstracto para buscar
         public virtual List<T> Buscar(string obj)
         {
             var lista = new List<T>();

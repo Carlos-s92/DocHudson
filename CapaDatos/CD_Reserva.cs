@@ -10,6 +10,7 @@ namespace CapaDatos
 {
     public class CD_Reserva : CD_TemplateM<Reserva>
     {
+        //Se sobreescriben los metodos heredados de la clase plantilla
         protected override string NombreSPRegistrar() => "InsertarReserva";
         protected override string NombreSPEditar() => "ActualizarReserva";
         protected override string NombreSPEliminar() => "LiberarReserva";
@@ -17,6 +18,7 @@ namespace CapaDatos
         protected override string NombreSPBuscar() => "BuscarReserva";
         protected override void AgregarParametrosRegistrar(SqlCommand cmd, Reserva obj)
         {
+            //Se agregan los parametros para registrar una reserva
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("Id_Auto", obj.oAuto.Id_Auto);
             cmd.Parameters.AddWithValue("Id_Pago", obj.oPago.Id_Pago);
@@ -30,6 +32,7 @@ namespace CapaDatos
         }
         protected override void AgregarParametrosEditar(SqlCommand cmd, Reserva obj)
         {
+            //Se agregan los parametros para editar una reserva
             cmd.Parameters.AddWithValue("Id_Reserva", obj.Id_Reserva);
             cmd.Parameters.AddWithValue("Id_Auto", obj.oAuto.Id_Auto);
             cmd.Parameters.AddWithValue("Id_Pago", obj.oPago.Id_Pago);
@@ -42,16 +45,19 @@ namespace CapaDatos
         }
         protected override void AgregarParametrosEliminar(SqlCommand cmd, Reserva obj)
         {
+            //Se agregan los parametros para liberar una reserva
             cmd.Parameters.AddWithValue("Id_Reserva", obj.Id_Reserva);
             cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
             cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
         }
         protected override void AgregarParametrosBuscar(SqlCommand cmd, string obj)
         {
+            //Se agregan los parametros para buscar una reserva
             cmd.Parameters.AddWithValue("@Id_Reserva", obj);
         }
         protected override Reserva Mapear(SqlDataReader reader)
         {
+            //Se agregan los parametros de lectura para una reserva
             return new Reserva
             {
                 Id_Reserva = Convert.ToInt32(reader["Id_Reserva"]),
@@ -76,6 +82,7 @@ namespace CapaDatos
 
         protected Reserva MapearExtendido(SqlDataReader reader)
         {
+            //Se agregan los parametros de lectura para leer una reserva completa
             return new Reserva
             {
                 Id_Reserva = reader.GetInt32(reader.GetOrdinal("Id_Reserva")),
@@ -152,18 +159,21 @@ namespace CapaDatos
             };
         }
 
+        //Metodo para liberar una reserva por un id
         public int LiberarReserva(int id_reserva, out string Mensaje)
         {
             Reserva reserva = new Reserva() { Id_Reserva = id_reserva};
             return Eliminar(reserva, out Mensaje);
         }
 
+        //Metodo para buscar una reserva segun un id
         public Reserva BuscarReserva(int obj)
         {
             Reserva reserva = Buscar(obj);
             return reserva;
         }
 
+        //Metodo para buscar una reserva
         public Reserva Buscar(int obj)
         {
             List<Reserva> lista = new List<Reserva>();

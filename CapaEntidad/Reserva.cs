@@ -8,6 +8,7 @@ namespace CapaEntidad
 {
     public class Reserva
     {
+        //Atributos generales de la clase reserva
         public int Id_Reserva { get; set; }
         public DateTime Fecha_Inicio { get; set; }
         public DateTime Fecha_Fin { get; set; }
