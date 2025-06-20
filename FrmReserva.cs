@@ -58,10 +58,6 @@ namespace TestGit
             {
                 validaciones = false;
             }
-            if(dtpFechaI.Value >= dtpFechaF.Value)
-            {
-                validaciones = false;
-            }
 
             return validaciones;
         }

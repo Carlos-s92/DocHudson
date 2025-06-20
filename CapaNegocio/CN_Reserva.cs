@@ -23,7 +23,7 @@ namespace CapaNegocio
             // 1) Validaciones de negocio
             if (obj.Fecha_Inicio >= obj.Fecha_Fin)
                 mensaje += "La fecha de fin no puede ser menor o igual que la de inicio.\n";
-            if (obj.Fecha_Inicio < System.DateTime.Today || obj.Fecha_Fin < System.DateTime.Today)
+            if (obj.Fecha_Inicio < System.DateTime.Today)
                 mensaje += "La fecha de inicio/fin no puede ser menor que la fecha actual.\n";
             if (obj.oCliente.Id_Cliente == 0)
                 mensaje += "Es necesario un Cliente para reservar.\n";
