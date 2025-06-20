@@ -82,7 +82,7 @@ namespace CapaNegocio
 
             foreach (Cliente item in list)
             {
-                if (item.oPersona.DNI == obj.oPersona.DNI || item.oPersona.Mail == obj.oPersona.Mail)
+                if (item.oPersona.DNI == obj.oPersona.DNI)
                 {
                     Mensaje += "El cliente ya existe con ese D.N.I";
                 }
