@@ -90,6 +90,10 @@ namespace CapaNegocio
                 {
                     Mensaje += "El cliente ya existe con ese Mail";
                 }
+                if (item.Licencia == obj.Licencia)
+                {
+                    Mensaje += "El cliente ya existe con esa Licencia";
+                }
             }
 
 
