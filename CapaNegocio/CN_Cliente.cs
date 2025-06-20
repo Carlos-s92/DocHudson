@@ -105,6 +105,11 @@ namespace CapaNegocio
                 edad--;
             }
 
+            if (edad > 90)
+            {
+                Mensaje += "El Cliente debe tener menos de 90 años\n";
+            }
+
             if (edad < 18)
             {
                 Mensaje += "El Cliente debe tener 18 años o más para Alquilar un Auto\n";

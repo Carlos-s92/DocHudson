@@ -501,7 +501,7 @@
             this.rjdtpFecha.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
             this.rjdtpFecha.TabIndex = 11;
             this.rjdtpFecha.TextColor = System.Drawing.Color.White;
-            this.rjdtpFecha.Value = new System.DateTime(2025, 4, 20, 3, 45, 43, 130);
+            this.rjdtpFecha.Value = new System.DateTime(2002, 6, 24, 0, 0, 0, 0);
             // 
             // txtNumero
             // 

@@ -151,7 +151,7 @@ namespace TestGit
             this.txtNombre.Texts = "";
             this.txtTelefono.Texts = "";
             this.dtpFechaI.Value = System.DateTime.Now;
-            this.dtpFechaF.Value = System.DateTime.Now;
+            this.dtpFechaF.Value = System.DateTime.Today.AddDays(1);
         }
 
         private void rjButton1_Click(object sender, EventArgs e)//Botón para agregar Cliente

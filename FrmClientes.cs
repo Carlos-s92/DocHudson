@@ -61,6 +61,9 @@ namespace TestGit
             comboProvincia.ValueMember = "Valor";
             comboProvincia.SelectedIndex = 0;
 
+            //Fecha de nacimiento
+            rjdtpFecha.Value = System.DateTime.Today.AddYears(-18);
+
 
             // Muestra los clientes en el DataGridView.
             List<Cliente> listaClientes = new CN_Cliente().Listar();
@@ -122,7 +125,7 @@ namespace TestGit
             txtindice.Text = "-1";
             comboEstado.SelectedIndex = 0;
             comboProvincia.SelectedIndex = 5;
-            rjdtpFecha.Value = System.DateTime.Now;
+            rjdtpFecha.Value = System.DateTime.Today.AddYears(-18);
         }
 
         //Evento para realizar el registro del cliente
