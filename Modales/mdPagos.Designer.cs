@@ -53,7 +53,7 @@
             this.mdPagos2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.mdPagos2.IsReadOnly = true;
             this.mdPagos2.Location = new System.Drawing.Point(9, 16);
-            this.mdPagos2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mdPagos2.Margin = new System.Windows.Forms.Padding(4);
             this.mdPagos2.Multiline = true;
             this.mdPagos2.Name = "mdPagos2";
             this.mdPagos2.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -120,7 +120,7 @@
             this.txtMonto.ForeColor = System.Drawing.Color.White;
             this.txtMonto.IsReadOnly = false;
             this.txtMonto.Location = new System.Drawing.Point(279, 67);
-            this.txtMonto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMonto.Margin = new System.Windows.Forms.Padding(4);
             this.txtMonto.Multiline = false;
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -132,6 +132,7 @@
             this.txtMonto.TabIndex = 4;
             this.txtMonto.Texts = "";
             this.txtMonto.UnderlinedStyle = true;
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
             // 
             // txtPaga
             // 
@@ -144,7 +145,7 @@
             this.txtPaga.ForeColor = System.Drawing.Color.White;
             this.txtPaga.IsReadOnly = false;
             this.txtPaga.Location = new System.Drawing.Point(281, 124);
-            this.txtPaga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPaga.Margin = new System.Windows.Forms.Padding(4);
             this.txtPaga.Multiline = false;
             this.txtPaga.Name = "txtPaga";
             this.txtPaga.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -156,6 +157,7 @@
             this.txtPaga.TabIndex = 5;
             this.txtPaga.Texts = "";
             this.txtPaga.UnderlinedStyle = true;
+            this.txtPaga.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaga_KeyPress);
             // 
             // txtCambio
             // 
@@ -168,7 +170,7 @@
             this.txtCambio.ForeColor = System.Drawing.Color.White;
             this.txtCambio.IsReadOnly = false;
             this.txtCambio.Location = new System.Drawing.Point(279, 174);
-            this.txtCambio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCambio.Margin = new System.Windows.Forms.Padding(4);
             this.txtCambio.Multiline = false;
             this.txtCambio.Name = "txtCambio";
             this.txtCambio.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -180,6 +182,7 @@
             this.txtCambio.TabIndex = 6;
             this.txtCambio.Texts = "";
             this.txtCambio.UnderlinedStyle = true;
+            this.txtCambio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCambio_KeyPress);
             // 
             // txtTarjeta
             // 
@@ -192,7 +195,7 @@
             this.txtTarjeta.ForeColor = System.Drawing.Color.White;
             this.txtTarjeta.IsReadOnly = false;
             this.txtTarjeta.Location = new System.Drawing.Point(279, 124);
-            this.txtTarjeta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTarjeta.Margin = new System.Windows.Forms.Padding(4);
             this.txtTarjeta.Multiline = false;
             this.txtTarjeta.Name = "txtTarjeta";
             this.txtTarjeta.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -204,6 +207,7 @@
             this.txtTarjeta.TabIndex = 8;
             this.txtTarjeta.Texts = "";
             this.txtTarjeta.UnderlinedStyle = true;
+            this.txtTarjeta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTarjeta_KeyPress);
             // 
             // btnConfirmar
             // 

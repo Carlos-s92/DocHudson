@@ -1,5 +1,6 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
+using CustomControls.RJControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -60,18 +61,20 @@ namespace TestGit.Modales
             bool resultado = true;
 
             if (this.btnEfectivo.Checked == true) {
-                if (this.txtPaga.Texts == "" || Convert.ToDecimal(this.txtPaga.Texts) < Convert.ToDecimal(this.txtMonto.Texts))
+                if (this.txtPaga.Texts == "" || Convert.ToDecimal(this.txtPaga.Texts) < Convert.ToDecimal(this.txtMonto.Texts) || txtMonto.Texts == "")
                 {
                     resultado = false;
                 }
             }
             else
             {
-                if (this.txtTarjeta.Texts == "")
+                if (this.txtTarjeta.Texts == "" || txtMonto.Texts == "")
                 {
                     resultado = false;
                 }
             }
+
+           
 
             return resultado;
 
@@ -118,6 +121,62 @@ namespace TestGit.Modales
             else
             {
                 MessageBox.Show("Debe completar todos los campos","Alerta",MessageBoxButtons.OK);
+            }
+        }
+
+        private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            // Limitar longitud a 50 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 50 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTarjeta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            // Limitar longitud a 50 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 50 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCambio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            // Limitar longitud a 50 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 50 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPaga_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            // Limitar longitud a 50 caracteres
+            RJTextBox txt = sender as RJTextBox;
+            if (txt != null && txt.Texts.Length >= 50 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }
