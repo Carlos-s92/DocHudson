@@ -667,20 +667,24 @@ namespace TestGit
         {
             RJTextBox txt = sender as RJTextBox;
   
-
-            // Limitar longitud a 150
-            if (txt.Texts.Length > 150)
+            if(txt.Texts != "")
             {
-                MessageBox.Show("El correo no puede superar los 150 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txt.Texts = txt.Texts.Substring(0, 150);
+                // Limitar longitud a 150
+                if (txt.Texts.Length > 150)
+                {
+                    MessageBox.Show("El correo no puede superar los 150 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txt.Texts = txt.Texts.Substring(0, 150);
+                }
+
+                // Validar formato de correo
+                if (!System.Text.RegularExpressions.Regex.IsMatch(txt.Texts, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+                {
+                    MessageBox.Show("Ingrese un correo electrónico válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txt.Focus();
+                }
             }
 
-            // Validar formato de correo
-            if (!System.Text.RegularExpressions.Regex.IsMatch(txt.Texts, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-            {
-                MessageBox.Show("Ingrese un correo electrónico válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txt.Focus();
-            }
+
         }
 
 

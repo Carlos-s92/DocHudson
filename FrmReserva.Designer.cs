@@ -131,7 +131,7 @@
             this.dtpFechaF.Name = "dtpFechaF";
             this.dtpFechaF.Size = new System.Drawing.Size(281, 35);
             this.dtpFechaF.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.dtpFechaF.TabIndex = 160;
+            this.dtpFechaF.TabIndex = 4;
             this.dtpFechaF.TextColor = System.Drawing.Color.White;
             // 
             // dtpFechaI
@@ -151,7 +151,7 @@
             this.dtpFechaI.Name = "dtpFechaI";
             this.dtpFechaI.Size = new System.Drawing.Size(281, 35);
             this.dtpFechaI.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.dtpFechaI.TabIndex = 159;
+            this.dtpFechaI.TabIndex = 3;
             this.dtpFechaI.TextColor = System.Drawing.Color.White;
             // 
             // btnAuto
@@ -170,7 +170,7 @@
             this.btnAuto.Margin = new System.Windows.Forms.Padding(2);
             this.btnAuto.Name = "btnAuto";
             this.btnAuto.Size = new System.Drawing.Size(446, 41);
-            this.btnAuto.TabIndex = 154;
+            this.btnAuto.TabIndex = 2;
             this.btnAuto.Text = "Buscar Auto";
             this.btnAuto.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.btnAuto.UseVisualStyleBackColor = false;
@@ -192,7 +192,7 @@
             this.btnCliente.Margin = new System.Windows.Forms.Padding(2);
             this.btnCliente.Name = "btnCliente";
             this.btnCliente.Size = new System.Drawing.Size(446, 41);
-            this.btnCliente.TabIndex = 153;
+            this.btnCliente.TabIndex = 1;
             this.btnCliente.Text = "Buscar Cliente";
             this.btnCliente.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.btnCliente.UseVisualStyleBackColor = false;
@@ -334,7 +334,7 @@
             this.BtnLimpiar2.Margin = new System.Windows.Forms.Padding(2);
             this.BtnLimpiar2.Name = "BtnLimpiar2";
             this.BtnLimpiar2.Size = new System.Drawing.Size(434, 41);
-            this.BtnLimpiar2.TabIndex = 143;
+            this.BtnLimpiar2.TabIndex = 6;
             this.BtnLimpiar2.Text = "Limpiar Campos";
             this.BtnLimpiar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnLimpiar2.UseVisualStyleBackColor = false;
@@ -356,7 +356,7 @@
             this.BtnGuardar2.Margin = new System.Windows.Forms.Padding(2);
             this.BtnGuardar2.Name = "BtnGuardar2";
             this.BtnGuardar2.Size = new System.Drawing.Size(396, 41);
-            this.BtnGuardar2.TabIndex = 142;
+            this.BtnGuardar2.TabIndex = 5;
             this.BtnGuardar2.Text = "Guardar";
             this.BtnGuardar2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.BtnGuardar2.UseVisualStyleBackColor = false;
