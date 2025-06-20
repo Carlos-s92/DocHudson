@@ -459,6 +459,7 @@
     <None Include="Resources\ArrowLeft.png" />
     <None Include="Resources\ArrowRight.png" />
     <None Include="Resources\actualizar %281%29.png" />
+    <None Include="Resources\checkCell.png" />
     <Content Include="Resources\PlantillaReserva.html" />
     <None Include="Resources\Vicente1.jpg" />
     <None Include="Resources\More21.png" />

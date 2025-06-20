@@ -123,6 +123,16 @@ namespace TestGit.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap checkCell {
+            get {
+                object obj = ResourceManager.GetObject("checkCell", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Comp_1_11 {
             get {
                 object obj = ResourceManager.GetObject("Comp 1_11", resourceCulture);
@@ -174,8 +184,8 @@ namespace TestGit.Properties {
         ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
         ///&lt;html lang=&quot;es&quot;&gt;
         ///&lt;head&gt;
-        ///    &lt;meta charset=&quot;UTF-8&quot;&gt;
-        ///    &lt;title&gt;Factura de Reserva - Veh�culo de Alquiler&lt;/title&gt;
+        ///    &lt;meta charset=&quot;UTF-8&quot;/&gt;
+        ///    &lt;title&gt;Factura de Reserva - Vehiculo de Alquiler&lt;/title&gt;
         ///    &lt;style&gt;
         ///        body {
         ///            font-family: Arial, sans-serif;
@@ -193,7 +203,7 @@ namespace TestGit.Properties {
         ///        h1, h2 {
         ///            text-align: center;
         ///            color: #2c3e50;
-        ///    [resto de la cadena truncado]&quot;;.
+        ///   [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string PlantillaReserva {
             get {

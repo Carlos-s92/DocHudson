@@ -5,9 +5,11 @@ using CustomControls.RJControls;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using TestGit.Modales;
+using TestGit.Properties;
 
 namespace TestGit
 {
@@ -515,7 +517,24 @@ namespace TestGit
             }
         }
 
+        private void dgvData_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
+                // Cargar imagen
+                Image checkImage = Resources.checkCell;
+
+                // Calcular posición centrada
+                int x = e.CellBounds.Left + (e.CellBounds.Width - checkImage.Width) / 2;
+                int y = e.CellBounds.Top + (e.CellBounds.Height - checkImage.Height) / 2;
+
+                // Dibujar la imagen
+                e.Graphics.DrawImage(checkImage, new Rectangle(x, y, checkImage.Width, checkImage.Height));
+                e.Handled = true;
+            }
+        }
 
         /////////////////////////////////////////
         // Metodo para cargar las localidades segun la provincia

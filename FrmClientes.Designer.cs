@@ -143,6 +143,7 @@
             this.dgvData.Size = new System.Drawing.Size(891, 267);
             this.dgvData.TabIndex = 115;
             this.dgvData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellContentClick);
+            this.dgvData.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvData_CellPainting);
             // 
             // btnseleccionar
             // 
