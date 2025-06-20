@@ -2,7 +2,9 @@
 using CapaNegocio;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
+using TestGit.Properties;
 
 namespace TestGit.Modales
 {
@@ -191,6 +193,25 @@ namespace TestGit.Modales
             item.oPersona.oDomicilio.Calle,
             item.oPersona.oDomicilio.Numero
                 });
+            }
+        }
+
+        private void dgvData_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                // Cargar imagen
+                System.Drawing.Image checkImage = Resources.checkCell;
+
+                // Calcular posición centrada
+                int x = e.CellBounds.Left + (e.CellBounds.Width - checkImage.Width) / 2;
+                int y = e.CellBounds.Top + (e.CellBounds.Height - checkImage.Height) / 2;
+
+                // Dibujar la imagen
+                e.Graphics.DrawImage(checkImage, new Rectangle(x, y, checkImage.Width, checkImage.Height));
+                e.Handled = true;
             }
         }
     }

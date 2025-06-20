@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using TestGit.Modales;
+using TestGit.Properties;
 
 namespace TestGit
 {
@@ -362,6 +363,25 @@ namespace TestGit
             //Escribe solo numeros
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
+                e.Handled = true;
+            }
+        }
+
+        private void dgvData_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                // Cargar imagen
+                System.Drawing.Image checkImage = Resources.checkCell;
+
+                // Calcular posición centrada
+                int x = e.CellBounds.Left + (e.CellBounds.Width - checkImage.Width) / 2;
+                int y = e.CellBounds.Top + (e.CellBounds.Height - checkImage.Height) / 2;
+
+                // Dibujar la imagen
+                e.Graphics.DrawImage(checkImage, new Rectangle(x, y, checkImage.Width, checkImage.Height));
                 e.Handled = true;
             }
         }
