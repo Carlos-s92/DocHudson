@@ -58,10 +58,7 @@ namespace TestGit
             {
                 validaciones = false;
             }
-<<<<<<< HEAD
-    
-=======
->>>>>>> e97b51e33d67e5293fee123458e0eac6b2db9d03
+
 
             return validaciones;
         }

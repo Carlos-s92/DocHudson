@@ -84,7 +84,11 @@ namespace CapaNegocio
             {
                 if (item.oPersona.DNI == obj.oPersona.DNI || item.oPersona.Mail == obj.oPersona.Mail)
                 {
-                    Mensaje += "El cliente ya existe";
+                    Mensaje += "El cliente ya existe con ese D.N.I";
+                }
+                if (item.oPersona.Mail == obj.oPersona.Mail)
+                {
+                    Mensaje += "El cliente ya existe con ese Mail";
                 }
             }
 
